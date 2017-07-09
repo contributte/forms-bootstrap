@@ -7,29 +7,21 @@
  * https://gitlab.com/czubehead/bootstrap-4-forms
  */
 
-namespace Czubehead\BootstrapForms;
+namespace Czubehead\BootstrapForms\Inputs;
 
 
-use Nette\Forms\Controls\SelectBox;
+use Czubehead\BootstrapForms\Traits\ChoiceInputTrait;
+use Czubehead\BootstrapForms\Traits\InputPromptTrait;
+use Nette\Forms\Controls\MultiSelectBox;
 
-/**
- * Class SelectInput
- * @package Czubehead\BootstrapForms
- */
-class SelectInput extends SelectBox
+class MultiselectInput extends MultiSelectBox
 {
 	use ChoiceInputTrait;
 	use InputPromptTrait;
 
-	/**
-	 * SelectInput constructor.
-	 *
-	 * @param null       $label
-	 * @param array|null $items
-	 */
-	public function __construct($label = null, $items = null)
+	public function __construct($label = null, array $items = null)
 	{
-		parent::__construct($label);
+		parent::__construct($label, null);
 		$this->setItems($items);
 	}
 
@@ -38,7 +30,7 @@ class SelectInput extends SelectBox
 		$select = parent::getControl()->setHtml(null);
 
 		$select->attrs += [
-			'class'    => 'custom-select',
+			'class'    => 'form-control',
 			'disabled' => $this->isControlDisabled(),
 		];
 		$options = $this->rawItems;

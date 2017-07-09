@@ -7,9 +7,10 @@
  * https://gitlab.com/czubehead/bootstrap-4-forms
  */
 
-namespace Czubehead\BootstrapForms;
+namespace Czubehead\BootstrapForms\Inputs;
 
 
+use Czubehead\BootstrapForms\Traits\ChoiceInputTrait;
 use Nette\Forms\Controls\ChoiceControl;
 use Nette\Utils\Html;
 

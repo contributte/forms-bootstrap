@@ -7,9 +7,10 @@
  * https://gitlab.com/czubehead/bootstrap-4-forms
  */
 
-namespace Czubehead\BootstrapForms;
+namespace Czubehead\BootstrapForms\Inputs;
 
 
+use Czubehead\BootstrapForms\Traits\BootstrapButtonTrait;
 use Nette\Forms\Controls\Button;
 use Nette\Utils\Html;
 

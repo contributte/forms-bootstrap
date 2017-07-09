@@ -7,9 +7,21 @@
  * https://gitlab.com/czubehead/bootstrap-4-forms
  */
 
-namespace Czubehead\BootstrapForms;
+namespace Czubehead\BootstrapForms\Traits;
 
 
+use Czubehead\BootstrapForms\BootstrapContainer;
+use Czubehead\BootstrapForms\Inputs\ButtonInput;
+use Czubehead\BootstrapForms\Inputs\CheckboxInput;
+use Czubehead\BootstrapForms\Inputs\CheckboxListInput;
+use Czubehead\BootstrapForms\Inputs\DateTimeInput;
+use Czubehead\BootstrapForms\Inputs\MultiselectInput;
+use Czubehead\BootstrapForms\Inputs\RadioInput;
+use Czubehead\BootstrapForms\Inputs\SelectInput;
+use Czubehead\BootstrapForms\Inputs\SubmitButtonInput;
+use Czubehead\BootstrapForms\Inputs\TextAreaInput;
+use Czubehead\BootstrapForms\Inputs\TextInput;
+use Czubehead\BootstrapForms\Inputs\UploadInput;
 use Nette\ComponentModel\IComponent;
 use Nette\Forms\Form;
 use Nette\Utils\Html;
@@ -75,9 +87,12 @@ trait BootstrapContainerTrait
 	public function addContainer($name)
 	{
 		$control = new self();
+		/** @noinspection PhpUndefinedFieldInspection */
 		$control->currentGroup = $this->currentGroup;
+		/** @noinspection PhpUndefinedFieldInspection */
 		if ($this->currentGroup !== null)
 		{
+			/** @noinspection PhpUndefinedFieldInspection */
 			$this->currentGroup->add($control);
 		}
 
@@ -109,7 +124,7 @@ trait BootstrapContainerTrait
 	public function addEmail($name, $label = null)
 	{
 		return $this->addText($name, $label)
-					->addRule(Form::EMAIL);
+			->addRule(Form::EMAIL);
 	}
 
 	/**
@@ -149,7 +164,7 @@ trait BootstrapContainerTrait
 	public function addInteger($name, $label = null)
 	{
 		return $this->addText($name, $label)
-					->addRule(Form::INTEGER);
+			->addRule(Form::INTEGER);
 	}
 
 	/**
@@ -205,7 +220,7 @@ trait BootstrapContainerTrait
 	public function addPassword($name, $label = null, $cols = null, $maxLength = null)
 	{
 		return $this->addText($name, $label)
-					->setType('password');
+			->setType('password');
 	}
 
 	public function addRadioList($name, $label = null, array $items = null)

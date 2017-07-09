@@ -8,7 +8,7 @@
  */
 
 
-namespace Czubehead\BootstrapForms;
+namespace Czubehead\BootstrapForms\Inputs;
 
 
 use Nette\NotSupportedException;
@@ -28,7 +28,7 @@ class DateTimeInput extends TextInput
 		$this->setType('datetime-local');
 		$this->setRequired(false);
 
-		$this->addRule(function ($val, $arg)
+		$this->addRule(function ($val)
 		{
 			$val = $val->value;
 			if ($val instanceof \DateTime)

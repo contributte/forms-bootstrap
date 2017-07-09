@@ -7,8 +7,7 @@
  * https://gitlab.com/czubehead/bootstrap-4-forms
  */
 
-namespace Czubehead\BootstrapForms;
-
+namespace Czubehead\BootstrapForms\Traits;
 
 use Nette\Forms\Controls\ChoiceControl;
 use Nette\InvalidArgumentException;

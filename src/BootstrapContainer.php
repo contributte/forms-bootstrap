@@ -10,6 +10,7 @@
 namespace Czubehead\BootstrapForms;
 
 
+use Czubehead\BootstrapForms\Traits\BootstrapContainerTrait;
 use Nette\Forms\Container;
 
 /**

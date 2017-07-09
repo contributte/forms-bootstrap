@@ -10,6 +10,7 @@
 namespace Czubehead\BootstrapForms;
 
 
+use Czubehead\BootstrapForms\Traits\BootstrapContainerTrait;
 use Nette\Application\UI\Form;
 use Nette\ComponentModel\IContainer;
 use Nette\Forms\IFormRenderer;
