@@ -14,33 +14,30 @@ namespace Czubehead\BootstrapForms\Inputs;
 use Nette\NotSupportedException;
 use Nette\Utils\DateTime;
 
+
 class DateTimeInput extends TextInput
 {
 	const Format = "/^([0-9]{4}(-[0-9]{2}){2}T[0-9]{2}:[0-9]{2})(:[0-9]{2})?$/";
 
-	public function __construct($label = null, $maxLength = null)
+	public function __construct($label = NULL, $maxLength = NULL)
 	{
-		if ($maxLength !== null)
-		{
+		if ($maxLength !== NULL) {
 			throw new NotSupportedException('Do not set $maxLength!');
 		}
 		parent::__construct($label, $maxLength);
 		$this->setType('datetime-local');
-		$this->setRequired(false);
+		$this->setRequired(FALSE);
 
-		$this->addRule(function ($val)
-		{
+		$this->addRule(function ($val) {
 			$val = $val->value;
-			if ($val instanceof \DateTime)
-			{
-				return true;
+			if ($val instanceof \DateTime) {
+				return TRUE;
 			}
-			elseif (is_string($val))
-			{
+			elseif (is_string($val)) {
 				return preg_match(DateTimeInput::Format, $val);
 			}
 
-			return false;
+			return FALSE;
 		}, "date must be: yyyy-mm-ddThh:mm");
 	}
 
@@ -51,13 +48,11 @@ class DateTimeInput extends TextInput
 
 	public function setValue($value)
 	{
-		if ($this->isTimeString($value))
-		{
+		if ($this->isTimeString($value)) {
 			$value = new DateTime($value);
 		}
-		elseif (!$value instanceof \DateTime)
-		{
-			parent::setValue(null);
+		elseif (!$value instanceof \DateTime) {
+			parent::setValue(NULL);
 
 			return;
 		}

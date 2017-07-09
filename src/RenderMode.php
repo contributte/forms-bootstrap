@@ -14,7 +14,7 @@ namespace Czubehead\BootstrapForms;
  * @package Nette\Forms\Rendering
  * @see     BootstrapRenderer
  */
-abstract class RenderMode
+class RenderMode
 {
 	/**
 	 * Labels above controls

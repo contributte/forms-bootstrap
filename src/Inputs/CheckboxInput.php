@@ -13,6 +13,7 @@ namespace Czubehead\BootstrapForms\Inputs;
 use Nette\Forms\Controls\Checkbox;
 use Nette\Utils\Html;
 
+
 class CheckboxInput extends Checkbox
 {
 	/**
@@ -23,25 +24,23 @@ class CheckboxInput extends Checkbox
 	{
 		parent::getControl();
 
-		return self::makeCheckbox($this->name, $this->caption, $this->value, false, $this->required,
+		return self::makeCheckbox($this->name, $this->caption, $this->value, FALSE, $this->required,
 			$this->disabled);
 	}
 
 	/**
 	 * Makes a Bootstrap checkbox
-	 *
 	 * @param string      $name
 	 * @param string|null $caption
 	 * @param bool        $checked
 	 * @param bool|mixed  $value pass false to omit
 	 * @param bool        $required
 	 * @param bool        $disabled
-	 *
 	 * @return Html
 	 */
-	public static function makeCheckbox($name, $caption = null, $checked = false, $value = false, $required =
-	false,
-										$disabled = false)
+	public static function makeCheckbox($name, $caption = NULL, $checked = FALSE, $value = FALSE, $required =
+	FALSE,
+	                                    $disabled = FALSE)
 	{
 		$label = Html::el('label', ['class' => 'form-check-label']);
 		$input = Html::el('input', [
@@ -52,8 +51,7 @@ class CheckboxInput extends Checkbox
 			'required' => $required,
 			'checked'  => $checked,
 		]);
-		if ($value !== false)
-		{
+		if ($value !== FALSE) {
 			$input->attrs += [
 				'value' => $value,
 			];

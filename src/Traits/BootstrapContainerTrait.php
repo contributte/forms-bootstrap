@@ -26,6 +26,7 @@ use Nette\ComponentModel\IComponent;
 use Nette\Forms\Form;
 use Nette\Utils\Html;
 
+
 /**
  * Trait BootstrapContainerTrait
  * @package Czubehead\BootstrapForms
@@ -36,10 +37,9 @@ trait BootstrapContainerTrait
 	 * @param string           $name
 	 * @param null|string|Html $content
 	 * @param string           $btnClass secondary button class (primary is 'btn')
-	 *
 	 * @return ButtonInput
 	 */
-	public function addButton($name, $content = null, $btnClass = 'btn-secondary')
+	public function addButton($name, $content = NULL, $btnClass = 'btn-secondary')
 	{
 		$comp = new ButtonInput($content);
 		$comp->setBtnClass($btnClass);
@@ -48,15 +48,14 @@ trait BootstrapContainerTrait
 		return $comp;
 	}
 
-	public abstract function addComponent(IComponent $component, $name, $insertBefore = null);
+	public abstract function addComponent(IComponent $component, $name, $insertBefore = NULL);
 
 	/**
 	 * @param string $name
 	 * @param null   $caption
-	 *
 	 * @return CheckboxInput
 	 */
-	public function addCheckbox($name, $caption = null)
+	public function addCheckbox($name, $caption = NULL)
 	{
 		$comp = new CheckboxInput($caption);
 		$this->addComponent($comp, $name);
@@ -68,10 +67,9 @@ trait BootstrapContainerTrait
 	 * @param string     $name
 	 * @param null       $label
 	 * @param array|null $items
-	 *
 	 * @return CheckboxListInput
 	 */
-	public function addCheckboxList($name, $label = null, array $items = null)
+	public function addCheckboxList($name, $label = NULL, array $items = NULL)
 	{
 		$comp = new CheckboxListInput($label, $items);
 		$this->addComponent($comp, $name);
@@ -81,17 +79,15 @@ trait BootstrapContainerTrait
 
 	/**
 	 * @param string $name
-	 *
 	 * @return BootstrapContainer
 	 */
 	public function addContainer($name)
 	{
-		$control = new self();
+		$control = new self;
 		/** @noinspection PhpUndefinedFieldInspection */
 		$control->currentGroup = $this->currentGroup;
 		/** @noinspection PhpUndefinedFieldInspection */
-		if ($this->currentGroup !== null)
-		{
+		if ($this->currentGroup !== NULL) {
 			/** @noinspection PhpUndefinedFieldInspection */
 			$this->currentGroup->add($control);
 		}
@@ -101,10 +97,8 @@ trait BootstrapContainerTrait
 
 	/**
 	 * Adds a datetime input.
-	 *
 	 * @param string $name  name
 	 * @param string $label label
-	 *
 	 * @return DateTimeInput
 	 */
 	public function addDateTime($name, $label)
@@ -118,13 +112,12 @@ trait BootstrapContainerTrait
 	/**
 	 * @param      $name
 	 * @param null $label
-	 *
 	 * @return TextInput
 	 */
-	public function addEmail($name, $label = null)
+	public function addEmail($name, $label = NULL)
 	{
 		return $this->addText($name, $label)
-			->addRule(Form::EMAIL);
+		            ->addRule(Form::EMAIL);
 	}
 
 	/**
@@ -132,10 +125,9 @@ trait BootstrapContainerTrait
 	 * @param string $label
 	 * @param null   $cols      ignored
 	 * @param null   $maxLength ignored
-	 *
 	 * @return TextInput
 	 */
-	public function addText($name, $label = null, $cols = null, $maxLength = null)
+	public function addText($name, $label = NULL, $cols = NULL, $maxLength = NULL)
 	{
 		$comp = new TextInput($label);
 		$this->addComponent($comp, $name);
@@ -145,7 +137,6 @@ trait BootstrapContainerTrait
 
 	/**
 	 * Adds error to a specific component
-	 *
 	 * @param string $componentName
 	 * @param string $message
 	 */
@@ -158,13 +149,12 @@ trait BootstrapContainerTrait
 	/**
 	 * @param string $name
 	 * @param string $label
-	 *
 	 * @return TextInput
 	 */
-	public function addInteger($name, $label = null)
+	public function addInteger($name, $label = NULL)
 	{
 		return $this->addText($name, $label)
-			->addRule(Form::INTEGER);
+		            ->addRule(Form::INTEGER);
 	}
 
 	/**
@@ -172,10 +162,9 @@ trait BootstrapContainerTrait
 	 * @param null       $label
 	 * @param array|null $items
 	 * @param null       $size
-	 *
 	 * @return MultiselectInput
 	 */
-	public function addMultiSelect($name, $label = null, array $items = null, $size = null)
+	public function addMultiSelect($name, $label = NULL, array $items = NULL, $size = NULL)
 	{
 		$comp = new MultiselectInput($label, $items);
 		$this->addComponent($comp, $name);
@@ -186,22 +175,20 @@ trait BootstrapContainerTrait
 	/**
 	 * @param string $name
 	 * @param string $label
-	 *
 	 * @return UploadInput
 	 */
-	public function addMultiUpload($name, $label = null)
+	public function addMultiUpload($name, $label = NULL)
 	{
-		return $this->addUpload($name, $label, true);
+		return $this->addUpload($name, $label, TRUE);
 	}
 
 	/**
 	 * @param string $name
 	 * @param string $label
 	 * @param bool   $multiple
-	 *
 	 * @return UploadInput
 	 */
-	public function addUpload($name, $label = null, $multiple = false)
+	public function addUpload($name, $label = NULL, $multiple = FALSE)
 	{
 		$comp = new UploadInput($label, $multiple);
 		$this->addComponent($comp, $name);
@@ -214,16 +201,15 @@ trait BootstrapContainerTrait
 	 * @param string $label
 	 * @param null   $cols
 	 * @param null   $maxLength
-	 *
 	 * @return TextInput
 	 */
-	public function addPassword($name, $label = null, $cols = null, $maxLength = null)
+	public function addPassword($name, $label = NULL, $cols = NULL, $maxLength = NULL)
 	{
 		return $this->addText($name, $label)
-			->setType('password');
+		            ->setType('password');
 	}
 
-	public function addRadioList($name, $label = null, array $items = null)
+	public function addRadioList($name, $label = NULL, array $items = NULL)
 	{
 		$comp = new RadioInput($label, $items);
 		$this->addComponent($comp, $name);
@@ -236,10 +222,9 @@ trait BootstrapContainerTrait
 	 * @param string $label
 	 * @param array  $items
 	 * @param null   $size ignore
-	 *
 	 * @return SelectInput
 	 */
-	public function addSelect($name, $label = null, array $items = null, $size = null)
+	public function addSelect($name, $label = NULL, array $items = NULL, $size = NULL)
 	{
 		$comp = new SelectInput($label, $items);
 		$this->addComponent($comp, $name);
@@ -251,10 +236,9 @@ trait BootstrapContainerTrait
 	 * @param string $name
 	 * @param string $caption
 	 * @param string $btnClass secondary button class (primary is 'btn')
-	 *
 	 * @return SubmitButtonInput
 	 */
-	public function addSubmit($name, $caption = null, $btnClass = 'btn-primary')
+	public function addSubmit($name, $caption = NULL, $btnClass = 'btn-primary')
 	{
 		$comp = new SubmitButtonInput($caption);
 		$comp->setBtnClass($btnClass);
@@ -268,10 +252,9 @@ trait BootstrapContainerTrait
 	 * @param string $label
 	 * @param null   $cols ignored
 	 * @param null   $rows ignored
-	 *
 	 * @return TextAreaInput
 	 */
-	public function addTextArea($name, $label = null, $cols = null, $rows = null)
+	public function addTextArea($name, $label = NULL, $cols = NULL, $rows = NULL)
 	{
 		$comp = new TextAreaInput($label);
 		$this->addComponent($comp, $name);

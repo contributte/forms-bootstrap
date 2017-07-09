@@ -13,6 +13,7 @@ namespace Czubehead\BootstrapForms\Inputs;
 use Czubehead\BootstrapForms\Traits\BootstrapButtonTrait;
 use Nette\Forms\Controls\SubmitButton;
 
+
 class SubmitButtonInput extends SubmitButton
 {
 	use BootstrapButtonTrait;

@@ -14,6 +14,7 @@ use Czubehead\BootstrapForms\Traits\ChoiceInputTrait;
 use Nette\Forms\Controls\ChoiceControl;
 use Nette\Utils\Html;
 
+
 /**
  * Class RadioList
  * @package Czubehead\BootstrapForms
@@ -31,7 +32,7 @@ class RadioInput extends ChoiceControl
 	 * @param  string|object
 	 * @param array|null $items
 	 */
-	public function __construct($label = null, array $items = null)
+	public function __construct($label = NULL, array $items = NULL)
 	{
 		parent::__construct($label, $items);
 		$this->control->type = 'radio';
@@ -51,8 +52,7 @@ class RadioInput extends ChoiceControl
 		$items = $this->getItems();
 		$container = $this->container;
 
-		foreach ($items as $value => $caption)
-		{
+		foreach ($items as $value => $caption) {
 			$disabledOption = $this->isValueDisabled($value);
 
 			$wrapper = Html::el('div', [

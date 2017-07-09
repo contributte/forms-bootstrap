@@ -2,7 +2,6 @@
 /**
  * Created by PhpStorm
  * Author: czubehead (http://petrcech.eu)
- *
  * Date: 19.11.16
  * Time: 14:37
  */
@@ -16,11 +15,11 @@ use Nette\ComponentModel\IContainer;
 use Nette\Forms\IFormRenderer;
 use Nette\InvalidArgumentException;
 
+
 /**
  * Class BootstrapForm
  * Form rendered using Bootstrap 4
  * @package Czubehead\BootstrapForms
- *
  * @property bool $ajax
  * @property int  $renderMode
  */
@@ -31,17 +30,16 @@ class BootstrapForm extends Form
 	/**
 	 * @var bool
 	 */
-	protected $isAjax = true;
+	protected $isAjax = TRUE;
 
 	/**
 	 * BootstrapForm constructor.
-	 *
 	 * @param int|IContainer|null $container
 	 */
-	public function __construct($container = null)
+	public function __construct($container = NULL)
 	{
 		parent::__construct($container);
-		$this->setRenderer(new BootstrapRenderer());
+		$this->setRenderer(new BootstrapRenderer);
 	}
 
 	/**
@@ -62,13 +60,11 @@ class BootstrapForm extends Form
 
 	/**
 	 * @param IFormRenderer $renderer
-	 *
 	 * @return void
 	 */
-	public function setRenderer(IFormRenderer $renderer = null)
+	public function setRenderer(IFormRenderer $renderer = NULL)
 	{
-		if (!$renderer instanceof BootstrapRenderer)
-		{
+		if (!$renderer instanceof BootstrapRenderer) {
 			throw new InvalidArgumentException('Must be a BootstrapRenderer');
 		}
 		parent::setRenderer($renderer);
@@ -84,10 +80,9 @@ class BootstrapForm extends Form
 
 	/**
 	 * @param bool $isAjax
-	 *
 	 * @return BootstrapForm
 	 */
-	public function setAjax($isAjax = true)
+	public function setAjax($isAjax = TRUE)
 	{
 		$this->isAjax = $isAjax;
 

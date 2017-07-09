@@ -14,6 +14,7 @@ use Czubehead\BootstrapForms\Traits\ChoiceInputTrait;
 use Nette\Forms\Controls\CheckboxList;
 use Nette\Utils\Html;
 
+
 class CheckboxListInput extends CheckboxList
 {
 	use ChoiceInputTrait;
@@ -25,10 +26,9 @@ class CheckboxListInput extends CheckboxList
 			'disabled' => $this->isControlDisabled(),
 		]);
 
-		foreach ($this->items as $value => $caption)
-		{
+		foreach ($this->items as $value => $caption) {
 			$line = CheckboxInput::makeCheckbox($this->name . '[]', $caption, $this->isValueSelected($value),
-				$value, false, $this->isValueDisabled($value));
+				$value, FALSE, $this->isValueDisabled($value));
 
 			$fieldset->addHtml($line);
 		}

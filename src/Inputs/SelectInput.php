@@ -14,6 +14,7 @@ use Czubehead\BootstrapForms\Traits\ChoiceInputTrait;
 use Czubehead\BootstrapForms\Traits\InputPromptTrait;
 use Nette\Forms\Controls\SelectBox;
 
+
 /**
  * Class SelectInput
  * @package Czubehead\BootstrapForms
@@ -25,11 +26,10 @@ class SelectInput extends SelectBox
 
 	/**
 	 * SelectInput constructor.
-	 *
 	 * @param null       $label
 	 * @param array|null $items
 	 */
-	public function __construct($label = null, $items = null)
+	public function __construct($label = NULL, $items = NULL)
 	{
 		parent::__construct($label);
 		$this->setItems($items);
@@ -37,27 +37,24 @@ class SelectInput extends SelectBox
 
 	public function getControl()
 	{
-		$select = parent::getControl()->setHtml(null);
+		$select = parent::getControl()->setHtml(NULL);
 
 		$select->attrs += [
 			'class'    => 'custom-select',
 			'disabled' => $this->isControlDisabled(),
 		];
 		$options = $this->rawItems;
-		if (!empty($this->prompt))
-		{
-			$options = [null => $this->prompt] + $options;
+		if (!empty($this->prompt)) {
+			$options = [NULL => $this->prompt] + $options;
 		}
 
-		$optList = $this->makeOptionList($options, function ($value)
-		{
+		$optList = $this->makeOptionList($options, function ($value) {
 			return [
 				'selected' => $this->isValueSelected($value),
 				'disabled' => $this->isValueDisabled($value),
 			];
 		});
-		foreach ($optList as $item)
-		{
+		foreach ($optList as $item) {
 			$select->addHtml($item);
 		}
 

@@ -14,11 +14,11 @@ use Czubehead\BootstrapForms\Traits\BootstrapButtonTrait;
 use Nette\Forms\Controls\Button;
 use Nette\Utils\Html;
 
+
 /**
  * Class ButtonInput.
  * Returns &lt;button&gt; whose content can be set as caption.
  * @package Czubehead\BootstrapForms
- *
  * @property string $btnClass
  */
 class ButtonInput extends Button
@@ -27,25 +27,23 @@ class ButtonInput extends Button
 
 	/**
 	 * ButtonInput constructor.
-	 *
 	 * @param null|string|Html $content
 	 */
-	public function __construct($content = null)
+	public function __construct($content = NULL)
 	{
 		parent::__construct($content);
 	}
 
 	/**
 	 * @param null|string|Html $content
-	 *
 	 * @return Html
 	 */
-	public function getControl($content = null)
+	public function getControl($content = NULL)
 	{
 		$btn = Html::el('button', [
 			'type' => 'button',
 		]);
-		$btn->setHtml($content === null ? $this->caption : $content);
+		$btn->setHtml($content === NULL ? $this->caption : $content);
 		$this->addBtnClass($btn);
 
 		return $btn;

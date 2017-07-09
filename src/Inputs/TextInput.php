@@ -15,10 +15,10 @@ class TextInput extends \Nette\Forms\Controls\TextInput
 	/*
 	 * @inheritdoc
 	 */
-	public function __construct($label = null, $maxLength = null)
+	public function __construct($label = NULL, $maxLength = NULL)
 	{
 		parent::__construct($label, $maxLength);
-		$this->setRequired(false);
+		$this->setRequired(FALSE);
 	}
 
 	/*

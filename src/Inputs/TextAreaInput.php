@@ -12,15 +12,16 @@ namespace Czubehead\BootstrapForms\Inputs;
 
 use Nette\Forms\Controls\TextArea;
 
+
 class TextAreaInput extends TextArea
 {
 	/*
 	 * @inheritdoc
 	 */
-	public function __construct($label = null)
+	public function __construct($label = NULL)
 	{
 		parent::__construct($label);
-		$this->setRequired(false);
+		$this->setRequired(FALSE);
 	}
 
 	/**

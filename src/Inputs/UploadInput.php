@@ -13,6 +13,7 @@ namespace Czubehead\BootstrapForms\Inputs;
 use Nette\Forms\Controls\UploadControl;
 use Nette\Utils\Html;
 
+
 class UploadInput extends UploadControl
 {
 	public function getControl()

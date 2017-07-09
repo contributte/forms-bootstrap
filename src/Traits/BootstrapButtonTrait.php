@@ -11,10 +11,10 @@ namespace Czubehead\BootstrapForms\Traits;
 
 use Nette\Utils\Html;
 
+
 /**
  * Trait BootstrapButtonTrait
  * @package Czubehead\BootstrapForms
- *
  * @property string $btnType
  */
 trait BootstrapButtonTrait
@@ -24,7 +24,7 @@ trait BootstrapButtonTrait
 	 */
 	private $btnClass = 'btn-primary';
 
-	public function getControl($caption = null)
+	public function getControl($caption = NULL)
 	{
 		$control = parent::getControl($caption);
 		$this->addBtnClass($control);
@@ -51,9 +51,7 @@ trait BootstrapButtonTrait
 
 	/**
 	 * Sets additional button class. Default is btn-primary
-	 *
 	 * @param string $btnClass
-	 *
 	 * @return static
 	 */
 	public function setBtnClass($btnClass)
