@@ -12,80 +12,57 @@ use DateTime;
 
 
 /**
- * Defines some common datetime formats
+ * An easy-to-use list of date/time formats
+ * How to understand the constants
+ * ===============================
+ * 1. `D_` prefix -> date format
+ * 2. `T_` prefix -> time format
+ * 3. `DMY`,`YMD` and `MDY` specify the *order* of day, month and year
+ * 4. `_NO_LEAD` suffix means no leading zeros
+ * 5. `T_12` `LOWER`/`UPPER` point to AM/am, PM/pm
  * @package Czubehead\BootstrapForms\Enums
  */
 class DateTimeFormat
 {
-	/**
-	 * yyyy-mm-dd mm:ss
-	 */
-	const DATETIME_INTERNATIONAL = self::DATE_INTERNATIONAL . ' ' . self::TIME_24;
+	const D_DMY_DOTS = 'd.m.Y';
+	const D_DMY_DOTS_NO_LEAD = 'j.n.Y';
+
+	const D_DMY_SLASHES = 'd/m/Y';
+	const D_DMY_SLASHES_NO_LEAD = 'j/n/Y';
+
+	const D_DMY_DASHES = 'd-m-Y';
+	const D_DMY_DASHES_NO_LEAD = 'j-n-Y';
+
+	const D_YMD_DOTS = 'Y.m.d';
+	const D_YMD_DOTS_NO_LEAD = 'Y.n.j';
+
+	const D_YMD_SLASHES = 'Y/m/d';
+	const D_YMD_SLASHES_NO_LEAD = 'Y/n/j';
+
+	const D_YMD_DASHES = 'Y-m-d';
+	const D_YMD_DASHES_NO_LEAD = 'Y-n-j';
+
+	const D_MDY_DOTS = 'm.d.Y';
+	const D_MDY_DOTS_NO_LEAD = 'n.j.Y';
+
+	const D_MDY_SLASHES = 'm/d/Y';
+	const D_MDY_SLASHES_NO_LEAD = 'n/j/Y';
+
+	const D_MDY_DASHES = 'm-d-Y';
+	const D_MDY_DASHES_NO_LEAD = 'n-j-Y';
+
+	const T_24 = 'H:i';
+	const T_24_NO_LEAD = 'G:i';
+
+	const T_12_LOWER = 'h:i a';
+	const T_12_LOWER_NO_LEAD = 'g:i a';
+
+	const T_12_UPPER = 'h:i A';
+	const T_12_UPPER_NO_LEAD = 'g:i A';
 
 	/**
-	 * More like computer date
-	 * yyyy-mm-dd
-	 */
-	const DATE_INTERNATIONAL = 'Y-m-d';
-
-	/**
-	 * dd.mm.yyyy
-	 */
-	const DATE_EUROPEAN = 'd.m.Y';
-
-	/**
-	 * Typically use for user input
-	 * d.m.yyyy (no leading zeros)
-	 */
-	const DATE_EUROPEAN_NO_LEAD = 'j.n.Y';
-
-	/**
-	 * d.m.yyyy h:mm (no leading zeros)
-	 */
-	const DATETIME_EUROPEAN_NO_LEAD = self::DATE_EUROPEAN_NO_LEAD . ' ' . self::TIME_24;
-
-	/**
-	 * yyyy/mm/dd
-	 */
-	const DATE_AMERICAN = 'Y/m/d';
-
-	/**
-	 * yyyy/m/d (no leading zeros)
-	 */
-	const DATE_AMERICAN_NO_LEAD = 'Y/n/j';
-
-	/**
-	 * yyyy/mm/dd hh:mm AM/PM
-	 */
-	const DATETIME_AMERICAN = self::DATE_AMERICAN . ' ' . self::TIME_12;
-
-	/**
-	 * yyyy/m/d h:mm AM/PM (no leading zeros)
-	 */
-	const DATETIME_AMERICAN_NO_LEAD = self::DATE_AMERICAN_NO_LEAD . ' ' . self::TIME_12;
-
-	/**
-	 * 24-hour time format with leading zeros
-	 */
-	const TIME_24 = 'H:i';
-
-	/**
-	 * 12-hour time format, e.g. 02:15 PM
-	 */
-	const TIME_12 = 'h:i A';
-
-	/**
-	 * 24-hour format without leading zeros for hours.
-	 */
-	const TIME_24_NO_LEAD = 'G:i';
-
-	/**
-	 * 12-hour format without leading zeros, e.g. 2:15 PM
-	 */
-	const TIME_12_NO_LEAD = 'g:i A';
-
-	/**
-	 * Checks if give time string is indeed in the format specified
+	 * Checks if give time string is indeed in the format specified.
+	 * Some leading zeros check might be omitted.
 	 * @param string $format
 	 * @param string $timeString
 	 * @return bool

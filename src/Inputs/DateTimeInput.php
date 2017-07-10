@@ -23,7 +23,7 @@ class DateTimeInput extends TextInput
 	 * Default is d.m.yyyy h:mm
 	 * @var string
 	 */
-	public $format = DateTimeFormat::DATETIME_EUROPEAN_NO_LEAD;
+	public $format = DateTimeFormat::D_DMY_DOTS_NO_LEAD . ' ' . DateTimeFormat::T_24_NO_LEAD;
 
 	private $isValidated = FALSE;
 
