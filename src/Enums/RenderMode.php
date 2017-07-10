@@ -6,7 +6,7 @@
  * This file belongs to the project bootstrap-4-forms
  */
 
-namespace Czubehead\BootstrapForms;
+namespace Czubehead\BootstrapForms\Enums;
 
 /**
  * Class RenderMode

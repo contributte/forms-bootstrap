@@ -11,6 +11,7 @@
 
 namespace Czubehead\BootstrapForms;
 
+use Czubehead\BootstrapForms\Enums\RenderMode;
 use Czubehead\BootstrapForms\Inputs\SelectInput;
 use Czubehead\BootstrapForms\Inputs\UploadInput;
 use Nette;
