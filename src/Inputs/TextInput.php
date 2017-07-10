@@ -9,9 +9,18 @@
 
 namespace Czubehead\BootstrapForms\Inputs;
 
-
+/**
+ * Class TextInput
+ * @property string $placeholder
+ * @package Czubehead\BootstrapForms\Inputs
+ */
 class TextInput extends \Nette\Forms\Controls\TextInput
 {
+	/**
+	 * @var string
+	 */
+	private $placeholder;
+
 	/*
 	 * @inheritdoc
 	 */
@@ -28,7 +37,29 @@ class TextInput extends \Nette\Forms\Controls\TextInput
 	{
 		$control = parent::getControl();
 		$control->class[] = 'form-control';
+		if (!empty($this->placeholder)) {
+			$control->setAttribute('placeholder', $this->placeholder);
+		}
 
 		return $control;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getPlaceholder()
+	{
+		return $this->placeholder;
+	}
+
+	/**
+	 * @param string $placeholder
+	 * @return static
+	 */
+	public function setPlaceholder($placeholder)
+	{
+		$this->placeholder = $placeholder;
+
+		return $this;
 	}
 }
