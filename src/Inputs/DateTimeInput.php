@@ -11,59 +11,57 @@
 namespace Czubehead\BootstrapForms\Inputs;
 
 
+use Czubehead\BootstrapForms\Enums\DateTimeFormat;
+use DateTime;
 use Nette\NotSupportedException;
-use Nette\Utils\DateTime;
 
 
 class DateTimeInput extends TextInput
 {
-	const Format = "/^([0-9]{4}(-[0-9]{2}){2}T[0-9]{2}:[0-9]{2})(:[0-9]{2})?$/";
+	/**
+	 * Input accepted format.
+	 * Default is d.m.yyyy h:mm
+	 * @var string
+	 */
+	public $format = DateTimeFormat::DATETIME_EUROPEAN_NO_LEAD;
+
+	private $isValidated = FALSE;
 
 	public function __construct($label = NULL, $maxLength = NULL)
 	{
 		if ($maxLength !== NULL) {
 			throw new NotSupportedException('Do not set $maxLength!');
 		}
-		parent::__construct($label, $maxLength);
-		$this->setType('datetime-local');
-		$this->setRequired(FALSE);
+		parent::__construct($label, NULL);
 
-		$this->addRule(function ($val) {
-			$val = $val->value;
-			if ($val instanceof \DateTime) {
-				return TRUE;
-			}
-			elseif (is_string($val)) {
-				return preg_match(DateTimeInput::Format, $val);
-			}
+		$this->addRule(function ($input) {
+			return DateTimeFormat::validate($this->format, $input->value);
+		}, 'invalid/incorrect format');
+	}
 
-			return FALSE;
-		}, "date must be: yyyy-mm-ddThh:mm");
+	public function cleanErrors()
+	{
+		$this->isValidated = FALSE;
 	}
 
 	public function getValue()
 	{
-		return new DateTime(parent::getValue());
+		$val = parent::getValue();
+		if (!$this->isValidated) {
+			return $val;
+		}
+
+		$value = DateTime::createFromFormat($this->format, $val);
+		if (!$value) {
+			return NULL;
+		}
+
+		return $value;
 	}
 
-	public function setValue($value)
+	public function validate()
 	{
-		if ($this->isTimeString($value)) {
-			$value = new DateTime($value);
-		}
-		elseif (!$value instanceof \DateTime) {
-			parent::setValue(NULL);
-
-			return;
-		}
-		$value = $value->format('Y-m-d H:i');
-		$value = str_replace(' ', 'T', $value);
-
-		parent::setValue($value);
-	}
-
-	private function isTimeString($string)
-	{
-		return preg_match(self::Format, $string);
+		parent::validate();
+		$this->isValidated = TRUE;
 	}
 }
