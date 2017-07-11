@@ -13,6 +13,7 @@ namespace Czubehead\BootstrapForms\Inputs;
 
 use Czubehead\BootstrapForms\Enums\DateTimeFormat;
 use DateTime;
+use Nette\InvalidArgumentException;
 use Nette\NotSupportedException;
 
 
@@ -57,6 +58,25 @@ class DateTimeInput extends TextInput
 		}
 
 		return $value;
+	}
+
+	/**
+	 * @param DateTime|null $value
+	 * @return static
+	 */
+	public function setValue($value)
+	{
+		if ($value instanceof DateTime) {
+			parent::setValue($value->format($this->format));
+
+			return $this;
+		}
+		elseif ($value === NULL) {
+			parent::setValue(NULL);
+
+			return $this;
+		}
+		throw new InvalidArgumentException('Value must be either DateTime or NULL');
 	}
 
 	public function validate()
