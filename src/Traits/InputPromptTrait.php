@@ -14,6 +14,12 @@ use Nette\InvalidArgumentException;
 use Nette\NotSupportedException;
 
 
+/**
+ * Trait InputPromptTrait.
+ * Adds string property prompt.
+ * @property string $prompt
+ * @package Czubehead\BootstrapForms\Traits
+ */
 trait InputPromptTrait
 {
 	/**
