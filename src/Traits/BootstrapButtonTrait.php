@@ -4,7 +4,7 @@
  * Date: 9.7.17
  * Time: 20:02
  * This file belongs to the project bootstrap-4-forms
- * https://gitlab.com/czubehead/bootstrap-4-forms
+ * https://github.com/czubehead/bootstrap-4-forms
  */
 
 namespace Czubehead\BootstrapForms\Traits;
@@ -23,22 +23,6 @@ trait BootstrapButtonTrait
 	 * @var string
 	 */
 	private $btnClass = 'btn-primary';
-
-	public function getControl($caption = NULL)
-	{
-		$control = parent::getControl($caption);
-		$this->addBtnClass($control);
-
-		return $control;
-	}
-
-	/**
-	 * @param Html $element
-	 */
-	protected function addBtnClass($element)
-	{
-		$element->class[] = 'btn ' . $this->getBtnClass();
-	}
 
 	/**
 	 * Gets additional button class. Default is btn-primary.
@@ -59,5 +43,21 @@ trait BootstrapButtonTrait
 		$this->btnClass = $btnClass;
 
 		return $this;
+	}
+
+	public function getControl($caption = NULL)
+	{
+		$control = parent::getControl($caption);
+		$this->addBtnClass($control);
+
+		return $control;
+	}
+
+	/**
+	 * @param Html $element
+	 */
+	protected function addBtnClass($element)
+	{
+		$element->class[] = 'btn ' . $this->getBtnClass();
 	}
 }

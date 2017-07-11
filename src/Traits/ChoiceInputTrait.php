@@ -4,7 +4,7 @@
  * Date: 9.7.17
  * Time: 20:02
  * This file belongs to the project bootstrap-4-forms
- * https://gitlab.com/czubehead/bootstrap-4-forms
+ * https://github.com/czubehead/bootstrap-4-forms
  */
 
 namespace Czubehead\BootstrapForms\Traits;
@@ -20,6 +20,27 @@ trait ChoiceInputTrait
 	 * @var array items as user entered them - may be nested, unlike items, which are always flat.
 	 */
 	protected $rawItems;
+
+	/**
+	 * Processes an associative array in a way that it has no nesting. Keys for
+	 * nested arrays are lost, but nested arrays are merged.
+	 * @param array $array
+	 * @return array
+	 */
+	public function flatAssocArray(array $array)
+	{
+		$ret = [];
+		foreach ($array as $key => $value) {
+			if (is_array($value)) {
+				$ret += $this->flatAssocArray($value);
+			}
+			else {
+				$ret[ $key ] = $value;
+			}
+		}
+
+		return $ret;
+	}
 
 	/**
 	 * Makes array of &lt;option&gt;. Can handle associative arrays just fine. Checks for duplicate values.
@@ -81,27 +102,6 @@ trait ChoiceInputTrait
 		parent::setItems($processed, $useKeys);
 
 		return $this;
-	}
-
-	/**
-	 * Processes an associative array in a way that it has no nesting. Keys for
-	 * nested arrays are lost, but nested arrays are merged.
-	 * @param array $array
-	 * @return array
-	 */
-	public function flatAssocArray(array $array)
-	{
-		$ret = [];
-		foreach ($array as $key => $value) {
-			if (is_array($value)) {
-				$ret += $this->flatAssocArray($value);
-			}
-			else {
-				$ret[ $key ] = $value;
-			}
-		}
-
-		return $ret;
 	}
 
 	/**

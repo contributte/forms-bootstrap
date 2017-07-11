@@ -9,8 +9,6 @@ Rather than being just a renderer, this introduces a custom set of controls
 Note that **this is an early alpha**, so it may be buggy. That is where you can 
 help by reporting issues.
 
-*What? Not Github? Correct, I like Gitlab more.*
-
 ## Features
 
 - Fully valid [Bootstrap 4 forms](http://v4-alpha.getbootstrap.com/components/forms/) HTML generation

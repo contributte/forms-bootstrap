@@ -4,7 +4,7 @@
  * Date: 9.7.17
  * Time: 20:02
  * This file belongs to the project bootstrap-4-forms
- * https://gitlab.com/czubehead/bootstrap-4-forms
+ * https://github.com/czubehead/bootstrap-4-forms
  */
 
 namespace Czubehead\BootstrapForms\Inputs;

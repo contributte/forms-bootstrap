@@ -2,7 +2,7 @@
   "name": "czubehead/bootstrap-4-forms",
   "type": "library",
   "description": "Nette extension for Bootstrap 4 forms",
-  "homepage": "https://gitlab.com/czubehead/bootstrap-4-forms",
+  "homepage": "https://github.com/czubehead/bootstrap-4-forms",
   "license": "MIT",
   "keywords": [
     "nette",
