@@ -13,18 +13,19 @@ namespace Czubehead\BootstrapForms\Inputs;
 
 use Czubehead\BootstrapForms\Enums\DateTimeFormat;
 use DateTime;
-use Nette\InvalidArgumentException;
 use Nette\NotSupportedException;
 
 
 class DateTimeInput extends TextInput
 {
+	const DEFAULT_FORMAT = DateTimeFormat::D_DMY_DOTS_NO_LEAD . ' ' . DateTimeFormat::T_24_NO_LEAD;
+
 	/**
 	 * Input accepted format.
 	 * Default is d.m.yyyy h:mm
 	 * @var string
 	 */
-	public $format = DateTimeFormat::D_DMY_DOTS_NO_LEAD . ' ' . DateTimeFormat::T_24_NO_LEAD;
+	private $format;
 
 	private $isValidated = FALSE;
 
@@ -38,6 +39,8 @@ class DateTimeInput extends TextInput
 		$this->addRule(function ($input) {
 			return DateTimeFormat::validate($this->format, $input->value);
 		}, 'invalid/incorrect format');
+
+		$this->setFormat(self::DEFAULT_FORMAT);
 	}
 
 	public function cleanErrors()
@@ -70,18 +73,114 @@ class DateTimeInput extends TextInput
 			parent::setValue($value->format($this->format));
 
 			return $this;
-		}
-		elseif ($value === NULL) {
+		} elseif (is_string($value) && DateTimeFormat::validate($this->format, $value)) {
+			parent::setValue($value);
+
+			return $this;
+		} elseif ($value === NULL) {
 			parent::setValue(NULL);
 
 			return $this;
+		} else {
+			// this will fail validation test, but we don't want to throw an exception here
+			parent::setValue($value);
+
+			return $this;
 		}
-		throw new InvalidArgumentException('Value must be either DateTime or NULL');
 	}
 
 	public function validate()
 	{
 		parent::validate();
 		$this->isValidated = TRUE;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getFormat()
+	{
+		return $this->format;
+	}
+
+	/**
+	 * Input accepted format.
+	 * Default is d.m.yyyy h:mm
+	 * @param string      $format
+	 * @param null|string $placeholder
+	 * @return DateTimeInput
+	 */
+	public function setFormat($format, $placeholder = NULL)
+	{
+		$this->format = $format;
+
+		if ($placeholder === NULL) {
+			$placeholder = self::makeFormatPlaceholder($format);
+		}
+		if (!empty($placeholder)) {
+			$this->setPlaceholder($placeholder);
+		}
+
+		return $this;
+	}
+
+	/**
+	 * Turns datetime format into a placeholder,  e.g. 'd.m.Y' => 'dd.mm.yyyy'.
+	 * Supported values: d, j, m, n, Y, y, a, A, g, G, h, H, i, s, c, U
+	 * @param string $format
+	 * @param bool   $example       whether to use e.g. 'd' or '01'
+	 * @param bool   $appendExample attach example at the end of placeholder (true) or replace (false)e?
+	 * @return string
+	 */
+	public static function makeFormatPlaceholder($format, $example = TRUE, $appendExample = TRUE)
+	{
+		$letterSubs = [
+			'd' => 'dd',
+			'j' => 'd',
+			'm' => 'mm',
+			'n' => 'm',
+			'Y' => 'yyyy',
+			'y' => 'yy',
+			'a' => 'am/pm',
+			'A' => 'AM/PM',
+			'g' => 'h',
+			'G' => 'h',
+			'h' => 'hh',
+			'H' => 'hh',
+			'i' => 'mm',
+			's' => 'ss',
+			'c' => 'yyyy-mm-ddThh:mm:ss+hh:mm',
+			'U' => 'unix timestamp',
+		];
+		$numSubs = [
+			'd' => '31',
+			'j' => '31',
+			'm' => '12',
+			'n' => '12',
+			'Y' => '1998',
+			'y' => '98',
+			'a' => 'am',
+			'A' => 'AM',
+			'g' => '12',
+			'G' => '23',
+			'h' => '12',
+			'H' => '23',
+			'i' => '59',
+			's' => '00',
+			'c' => '2012-12-21T17:42:00+00:00',
+			'U' => '1501444136',
+		];
+		$letters = strtr($format, $letterSubs);
+		$ex = strtr($format, $numSubs);
+
+		if (!$example) {
+			return $letters;
+		} elseif ($example && $appendExample) {
+			return "$letters ($ex)";
+		} elseif ($example && !$appendExample) {
+			return $ex;
+		} else {
+			return $letters;
+		}
 	}
 }

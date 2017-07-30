@@ -15,7 +15,7 @@ help by reporting issues.
 - All layout modes: vertical, side-by-side and inline
 - TextInput placeholders
 - Mostly just extends vanilla functionality, so all features should be preserved
-- DateTime picker, variety of human readable date/time formats
+- DateTime picker, variety of human readable date/time formats, placeholder example generation
 
 ### What is missing (but is planned)
 
@@ -113,4 +113,6 @@ will generate
 
 ---
 
-Made by [czubehead](https://petrcech.eu)
+- Made by [czubehead](https://petrcech.eu)
+- [Componette link](https://componette.com/czubehead/bootstrap-4-forms/)
+- [Packagist link](https://packagist.org/packages/czubehead/bootstrap-4-forms)
