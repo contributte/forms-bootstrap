@@ -39,6 +39,11 @@ composer require czubehead/bootstrap-4-forms
 - PHP 5.6+
 - Client-side bootstrap 4 stylesheets and JS (obviously)
 
+### Compatibility
+
+This package is compatible with any version version of Bootstrap 4 
+(last tested on v4.0.0-beta.2)
+
 ## How to use
 
 ### Form
