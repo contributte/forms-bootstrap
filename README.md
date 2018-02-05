@@ -1,5 +1,7 @@
 # Bootstrap 4 forms for Nette
 
+**Please use English in potential issues, let's keep it clean, shall we?**
+
 This is a library that lets you use Bootstrap 4 forms in 
 [Nette framework](http://nette.org). 
 
