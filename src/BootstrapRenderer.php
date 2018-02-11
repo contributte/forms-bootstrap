@@ -144,19 +144,6 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 		return $el;
 	}
 
-	/**
-	 * @return boolean
-	 */
-	public function getAutocomplete()
-	{
-		return $this->autocomplete;
-	}
-
-	public function setAutocomplete($value)
-	{
-		$this->autocomplete = $value;
-	}
-
 	public function getConfig()
 	{
 		return [
