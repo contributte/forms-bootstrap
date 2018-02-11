@@ -13,6 +13,7 @@ namespace Czubehead\BootstrapForms;
 
 use Czubehead\BootstrapForms\Enums\RendererConfig as Cnf;
 use Czubehead\BootstrapForms\Enums\RenderMode;
+use Czubehead\BootstrapForms\Inputs\IValidationInput;
 use Czubehead\BootstrapForms\Inputs\SelectInput;
 use Czubehead\BootstrapForms\Inputs\UploadInput;
 use Nette;
@@ -66,6 +67,81 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 	public function __construct($mode = RenderMode::VerticalMode)
 	{
 		$this->setMode($mode);
+	}
+
+	/**
+	 * Turns configuration or and existing element and configures it appropriately
+	 * @param $config array|string top-level config key
+	 * @param $el     Html|null elem to config.
+	 * @return Html|null
+	 */
+	public function configElem($config, $el = NULL)
+	{
+		if (is_scalar($config)) {
+			$config = $this->fetchConfig($config);
+		}
+
+		// first define which element we want to work with
+		if (isset($config[ Cnf::elementName ])) {
+			$name = $config[ Cnf::elementName ];
+			if (is_array($name)) {
+				// these are only added instead of merging, so take the last one
+				$name = $name[ count($name) - 1 ];
+			}
+			if (!$el) {
+				// element does not exist, so create it
+				$el = Html::el($name);
+			} else {
+				// element exists, but we want to change its name
+				$el->setName($name);
+			}
+		}
+
+		if ($el instanceof Html && $el != NULL) {
+			// if el is defined, we can configure it accordingly
+
+			// go through all config and configure element accordingly
+			foreach ($config as $key => $value) {
+				// value may be a closure. In that case, use the return value
+				if (is_callable($value)) {
+					$value = $value();
+				}
+
+				if ($key == Cnf::classSet) {
+					$el->class = $value;
+				} elseif ($key == Cnf::classAdd) {
+					if (is_array($value)) {
+						$origClass = is_array($el->class) ? $el->class : explode(' ', $el->class);
+						$el->class = array_merge($origClass, $value);
+					} elseif (is_scalar($value)) {
+						if (!is_array($el->class) && isset($el->class)) {
+							// class can also be a simple string
+							$class = explode(' ', $el->class);
+							$class[] = $value;
+							$el->class = $class;
+						} else {
+							$el->class[] = $value;
+						}
+					}
+				} elseif ($key == Cnf::attributes) {
+					foreach ($value as $attr => $attrVal) {
+						$el->setAttribute($attr, $attrVal);
+					}
+				}
+			}
+		}
+
+		// el may be null, but maybe it has a container defined
+		if (isset($config[ Cnf::container ])) {
+			$container = $this->configElem($config[ Cnf::container ], NULL);
+			if ($container !== NULL && $el !== NULL) {
+				$elClone = clone $el;
+				$container->setHtml($elClone);
+			}
+			$el = $container;
+		}
+
+		return $el;
 	}
 
 	/**
@@ -337,12 +413,8 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 		$controlHtml = $control->getControl();
 		$control->setOption('rendered', TRUE);
 		$controlHtml = $this->configElem(Cnf::input, $controlHtml);
-		if ($this->form->showValidation || $control->hasErrors()) {
-			if ($control->hasErrors()) {
-				$controlHtml = $this->configElem(Cnf::inputInvalid, $controlHtml);
-			} else {
-				$controlHtml = $this->configElem(Cnf::inputValid, $controlHtml);
-			}
+		if (($this->form->showValidation || $control->hasErrors()) && $control instanceof IValidationInput) {
+			$controlHtml = $control->showValidation($controlHtml);
 		}
 
 		foreach ($this->fetchConfig(Cnf::inlineClasses) as $inlineClass) {
@@ -488,81 +560,6 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 	public function setMode($renderMode)
 	{
 		$this->renderMode = $renderMode;
-	}
-
-	/**
-	 * Turns configuration or and existing element and configures it appropriately
-	 * @param $config array|string top-level config key
-	 * @param $el     Html|null elem to config.
-	 * @return Html|null
-	 */
-	protected function configElem($config, $el = NULL)
-	{
-		if (is_scalar($config)) {
-			$config = $this->fetchConfig($config);
-		}
-
-		// first define which element we want to work with
-		if (isset($config[ Cnf::elementName ])) {
-			$name = $config[ Cnf::elementName ];
-			if (is_array($name)) {
-				// these are only added instead of merging, so take the last one
-				$name = $name[ count($name) - 1 ];
-			}
-			if (!$el) {
-				// element does not exist, so create it
-				$el = Html::el($name);
-			} else {
-				// element exists, but we want to change its name
-				$el->setName($name);
-			}
-		}
-
-		if ($el instanceof Html && $el != NULL) {
-			// if el is defined, we can configure it accordingly
-
-			// go through all config and configure element accordingly
-			foreach ($config as $key => $value) {
-				// value may be a closure. In that case, use the return value
-				if (is_callable($value)) {
-					$value = $value();
-				}
-
-				if ($key == Cnf::classSet) {
-					$el->class = $value;
-				} elseif ($key == Cnf::classAdd) {
-					if (is_array($value)) {
-						$origClass = is_array($el->class) ? $el->class : explode(' ', $el->class);
-						$el->class = array_merge($origClass, $value);
-					} elseif (is_scalar($value)) {
-						if (!is_array($el->class) && isset($el->class)) {
-							// class can also be a simple string
-							$class = explode(' ', $el->class);
-							$class[] = $value;
-							$el->class = $class;
-						} else {
-							$el->class[] = $value;
-						}
-					}
-				} elseif ($key == Cnf::attributes) {
-					foreach ($value as $attr => $attrVal) {
-						$el->setAttribute($attr, $attrVal);
-					}
-				}
-			}
-		}
-
-		// el may be null, but maybe it has a container defined
-		if (isset($config[ Cnf::container ])) {
-			$container = $this->configElem($config[ Cnf::container ], NULL);
-			if ($container !== NULL && $el !== NULL) {
-				$elClone = clone $el;
-				$container->setHtml($elClone);
-			}
-			$el = $container;
-		}
-
-		return $el;
 	}
 
 	/**

@@ -12,6 +12,7 @@ namespace Czubehead\BootstrapForms\Inputs;
 
 use Czubehead\BootstrapForms\Traits\ChoiceInputTrait;
 use Czubehead\BootstrapForms\Traits\InputPromptTrait;
+use Czubehead\BootstrapForms\Traits\StandardValidationTrait;
 use Nette\Forms\Controls\SelectBox;
 
 
@@ -19,10 +20,11 @@ use Nette\Forms\Controls\SelectBox;
  * Class SelectInput
  * @package Czubehead\BootstrapForms
  */
-class SelectInput extends SelectBox
+class SelectInput extends SelectBox implements IValidationInput
 {
 	use ChoiceInputTrait;
 	use InputPromptTrait;
+	use StandardValidationTrait;
 
 	/**
 	 * SelectInput constructor.

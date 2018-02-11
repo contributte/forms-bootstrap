@@ -10,11 +10,13 @@
 namespace Czubehead\BootstrapForms\Inputs;
 
 
+use Czubehead\BootstrapForms\Traits\StandardValidationTrait;
 use Nette\Forms\Controls\TextArea;
 
 
-class TextAreaInput extends TextArea
+class TextAreaInput extends TextArea implements IValidationInput
 {
+	use StandardValidationTrait;
 	/*
 	 * @inheritdoc
 	 */

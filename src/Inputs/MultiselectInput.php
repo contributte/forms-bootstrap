@@ -12,13 +12,15 @@ namespace Czubehead\BootstrapForms\Inputs;
 
 use Czubehead\BootstrapForms\Traits\ChoiceInputTrait;
 use Czubehead\BootstrapForms\Traits\InputPromptTrait;
+use Czubehead\BootstrapForms\Traits\StandardValidationTrait;
 use Nette\Forms\Controls\MultiSelectBox;
 
 
-class MultiselectInput extends MultiSelectBox
+class MultiselectInput extends MultiSelectBox implements IValidationInput
 {
 	use ChoiceInputTrait;
 	use InputPromptTrait;
+	use StandardValidationTrait;
 
 	public function __construct($label = NULL, array $items = NULL)
 	{
