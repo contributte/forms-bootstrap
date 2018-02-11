@@ -10,6 +10,10 @@ namespace Czubehead\BootstrapForms\Enums;
 class RendererConfig
 {
 	const form = 'form';
+
+	const group = 'group';
+	const groupLabel = 'group-label';
+
 	const pair = 'pair';
 	const label = 'label';
 	const description = 'description';
