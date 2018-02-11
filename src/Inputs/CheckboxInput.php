@@ -40,12 +40,12 @@ class CheckboxInput extends Checkbox
 	 */
 	public static function makeCheckbox($name, $caption = NULL, $checked = FALSE, $value = FALSE, $required =
 	FALSE,
-	                                    $disabled = FALSE)
+										$disabled = FALSE)
 	{
-		$label = Html::el('label', ['class' => ['form-check-label']]);
+		$label = Html::el('label', ['class' => ['custom-control', 'custom-checkbox']]);
 		$input = Html::el('input', [
 			'type'     => 'checkbox',
-			'class'    => ['form-check-input'],
+			'class'    => ['custom-control-input'],
 			'name'     => $name,
 			'disabled' => $disabled,
 			'required' => $required,
@@ -58,11 +58,16 @@ class CheckboxInput extends Checkbox
 		}
 
 		$label->addHtml($input);
-		$label->addText($caption);
+		$label->addHtml(Html::el('span', [
+			'class' => ['custom-control-indicator'],
+		]));
+		$label->addHtml(
+			Html::el('span', [
+				'class' => ['custom-control-description'],
+			])->setText($caption)
+		);
 
-		$line = Html::el('div', [
-			'class' => ['form-check',$disabled ? 'disabled' : NULL],
-		]);
+		$line = Html::el('div');
 		$line->setHtml($label);
 
 		return $line;
