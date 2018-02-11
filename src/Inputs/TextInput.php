@@ -9,13 +9,18 @@
 
 namespace Czubehead\BootstrapForms\Inputs;
 
+use Czubehead\BootstrapForms\Traits\StandardValidationTrait;
+
+
 /**
  * Class TextInput
  * @property string $placeholder
  * @package Czubehead\BootstrapForms\Inputs
  */
-class TextInput extends \Nette\Forms\Controls\TextInput
+class TextInput extends \Nette\Forms\Controls\TextInput implements IValidationInput
 {
+	use StandardValidationTrait;
+
 	/**
 	 * @var string
 	 */

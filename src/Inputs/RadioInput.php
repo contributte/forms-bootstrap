@@ -55,13 +55,11 @@ class RadioInput extends ChoiceControl
 		foreach ($items as $value => $caption) {
 			$disabledOption = $this->isValueDisabled($value);
 
-			$wrapper = Html::el('div', [
-				'class' => 'form-check' . ($disabledOption ? ' disabled' : ''),
-			]);
+			$wrapper = Html::el('div');
 
-			$label = Html::el('label', ['class' => 'form-check-label']);
+			$label = Html::el('label', ['class' => ['custom-control', 'custom-radio']]);
 			$input = Html::el('input', [
-				'class'    => 'form-check-input',
+				'class'    => ['custom-control-input'],
 				'type'     => 'radio',
 				'value'    => $value,
 				'name'     => $this->name,
@@ -69,7 +67,14 @@ class RadioInput extends ChoiceControl
 				'disabled' => $disabledOption,
 			]);
 			$label->addHtml($input);
-			$label->addText($caption);
+			$label->addHtml(Html::el('span', [
+				'class' => ['custom-control-indicator'],
+			]));
+			$label->addHtml(
+				Html::el('span', [
+					'class' => 'custom-control-description',
+				])->setText($caption)
+			);
 			$wrapper->addHtml($label);
 
 			$container->addHtml($wrapper);
