@@ -31,7 +31,7 @@ class MultiselectInput extends MultiSelectBox
 		$select = parent::getControl()->setHtml(NULL);
 
 		$select->attrs += [
-			'class'    => 'form-control',
+			'class'    => ['form-control'],
 			'disabled' => $this->isControlDisabled(),
 		];
 		$options = $this->rawItems;

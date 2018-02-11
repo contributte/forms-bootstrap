@@ -56,12 +56,12 @@ class RadioInput extends ChoiceControl
 			$disabledOption = $this->isValueDisabled($value);
 
 			$wrapper = Html::el('div', [
-				'class' => 'form-check' . ($disabledOption ? ' disabled' : ''),
+				'class' => ['form-check', $disabledOption ? 'disabled' : NULL],
 			]);
 
-			$label = Html::el('label', ['class' => 'form-check-label']);
+			$label = Html::el('label', ['class' => ['form-check-label']]);
 			$input = Html::el('input', [
-				'class'    => 'form-check-input',
+				'class'    => ['form-check-input'],
 				'type'     => 'radio',
 				'value'    => $value,
 				'name'     => $this->name,

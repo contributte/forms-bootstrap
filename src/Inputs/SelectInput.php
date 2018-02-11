@@ -40,7 +40,7 @@ class SelectInput extends SelectBox
 		$select = parent::getControl()->setHtml(NULL);
 
 		$select->attrs += [
-			'class'    => 'custom-select',
+			'class'    => ['custom-select'],
 			'disabled' => $this->isControlDisabled(),
 		];
 		$options = $this->rawItems;

@@ -14,6 +14,7 @@ use Nette\Application\UI\Form;
 use Nette\ComponentModel\IContainer;
 use Nette\Forms\IFormRenderer;
 use Nette\InvalidArgumentException;
+use Nette\Utils\Html;
 
 
 /**
@@ -22,15 +23,31 @@ use Nette\InvalidArgumentException;
  * @package Czubehead\BootstrapForms
  * @property bool $ajax
  * @property int  $renderMode
+ * @property bool $showValidation If valid fields should explicitly be green if valid
  */
 class BootstrapForm extends Form
 {
 	use BootstrapContainerTrait;
 
 	/**
+	 * @var string Class to be added if this is ajax. Defaults to 'ajax'
+	 */
+	public $ajaxClass = 'ajax';
+
+	/**
 	 * @var bool
 	 */
 	protected $isAjax = TRUE;
+
+	/**
+	 * @var bool
+	 */
+	protected $showValidation = FALSE;
+
+	/**
+	 * @var Html
+	 */
+	protected $elementPrototype;
 
 	/**
 	 * BootstrapForm constructor.
@@ -40,14 +57,18 @@ class BootstrapForm extends Form
 	{
 		parent::__construct($container);
 		$this->setRenderer(new BootstrapRenderer);
+
+		$prototype = Html::el('form', [
+			'action' => '',
+			'method' => self::POST,
+			'class'  => [],
+		]);
+		$this->elementPrototype = $prototype;
 	}
 
-	/**
-	 * @return int
-	 */
-	public function getRenderMode()
+	public function getElementPrototype()
 	{
-		return $this->getRenderer()->getMode();
+		return $this->elementPrototype;
 	}
 
 	/**
@@ -60,7 +81,7 @@ class BootstrapForm extends Form
 
 	/**
 	 * @param IFormRenderer $renderer
-	 * @return void
+	 * @return static
 	 */
 	public function setRenderer(IFormRenderer $renderer = NULL)
 	{
@@ -68,6 +89,16 @@ class BootstrapForm extends Form
 			throw new InvalidArgumentException('Must be a BootstrapRenderer');
 		}
 		parent::setRenderer($renderer);
+
+		return $this;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getRenderMode()
+	{
+		return $this->getRenderer()->getMode();
 	}
 
 	/**
@@ -79,21 +110,60 @@ class BootstrapForm extends Form
 	}
 
 	/**
+	 * If valid fields should explicitly be green
+	 * @return bool
+	 */
+	public function isShowValidation()
+	{
+		return $this->showValidation;
+	}
+
+	/**
+	 * If valid fields should explicitly be green
+	 * @param bool $showValidation
+	 * @return static
+	 */
+	public function setShowValidation($showValidation)
+	{
+		$this->showValidation = $showValidation;
+
+		return $this;
+	}
+
+	/**
 	 * @param bool $isAjax
-	 * @return BootstrapForm
+	 * @return static
 	 */
 	public function setAjax($isAjax = TRUE)
 	{
 		$this->isAjax = $isAjax;
+
+		$prototypeClass = $this->getElementPrototype()->class;
+		if (is_string($prototypeClass)) {
+			$prototypeClass = explode(' ', $prototypeClass);
+		}
+
+		$present = in_array($this->ajaxClass, $prototypeClass);
+		if ($present && !$isAjax) {
+			// remove the class
+			$prototypeClass = array_diff($prototypeClass, [$this->ajaxClass]);
+		} elseif (!$present && $isAjax) {
+			// add class
+			$prototypeClass[] = $this->ajaxClass;
+		}
+		$this->getElementPrototype()->class = $prototypeClass;
 
 		return $this;
 	}
 
 	/**
 	 * @param int $renderMode
+	 * @return static
 	 */
 	public function setRenderMode($renderMode)
 	{
 		$this->getRenderer()->setMode($renderMode);
+
+		return $this;
 	}
 }

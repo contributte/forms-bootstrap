@@ -21,10 +21,10 @@ class UploadInput extends UploadControl
 		$control = parent::getControl();
 		$control->class = 'custom-file-input';
 
-		$el = Html::el('label', ['class' => 'custom-file']);
+		$el = Html::el('label', ['class' => ['custom-file']]);
 		$el->addHtml($control);
 		$el->addHtml(
-			Html::el('span', ['class' => 'custom-file-control'])
+			Html::el('span', ['class' => ['custom-file-control']])
 		);
 
 		return $el;

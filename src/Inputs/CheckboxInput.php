@@ -42,10 +42,10 @@ class CheckboxInput extends Checkbox
 	FALSE,
 	                                    $disabled = FALSE)
 	{
-		$label = Html::el('label', ['class' => 'form-check-label']);
+		$label = Html::el('label', ['class' => ['form-check-label']]);
 		$input = Html::el('input', [
 			'type'     => 'checkbox',
-			'class'    => 'form-check-input',
+			'class'    => ['form-check-input'],
 			'name'     => $name,
 			'disabled' => $disabled,
 			'required' => $required,
@@ -61,7 +61,7 @@ class CheckboxInput extends Checkbox
 		$label->addText($caption);
 
 		$line = Html::el('div', [
-			'class' => 'form-check' . ($disabled ? ' disabled' : ''),
+			'class' => ['form-check',$disabled ? 'disabled' : NULL],
 		]);
 		$line->setHtml($label);
 
