@@ -12,6 +12,7 @@
 namespace Czubehead\BootstrapForms;
 
 use Czubehead\BootstrapForms\Enums\RendererConfig as Cnf;
+use Czubehead\BootstrapForms\Enums\RendererOptions;
 use Czubehead\BootstrapForms\Enums\RenderMode;
 use Czubehead\BootstrapForms\Inputs\ButtonInput;
 use Czubehead\BootstrapForms\Inputs\IValidationInput;
@@ -339,7 +340,7 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 	public function renderBegin()
 	{
 		foreach ($this->form->getControls() as $control) {
-			$control->setOption('rendered', FALSE);
+			$control->setOption(RendererOptions::_rendered, FALSE);
 		}
 
 		$prototype = $this->form->getElementPrototype();
@@ -377,12 +378,12 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 		// first render groups. They will mark their controls as rendered
 		$groups = Html::el();
 		foreach ($this->form->getGroups() as $group) {
-			if (!$group->getControls() || !$group->getOption('visual')) {
+			if (!$group->getControls() || !$group->getOption(RendererOptions::visual)) {
 				continue;
 			}
 
 			//region getting container
-			$container = $group->getOption('container', NULL);
+			$container = $group->getOption(RendererOptions::container, NULL);
 			if (is_string($container)) {
 				$container = $this->configElem(Cnf::group, Html::el($container));
 			} elseif ($container instanceof Html) {
@@ -391,15 +392,12 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 				$container = $this->getElem(Cnf::group);
 			}
 
-			$id = $group->getOption('id');
-			if ($id) {
-				/** @noinspection PhpUndefinedFieldInspection */
-				$container->id = $id;
-			}
+			$container->setAttribute('id', $group->getOption(RendererOptions::id));
+
 			//endregion
 
 			//region label
-			$label = $group->getOption('label');
+			$label = $group->getOption(RendererOptions::label);
 			if ($label instanceof Html) {
 				$label = $this->configElem(Cnf::groupLabel, $label);
 			} elseif (is_string($label)) {
@@ -447,7 +445,7 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 		/** @noinspection PhpUndefinedMethodInspection */
 		$controlHtml = $control->getControl();
 		/** @noinspection PhpUndefinedMethodInspection */
-		$control->setOption('rendered', TRUE);
+		$control->setOption(RendererOptions::_rendered, TRUE);
 		$controlHtml = $this->configElem(Cnf::input, $controlHtml);
 		/** @noinspection PhpUndefinedMethodInspection */
 		if (($this->form->showValidation || $control->hasErrors()) && $control instanceof IValidationInput) {
@@ -484,11 +482,11 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 		// note that these are NOT form groups, these are groups specified to group
 		$group = clone  $defaultGroupContainer;
 		foreach ($parent->getControls() as $control) {
-			if ($control->getOption('rendered', FALSE)) {
+			if ($control->getOption(RendererOptions::_rendered, FALSE)) {
 				continue;
 			}
 
-			if ($control->getOption('type') == 'hidden') {
+			if ($control->getOption(RendererOptions::type) == 'hidden') {
 				$hidden->addHtml($this->renderControl($control));
 			} else {
 				$pairHtml = $this->renderPair($control);
@@ -570,7 +568,7 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 		}
 		/** @noinspection PhpUndefinedMethodInspection */
 		/** @noinspection PhpUndefinedFieldInspection */
-		$pairHtml->id = $control->getOption('id');
+		$pairHtml->id = $control->getOption(RendererOptions::id);
 
 		$labelHtml = $this->renderLabel($control);
 		if ($isInlineGrouped) {
@@ -676,7 +674,7 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 	protected function renderDescription(Nette\Forms\IControl $control)
 	{
 		/** @noinspection PhpUndefinedMethodInspection */
-		$description = $control->getOption('description');
+		$description = $control->getOption(RendererOptions::description);
 		if (is_string($description)) {
 			if ($control instanceof Nette\Forms\Controls\BaseControl) {
 				$description = $control->translate($description);
@@ -718,7 +716,7 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 			} elseif ($this->form->showValidation) {
 				$isValid = TRUE;
 				// control is valid and we want to explicitly show that it's valid
-				$message = $control->getOption(Cnf::feedbackValid);
+				$message = $control->getOption(RendererOptions::feedbackValid);
 				if ($message) {
 					$messages = [$message];
 					$showFeedback = TRUE;

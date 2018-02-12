@@ -10,6 +10,7 @@
 namespace Czubehead\BootstrapForms\Inputs;
 
 
+use Czubehead\BootstrapForms\Enums\RendererOptions;
 use Czubehead\BootstrapForms\Traits\ChoiceInputTrait;
 use Nette\Forms\Controls\ChoiceControl;
 use Nette\Utils\Html;
@@ -37,7 +38,7 @@ class RadioInput extends ChoiceControl
 		parent::__construct($label, $items);
 		$this->control->type = 'radio';
 		$this->container = Html::el('fieldset');
-		$this->setOption('type', 'radio');
+		$this->setOption(RendererOptions::type, 'radio');
 	}
 
 	/**
