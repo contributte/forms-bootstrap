@@ -84,10 +84,6 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 		// first define which element we want to work with
 		if (isset($config[ Cnf::elementName ])) {
 			$name = $config[ Cnf::elementName ];
-			if (is_array($name)) {
-				// these are only added instead of merging, so take the last one
-				$name = $name[ count($name) - 1 ];
-			}
 			if (!$el) {
 				// element does not exist, so create it
 				$el = Html::el($name);
@@ -412,7 +408,6 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 		}
 
 		return $controlHtml;
-		// TODO propagate autocomplete to input and textare on a different level
 	}
 
 	/**
@@ -560,7 +555,7 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 
 		if (isset($this->configOverride[ $this->renderMode ][ $key ])) {
 			$override = $this->configOverride[ $this->renderMode ][ $key ];
-			$config = array_merge_recursive($config, $override);
+			$config = array_merge($config, $override);
 		}
 
 		return $config;
