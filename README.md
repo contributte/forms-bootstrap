@@ -8,8 +8,10 @@ This is a library that lets you use Bootstrap 4 forms in
 Rather than being just a renderer, this introduces a custom set of controls 
 (which covers all default controls) and a renderer.
 
-Note that **this is an early alpha**, so it may be buggy. That is where you can 
+Note that **this is an alpha**, so it may be buggy. That is where you can 
 help by reporting issues.
+
+[See example here](https://codepen.io/czubehead/pen/ZryJQd?editors=1000)
 
 ## Features
 
