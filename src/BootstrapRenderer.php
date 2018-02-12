@@ -100,12 +100,16 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 				}
 
 				if ($key == Cnf::classSet) {
+					/** @noinspection PhpUndefinedFieldInspection */
 					$el->class = $value;
 				} elseif ($key == Cnf::classAdd) {
 					if (is_array($value)) {
+						/** @noinspection PhpUndefinedFieldInspection */
 						$origClass = is_array($el->class) ? $el->class : explode(' ', $el->class);
+						/** @noinspection PhpUndefinedFieldInspection */
 						$el->class = array_merge($origClass, $value);
 					} elseif (is_scalar($value)) {
+						/** @noinspection PhpUndefinedFieldInspection */
 						if (!is_array($el->class) && isset($el->class)) {
 							// class can also be a simple string
 							$class = explode(' ', $el->class);
@@ -295,7 +299,9 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 
 		if ($this->form->isMethod('get')) {
 			$el = $prototype;
+			/** @noinspection PhpUndefinedFieldInspection */
 			$query = parse_url($el->action, PHP_URL_QUERY);
+			/** @noinspection PhpUndefinedFieldInspection */
 			$el->action = str_replace("?$query", '', $el->action);
 			$s = '';
 			foreach (preg_split('#[;&]#', $query, NULL, PREG_SPLIT_NO_EMPTY) as $param) {
@@ -339,6 +345,7 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 
 			$id = $group->getOption('id');
 			if ($id) {
+				/** @noinspection PhpUndefinedFieldInspection */
 				$container->id = $id;
 			}
 			//endregion
@@ -389,9 +396,12 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 	 */
 	public function renderControl(Nette\Forms\IControl $control)
 	{
+		/** @noinspection PhpUndefinedMethodInspection */
 		$controlHtml = $control->getControl();
+		/** @noinspection PhpUndefinedMethodInspection */
 		$control->setOption('rendered', TRUE);
 		$controlHtml = $this->configElem(Cnf::input, $controlHtml);
+		/** @noinspection PhpUndefinedMethodInspection */
 		if (($this->form->showValidation || $control->hasErrors()) && $control instanceof IValidationInput) {
 			$controlHtml = $control->showValidation($controlHtml);
 		}
@@ -454,6 +464,7 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 	 */
 	public function renderLabel(Nette\Forms\IControl $control)
 	{
+		/** @noinspection PhpUndefinedMethodInspection */
 		$controlLabel = $control->getLabel();
 		if ($controlLabel instanceof Html && $controlLabel->getName() == 'label') {
 			// the control has already provided us with the element, no need to create our own
@@ -480,6 +491,8 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 	public function renderPair(Nette\Forms\IControl $control)
 	{
 		$pairHtml = $this->configElem(Cnf::pair);
+		/** @noinspection PhpUndefinedMethodInspection */
+		/** @noinspection PhpUndefinedFieldInspection */
 		$pairHtml->id = $control->getOption('id');
 
 		$labelHtml = $this->renderLabel($control);
@@ -525,9 +538,6 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 
 		$this->labelColumns = $label;
 		$this->controlColumns = $control;
-
-		$this->wrappers['control']['side_container'] = "div class=col-sm-$control";
-		$this->wrappers['label']['side_container'] = "div class=col-sm-$label";
 	}
 
 	/**
@@ -582,6 +592,7 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 	 */
 	protected function renderDescription(Nette\Forms\IControl $control)
 	{
+		/** @noinspection PhpUndefinedMethodInspection */
 		$description = $control->getOption('description');
 		if (is_string($description)) {
 			if ($control instanceof Nette\Forms\Controls\BaseControl) {
