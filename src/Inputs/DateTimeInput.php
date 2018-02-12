@@ -21,6 +21,12 @@ class DateTimeInput extends TextInput
 	const DEFAULT_FORMAT = DateTimeFormat::D_DMY_DOTS_NO_LEAD . ' ' . DateTimeFormat::T_24_NO_LEAD;
 
 	/**
+	 * This errorMessage is added for invalid format
+	 * @var string
+	 */
+	public $invalidFormatMessage = 'invalid/incorrect format';
+
+	/**
 	 * Input accepted format.
 	 * Default is d.m.yyyy h:mm
 	 * @var string
@@ -38,7 +44,7 @@ class DateTimeInput extends TextInput
 
 		$this->addRule(function ($input) {
 			return DateTimeFormat::validate($this->format, $input->value);
-		}, 'invalid/incorrect format');
+		}, $this->invalidFormatMessage);
 
 		$this->setFormat(self::DEFAULT_FORMAT);
 	}
