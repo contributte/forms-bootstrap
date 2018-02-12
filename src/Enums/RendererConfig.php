@@ -14,6 +14,28 @@ class RendererConfig
 	const group = 'group';
 	const groupLabel = 'group-label';
 
+	/**
+	 * Inputs of class in inlineGrouped are rendered together in this.
+	 * This is a container itself
+	 */
+	const inlineGroup = 'inline-group';
+	/**
+	 * element within inlineGroup
+	 */
+	const inlineGroupNonLabel = 'inline-group-non-label';
+	/**
+	 * element within inlineGroup
+	 */
+	const inlineGroupLabel = 'inline-group-label';
+	/**
+	 * pair rendered within inlineGroup
+	 */
+	const inlineGroupPair = 'inline-group-pair';
+	/**
+	 * List of classes that put inputs to inlineGrouped
+	 */
+	const inlineGroupedClasses = 'inline-grouped';
+
 	const pair = 'pair';
 	const label = 'label';
 	const description = 'description';
@@ -75,4 +97,8 @@ class RendererConfig
 	 * Class or array of classes to add
 	 */
 	const classAdd = 'class-add';
+	/**
+	 * Class or array to classes to remove if they exist
+	 */
+	const classRemove = 'class-remove';
 }
