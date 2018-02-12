@@ -458,11 +458,8 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 			$controlHtml = $control->showValidation($controlHtml);
 		}
 
-		foreach ($this->fetchConfig(Cnf::inlineClasses) as $inlineClass) {
-			if (is_a($control, $inlineClass, TRUE)) {
-				$controlHtml = $this->configElem(Cnf::inlineInput, $controlHtml);
-				break;
-			}
+		if ($this->isInClassList($control, $this->fetchConfig(Cnf::inlineClasses))) {
+			$controlHtml = $this->configElem(Cnf::inlineInput, $controlHtml);
 		}
 
 		return $controlHtml;
