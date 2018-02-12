@@ -36,6 +36,15 @@ class RendererConfig
 	 */
 	const inlineGroupedClasses = 'inline-grouped';
 
+	/**
+	 * Errors belonging to the form rather than an individual control. This is a container.
+	 */
+	const formOwnErrors = 'form-own-errors';
+	/**
+	 * Multiple of those will be inside formOwnErrors
+	 */
+	const formOwnError = 'form-own-error';
+
 	const pair = 'pair';
 	const label = 'label';
 	const description = 'description';
@@ -59,12 +68,6 @@ class RendererConfig
 	 * list of classes which are considered as buttons for grouping
 	 */
 	const inlineClasses = 'inline-classes';
-
-	const uploadInput = 'upload-input';
-	/**
-	 * List of classes considered as upload
-	 */
-	const uploadClasses = 'upload-classes';
 
 	/**
 	 * Text saying if field is valid or invalid

@@ -13,18 +13,13 @@ help by reporting issues.
 
 ## Features
 
-- Fully valid [Bootstrap 4 forms](http://v4-alpha.getbootstrap.com/components/forms/) HTML generation
+- Fully valid [Bootstrap 4 forms](http://getbootstrap.com/docs/4.0/components/forms/) HTML generation
 - All layout modes: vertical, side-by-side and inline
 - TextInput placeholders
-- Mostly just extends vanilla functionality, so all features should be preserved
+- Highly configurable renderer
+- [Custom Bootstrap controls](http://getbootstrap.com/docs/4.0/components/forms/#custom-forms)
 - DateTime picker, variety of human readable date/time formats, placeholder example generation
-
-### What is missing (but is planned)
-
-*This is where you can help by contributing*
-
- - Multilingual support
- - More configurability
+- [Validation styles](http://getbootstrap.com/docs/4.0/components/forms/#server-side)
  
 ## Installation
 
@@ -33,6 +28,8 @@ The best way is via composer:
 ```cmd
 composer require czubehead/bootstrap-4-forms
 ```
+
+*Note that if you simply clone the main branch from this repo, it is not guaranteed to work, use releases instead*
 
 ### Requirements
 
@@ -53,11 +50,15 @@ This package is compatible with any version version of Bootstrap 4
 Probably the main class you will be using is `Czubehead\BootstrapForms\BootstrapForm`.
 It has all the features of this library pre-configured and extends 
 `Nette\Application\UI\Form` functionality by:
- - Only accepts `Czubehead\BootstrapForms\BootstrapRenderer` (which is default)
+ - Only accepts `Czubehead\BootstrapForms\BootstrapRenderer` or its children (which is default)
  - Built-in AJAX support (adds `ajax` class upon rendering) via `ajax`(bool) property
- - Has direct access to render mode property of renderer
+ - Has direct access to render mode property of renderer (property `renderMode`)
  - All add* methods are overridden by bootstrap-enabled controls
- - Can change autocomplete on/off on all controls
+
+```php
+$form = new BootstrapForm;
+$form->renderMode = RenderMode::Vertical;		
+```
 
 It will behave pretty much the same as the default Nette form
 
@@ -118,7 +119,17 @@ will generate
 <option value="3">opt3</option>
 ```
 
----
+### Renderer
+
+The renderer is enhanced by the following API:
+
+|property|meaning|
+|----|-----|
+|mode|see render mode above in form section|
+|gridBreakPoint|Bootstrap grid breakpoint for side-by-side view. Default is 'sm'|
+|groupInlineInputs|If *consecutive* inline elements, such as buttons should be grouped together. For list of elements, see `Czubehead\BootstrapForms\Enums\RendererConfig::inlineClasses`|
+
+------
 
 - Made by [czubehead](https://petrcech.eu)
 - [Componette link](https://componette.com/czubehead/bootstrap-4-forms/)

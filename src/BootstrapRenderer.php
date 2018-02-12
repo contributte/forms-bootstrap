@@ -174,6 +174,12 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 				ButtonInput::class,
 			],
 
+			Cnf::formOwnErrors => [],
+			Cnf::formOwnError  => [
+				Cnf::elementName => 'div',
+				Cnf::classSet    => ['alert', 'alert-danger'],
+			],
+
 			Cnf::pair  => [
 				Cnf::elementName => 'div',
 				Cnf::classSet    => 'form-group',
@@ -705,7 +711,7 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 		$showFeedback = FALSE;
 		$messages = [];
 
-		if ($control instanceof Nette\Forms\Controls\BaseControl) {
+		if ($control instanceof Nette\Forms\IControl) {
 			// specific control
 
 			if ($control->hasErrors()) {
@@ -724,38 +730,58 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 					$showFeedback = FALSE;
 				}
 			}
+
+			if ($showFeedback && count($messages)) {
+				$el = $isValid
+					? $this->getElem(Cnf::feedback, Cnf::feedbackValid)
+					: $this->getElem(Cnf::feedback, Cnf::feedbackInvalid);
+
+				foreach ($messages as $message) {
+					if ($message instanceof Html) {
+						$el->addHtml($message);
+					} else {
+						$el->addText($message);
+					}
+					$el->addHtml('<br>');
+				}
+
+				return $el;
+			} else {
+				return NULL;
+			}
 		} elseif ($control === NULL) {
 			// whole form
 			$form = $this->form;
 
 			if ($form->hasErrors()) {
-				$isValid = FALSE;
 				$showFeedback = TRUE;
-				$messages = $form->getErrors();
+				$messages = $form->getOwnErrors();
 			} else {
 				$showFeedback = FALSE;
-				$isValid = TRUE;
 				// this doesn't make sense, form is sent if it's valid
 			}
-		}
 
-		if ($showFeedback && count($messages)) {
-			$el = $isValid
-				? $this->getElem(Cnf::feedback, Cnf::feedbackValid)
-				: $this->getElem(Cnf::feedback, Cnf::feedbackInvalid);
+			if ($showFeedback && count($messages)) {
+				$el = $this->getElem(Cnf::formOwnErrors);
+				$msgTemplate = $this->getElem(Cnf::formOwnError);
 
-			foreach ($messages as $message) {
-				if ($message instanceof Html) {
-					$el->addHtml($message);
-				} else {
-					$el->addText($message);
+				foreach ($messages as $message) {
+					$messageHtml = clone $msgTemplate;
+					if ($message instanceof Html) {
+						$messageHtml->setHtml($message);
+					} else {
+						$messageHtml->setText($message);
+					}
+
+					$el->addHtml($messageHtml);
 				}
-				$el->addHtml('<br>');
-			}
 
-			return $el;
+				return $el;
+			} else {
+				return NULL;
+			}
 		} else {
-			return NULL;
+			throw new Nette\NotImplementedException('renderer is unable to render feedback for ' . gettype($control));
 		}
 	}
 
