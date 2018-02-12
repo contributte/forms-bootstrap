@@ -55,10 +55,6 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 	 * @var int current render mode
 	 */
 	private $renderMode = RenderMode::SideBySideMode;
-	/**
-	 * @var bool enable autocomplete on controls
-	 */
-	private $autocomplete = TRUE;
 
 	/**
 	 * BootstrapRenderer constructor.

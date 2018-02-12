@@ -23,7 +23,8 @@ use Nette\Utils\Html;
  * @package Czubehead\BootstrapForms
  * @property bool $ajax
  * @property int  $renderMode
- * @property bool $showValidation If valid fields should explicitly be green if valid
+ * @property bool $showValidation     If valid fields should explicitly be green if valid
+ * @property bool $autoShowValidation If true, valid inputs will be explicitly green on unsuccessful submit
  */
 class BootstrapForm extends Form
 {
@@ -33,21 +34,22 @@ class BootstrapForm extends Form
 	 * @var string Class to be added if this is ajax. Defaults to 'ajax'
 	 */
 	public $ajaxClass = 'ajax';
-
-	/**
-	 * @var bool
-	 */
-	protected $isAjax = TRUE;
-
-	/**
-	 * @var bool
-	 */
-	protected $showValidation = FALSE;
-
 	/**
 	 * @var Html
 	 */
 	protected $elementPrototype;
+	/**
+	 * @var bool
+	 */
+	private $isAjax = TRUE;
+	/**
+	 * @var bool
+	 */
+	private $showValidation = FALSE;
+	/**
+	 * @var bool
+	 */
+	private $autoShowValidation = TRUE;
 
 	/**
 	 * BootstrapForm constructor.
@@ -64,6 +66,13 @@ class BootstrapForm extends Form
 			'class'  => [],
 		]);
 		$this->elementPrototype = $prototype;
+
+		/**
+		 * @param BootstrapForm $form
+		 */
+		$this->onError[] = function ($form) {
+			$form->showValidation = $this->autoShowValidation;
+		};
 	}
 
 	public function getElementPrototype()
@@ -107,6 +116,25 @@ class BootstrapForm extends Form
 	public function isAjax()
 	{
 		return $this->isAjax;
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function isAutoShowValidation()
+	{
+		return $this->autoShowValidation;
+	}
+
+	/**
+	 * @param bool $autoShowValidation
+	 * @return BootstrapForm
+	 */
+	public function setAutoShowValidation($autoShowValidation)
+	{
+		$this->autoShowValidation = $autoShowValidation;
+
+		return $this;
 	}
 
 	/**
