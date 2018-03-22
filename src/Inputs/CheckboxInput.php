@@ -63,7 +63,7 @@ class CheckboxInput extends Checkbox
 		]));
 		$label->addHtml(
 			Html::el('span', [
-				'class' => ['custom-control-description'],
+				'class' => ['custom-control-label'],
 			])->setText($caption)
 		);
 
