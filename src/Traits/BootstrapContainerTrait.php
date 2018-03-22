@@ -48,8 +48,6 @@ trait BootstrapContainerTrait
 		return $comp;
 	}
 
-	public abstract function addComponent(IComponent $component, $name, $insertBefore = NULL);
-
 	/**
 	 * @param string $name
 	 * @param null   $caption
@@ -77,6 +75,8 @@ trait BootstrapContainerTrait
 		return $comp;
 	}
 
+	public abstract function addComponent(IComponent $component, $name, $insertBefore = NULL);
+
 	/**
 	 * @param string $name
 	 * @return BootstrapContainer
@@ -86,9 +86,11 @@ trait BootstrapContainerTrait
 		$control = new BootstrapContainer;
 		$control->currentGroup = $this->currentGroup;
 		if ($this->currentGroup !== NULL) {
+			/** @noinspection PhpUndefinedMethodInspection */
 			$this->currentGroup->add($control);
 		}
-		return $this[$name] = $control;
+
+		return $this[ $name ] = $control;
 	}
 
 	/**
@@ -113,22 +115,7 @@ trait BootstrapContainerTrait
 	public function addEmail($name, $label = NULL)
 	{
 		return $this->addText($name, $label)
-		            ->addRule(Form::EMAIL);
-	}
-
-	/**
-	 * @param string $name
-	 * @param string $label
-	 * @param null   $cols      ignored
-	 * @param null   $maxLength ignored
-	 * @return TextInput
-	 */
-	public function addText($name, $label = NULL, $cols = NULL, $maxLength = NULL)
-	{
-		$comp = new TextInput($label);
-		$this->addComponent($comp, $name);
-
-		return $comp;
+					->addRule(Form::EMAIL);
 	}
 
 	/**
@@ -150,7 +137,7 @@ trait BootstrapContainerTrait
 	public function addInteger($name, $label = NULL)
 	{
 		return $this->addText($name, $label)
-		            ->addRule(Form::INTEGER);
+					->addRule(Form::INTEGER);
 	}
 
 	/**
@@ -163,6 +150,9 @@ trait BootstrapContainerTrait
 	public function addMultiSelect($name, $label = NULL, array $items = NULL, $size = NULL)
 	{
 		$comp = new MultiselectInput($label, $items);
+		if ($size !== NULL) {
+			$comp->setHtmlAttribute('size', $size);
+		}
 		$this->addComponent($comp, $name);
 
 		return $comp;
@@ -181,28 +171,14 @@ trait BootstrapContainerTrait
 	/**
 	 * @param string $name
 	 * @param string $label
-	 * @param bool   $multiple
-	 * @return UploadInput
-	 */
-	public function addUpload($name, $label = NULL, $multiple = FALSE)
-	{
-		$comp = new UploadInput($label, $multiple);
-		$this->addComponent($comp, $name);
-
-		return $comp;
-	}
-
-	/**
-	 * @param string $name
-	 * @param string $label
 	 * @param null   $cols
 	 * @param null   $maxLength
 	 * @return TextInput
 	 */
 	public function addPassword($name, $label = NULL, $cols = NULL, $maxLength = NULL)
 	{
-		return $this->addText($name, $label)
-		            ->setType('password');
+		return $this->addText($name, $label, $cols, $maxLength)
+					->setType('password');
 	}
 
 	public function addRadioList($name, $label = NULL, array $items = NULL)
@@ -223,6 +199,9 @@ trait BootstrapContainerTrait
 	public function addSelect($name, $label = NULL, array $items = NULL, $size = NULL)
 	{
 		$comp = new SelectInput($label, $items);
+		if ($size !== NULL) {
+			$comp->setHtmlAttribute('size', $size);
+		}
 		$this->addComponent($comp, $name);
 
 		return $comp;
@@ -246,6 +225,27 @@ trait BootstrapContainerTrait
 	/**
 	 * @param string $name
 	 * @param string $label
+	 * @param null   $cols      ignored
+	 * @param null   $maxLength ignored
+	 * @return TextInput
+	 */
+	public function addText($name, $label = NULL, $cols = NULL, $maxLength = NULL)
+	{
+		$comp = new TextInput($label);
+		if ($cols !== NULL) {
+			$comp->setHtmlAttribute('cols', $cols);
+		}
+		if ($maxLength != NULL) {
+			$comp->setHtmlAttribute('maxlength', $cols);
+		}
+		$this->addComponent($comp, $name);
+
+		return $comp;
+	}
+
+	/**
+	 * @param string $name
+	 * @param string $label
 	 * @param null   $cols ignored
 	 * @param null   $rows ignored
 	 * @return TextAreaInput
@@ -253,6 +253,27 @@ trait BootstrapContainerTrait
 	public function addTextArea($name, $label = NULL, $cols = NULL, $rows = NULL)
 	{
 		$comp = new TextAreaInput($label);
+		if ($cols !== NULL) {
+			$comp->setHtmlAttribute('cols', $cols);
+		}
+		if ($rows !== NULL) {
+			$comp->setHtmlAttribute('rows', $rows);
+		}
+
+		$this->addComponent($comp, $name);
+
+		return $comp;
+	}
+
+	/**
+	 * @param string $name
+	 * @param string $label
+	 * @param bool   $multiple
+	 * @return UploadInput
+	 */
+	public function addUpload($name, $label = NULL, $multiple = FALSE)
+	{
+		$comp = new UploadInput($label, $multiple);
 		$this->addComponent($comp, $name);
 
 		return $comp;
