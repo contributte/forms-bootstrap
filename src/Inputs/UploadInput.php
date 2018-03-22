@@ -26,7 +26,10 @@ class UploadInput extends UploadControl implements IValidationInput
 		$el = Html::el('div', ['class' => ['custom-file']]);
 		$el->addHtml($control);
 		$el->addHtml(
-			Html::el('label', ['class' => ['custom-file-label']])
+			Html::el('label', [
+				'class' => ['custom-file-label'],
+				'for'   => $this->getHtmlId(),
+			])
 		);
 
 		return $el;

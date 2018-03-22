@@ -53,32 +53,37 @@ class RadioInput extends ChoiceControl
 		$items = $this->getItems();
 		$container = $this->container;
 
+		$c = 0;
+		$htmlId = $this->getHtmlId();
 		foreach ($items as $value => $caption) {
 			$disabledOption = $this->isValueDisabled($value);
+			$itemHtmlId = $htmlId . $c;
 
-			$wrapper = Html::el('div');
-
-			$label = Html::el('label', ['class' => ['custom-control', 'custom-radio']]);
-			$input = Html::el('input', [
-				'class'    => ['custom-control-input'],
-				'type'     => 'radio',
-				'value'    => $value,
-				'name'     => $this->name,
-				'checked'  => $this->isValueSelected($value),
-				'disabled' => $disabledOption,
+			$wrapper = Html::el('div', [
+				'class' => ['custom-control', 'custom-radio'],
 			]);
-			$label->addHtml($input);
-			$label->addHtml(Html::el('span', [
-				'class' => ['custom-control-indicator'],
-			]));
-			$label->addHtml(
-				Html::el('span', [
-					'class' => 'custom-control-description',
+
+			$wrapper->addHtml(
+				Html::el('input', [
+					'class'    => ['custom-control-input'],
+					'type'     => 'radio',
+					'value'    => $value,
+					'name'     => $this->name,
+					'checked'  => $this->isValueSelected($value),
+					'disabled' => $disabledOption,
+					'id'       => $itemHtmlId,
+				])
+			);
+
+			$wrapper->addHtml(
+				Html::el('label', [
+					'class' => ['custom-control-label'],
+					'for'   => $itemHtmlId,
 				])->setText($caption)
 			);
-			$wrapper->addHtml($label);
 
 			$container->addHtml($wrapper);
+			$c++;
 		}
 
 		return $container;
