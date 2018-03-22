@@ -83,16 +83,12 @@ trait BootstrapContainerTrait
 	 */
 	public function addContainer($name)
 	{
-		$control = new self;
-		/** @noinspection PhpUndefinedFieldInspection */
+		$control = new BootstrapContainer;
 		$control->currentGroup = $this->currentGroup;
-		/** @noinspection PhpUndefinedFieldInspection */
 		if ($this->currentGroup !== NULL) {
-			/** @noinspection PhpUndefinedFieldInspection */
 			$this->currentGroup->add($control);
 		}
-
-		return $this[ $name ] = new $control;
+		return $this[$name] = $control;
 	}
 
 	/**
