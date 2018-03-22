@@ -26,11 +26,14 @@ class CheckboxListInput extends CheckboxList
 			'disabled' => $this->isControlDisabled(),
 		]);
 
+		$baseId = $this->getHtmlId();
+		$c = 0;
 		foreach ($this->items as $value => $caption) {
-			$line = CheckboxInput::makeCheckbox($this->name . '[]', $caption, $this->isValueSelected($value),
+			$line = CheckboxInput::makeCheckbox($this->name . '[]', $baseId . $c, $caption, $this->isValueSelected($value),
 				$value, FALSE, $this->isValueDisabled($value));
 
 			$fieldset->addHtml($line);
+			$c++;
 		}
 
 		return $fieldset;

@@ -24,13 +24,14 @@ class CheckboxInput extends Checkbox
 	{
 		parent::getControl();
 
-		return self::makeCheckbox($this->name, $this->caption, $this->value, FALSE, $this->required,
+		return self::makeCheckbox($this->name, $this->getHtmlId(), $this->caption, $this->value, FALSE, $this->required,
 			$this->disabled);
 	}
 
 	/**
 	 * Makes a Bootstrap checkbox
 	 * @param string      $name
+	 * @param string      $htmlId
 	 * @param string|null $caption
 	 * @param bool        $checked
 	 * @param bool|mixed  $value pass false to omit
@@ -38,9 +39,9 @@ class CheckboxInput extends Checkbox
 	 * @param bool        $disabled
 	 * @return Html
 	 */
-	public static function makeCheckbox($name, $caption = NULL, $checked = FALSE, $value = FALSE, $required =
-	FALSE,
-										$disabled = FALSE)
+	public static function makeCheckbox(
+		$name, $htmlId, $caption = NULL, $checked = FALSE, $value = FALSE, $required = FALSE,
+		$disabled = FALSE)
 	{
 		$label = Html::el('label', ['class' => ['custom-control', 'custom-checkbox']]);
 		$input = Html::el('input', [
@@ -50,6 +51,7 @@ class CheckboxInput extends Checkbox
 			'disabled' => $disabled,
 			'required' => $required,
 			'checked'  => $checked,
+			'id'       => $htmlId,
 		]);
 		if ($value !== FALSE) {
 			$input->attrs += [
@@ -58,12 +60,10 @@ class CheckboxInput extends Checkbox
 		}
 
 		$label->addHtml($input);
-		$label->addHtml(Html::el('span', [
-			'class' => ['custom-control-indicator'],
-		]));
 		$label->addHtml(
-			Html::el('span', [
+			Html::el('label', [
 				'class' => ['custom-control-label'],
+				'for'   => $htmlId,
 			])->setText($caption)
 		);
 
