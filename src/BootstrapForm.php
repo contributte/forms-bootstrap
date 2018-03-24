@@ -166,10 +166,8 @@ class BootstrapForm extends Form
 	{
 		$this->isAjax = $isAjax;
 
+		BootstrapUtils::standardizeClass($this->getElementPrototype());
 		$prototypeClass = $this->getElementPrototype()->class;
-		if (is_string($prototypeClass)) {
-			$prototypeClass = explode(' ', $prototypeClass);
-		}
 
 		$present = in_array($this->ajaxClass, $prototypeClass);
 		if ($present && !$isAjax) {

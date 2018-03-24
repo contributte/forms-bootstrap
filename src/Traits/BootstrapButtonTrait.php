@@ -9,6 +9,7 @@
 
 namespace Czubehead\BootstrapForms\Traits;
 
+use Czubehead\BootstrapForms\BootstrapUtils;
 use Nette\Utils\Html;
 
 
@@ -58,6 +59,7 @@ trait BootstrapButtonTrait
 	 */
 	protected function addBtnClass($element)
 	{
+		BootstrapUtils::standardizeClass($element);
 		$element->class[] = 'btn ' . $this->getBtnClass();
 	}
 }

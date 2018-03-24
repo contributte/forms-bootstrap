@@ -9,6 +9,7 @@
 
 namespace Czubehead\BootstrapForms\Inputs;
 
+use Czubehead\BootstrapForms\BootstrapUtils;
 use Czubehead\BootstrapForms\Traits\StandardValidationTrait;
 use Nette\InvalidArgumentException;
 
@@ -74,6 +75,8 @@ class TextInput extends \Nette\Forms\Controls\TextInput implements IValidationIn
 	public function getControl()
 	{
 		$control = parent::getControl();
+		BootstrapUtils::standardizeClass($control);
+
 		$control->class[] = 'form-control';
 		if (!empty($this->placeholder)) {
 			$control->setAttribute('placeholder', $this->placeholder);

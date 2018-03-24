@@ -10,6 +10,7 @@
 namespace Czubehead\BootstrapForms\Inputs;
 
 
+use Czubehead\BootstrapForms\BootstrapUtils;
 use Czubehead\BootstrapForms\Traits\StandardValidationTrait;
 use Nette\Forms\Controls\TextArea;
 use Nette\InvalidArgumentException;
@@ -66,6 +67,8 @@ class TextAreaInput extends TextArea implements IValidationInput, IAutocompleteI
 	public function getControl()
 	{
 		$control = parent::getControl();
+		BootstrapUtils::standardizeClass($control);
+
 		$control->class[] = 'form-control';
 		if ($this->autocomplete !== NULL) {
 			$control->setAttribute('autocomplete', $this->autocomplete ? 'on' : 'off');
