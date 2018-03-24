@@ -16,8 +16,38 @@ use Nette\Forms\Controls\UploadControl;
 use Nette\Utils\Html;
 
 
+/**
+ * Class UploadInput
+ * @package Czubehead\BootstrapForms\Inputs
+ * @property string $buttonCaption the text on the left part of the button
+ */
 class UploadInput extends UploadControl implements IValidationInput
 {
+	/**
+	 * @var string
+	 */
+	private $buttonCaption;
+
+	/**
+	 * @return string
+	 */
+	public function getButtonCaption()
+	{
+		return $this->buttonCaption;
+	}
+
+	/**
+	 * the text on the left part of the button
+	 * @param string $buttonCaption
+	 * @return static
+	 */
+	public function setButtonCaption($buttonCaption)
+	{
+		$this->buttonCaption = $buttonCaption;
+
+		return $this;
+	}
+
 	public function getControl()
 	{
 		$control = parent::getControl();
@@ -29,7 +59,7 @@ class UploadInput extends UploadControl implements IValidationInput
 			Html::el('label', [
 				'class' => ['custom-file-label'],
 				'for'   => $this->getHtmlId(),
-			])
+			])->setText($this->buttonCaption)
 		);
 
 		return $el;
