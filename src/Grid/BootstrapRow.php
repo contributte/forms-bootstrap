@@ -6,6 +6,7 @@
 
 namespace Czubehead\BootstrapForms\Grid;
 
+use Czubehead\BootstrapForms\BootstrapRenderer;
 use Czubehead\BootstrapForms\Traits\FakeControlTrait;
 use Nette\ComponentModel\IComponent;
 use Nette\ComponentModel\IContainer;
@@ -221,11 +222,19 @@ class BootstrapRow implements IComponent, IControl
 	 */
 	public function render()
 	{
+		/** @var BootstrapRenderer $renderer */
+		$renderer = $this->container->form->renderer;
+		$prevGroupInline = $renderer->groupInlineInputs;
+		// we don't want to group anything in a row, but also don't want to lose that setting
+		$renderer->groupInlineInputs = FALSE;
+
 		$element = $this->elementPrototype;
 		foreach ($this->cells as $cell) {
 			$cellHtml = $cell->render();
 			$element->addHtml($cellHtml);
 		}
+
+		$renderer->groupInlineInputs = $prevGroupInline; // restore
 
 		return $element;
 	}
