@@ -15,7 +15,7 @@ help by reporting issues.
 
 ## Features
 
-- Fully valid [Bootstrap 4 forms](http://getbootstrap.com/docs/4.0/components/forms/) HTML generation
+- [Bootstrap 4 forms](http://getbootstrap.com/docs/4.0/components/forms/) HTML generation
 - All layout modes: vertical, side-by-side and inline
 - TextInput placeholders
 - Highly configurable renderer
@@ -23,6 +23,7 @@ help by reporting issues.
 - DateTime picker, variety of human readable date/time formats, placeholder example generation
 - [Validation styles](http://getbootstrap.com/docs/4.0/components/forms/#server-side)
 - Programmatically generated [Bootstrap grid](https://getbootstrap.com/docs/4.1/layout/grid/)
+- Assisted manual rendering
  
 ## Installation
 
@@ -160,6 +161,53 @@ And firstname and surname will be beside each other.
 - A cell can only hold one control (or none)
 - If your grid system does not have 12 columns, you may adjust it by setting property 
 `Czubehead\BootstrapForms\Grid\BootstrapRow::$numOfColumns`
+
+# Assisted manual rendering
+
+Why do we use manual rendering? Mostly to just rearrange the inputs, we rarely
+create a completely different feel.
+But there is a hefty price for using manual rendering - we have to do almost everything
+ourselves, even the things the renderer could do for us. Only if there were a way to
+let the renderer do most of the work...
+
+## What can it do
+
+Assisted manual rendering will render label-input pairs for you using a filter. 
+This means that it will take care of wrapping things into `div.form-group` and validation 
+messages - the most mundane thing to implement in a template. 
+
+## Implementation
+
+First of all, **you must implement this yourself, this won't work out of the box!**
+The implementation is quite dirty, but I think the benefits outweigh this cost.
+
+It works like this: 
+### 1. Implement a filter
+add a new filter to your latte engine, for example:
+```php
+$this->template->addFilter('formPair', function ($control) {
+    /** @var BootstrapRenderer $renderer */
+    $renderer = $control->form->renderer;
+    $renderer->attachForm($control->form);
+
+    return $renderer->renderPair($control);
+});
+```
+### 2. Use it
+```php
+
+```
+
+That will result in
+```html
+<div class="form-group row">
+    <label for="frm-form-firstname" class="col-sm-3">First name</label>
+
+    <div class="col-sm-9">
+        <input type="text" name="firstname" id="frm-form-firstname" class="form-control">
+    </div>
+</div>
+```
 
 ------
 

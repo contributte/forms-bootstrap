@@ -71,6 +71,16 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 	}
 
 	/**
+	 * Sets the form for which to render. Used only if a specific function of the renderer must be executed
+	 * outside of render(), such as during assisted manual rendering.
+	 * @param Nette\Forms\Form $form
+	 */
+	public function attachForm(Nette\Forms\Form $form)
+	{
+		$this->form = $form;
+	}
+
+	/**
 	 * Turns configuration or and existing element and configures it appropriately
 	 * @param $config array|string top-level config key
 	 * @param $el     Html|null elem to config.
@@ -329,7 +339,7 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 	 */
 	public function render(Nette\Forms\Form $form, $mode = NULL)
 	{
-		$this->form = $form;
+		$this->attachForm($form);
 
 		$s = '';
 		$s .= $this->renderBegin();
