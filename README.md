@@ -22,6 +22,7 @@ help by reporting issues.
 - [Custom Bootstrap controls](http://getbootstrap.com/docs/4.0/components/forms/#custom-forms)
 - DateTime picker, variety of human readable date/time formats, placeholder example generation
 - [Validation styles](http://getbootstrap.com/docs/4.0/components/forms/#server-side)
+- Programmatically generated [Bootstrap grid](https://getbootstrap.com/docs/4.1/layout/grid/)
  
 ## Installation
 
@@ -132,7 +133,33 @@ The renderer is enhanced by the following API:
 |----|-----|
 |mode|see render mode above in form section|
 |gridBreakPoint|Bootstrap grid breakpoint for side-by-side view. Default is 'sm'|
-|groupInlineInputs|If *consecutive* inline elements, such as buttons should be grouped together. For list of elements, see `Czubehead\BootstrapForms\Enums\RendererConfig::inlineClasses`|
+|groupInlineInputs|If *consecutive* inline elements, such as buttons should be grouped together. For list of elements, see `Czubehead\BootstrapForms\Enums\RendererConfig::inlineClasses`. Does not apply in grid cells|
+
+### Grid
+
+*This may be buggy*
+
+The library provides a way to programmatically place controls into Bootstrap grid and thus
+greatly reduces the need for manual rendering.
+
+Simply add a new row like this:
+```php
+$row = $form->addRow();
+$row->addCell(6)
+    ->addText('firstname', 'First name');
+$row->addCell(6)
+    ->addText('surname', 'Surname');
+```
+
+And firstname and surname will be beside each other.
+
+#### Notes
+
+- It is recommended to use grid with vertical mode, side-by-side looks weird and probably is buggy
+- By calling `getElementPrototype()` on row or cell, you can influence the elements of row / cell
+- A cell can only hold one control (or none)
+- If your grid system does not have 12 columns, you may adjust it by setting property 
+`Czubehead\BootstrapForms\Grid\BootstrapRow::$numOfColumns`
 
 ------
 
