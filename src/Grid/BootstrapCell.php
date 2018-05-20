@@ -7,9 +7,12 @@
 namespace Czubehead\BootstrapForms\Grid;
 
 
+use Czubehead\BootstrapForms\BootstrapRenderer;
+use Czubehead\BootstrapForms\BootstrapUtils;
 use Czubehead\BootstrapForms\Traits\BootstrapContainerTrait;
 use LogicException;
 use Nette\ComponentModel\IComponent;
+use Nette\Forms\IControl;
 use Nette\SmartObject;
 use Nette\Utils\Html;
 
@@ -20,7 +23,7 @@ use Nette\Utils\Html;
  * Only one component can be present.
  * @package Czubehead\BootstrapForms\Grid
  * @property-read int  $numOfColumns     Number of Bootstrap columns to occupy
- * @property-read bool $occupied         if a control is already set and thus no other can be added.
+ * @property-read IControl $childControl|null     Nested child control if any
  * @property-read Html $elementPrototype the Html div that will be rendered. You may define additional
  *                properties.
  */
@@ -34,10 +37,9 @@ class BootstrapCell
 	 */
 	private $numOfColumns;
 	/**
-	 * If is already hosting a control
-	 * @var bool
+	 * @var IControl|null
 	 */
-	private $isOccupied = FALSE;
+	private $childControl;
 	/**
 	 * @var BootstrapRow
 	 */
@@ -79,11 +81,26 @@ class BootstrapCell
 	}
 
 	/**
-	 * @return bool
+	 * Renders the cell into Html object
+	 * @return Html
 	 */
-	public function isOccupied()
+	public function render()
 	{
-		return $this->isOccupied;
+		$element = $this->elementPrototype;
+
+		BootstrapUtils::standardizeClass($element);
+		$element->class[] = 'col-' . $this->row->gridBreakpoint . '-' . $this->numOfColumns;
+
+		if ($this->childControl) {
+			/** @noinspection PhpUndefinedFieldInspection */
+			/** @var BootstrapRenderer $renderer */
+			$renderer = $this->childControl->form->renderer;
+
+			$pairHtml = $renderer->renderPair($this->childControl);
+			$element->addHtml($pairHtml);
+		}
+
+		return $element;
 	}
 
 	/**
@@ -94,12 +111,12 @@ class BootstrapCell
 	 */
 	protected function addComponent(IComponent $component, $name, $insertBefore = NULL)
 	{
-		if ($this->isOccupied) {
-			throw new LogicException('a control for this cell has already been set, you cannot add another one');
+		if ($this->childControl) {
+			throw new LogicException('child control for this cell has already been set, you cannot add another one');
 		}
 
 		/** @noinspection PhpInternalEntityUsedInspection */
 		$this->row->addComponent($component, $name, $insertBefore);
-		$this->isOccupied = TRUE;
+		$this->childControl = $component;
 	}
 }

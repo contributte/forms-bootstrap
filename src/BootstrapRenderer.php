@@ -14,6 +14,7 @@ namespace Czubehead\BootstrapForms;
 use Czubehead\BootstrapForms\Enums\RendererConfig as Cnf;
 use Czubehead\BootstrapForms\Enums\RendererOptions;
 use Czubehead\BootstrapForms\Enums\RenderMode;
+use Czubehead\BootstrapForms\Grid\BootstrapRow;
 use Czubehead\BootstrapForms\Inputs\ButtonInput;
 use Czubehead\BootstrapForms\Inputs\IValidationInput;
 use Czubehead\BootstrapForms\Inputs\SelectInput;
@@ -489,24 +490,28 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 				continue;
 			}
 
-			if ($control->getOption(RendererOptions::type) == 'hidden') {
-				$hidden->addHtml($this->renderControl($control));
+			if ($control instanceof BootstrapRow) {
+				$html->addHtml($control->render());
 			} else {
-				$pairHtml = $this->renderPair($control);
-				if ($this->groupInlineInputs && $this->isInClassList($control, $groupedClasses)) {
-					// group
-					$group->addHtml($pairHtml);
+				if ($control->getOption(RendererOptions::type) == 'hidden') {
+					$hidden->addHtml($this->renderControl($control));
 				} else {
-					// don't group
+					$pairHtml = $this->renderPair($control);
+					if ($this->groupInlineInputs && $this->isInClassList($control, $groupedClasses)) {
+						// group
+						$group->addHtml($pairHtml);
+					} else {
+						// don't group
 
-					if ($group->count()) {
-						// there is a group before this regular input, add that first
-						$html->addHtml($group);
-						// reset group
-						$group = clone $defaultGroupContainer;
+						if ($group->count()) {
+							// there is a group before this regular input, add that first
+							$html->addHtml($group);
+							// reset group
+							$group = clone $defaultGroupContainer;
+						}
+
+						$html->addHtml($pairHtml);
 					}
-
-					$html->addHtml($pairHtml);
 				}
 			}
 		}
@@ -545,6 +550,8 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 			// just configure it to suit our needs
 
 			$labelHtml = $controlLabel;
+		} elseif ($controlLabel === NULL) {
+			return Html::el();
 		} else {
 			// the control doesn't give us <label>, se we'll create our own
 			$labelHtml = $this->getElem(Cnf::label);

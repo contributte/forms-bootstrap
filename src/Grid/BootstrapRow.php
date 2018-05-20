@@ -6,8 +6,11 @@
 
 namespace Czubehead\BootstrapForms\Grid;
 
+use Czubehead\BootstrapForms\Traits\FakeControlTrait;
 use Nette\ComponentModel\IComponent;
+use Nette\ComponentModel\IContainer;
 use Nette\Forms\Container;
+use Nette\Forms\IControl;
 use Nette\InvalidArgumentException;
 use Nette\SmartObject;
 use Nette\Utils\Html;
@@ -23,16 +26,27 @@ use Nette\Utils\Html;
  * @property-read BootstrapCell[] $cells            cells in this row
  * @property-read Html            $elementPrototype the Html div that will be rendered. You may define
  *                additional properties.
+ * @property-read string          $name             name of component
  */
-class BootstrapRow
+class BootstrapRow implements IComponent, IControl
 {
 	use SmartObject;
+	use FakeControlTrait;
 
+	/**
+	 * Global name counter
+	 * @var int
+	 */
+	private static $uidCounter = 0;
 	/**
 	 * Number of columns in Bootstrap grid. Default is 12, but it can be customized.
 	 * @var int
 	 */
 	public $numOfColumns = 12;
+	/**
+	 * @var string $name
+	 */
+	private $name;
 	/**
 	 * Number of columns used by added cells.
 	 * @var int
@@ -60,15 +74,25 @@ class BootstrapRow
 	 * @var Html
 	 */
 	private $elementPrototype;
+	/**
+	 * @var array
+	 */
+	private $options = [];
 
 	/**
 	 * BootstrapRow constructor.
-	 * @param Container $container Form or container this belong to. Components will be added to this
-	 *                             component
+	 * @param Container $container Form or container this belongs to. Components will be added to this
+	 * @param null      $name      Optional name of this row. If none is supplied, it is generated
+	 *                             automatically.
 	 */
-	public function __construct(Container $container)
+	public function __construct(Container $container, $name = NULL)
 	{
 		$this->container = $container;
+		if (!$name) {
+			$name = 'bootstrap_row_' . ++self::$uidCounter;
+		}
+		$this->name = $name;
+
 		$this->elementPrototype = Html::el('div', [
 			'class' => ['row'],
 		]);
@@ -77,6 +101,7 @@ class BootstrapRow
 	/**
 	 * Adds a new cell to which a control can be added.
 	 * @param int $numOfColumns Number of grid columns to use up
+	 * @return BootstrapCell the cell added.
 	 */
 	public function addCell($numOfColumns)
 	{
@@ -88,6 +113,8 @@ class BootstrapRow
 
 		$cell = new BootstrapCell($this, $numOfColumns);
 		$this->cells[] = $cell;
+
+		return $cell;
 	}
 
 	/**
@@ -141,10 +168,76 @@ class BootstrapRow
 	}
 
 	/**
+	 * Component name
+	 * @return string
+	 */
+	public function getName()
+	{
+		return $this->name;
+	}
+
+	/**
+	 * Returns the container
+	 * @return Container
+	 */
+	public function getParent()
+	{
+		return $this->container;
+	}
+
+	/**
+	 * Sets the container
+	 * @param Container|NULL $parent
+	 * @param null           $name ignored
+	 */
+	public function setParent(IContainer $parent = NULL, $name = NULL)
+	{
+		$this->container = $parent;
+	}
+
+	/**
+	 * Gets previously set option
+	 * @param string $option
+	 * @param null   $default
+	 * @return mixed|null
+	 */
+	public function getOption($option, $default = NULL)
+	{
+		return isset($this->options[ $option ]) ? $this->options[ $option ] : $default;
+	}
+
+	/**
 	 * @return string[]
 	 */
 	public function getOwnedNames()
 	{
 		return $this->ownedNames;
+	}
+
+
+	/**
+	 * Renders the row into a Html object
+	 * @return Html
+	 */
+	public function render()
+	{
+		$element = $this->elementPrototype;
+		foreach ($this->cells as $cell) {
+			$cellHtml = $cell->render();
+			$element->addHtml($cellHtml);
+		}
+
+		return $element;
+	}
+
+	/**
+	 * Sets option
+	 * @param $option
+	 * @param $value
+	 * @internal
+	 */
+	public function setOption($option, $value)
+	{
+		$this->options[ $option ] = $value;
 	}
 }
