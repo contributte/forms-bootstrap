@@ -89,7 +89,7 @@ class BootstrapCell
 		$element = $this->elementPrototype;
 
 		BootstrapUtils::standardizeClass($element);
-		$element->class[] = 'col-' . $this->row->gridBreakpoint . '-' . $this->numOfColumns;
+		$element->class[] = 'col-' . $this->row->gridBreakPoint . '-' . $this->numOfColumns;
 
 		if ($this->childControl) {
 			/** @noinspection PhpUndefinedFieldInspection */
