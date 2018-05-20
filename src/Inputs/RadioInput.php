@@ -68,7 +68,7 @@ class RadioInput extends ChoiceControl
 					'class'    => ['custom-control-input'],
 					'type'     => 'radio',
 					'value'    => $value,
-					'name'     => $this->name,
+					'name'     => $this->getHtmlName(),
 					'checked'  => $this->isValueSelected($value),
 					'disabled' => $disabledOption,
 					'id'       => $itemHtmlId,

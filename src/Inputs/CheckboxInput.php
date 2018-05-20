@@ -24,7 +24,7 @@ class CheckboxInput extends Checkbox
 	{
 		parent::getControl();
 
-		return self::makeCheckbox($this->name, $this->getHtmlId(), $this->caption, $this->value, FALSE, $this->required,
+		return self::makeCheckbox($this->getHtmlName(), $this->getHtmlId(), $this->caption, $this->value, FALSE, $this->required,
 			$this->disabled);
 	}
 

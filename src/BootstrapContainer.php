@@ -21,5 +21,7 @@ use Nette\Forms\Container;
  */
 class BootstrapContainer extends Container
 {
+
+
 	use BootstrapContainerTrait;
 }
