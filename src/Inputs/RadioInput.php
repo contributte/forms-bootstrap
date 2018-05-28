@@ -12,6 +12,7 @@ namespace Czubehead\BootstrapForms\Inputs;
 
 use Czubehead\BootstrapForms\Enums\RendererOptions;
 use Czubehead\BootstrapForms\Traits\ChoiceInputTrait;
+use Czubehead\BootstrapForms\Traits\StandardValidationTrait;
 use Nette\Forms\Controls\ChoiceControl;
 use Nette\Utils\Html;
 
@@ -20,9 +21,12 @@ use Nette\Utils\Html;
  * Class RadioList
  * @package Czubehead\BootstrapForms
  */
-class RadioInput extends ChoiceControl
+class RadioInput extends ChoiceControl implements IValidationInput
 {
 	use ChoiceInputTrait;
+	use StandardValidationTrait {
+		showValidation as protected _rawShowValidation;
+	}
 
 	/**
 	 * @var Html
@@ -87,5 +91,24 @@ class RadioInput extends ChoiceControl
 		}
 
 		return $container;
+	}
+
+	/**
+	 * Modify control in such a way that it explicitly shows its validation state.
+	 * Returns the modified element.
+	 * @param Html $control
+	 * @return Html
+	 */
+	public function showValidation(Html $control)
+	{
+		$fieldset = Html::el($control->getName(), $control->attrs);
+		/** @var Html $rowDiv */
+		foreach ($control->getChildren() as $rowDiv) {
+			$input = $rowDiv->getChildren()[0];
+			$rowDiv->getChildren()[0] = $this->_rawShowValidation($input);
+			$fieldset->addHtml($rowDiv);
+		}
+
+		return $control;
 	}
 }
