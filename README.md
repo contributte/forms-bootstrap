@@ -64,7 +64,9 @@ $form = new BootstrapForm;
 $form->renderMode = RenderMode::Vertical;		
 ```
 
-It will behave pretty much the same as the default Nette form
+It will behave pretty much the same as the default Nette form, with the exception of not grouping buttons. 
+That feature would only add unnecessary and deceiving overhead to this library,
+**use grid instead, it will give you much finer control**
 
 #### Render modes
  1. **Vertical** (`Enums\RenderMode::VerticalMode`) all controls are below their labels
