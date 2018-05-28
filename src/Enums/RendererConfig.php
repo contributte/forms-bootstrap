@@ -7,6 +7,10 @@
 namespace Czubehead\BootstrapForms\Enums;
 
 
+use Czubehead\BootstrapForms\Grid\BootstrapCell;
+use Czubehead\BootstrapForms\Grid\BootstrapRow;
+
+
 class RendererConfig
 {
 	/**
@@ -22,6 +26,16 @@ class RendererConfig
 	 * Label of a group
 	 */
 	const groupLabel = 'group-label';
+
+	/**
+	 * Bootstrap row
+	 * @see BootstrapRow
+	 */
+	const gridRow = 'grid-row';
+	/**
+	 * @see BootstrapCell
+	 */
+	const gridCell = 'grid-cell';
 
 	/**
 	 * Errors belonging to the form rather than an individual control. This is a container.

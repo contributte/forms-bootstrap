@@ -8,7 +8,7 @@ namespace Czubehead\BootstrapForms\Grid;
 
 
 use Czubehead\BootstrapForms\BootstrapRenderer;
-use Czubehead\BootstrapForms\BootstrapUtils;
+use Czubehead\BootstrapForms\Enums\RendererConfig;
 use Czubehead\BootstrapForms\Traits\BootstrapContainerTrait;
 use LogicException;
 use Nette\ComponentModel\IComponent;
@@ -96,15 +96,13 @@ class BootstrapCell
 	public function render()
 	{
 		$element = $this->elementPrototype;
+		/** @var BootstrapRenderer $renderer */
+		$renderer = $this->row->getParent()->form->renderer;
 
-		BootstrapUtils::standardizeClass($element);
+		$element = $renderer->configElem(RendererConfig::gridCell, $element);
 		$element->class[] = $this->createClass();
 
 		if ($this->childControl) {
-			/** @noinspection PhpUndefinedFieldInspection */
-			/** @var BootstrapRenderer $renderer */
-			$renderer = $this->childControl->form->renderer;
-
 			$pairHtml = $renderer->renderPair($this->childControl);
 			$element->addHtml($pairHtml);
 		}

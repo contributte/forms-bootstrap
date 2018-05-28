@@ -6,6 +6,8 @@
 
 namespace Czubehead\BootstrapForms\Grid;
 
+use Czubehead\BootstrapForms\BootstrapRenderer;
+use Czubehead\BootstrapForms\Enums\RendererConfig;
 use Czubehead\BootstrapForms\Traits\FakeControlTrait;
 use Nette\ComponentModel\IComponent;
 use Nette\ComponentModel\IContainer;
@@ -93,9 +95,7 @@ class BootstrapRow implements IComponent, IControl
 		}
 		$this->name = $name;
 
-		$this->elementPrototype = Html::el('div', [
-			'class' => ['row'],
-		]);
+		$this->elementPrototype = Html::el();
 	}
 
 	/**
@@ -222,7 +222,10 @@ class BootstrapRow implements IComponent, IControl
 	 */
 	public function render()
 	{
-		$element = $this->elementPrototype;
+		/** @var BootstrapRenderer $renderer */
+		$renderer = $this->container->form->renderer;
+
+		$element = $renderer->configElem(RendererConfig::gridRow, $this->elementPrototype);
 		foreach ($this->cells as $cell) {
 			$cellHtml = $cell->render();
 			$element->addHtml($cellHtml);

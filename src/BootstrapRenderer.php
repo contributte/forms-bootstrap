@@ -167,6 +167,14 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 				Cnf::elementName => 'legend',
 			],
 
+			Cnf::gridRow  => [
+				Cnf::elementName => 'div',
+				Cnf::classSet    => 'form-row',
+			],
+			Cnf::gridCell => [
+				Cnf::elementName => 'div',
+			],
+
 			Cnf::formOwnErrors => [],
 			Cnf::formOwnError  => [
 				Cnf::elementName => 'div',

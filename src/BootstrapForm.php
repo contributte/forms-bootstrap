@@ -9,7 +9,7 @@
 namespace Czubehead\BootstrapForms;
 
 
-use Czubehead\BootstrapForms\Grid\BootstrapRow;
+use Czubehead\BootstrapForms\Traits\AddRowTrait;
 use Czubehead\BootstrapForms\Traits\BootstrapContainerTrait;
 use Nette\Application\UI\Form;
 use Nette\ComponentModel\IContainer;
@@ -30,6 +30,7 @@ use Nette\Utils\Html;
 class BootstrapForm extends Form
 {
 	use BootstrapContainerTrait;
+	use AddRowTrait;
 
 	/**
 	 * @var string Class to be added if this is ajax. Defaults to 'ajax'
@@ -74,19 +75,6 @@ class BootstrapForm extends Form
 		$this->onError[] = function ($form) {
 			$form->showValidation = $this->autoShowValidation;
 		};
-	}
-
-	/**
-	 * Adds a new Grid system row.
-	 * @param string|null $name optional. If null is passed, it is generated.
-	 * @return BootstrapRow
-	 */
-	public function addRow($name = NULL)
-	{
-		$row = new BootstrapRow($this, $name);
-		$this->addComponent($row, $row->name);
-
-		return $row;
 	}
 
 	public function getElementPrototype()

@@ -10,6 +10,7 @@
 namespace Czubehead\BootstrapForms;
 
 
+use Czubehead\BootstrapForms\Traits\AddRowTrait;
 use Czubehead\BootstrapForms\Traits\BootstrapContainerTrait;
 use Nette\Forms\Container;
 
@@ -22,4 +23,5 @@ use Nette\Forms\Container;
 class BootstrapContainer extends Container
 {
 	use BootstrapContainerTrait;
+	use AddRowTrait;
 }
