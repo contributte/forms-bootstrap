@@ -10,12 +10,18 @@
 namespace Czubehead\BootstrapForms\Inputs;
 
 
+use Czubehead\BootstrapForms\Traits\StandardValidationTrait;
 use Nette\Forms\Controls\Checkbox;
 use Nette\Utils\Html;
 
 
-class CheckboxInput extends Checkbox
+class CheckboxInput extends Checkbox implements IValidationInput
 {
+	use StandardValidationTrait {
+		// we only want to use it on a specific child
+		showValidation as protected _rawShowValidation;
+	}
+
 	/**
 	 * Generates a checkbox
 	 * @return Html
@@ -68,8 +74,22 @@ class CheckboxInput extends Checkbox
 		);
 
 		$line = Html::el('div');
-		$line->setHtml($label);
+		$line->addHtml($label);
 
-		return $line;
+		return $label;
+	}
+
+	/**
+	 * Modify control in such a way that it explicitly shows its validation state.
+	 * Returns the modified element.
+	 * @param Html $control
+	 * @return Html
+	 */
+	public function showValidation(Html $control)
+	{
+		// add validation classes to the first child, which is <input>
+		$control->getChildren()[0] = $this->_rawShowValidation($control->getChildren()[0]);
+
+		return $control;
 	}
 }

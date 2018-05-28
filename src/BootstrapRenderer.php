@@ -417,11 +417,11 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 		$controlHtml = $control->getControl();
 		/** @noinspection PhpUndefinedMethodInspection */
 		$control->setOption(RendererOptions::_rendered, TRUE);
-		$controlHtml = $this->configElem(Cnf::input, $controlHtml);
 		/** @noinspection PhpUndefinedMethodInspection */
 		if (($this->form->showValidation || $control->hasErrors()) && $control instanceof IValidationInput) {
 			$controlHtml = $control->showValidation($controlHtml);
 		}
+		$controlHtml = $this->configElem(Cnf::input, $controlHtml);
 
 		return $controlHtml;
 	}

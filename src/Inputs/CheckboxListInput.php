@@ -11,13 +11,17 @@ namespace Czubehead\BootstrapForms\Inputs;
 
 
 use Czubehead\BootstrapForms\Traits\ChoiceInputTrait;
+use Czubehead\BootstrapForms\Traits\StandardValidationTrait;
 use Nette\Forms\Controls\CheckboxList;
 use Nette\Utils\Html;
 
 
-class CheckboxListInput extends CheckboxList
+class CheckboxListInput extends CheckboxList implements IValidationInput
 {
 	use ChoiceInputTrait;
+	use StandardValidationTrait {
+		showValidation as protected _rawShowValidation;
+	}
 
 	public function getControl()
 	{
@@ -34,6 +38,26 @@ class CheckboxListInput extends CheckboxList
 
 			$fieldset->addHtml($line);
 			$c++;
+		}
+
+		return $fieldset;
+	}
+
+	/**
+	 * Modify control in such a way that it explicitly shows its validation state.
+	 * Returns the modified element.
+	 * @param Html $control
+	 * @return Html
+	 */
+	public function showValidation(Html $control)
+	{
+		// same parent, but no children
+		$fieldset = Html::el($control->getName(), $control->attrs);
+		/** @var Html $label */
+		foreach ($control->getChildren() as $label) {
+			$input = $label->getChildren()[0];
+			$label->getChildren()[0] = $this->_rawShowValidation($input);
+			$fieldset->addHtml($label);
 		}
 
 		return $fieldset;

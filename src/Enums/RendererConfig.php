@@ -54,6 +54,9 @@ class RendererConfig
 	 */
 	const nonLabel = 'non-label';
 
+	/**
+	 * Influences on control HTML. Applied after validation.
+	 */
 	const input = 'input';
 	const inputValid = 'input-valid';
 	const inputInvalid = 'input-invalid';
