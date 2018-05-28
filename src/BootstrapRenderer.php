@@ -15,11 +15,7 @@ use Czubehead\BootstrapForms\Enums\RendererConfig as Cnf;
 use Czubehead\BootstrapForms\Enums\RendererOptions;
 use Czubehead\BootstrapForms\Enums\RenderMode;
 use Czubehead\BootstrapForms\Grid\BootstrapRow;
-use Czubehead\BootstrapForms\Inputs\ButtonInput;
 use Czubehead\BootstrapForms\Inputs\IValidationInput;
-use Czubehead\BootstrapForms\Inputs\SelectInput;
-use Czubehead\BootstrapForms\Inputs\SubmitButtonInput;
-use Czubehead\BootstrapForms\Inputs\UploadInput;
 use Nette;
 use Nette\Utils\Html;
 
@@ -28,8 +24,6 @@ use Nette\Utils\Html;
  * Converts a Form into Bootstrap 4 HTML output.
  * @property int        $mode
  * @property string     $gridBreakPoint    Bootstrap grid breakpoint for side-by-side view. Default is 'sm'
- * @property bool       $groupInlineInputs If consecutive inline elements, such as buttons should be grouped
- *           together
  * @property-read array $config
  * @property-read array $configOverride
  */
@@ -55,7 +49,6 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 	 * @var int
 	 */
 	protected $controlColumns = self::defaultControlColumns;
-	private $groupInlineInputs = TRUE;
 	/**
 	 * @var int current render mode
 	 */
@@ -173,18 +166,6 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 				Cnf::elementName => 'legend',
 			],
 
-			Cnf::inlineGroup          => [
-				Cnf::elementName => 'div',
-				Cnf::classSet    => ['form-row'],
-			],
-			Cnf::inlineGroupPair      => [],
-			Cnf::inlineGroupLabel     => [],
-			Cnf::inlineGroupNonLabel  => [],
-			Cnf::inlineGroupedClasses => [
-				SubmitButtonInput::class,
-				ButtonInput::class,
-			],
-
 			Cnf::formOwnErrors => [],
 			Cnf::formOwnError  => [
 				Cnf::elementName => 'div',
@@ -201,7 +182,6 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 
 			Cnf::input        => [],
 			// inputs which are normally inline elements (after bootstrap classes are applied)
-			Cnf::inlineInput  => [],
 			Cnf::inputValid   => [
 				Cnf::classAdd => 'is-valid',
 			],
@@ -227,12 +207,6 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 			// empty wrapper,  but it gets utilized in side-by side and inline mode
 			Cnf::nonLabel        => [
 				Cnf::elementName => NULL,
-			],
-
-
-			Cnf::inlineClasses => [
-				SelectInput::class,
-				UploadInput::class,
 			],
 		];
 	}
@@ -262,23 +236,8 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 					Cnf::elementName => 'div',
 					Cnf::classSet    => $nonLabelColClass,
 				],
-				Cnf::inlineGroupLabel    => [
-					Cnf::classRemove => [$labelColClass],
-				],
-				Cnf::inlineGroupNonLabel => [
-					Cnf::classRemove => [$nonLabelColClass],
-				],
-				Cnf::inlineGroupPair     => [
-					Cnf::classRemove => 'row',
-					Cnf::classAdd    => 'col-auto',
-				],
 			],
 			RenderMode::VerticalMode   => [
-				Cnf::inlineInput => [
-					Cnf::container => [
-						Cnf::elementName => 'div',
-					],
-				],
 			],
 		];
 	}
@@ -310,25 +269,6 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 	public function getMode()
 	{
 		return $this->renderMode;
-	}
-
-	/**
-	 * @return bool
-	 */
-	public function isGroupInlineInputs()
-	{
-		return $this->groupInlineInputs;
-	}
-
-	/**
-	 * @param bool $groupInlineInputs
-	 * @return BootstrapRenderer
-	 */
-	public function setGroupInlineInputs($groupInlineInputs)
-	{
-		$this->groupInlineInputs = $groupInlineInputs;
-
-		return $this;
 	}
 
 	/**
@@ -469,10 +409,6 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 			$controlHtml = $control->showValidation($controlHtml);
 		}
 
-		if ($this->isInClassList($control, $this->fetchConfig(Cnf::inlineClasses))) {
-			$controlHtml = $this->configElem(Cnf::inlineInput, $controlHtml);
-		}
-
 		return $controlHtml;
 	}
 
@@ -487,14 +423,9 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 			throw new Nette\InvalidArgumentException('Argument must be Nette\Forms\Container or Nette\Forms\ControlGroup instance.');
 		}
 		$html = Html::el();
-
-		$groupedClasses = $this->fetchConfig(Cnf::inlineGroupedClasses);
-		$defaultGroupContainer = $this->getElem(Cnf::inlineGroup);
-
 		$hidden = Html::el();
 
 		// note that these are NOT form groups, these are groups specified to group
-		$group = clone  $defaultGroupContainer;
 		foreach ($parent->getControls() as $control) {
 			if ($control->getOption(RendererOptions::_rendered, FALSE)) {
 				continue;
@@ -507,28 +438,9 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 					$hidden->addHtml($this->renderControl($control));
 				} else {
 					$pairHtml = $this->renderPair($control);
-					if ($this->groupInlineInputs && $this->isInClassList($control, $groupedClasses)) {
-						// group
-						$group->addHtml($pairHtml);
-					} else {
-						// don't group
-
-						if ($group->count()) {
-							// there is a group before this regular input, add that first
-							$html->addHtml($group);
-							// reset group
-							$group = clone $defaultGroupContainer;
-						}
-
-						$html->addHtml($pairHtml);
-					}
+					$html->addHtml($pairHtml);
 				}
 			}
-		}
-
-		// the last element is grouped - probably a submit button
-		if ($group->count()) {
-			$html->addHtml($group);
 		}
 
 		$html->addHtml($hidden);
@@ -580,28 +492,17 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 	 */
 	public function renderPair(Nette\Forms\IControl $control)
 	{
-		$isInlineGrouped = $this->groupInlineInputs && $this->isInClassList($control, $this->fetchConfig(Cnf::inlineGroupedClasses));
-
 		$pairHtml = $this->configElem(Cnf::pair);
-		if ($isInlineGrouped) {
-			$pairHtml = $this->configElem(Cnf::inlineGroupPair, $pairHtml);
-		}
 		/** @noinspection PhpUndefinedMethodInspection */
 		/** @noinspection PhpUndefinedFieldInspection */
 		$pairHtml->id = $control->getOption(RendererOptions::id);
 
 		$labelHtml = $this->renderLabel($control);
-		if ($isInlineGrouped) {
-			$labelHtml = $this->configElem(Cnf::inlineGroupLabel, $labelHtml);
-		}
 		if (!empty($labelHtml)) {
 			$pairHtml->addHtml($labelHtml);
 		}
 
 		$nonLabel = $this->getElem(Cnf::nonLabel);
-		if ($isInlineGrouped) {
-			$nonLabel = $this->configElem(Cnf::inlineGroupNonLabel, $nonLabel);
-		}
 
 		//region non-label parts
 		$controlHtml = $this->renderControl($control);
@@ -797,22 +698,5 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 		} else {
 			throw new Nette\NotImplementedException('renderer is unable to render feedback for ' . gettype($control));
 		}
-	}
-
-	/**
-	 * Check if object is in class list
-	 * @param object   $object
-	 * @param string[] $classList
-	 * @return bool
-	 */
-	private function isInClassList($object, $classList)
-	{
-		foreach ($classList as $class) {
-			if (is_a($object, $class, TRUE)) {
-				return TRUE;
-			}
-		}
-
-		return FALSE;
 	}
 }

@@ -134,7 +134,6 @@ The renderer is enhanced by the following API:
 |----|-----|
 |mode|see render mode above in form section|
 |gridBreakPoint|Bootstrap grid breakpoint for side-by-side view. Default is 'sm'|
-|groupInlineInputs|If *consecutive* inline elements, such as buttons should be grouped together. For list of elements, see `Czubehead\BootstrapForms\Enums\RendererConfig::inlineClasses`. Does not apply in grid cells|
 
 ### Grid
 
@@ -195,7 +194,7 @@ $this->template->addFilter('formPair', function ($control) {
 ```
 ### 2. Use it
 ```php
-
+{$form['firstname']|formPair|noescape}
 ```
 
 That will result in

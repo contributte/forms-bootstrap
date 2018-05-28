@@ -9,32 +9,19 @@ namespace Czubehead\BootstrapForms\Enums;
 
 class RendererConfig
 {
+	/**
+	 * The form element
+	 */
 	const form = 'form';
 
+	/**
+	 * Form group
+	 */
 	const group = 'group';
+	/**
+	 * Label of a group
+	 */
 	const groupLabel = 'group-label';
-
-	/**
-	 * Inputs of class in inlineGrouped are rendered together in this.
-	 * This is a container itself
-	 */
-	const inlineGroup = 'inline-group';
-	/**
-	 * element within inlineGroup
-	 */
-	const inlineGroupNonLabel = 'inline-group-non-label';
-	/**
-	 * element within inlineGroup
-	 */
-	const inlineGroupLabel = 'inline-group-label';
-	/**
-	 * pair rendered within inlineGroup
-	 */
-	const inlineGroupPair = 'inline-group-pair';
-	/**
-	 * List of classes that put inputs to inlineGrouped
-	 */
-	const inlineGroupedClasses = 'inline-grouped';
 
 	/**
 	 * Errors belonging to the form rather than an individual control. This is a container.
@@ -59,15 +46,6 @@ class RendererConfig
 	/**
 	 * Element that is normally an inline element within bootstrap
 	 */
-
-	/**
-	 * list of classes that are normally inline
-	 */
-	const inlineInput = 'inline-input';
-	/**
-	 * list of classes which are considered as buttons for grouping
-	 */
-	const inlineClasses = 'inline-classes';
 
 	/**
 	 * Text saying if field is valid or invalid
