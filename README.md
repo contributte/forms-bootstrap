@@ -132,10 +132,11 @@ will generate
 
 The renderer is enhanced by the following API:
 
-|property|meaning|
-|----|-----|
-|mode|see render mode above in form section|
-|gridBreakPoint|Bootstrap grid breakpoint for side-by-side view. Default is 'sm'|
+|property|type|meaning|
+|----|---|-----|
+|mode|int constant|see render mode above in form section|
+|gridBreakPoint|string / null|Bootstrap grid breakpoint for side-by-side view. Default is 'sm'|
+|groupHidden| bool| if true, hidden fields will be grouped at the end. If false, hidden fields are placed where they were added. Default is true.|
 
 ### Grid
 

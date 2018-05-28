@@ -27,6 +27,8 @@ use Nette\Utils\Html;
  *           NULL means not to use a breakpoint
  * @property-read array $config
  * @property-read array $configOverride
+ * @property bool       $groupHidden       if true, hidden fields will be grouped at the end. If false,
+ *           hidden fields are placed where they were added. Default is true.
  */
 class BootstrapRenderer implements Nette\Forms\IFormRenderer
 {
@@ -54,6 +56,10 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 	 * @var int current render mode
 	 */
 	private $renderMode = RenderMode::SideBySideMode;
+	/**
+	 * @var bool
+	 */
+	private $groupHidden = TRUE;
 
 	/**
 	 * BootstrapRenderer constructor.
@@ -286,6 +292,27 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 	}
 
 	/**
+	 * @return bool
+	 * @see BootstrapRenderer::$groupHidden
+	 */
+	public function isGroupHidden()
+	{
+		return $this->groupHidden;
+	}
+
+	/**
+	 * @param bool $groupHidden
+	 * @return BootstrapRenderer
+	 * @see BootstrapRenderer::$groupHidden
+	 */
+	public function setGroupHidden($groupHidden)
+	{
+		$this->groupHidden = $groupHidden;
+
+		return $this;
+	}
+
+	/**
 	 * Provides complete form rendering.
 	 * @param \Nette\Forms\Form $form
 	 * @param null              $mode
@@ -449,9 +476,16 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 				$html->addHtml($control->render());
 			} else {
 				if ($control->getOption(RendererOptions::type) == 'hidden') {
-					$hidden->addHtml($this->renderControl($control));
+					$isHidden = TRUE;
+					$pairHtml = $this->renderControl($control);
 				} else {
 					$pairHtml = $this->renderPair($control);
+					$isHidden = FALSE;
+				}
+
+				if ($this->groupHidden && $isHidden) {
+					$hidden->addHtml($pairHtml);
+				} else {
 					$html->addHtml($pairHtml);
 				}
 			}
