@@ -16,7 +16,7 @@ use Nette\InvalidArgumentException;
 
 /**
  * Class TextInput
- * @property string $placeholder
+ * @property string $placeholder HTML placeholder
  * @property bool   $autocomplete
  * @package Czubehead\BootstrapForms\Inputs
  */
@@ -72,6 +72,9 @@ class TextInput extends \Nette\Forms\Controls\TextInput implements IValidationIn
 		return $this;
 	}
 
+	/**
+	 * @inheritdoc
+	 */
 	public function getControl()
 	{
 		$control = parent::getControl();
@@ -90,6 +93,7 @@ class TextInput extends \Nette\Forms\Controls\TextInput implements IValidationIn
 
 	/**
 	 * @return string
+	 * @see TextInput::$placeholder
 	 */
 	public function getPlaceholder()
 	{
@@ -99,6 +103,7 @@ class TextInput extends \Nette\Forms\Controls\TextInput implements IValidationIn
 	/**
 	 * @param string $placeholder
 	 * @return static
+	 * @see TextInput::$placeholder
 	 */
 	public function setPlaceholder($placeholder)
 	{

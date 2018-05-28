@@ -16,6 +16,11 @@ use Nette\Forms\Controls\CheckboxList;
 use Nette\Utils\Html;
 
 
+/**
+ * Class CheckboxListInput.
+ * Multiple checkboxes in a list.
+ * @package Czubehead\BootstrapForms\Inputs
+ */
 class CheckboxListInput extends CheckboxList implements IValidationInput
 {
 	use ChoiceInputTrait;
@@ -23,6 +28,9 @@ class CheckboxListInput extends CheckboxList implements IValidationInput
 		showValidation as protected _rawShowValidation;
 	}
 
+	/**
+	 * @inheritdoc
+	 */
 	public function getControl()
 	{
 		parent::getControl();

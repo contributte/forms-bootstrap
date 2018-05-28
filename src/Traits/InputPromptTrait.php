@@ -16,7 +16,7 @@ use Nette\NotSupportedException;
 
 /**
  * Trait InputPromptTrait.
- * Adds string property prompt.
+ * Adds string property prompt. Prompt is the empty value of a select.
  * @property string $prompt
  * @package Czubehead\BootstrapForms\Traits
  */

@@ -18,7 +18,7 @@ use Nette\Utils\Html;
 
 
 /**
- * Class RadioList
+ * Class RadioInput. Lets user choose one out of multiple options.
  * @package Czubehead\BootstrapForms
  */
 class RadioInput extends ChoiceControl implements IValidationInput

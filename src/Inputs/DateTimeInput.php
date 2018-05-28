@@ -16,6 +16,11 @@ use DateTime;
 use Nette\NotSupportedException;
 
 
+/**
+ * Class DateTimeInput. Textual datetime input.
+ * @package Czubehead\BootstrapForms\Inputs
+ * @property string $format expected PHP format for datetime
+ */
 class DateTimeInput extends TextInput
 {
 	const DEFAULT_FORMAT = DateTimeFormat::D_DMY_DOTS_NO_LEAD . ' ' . DateTimeFormat::T_24_NO_LEAD;
@@ -49,11 +54,17 @@ class DateTimeInput extends TextInput
 		$this->setFormat(self::DEFAULT_FORMAT);
 	}
 
+	/**
+	 * @inheritdoc
+	 */
 	public function cleanErrors()
 	{
 		$this->isValidated = FALSE;
 	}
 
+	/**
+	 * @inheritdoc
+	 */
 	public function getValue()
 	{
 		$val = parent::getValue();
@@ -95,6 +106,10 @@ class DateTimeInput extends TextInput
 		}
 	}
 
+
+	/**
+	 * @inheritdoc
+	 */
 	public function validate()
 	{
 		parent::validate();
@@ -103,6 +118,7 @@ class DateTimeInput extends TextInput
 
 	/**
 	 * @return string
+	 * @see DateTimeInput::$format
 	 */
 	public function getFormat()
 	{

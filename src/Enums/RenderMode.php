@@ -10,7 +10,7 @@ namespace Czubehead\BootstrapForms\Enums;
 
 /**
  * Class RenderMode
- * Defines the mode BootstrapRenderer works
+ * Defines the mode BootstrapRenderer works in.
  * @package Nette\Forms\Rendering
  * @see     BootstrapRenderer
  */

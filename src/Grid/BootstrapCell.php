@@ -82,7 +82,8 @@ class BootstrapCell
 	}
 
 	/**
-	 * @return int
+	 * @return int|false|null
+	 * @see BootstrapCell::$numOfColumns
 	 */
 	public function getNumOfColumns()
 	{

@@ -14,7 +14,7 @@ use Nette\Utils\Html;
 
 /**
  * Trait StandardValidationTrait.
- * Standard way to implement
+ * Standard way to implement control validation.
  * @package Czubehead\BootstrapForms\Traits
  */
 trait StandardValidationTrait

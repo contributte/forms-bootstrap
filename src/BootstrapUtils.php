@@ -10,6 +10,10 @@ namespace Czubehead\BootstrapForms;
 use Nette\Utils\Html;
 
 
+/**
+ * Class BootstrapUtils. Utils for this library.
+ * @package Czubehead\BootstrapForms
+ */
 class BootstrapUtils
 {
 	/**

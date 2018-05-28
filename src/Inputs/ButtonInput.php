@@ -17,7 +17,7 @@ use Nette\Utils\Html;
 
 /**
  * Class ButtonInput.
- * Returns &lt;button&gt; whose content can be set as caption.
+ * Returns &lt;button&gt; whose content can be set as caption. This is not a submit button.
  * @package Czubehead\BootstrapForms
  * @property string $btnClass
  */
@@ -35,6 +35,7 @@ class ButtonInput extends Button
 	}
 
 	/**
+	 * Control HTML
 	 * @param null|string|Html $content
 	 * @return Html
 	 */

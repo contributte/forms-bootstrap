@@ -14,6 +14,11 @@ use Nette\InvalidArgumentException;
 use Nette\Utils\Html;
 
 
+/**
+ * Trait ChoiceInputTrait.
+ * Provides basic functionality for inputs where one of more than one predefined values are possible.
+ * @package Czubehead\BootstrapForms\Traits
+ */
 trait ChoiceInputTrait
 {
 	/**

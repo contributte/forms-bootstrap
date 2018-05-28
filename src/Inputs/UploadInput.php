@@ -17,9 +17,9 @@ use Nette\Utils\Html;
 
 
 /**
- * Class UploadInput
+ * Class UploadInput. Single or multi upload of files.
  * @package Czubehead\BootstrapForms\Inputs
- * @property string $buttonCaption the text on the left part of the button
+ * @property string $buttonCaption the text on the left part of the button, NOT label.
  */
 class UploadInput extends UploadControl implements IValidationInput
 {
@@ -30,6 +30,7 @@ class UploadInput extends UploadControl implements IValidationInput
 
 	/**
 	 * @return string
+	 * @see UploadInput::$buttonCaption
 	 */
 	public function getButtonCaption()
 	{
@@ -40,6 +41,7 @@ class UploadInput extends UploadControl implements IValidationInput
 	 * the text on the left part of the button
 	 * @param string $buttonCaption
 	 * @return static
+	 * @see UploadInput::$buttonCaption
 	 */
 	public function setButtonCaption($buttonCaption)
 	{
@@ -48,6 +50,9 @@ class UploadInput extends UploadControl implements IValidationInput
 		return $this;
 	}
 
+	/**
+	 * @inheritdoc
+	 */
 	public function getControl()
 	{
 		$control = parent::getControl();

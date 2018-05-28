@@ -14,7 +14,7 @@ use Nette\Utils\Html;
 
 
 /**
- * Trait BootstrapButtonTrait
+ * Trait BootstrapButtonTrait. Modifies an existing button class such that it returns a bootstrap button.
  * @package Czubehead\BootstrapForms
  * @property string $btnType
  */

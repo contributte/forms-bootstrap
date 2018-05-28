@@ -6,7 +6,11 @@
 
 namespace Czubehead\BootstrapForms\Inputs;
 
-
+/**
+ * Interface IAutocompleteInput.
+ * Inputs which have toggleable autocomplete.
+ * @package Czubehead\BootstrapForms\Inputs
+ */
 interface IAutocompleteInput
 {
 	/**

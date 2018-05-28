@@ -14,6 +14,10 @@ use Czubehead\BootstrapForms\Traits\BootstrapButtonTrait;
 use Nette\Forms\Controls\SubmitButton;
 
 
+/**
+ * Class SubmitButtonInput. Form can be submitted with this.
+ * @package Czubehead\BootstrapForms\Inputs
+ */
 class SubmitButtonInput extends SubmitButton
 {
 	use BootstrapButtonTrait;

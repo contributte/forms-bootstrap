@@ -17,7 +17,8 @@ use Nette\Forms\Controls\SelectBox;
 
 
 /**
- * Class SelectInput
+ * Class SelectInput.
+ * Single select.
  * @package Czubehead\BootstrapForms
  */
 class SelectInput extends SelectBox implements IValidationInput
@@ -37,6 +38,9 @@ class SelectInput extends SelectBox implements IValidationInput
 		$this->setItems($items);
 	}
 
+	/**
+	 * @inheritdoc
+	 */
 	public function getControl()
 	{
 		$select = parent::getControl()->setHtml(NULL);

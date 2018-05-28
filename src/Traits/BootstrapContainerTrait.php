@@ -28,7 +28,8 @@ use Nette\Utils\Html;
 
 
 /**
- * Trait BootstrapContainerTrait
+ * Trait BootstrapContainerTrait.
+ * Implements methods to add inputs.
  * @package Czubehead\BootstrapForms
  */
 trait BootstrapContainerTrait

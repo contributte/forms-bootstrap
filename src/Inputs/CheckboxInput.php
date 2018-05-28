@@ -15,6 +15,10 @@ use Nette\Forms\Controls\Checkbox;
 use Nette\Utils\Html;
 
 
+/**
+ * Class CheckboxInput. Single checkbox.
+ * @package Czubehead\BootstrapForms\Inputs
+ */
 class CheckboxInput extends Checkbox implements IValidationInput
 {
 	use StandardValidationTrait {
@@ -35,7 +39,7 @@ class CheckboxInput extends Checkbox implements IValidationInput
 	}
 
 	/**
-	 * Makes a Bootstrap checkbox
+	 * Makes a Bootstrap checkbox HTML
 	 * @param string      $name
 	 * @param string      $htmlId
 	 * @param string|null $caption

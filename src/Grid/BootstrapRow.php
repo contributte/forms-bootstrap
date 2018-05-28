@@ -132,6 +132,7 @@ class BootstrapRow implements IComponent, IControl
 
 	/**
 	 * @return BootstrapCell[]
+	 * @see BootstrapRow::$cells
 	 */
 	public function getCells()
 	{
@@ -141,6 +142,7 @@ class BootstrapRow implements IComponent, IControl
 	/**
 	 * The container without content
 	 * @return Html
+	 * @see BootstrapRow::$elementPrototype
 	 */
 	public function getElementPrototype()
 	{
@@ -149,6 +151,7 @@ class BootstrapRow implements IComponent, IControl
 
 	/**
 	 * @return string
+	 * @see BootstrapRow::$gridBreakPoint
 	 */
 	public function getGridBreakPoint()
 	{
@@ -206,15 +209,6 @@ class BootstrapRow implements IComponent, IControl
 	{
 		return isset($this->options[ $option ]) ? $this->options[ $option ] : $default;
 	}
-
-	/**
-	 * @return string[]
-	 */
-	public function getOwnedNames()
-	{
-		return $this->ownedNames;
-	}
-
 
 	/**
 	 * Renders the row into a Html object

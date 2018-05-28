@@ -7,10 +7,17 @@
 namespace Czubehead\BootstrapForms\Enums;
 
 
+use Czubehead\BootstrapForms\BootstrapRenderer;
 use Czubehead\BootstrapForms\Grid\BootstrapCell;
 use Czubehead\BootstrapForms\Grid\BootstrapRow;
 
 
+/**
+ * Class RendererConfig.
+ * An enum of possible BootstrapRenderer configuration options.
+ * @package Czubehead\BootstrapForms\Enums
+ * @see     BootstrapRenderer
+ */
 class RendererConfig
 {
 	/**

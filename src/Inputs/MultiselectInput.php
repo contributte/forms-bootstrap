@@ -16,6 +16,11 @@ use Czubehead\BootstrapForms\Traits\StandardValidationTrait;
 use Nette\Forms\Controls\MultiSelectBox;
 
 
+/**
+ * Class MultiselectInput.
+ * Selectbox where multiple options can be selected.
+ * @package Czubehead\BootstrapForms\Inputs
+ */
 class MultiselectInput extends MultiSelectBox implements IValidationInput
 {
 	use ChoiceInputTrait;
@@ -28,6 +33,9 @@ class MultiselectInput extends MultiSelectBox implements IValidationInput
 		$this->setItems($items);
 	}
 
+	/**
+	 * @inheritdoc
+	 */
 	public function getControl()
 	{
 		$select = parent::getControl()->setHtml(NULL);
