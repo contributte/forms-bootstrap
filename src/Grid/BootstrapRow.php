@@ -21,7 +21,7 @@ use Nette\Utils\Html;
  * Represents a row in Bootstrap grid system.
  * @package Czubehead\BootstrapForms\Grid
  * @property string               $gridBreakPoint   Bootstrap breakpoint - usually xs, sm, md, lg. sm by
- *           default.
+ *           default. Use NULL for no breakpoint.
  * @property-read string[]        $ownedNames       list of names of components which were added to this row
  * @property-read BootstrapCell[] $cells            cells in this row
  * @property-read Html            $elementPrototype the Html div that will be rendered. You may define
@@ -156,8 +156,9 @@ class BootstrapRow implements IComponent, IControl
 	}
 
 	/**
-	 * Sets the xs, sm, md, lg part
-	 * @param string $gridBreakPoint
+	 * Sets the xs, sm, md, lg part.
+	 * @see BootstrapRow::$gridBreakPoint
+	 * @param string $gridBreakPoint . NULL for no breakpoint.
 	 * @return BootstrapRow
 	 */
 	public function setGridBreakPoint($gridBreakPoint)

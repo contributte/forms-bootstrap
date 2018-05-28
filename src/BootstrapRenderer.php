@@ -23,7 +23,8 @@ use Nette\Utils\Html;
 /**
  * Converts a Form into Bootstrap 4 HTML output.
  * @property int        $mode
- * @property string     $gridBreakPoint    Bootstrap grid breakpoint for side-by-side view. Default is 'sm'
+ * @property string     $gridBreakPoint    Bootstrap grid breakpoint for side-by-side view. Default is 'sm'.
+ *           NULL means not to use a breakpoint
  * @property-read array $config
  * @property-read array $configOverride
  */
@@ -213,8 +214,13 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 
 	public function getConfigOverride()
 	{
-		$labelColClass = "col-{$this->gridBreakPoint}-{$this->labelColumns}";
-		$nonLabelColClass = "col-{$this->gridBreakPoint}-{$this->controlColumns}";
+		if ($this->gridBreakPoint != NULL) {
+			$labelColClass = "col-{$this->gridBreakPoint}-{$this->labelColumns}";
+			$nonLabelColClass = "col-{$this->gridBreakPoint}-{$this->controlColumns}";
+		} else {
+			$labelColClass = "col-{$this->labelColumns}";
+			$nonLabelColClass = "col-{$this->controlColumns}";
+		}
 
 		return [
 			RenderMode::Inline         => [
@@ -226,13 +232,13 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 				],
 			],
 			RenderMode::SideBySideMode => [
-				Cnf::pair                => [
+				Cnf::pair     => [
 					Cnf::classAdd => 'row',
 				],
-				Cnf::label               => [
+				Cnf::label    => [
 					Cnf::classAdd => $labelColClass,
 				],
-				Cnf::nonLabel            => [
+				Cnf::nonLabel => [
 					Cnf::elementName => 'div',
 					Cnf::classSet    => $nonLabelColClass,
 				],
@@ -251,7 +257,7 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 	}
 
 	/**
-	 * @param string $gridBreakPoint
+	 * @param string $gridBreakPoint null for none
 	 * @return BootstrapRenderer
 	 */
 	public function setGridBreakPoint($gridBreakPoint)

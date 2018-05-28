@@ -141,7 +141,12 @@ class BootstrapCell
 		} elseif ($cols === self::COLUMNS_AUTO) {
 			return 'col-auto';
 		} else {
-			return 'col-' . $this->row->gridBreakPoint . '-' . $this->numOfColumns;
+			// number
+			if ($this->row->gridBreakPoint != NULL) {
+				return 'col-' . $this->row->gridBreakPoint . '-' . $this->numOfColumns;
+			} else {
+				return 'col-' . $this->numOfColumns;
+			}
 		}
 	}
 }
