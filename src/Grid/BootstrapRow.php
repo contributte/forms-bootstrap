@@ -103,7 +103,7 @@ class BootstrapRow implements IComponent, IControl
 	 * @param int $numOfColumns Number of grid columns to use up
 	 * @return BootstrapCell the cell added.
 	 */
-	public function addCell($numOfColumns)
+	public function addCell($numOfColumns = BootstrapCell::COLUMNS_NONE)
 	{
 		if ($this->columnsOccupied + $numOfColumns > $this->numOfColumns) {
 			throw new InvalidArgumentException(

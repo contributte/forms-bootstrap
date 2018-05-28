@@ -33,6 +33,14 @@ class BootstrapCell
 	use BootstrapContainerTrait;
 
 	/**
+	 * Only use 'col' class (auto stretch)
+	 */
+	const COLUMNS_NONE = FALSE;
+	/**
+	 * Use 'col-auto'
+	 */
+	const COLUMNS_AUTO = NULL;
+	/**
 	 * @var int
 	 */
 	private $numOfColumns;
@@ -51,8 +59,9 @@ class BootstrapCell
 
 	/**
 	 * BootstrapRow constructor.
-	 * @param BootstrapRow $row          Row this is a child of
-	 * @param int          $numOfColumns Number of Bootstrap columns to occupy
+	 * @param BootstrapRow   $row          Row this is a child of
+	 * @param int|null|false $numOfColumns Number of Bootstrap columns to occupy. You can use an integer or
+	 *                                     BootstrapCell::COLUMNS_* constant (see their docs for more)
 	 */
 	public function __construct(BootstrapRow $row, $numOfColumns)
 	{
@@ -89,7 +98,7 @@ class BootstrapCell
 		$element = $this->elementPrototype;
 
 		BootstrapUtils::standardizeClass($element);
-		$element->class[] = 'col-' . $this->row->gridBreakPoint . '-' . $this->numOfColumns;
+		$element->class[] = $this->createClass();
 
 		if ($this->childControl) {
 			/** @noinspection PhpUndefinedFieldInspection */
@@ -118,5 +127,21 @@ class BootstrapCell
 		/** @noinspection PhpInternalEntityUsedInspection */
 		$this->row->addComponent($component, $name, $insertBefore);
 		$this->childControl = $component;
+	}
+
+	/**
+	 * Creates column class based on numOfColumns
+	 * @return string
+	 */
+	protected function createClass()
+	{
+		$cols = $this->numOfColumns;
+		if ($cols === self::COLUMNS_NONE) {
+			return 'col';
+		} elseif ($cols === self::COLUMNS_AUTO) {
+			return 'col-auto';
+		} else {
+			return 'col-' . $this->row->gridBreakPoint . '-' . $this->numOfColumns;
+		}
 	}
 }

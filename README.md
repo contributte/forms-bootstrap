@@ -137,8 +137,6 @@ The renderer is enhanced by the following API:
 
 ### Grid
 
-*This may be buggy*
-
 The library provides a way to programmatically place controls into Bootstrap grid and thus
 greatly reduces the need for manual rendering.
 
@@ -155,11 +153,11 @@ And firstname and surname will be beside each other.
 
 #### Notes
 
-- It is recommended to use grid with vertical mode, side-by-side looks weird and probably is buggy
 - By calling `getElementPrototype()` on row or cell, you can influence the elements of row / cell
 - A cell can only hold one control (or none)
-- If your grid system does not have 12 columns, you may adjust it by setting property 
-`Czubehead\BootstrapForms\Grid\BootstrapRow::$numOfColumns`
+- You are not limited to numerical column specification. 
+Also check out `\Czubehead\BootstrapForms\Grid\BootstrapCell::COLUMNS_NONE` 
+and `\Czubehead\BootstrapForms\Grid\BootstrapCell::COLUMNS_AUTO`
 
 # Assisted manual rendering
 
