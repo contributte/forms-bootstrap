@@ -212,5 +212,6 @@ That will result in
 ------
 
 - Made by [czubehead](https://petrcech.eu)
+- [API documentation](https://czubehead.github.io/bootstrap-4-forms/)
 - [Componette link](https://componette.com/czubehead/bootstrap-4-forms/)
 - [Packagist link](https://packagist.org/packages/czubehead/bootstrap-4-forms)
