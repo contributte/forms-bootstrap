@@ -1,0 +1,1804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="robots" content="index, follow, all"/>
+    <title>Czubehead\BootstrapForms\Grid\BootstrapCell | Nette Boostrap 4 forms api</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/sami.css">
+    <script src="../../../js/jquery-1.11.1.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/typeahead.min.js"></script>
+    <script src="../../../sami.js"></script>
+    <meta name="MobileOptimized" content="width">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+
+</head>
+
+<body id="class" data-name="class:Czubehead_BootstrapForms_Grid_BootstrapCell" data-root-path="../../../">
+<div id="content">
+    <div id="left-column">
+        <div id="control-panel">
+            <script>
+                $('option[data-version="' + window.projectVersion + '"]').prop('selected', true);
+            </script>
+            <form id="search-form" action="../../../search.html" method="GET">
+                <span class="glyphicon glyphicon-search"></span>
+                <input name="search"
+                       class="typeahead form-control"
+                       type="search"
+                       placeholder="Search">
+            </form>
+        </div>
+        
+        <div id="api-tree"></div>
+    
+    </div>
+    <div id="right-column">
+        <nav id="site-nav" class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../../../index.html">Nette Boostrap 4 forms api</a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-elements">
+                    <ul class="nav navbar-nav">
+                        <li><a href="../../../classes.html">Classes</a></li>
+                        <li><a href="../../../namespaces.html">Namespaces</a></li>
+                        <li><a href="../../../interfaces.html">Interfaces</a></li>
+                        <li><a href="../../../traits.html">Traits</a></li>
+                        <li><a href="../../../doc-index.html">Index</a></li>
+                        <li><a href="../../../search.html">Search</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                <li><a href="../../../Czubehead.html">Czubehead</a></li>
+                <li class="backslash">\</li>
+                <li><a href="../../../Czubehead/BootstrapForms.html">BootstrapForms</a></li>
+                <li class="backslash">\</li>
+                <li><a href="../../../Czubehead/BootstrapForms/Grid.html">Grid</a></li>
+                <li class="backslash">\</li>
+                <li>BootstrapCell</li>
+            </ol>
+        </div>
+        <div id="page-content">
+            
+            <div class="page-header">
+                <h1>
+                    BootstrapCell
+                
+                </h1>
+            </div>
+            
+            <p> class
+                <strong>BootstrapCell</strong>
+            </p>
+            
+            
+            <div class="description">
+                <p>Class BootstrapCell.</p>
+                <p>Represents a row-column pair = table cell in Bootstrap grid system. This is the part with col-
+                    <em>-</em>
+                   class.
+                   Only one component can be present.
+                </p>
+            </div>
+            
+            <h2>Traits</h2>
+            
+            
+            <div class="container-fluid underlined">
+                <div class="row">
+                    <div class="col-md-6">
+                        <abbr title="Nette\SmartObject">SmartObject</abbr>
+                    
+                    </div>
+                    <div class="col-md-6">
+                    
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <a href="../../../Czubehead/BootstrapForms/Traits/BootstrapContainerTrait.html">
+                            <abbr title="Czubehead\BootstrapForms\Traits\BootstrapContainerTrait">
+                                BootstrapContainerTrait
+                            </abbr>
+                        </a>
+                    
+                    </div>
+                    <div class="col-md-6">
+                        Trait BootstrapContainerTrait.
+                    </div>
+                </div>
+            </div>
+            
+            <h2>Constants</h2>
+            
+            <table class="table table-condensed">
+                <tr>
+                    <td>COLUMNS_NONE</td>
+                    <td class="last">
+                        <p>
+                            <em>Only use 'col' class (auto stretch)</em>
+                        </p>
+                        <p></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>COLUMNS_AUTO</td>
+                    <td class="last">
+                        <p>
+                            <em>Use 'col-auto'</em>
+                        </p>
+                        <p></p>
+                    </td>
+                </tr>
+            </table>
+            
+            
+            <h2>Methods</h2>
+            
+            <div class="container-fluid underlined">
+                <div class="row">
+                    <div class="col-md-2 type">
+                        <a href="../../../Czubehead/BootstrapForms/Inputs/ButtonInput.html">
+                            <abbr title="Czubehead\BootstrapForms\Inputs\ButtonInput">ButtonInput</abbr>
+                        </a>
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_addButton">addButton</a>(string $name, null|string|
+                        <abbr title="Nette\Utils\Html">Html</abbr>
+                                                                 $content = NULL, string $btnClass = &#039;btn-secondary&#039;)
+                        
+                        <p class="no-description">No description</p>
+                    </div>
+                    <div class="col-md-2">
+                        <small>from&nbsp;<a href="../../../Czubehead/BootstrapForms/Traits/BootstrapContainerTrait.html#method_addButton">
+                            <abbr title="Czubehead\BootstrapForms\Traits\BootstrapContainerTrait">
+                                BootstrapContainerTrait
+                            </abbr>
+                        </a>
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        <a href="../../../Czubehead/BootstrapForms/Inputs/CheckboxInput.html">
+                            <abbr title="Czubehead\BootstrapForms\Inputs\CheckboxInput">CheckboxInput</abbr>
+                        </a>
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_addCheckbox">addCheckbox</a>(string $name, null $caption = NULL)
+                        
+                        <p class="no-description">No description</p>
+                    </div>
+                    <div class="col-md-2">
+                        <small>from&nbsp;<a href="../../../Czubehead/BootstrapForms/Traits/BootstrapContainerTrait.html#method_addCheckbox">
+                            <abbr title="Czubehead\BootstrapForms\Traits\BootstrapContainerTrait">
+                                BootstrapContainerTrait
+                            </abbr>
+                        </a>
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        <a href="../../../Czubehead/BootstrapForms/Inputs/CheckboxListInput.html">
+                            <abbr title="Czubehead\BootstrapForms\Inputs\CheckboxListInput">CheckboxListInput</abbr>
+                        </a>
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_addCheckboxList">addCheckboxList</a>(string $name, null $label = NULL, array
+                                                                             $items = NULL)
+                        
+                        <p class="no-description">No description</p>
+                    </div>
+                    <div class="col-md-2">
+                        <small>from&nbsp;<a href="../../../Czubehead/BootstrapForms/Traits/BootstrapContainerTrait.html#method_addCheckboxList">
+                            <abbr title="Czubehead\BootstrapForms\Traits\BootstrapContainerTrait">
+                                BootstrapContainerTrait
+                            </abbr>
+                        </a>
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                    
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_addComponent">addComponent</a>(
+                        <abbr title="Nette\ComponentModel\IComponent">IComponent</abbr>
+                                                                       $component, $name, null $insertBefore = NULL)
+                        
+                        <p>Delegate to underlying component.</p></div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        <a href="../../../Czubehead/BootstrapForms/BootstrapContainer.html">
+                            <abbr title="Czubehead\BootstrapForms\BootstrapContainer">BootstrapContainer</abbr>
+                        </a>
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_addContainer">addContainer</a>(string $name)
+                        
+                        <p class="no-description">No description</p>
+                    </div>
+                    <div class="col-md-2">
+                        <small>from&nbsp;<a href="../../../Czubehead/BootstrapForms/Traits/BootstrapContainerTrait.html#method_addContainer">
+                            <abbr title="Czubehead\BootstrapForms\Traits\BootstrapContainerTrait">
+                                BootstrapContainerTrait
+                            </abbr>
+                        </a>
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        <a href="../../../Czubehead/BootstrapForms/Inputs/DateTimeInput.html">
+                            <abbr title="Czubehead\BootstrapForms\Inputs\DateTimeInput">DateTimeInput</abbr>
+                        </a>
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_addDateTime">addDateTime</a>(string $name, string $label)
+                        
+                        <p>Adds a datetime input.</p></div>
+                    <div class="col-md-2">
+                        <small>from&nbsp;<a href="../../../Czubehead/BootstrapForms/Traits/BootstrapContainerTrait.html#method_addDateTime">
+                            <abbr title="Czubehead\BootstrapForms\Traits\BootstrapContainerTrait">
+                                BootstrapContainerTrait
+                            </abbr>
+                        </a>
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        <a href="../../../Czubehead/BootstrapForms/Inputs/TextInput.html">
+                            <abbr title="Czubehead\BootstrapForms\Inputs\TextInput">TextInput</abbr>
+                        </a>
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_addEmail">addEmail</a>($name, null $label = NULL)
+                        
+                        <p class="no-description">No description</p>
+                    </div>
+                    <div class="col-md-2">
+                        <small>from&nbsp;<a href="../../../Czubehead/BootstrapForms/Traits/BootstrapContainerTrait.html#method_addEmail">
+                            <abbr title="Czubehead\BootstrapForms\Traits\BootstrapContainerTrait">
+                                BootstrapContainerTrait
+                            </abbr>
+                        </a>
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                    
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_addInputError">addInputError</a>(string $componentName, string $message)
+                        
+                        <p>Adds error to a specific component</p></div>
+                    <div class="col-md-2">
+                        <small>from&nbsp;<a href="../../../Czubehead/BootstrapForms/Traits/BootstrapContainerTrait.html#method_addInputError">
+                            <abbr title="Czubehead\BootstrapForms\Traits\BootstrapContainerTrait">
+                                BootstrapContainerTrait
+                            </abbr>
+                        </a>
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        <a href="../../../Czubehead/BootstrapForms/Inputs/TextInput.html">
+                            <abbr title="Czubehead\BootstrapForms\Inputs\TextInput">TextInput</abbr>
+                        </a>
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_addInteger">addInteger</a>(string $name, string $label = NULL)
+                        
+                        <p class="no-description">No description</p>
+                    </div>
+                    <div class="col-md-2">
+                        <small>from&nbsp;<a href="../../../Czubehead/BootstrapForms/Traits/BootstrapContainerTrait.html#method_addInteger">
+                            <abbr title="Czubehead\BootstrapForms\Traits\BootstrapContainerTrait">
+                                BootstrapContainerTrait
+                            </abbr>
+                        </a>
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        <a href="../../../Czubehead/BootstrapForms/Inputs/MultiselectInput.html">
+                            <abbr title="Czubehead\BootstrapForms\Inputs\MultiselectInput">MultiselectInput</abbr>
+                        </a>
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_addMultiSelect">addMultiSelect</a>(string $name, null $label = NULL, array
+                                                                           $items = NULL, null $size = NULL)
+                        
+                        <p class="no-description">No description</p>
+                    </div>
+                    <div class="col-md-2">
+                        <small>from&nbsp;<a href="../../../Czubehead/BootstrapForms/Traits/BootstrapContainerTrait.html#method_addMultiSelect">
+                            <abbr title="Czubehead\BootstrapForms\Traits\BootstrapContainerTrait">
+                                BootstrapContainerTrait
+                            </abbr>
+                        </a>
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        <a href="../../../Czubehead/BootstrapForms/Inputs/UploadInput.html">
+                            <abbr title="Czubehead\BootstrapForms\Inputs\UploadInput">UploadInput</abbr>
+                        </a>
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_addMultiUpload">addMultiUpload</a>(string $name, string $label = NULL)
+                        
+                        <p class="no-description">No description</p>
+                    </div>
+                    <div class="col-md-2">
+                        <small>from&nbsp;<a href="../../../Czubehead/BootstrapForms/Traits/BootstrapContainerTrait.html#method_addMultiUpload">
+                            <abbr title="Czubehead\BootstrapForms\Traits\BootstrapContainerTrait">
+                                BootstrapContainerTrait
+                            </abbr>
+                        </a>
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        <a href="../../../Czubehead/BootstrapForms/Inputs/TextInput.html">
+                            <abbr title="Czubehead\BootstrapForms\Inputs\TextInput">TextInput</abbr>
+                        </a>
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_addPassword">addPassword</a>(string $name, string $label = NULL, null $cols =
+                                                                     NULL, null $maxLength = NULL)
+                        
+                        <p class="no-description">No description</p>
+                    </div>
+                    <div class="col-md-2">
+                        <small>from&nbsp;<a href="../../../Czubehead/BootstrapForms/Traits/BootstrapContainerTrait.html#method_addPassword">
+                            <abbr title="Czubehead\BootstrapForms\Traits\BootstrapContainerTrait">
+                                BootstrapContainerTrait
+                            </abbr>
+                        </a>
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                    
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_addRadioList">addRadioList</a>($name, $label = NULL, array $items = NULL)
+                        
+                        <p class="no-description">No description</p>
+                    </div>
+                    <div class="col-md-2">
+                        <small>from&nbsp;<a href="../../../Czubehead/BootstrapForms/Traits/BootstrapContainerTrait.html#method_addRadioList">
+                            <abbr title="Czubehead\BootstrapForms\Traits\BootstrapContainerTrait">
+                                BootstrapContainerTrait
+                            </abbr>
+                        </a>
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        <a href="../../../Czubehead/BootstrapForms/Inputs/SelectInput.html">
+                            <abbr title="Czubehead\BootstrapForms\Inputs\SelectInput">SelectInput</abbr>
+                        </a>
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_addSelect">addSelect</a>(string $name, string $label = NULL, array $items =
+                                                                 NULL, null $size = NULL)
+                        
+                        <p class="no-description">No description</p>
+                    </div>
+                    <div class="col-md-2">
+                        <small>from&nbsp;<a href="../../../Czubehead/BootstrapForms/Traits/BootstrapContainerTrait.html#method_addSelect">
+                            <abbr title="Czubehead\BootstrapForms\Traits\BootstrapContainerTrait">
+                                BootstrapContainerTrait
+                            </abbr>
+                        </a>
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        <a href="../../../Czubehead/BootstrapForms/Inputs/SubmitButtonInput.html">
+                            <abbr title="Czubehead\BootstrapForms\Inputs\SubmitButtonInput">SubmitButtonInput</abbr>
+                        </a>
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_addSubmit">addSubmit</a>(string $name, string $caption = NULL, string $btnClass
+                                                                 = &#039;btn-primary&#039;)
+                        
+                        <p class="no-description">No description</p>
+                    </div>
+                    <div class="col-md-2">
+                        <small>from&nbsp;<a href="../../../Czubehead/BootstrapForms/Traits/BootstrapContainerTrait.html#method_addSubmit">
+                            <abbr title="Czubehead\BootstrapForms\Traits\BootstrapContainerTrait">
+                                BootstrapContainerTrait
+                            </abbr>
+                        </a>
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        <a href="../../../Czubehead/BootstrapForms/Inputs/TextInput.html">
+                            <abbr title="Czubehead\BootstrapForms\Inputs\TextInput">TextInput</abbr>
+                        </a>
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_addText">addText</a>(string $name, string $label = NULL, null $cols = NULL,
+                                                             null $maxLength = NULL)
+                        
+                        <p class="no-description">No description</p>
+                    </div>
+                    <div class="col-md-2">
+                        <small>from&nbsp;<a href="../../../Czubehead/BootstrapForms/Traits/BootstrapContainerTrait.html#method_addText">
+                            <abbr title="Czubehead\BootstrapForms\Traits\BootstrapContainerTrait">
+                                BootstrapContainerTrait
+                            </abbr>
+                        </a>
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        <a href="../../../Czubehead/BootstrapForms/Inputs/TextAreaInput.html">
+                            <abbr title="Czubehead\BootstrapForms\Inputs\TextAreaInput">TextAreaInput</abbr>
+                        </a>
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_addTextArea">addTextArea</a>(string $name, string $label = NULL, null $cols =
+                                                                     NULL, null $rows = NULL)
+                        
+                        <p class="no-description">No description</p>
+                    </div>
+                    <div class="col-md-2">
+                        <small>from&nbsp;<a href="../../../Czubehead/BootstrapForms/Traits/BootstrapContainerTrait.html#method_addTextArea">
+                            <abbr title="Czubehead\BootstrapForms\Traits\BootstrapContainerTrait">
+                                BootstrapContainerTrait
+                            </abbr>
+                        </a>
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        <a href="../../../Czubehead/BootstrapForms/Inputs/UploadInput.html">
+                            <abbr title="Czubehead\BootstrapForms\Inputs\UploadInput">UploadInput</abbr>
+                        </a>
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_addUpload">addUpload</a>(string $name, string $label = NULL, bool $multiple =
+                                                                 FALSE)
+                        
+                        <p class="no-description">No description</p>
+                    </div>
+                    <div class="col-md-2">
+                        <small>from&nbsp;<a href="../../../Czubehead/BootstrapForms/Traits/BootstrapContainerTrait.html#method_addUpload">
+                            <abbr title="Czubehead\BootstrapForms\Traits\BootstrapContainerTrait">
+                                BootstrapContainerTrait
+                            </abbr>
+                        </a>
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                    
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method___construct">__construct</a>(
+                        <a href="../../../Czubehead/BootstrapForms/Grid/BootstrapRow.html">
+                            <abbr title="Czubehead\BootstrapForms\Grid\BootstrapRow">BootstrapRow</abbr>
+                        </a>
+                                                                     $row, int|null|
+                        <abbr title="Czubehead\BootstrapForms\Grid\false">false</abbr>
+                                                                     $numOfColumns)
+                        
+                        <p>BootstrapRow constructor.</p></div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        <abbr title="Nette\Utils\Html">Html</abbr>
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_getElementPrototype">getElementPrototype</a>()
+                        
+                        <p>Gets the prototype of this cell so you can define additional attributes. Col-* class is added
+                           during
+                           rendering and is not present, so don't add it.</p></div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        int|
+                        <abbr title="Czubehead\BootstrapForms\Grid\false">false</abbr>
+                        |null
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_getNumOfColumns">getNumOfColumns</a>()
+                        
+                        <p class="no-description">No description</p>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        <abbr title="Nette\Utils\Html">Html</abbr>
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_render">render</a>()
+                        
+                        <p>Renders the cell into Html object</p></div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        string
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_createClass">createClass</a>()
+                        
+                        <p>Creates column class based on numOfColumns</p></div>
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+            
+            
+            <h2>Details</h2>
+            
+            <div id="method-details">
+                <div class="method-item">
+                    <h3 id="method_addButton">
+                        <div class="location">in
+                            <a href="../../../Czubehead/BootstrapForms/Traits/BootstrapContainerTrait.html#method_addButton">
+                                <abbr title="Czubehead\BootstrapForms\Traits\BootstrapContainerTrait">
+                                    BootstrapContainerTrait
+                                </abbr>
+                            </a>
+                                              at line 43
+                        </div>
+                        <code>
+                            <a href="../../../Czubehead/BootstrapForms/Inputs/ButtonInput.html">
+                                <abbr title="Czubehead\BootstrapForms\Inputs\ButtonInput">ButtonInput</abbr>
+                            </a>
+                            <strong>addButton</strong>(string $name, null|string|
+                            <abbr title="Nette\Utils\Html">Html</abbr>
+                                                      $content = NULL, string $btnClass = &#039;btn-secondary&#039;)
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="tags">
+                            <h4>Parameters</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>string</td>
+                                    <td>$name</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>null|string|
+                                        <abbr title="Nette\Utils\Html">Html</abbr>
+                                    </td>
+                                    <td>$content</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>string</td>
+                                    <td>$btnClass</td>
+                                    <td>secondary button class (primary is 'btn')</td>
+                                </tr>
+                            </table>
+                            
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>
+                                        <a href="../../../Czubehead/BootstrapForms/Inputs/ButtonInput.html">
+                                            <abbr title="Czubehead\BootstrapForms\Inputs\ButtonInput">ButtonInput</abbr>
+                                        </a>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_addCheckbox">
+                        <div class="location">in
+                            <a href="../../../Czubehead/BootstrapForms/Traits/BootstrapContainerTrait.html#method_addCheckbox">
+                                <abbr title="Czubehead\BootstrapForms\Traits\BootstrapContainerTrait">
+                                    BootstrapContainerTrait
+                                </abbr>
+                            </a>
+                                              at line 57
+                        </div>
+                        <code>
+                            <a href="../../../Czubehead/BootstrapForms/Inputs/CheckboxInput.html">
+                                <abbr title="Czubehead\BootstrapForms\Inputs\CheckboxInput">CheckboxInput</abbr>
+                            </a>
+                            <strong>addCheckbox</strong>(string $name, null $caption = NULL)
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="tags">
+                            <h4>Parameters</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>string</td>
+                                    <td>$name</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>null</td>
+                                    <td>$caption</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                            
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>
+                                        <a href="../../../Czubehead/BootstrapForms/Inputs/CheckboxInput.html">
+                                            <abbr title="Czubehead\BootstrapForms\Inputs\CheckboxInput">CheckboxInput
+                                            </abbr>
+                                        </a>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_addCheckboxList">
+                        <div class="location">in
+                            <a href="../../../Czubehead/BootstrapForms/Traits/BootstrapContainerTrait.html#method_addCheckboxList">
+                                <abbr title="Czubehead\BootstrapForms\Traits\BootstrapContainerTrait">
+                                    BootstrapContainerTrait
+                                </abbr>
+                            </a>
+                                              at line 71
+                        </div>
+                        <code>
+                            <a href="../../../Czubehead/BootstrapForms/Inputs/CheckboxListInput.html">
+                                <abbr title="Czubehead\BootstrapForms\Inputs\CheckboxListInput">CheckboxListInput</abbr>
+                            </a>
+                            <strong>addCheckboxList</strong>(string $name, null $label = NULL, array $items = NULL)
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="tags">
+                            <h4>Parameters</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>string</td>
+                                    <td>$name</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>null</td>
+                                    <td>$label</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>array</td>
+                                    <td>$items</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                            
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>
+                                        <a href="../../../Czubehead/BootstrapForms/Inputs/CheckboxListInput.html">
+                                            <abbr title="Czubehead\BootstrapForms\Inputs\CheckboxListInput">
+                                                CheckboxListInput
+                                            </abbr>
+                                        </a>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_addComponent">
+                        <div class="location">at line 120</div>
+                        <code> protected
+                            <strong>addComponent</strong>(
+                            <abbr title="Nette\ComponentModel\IComponent">IComponent</abbr>
+                               $component, $name, null $insertBefore = NULL)
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="method-description">
+                            <p>Delegate to underlying component.</p></div>
+                        <div class="tags">
+                            <h4>Parameters</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>
+                                        <abbr title="Nette\ComponentModel\IComponent">IComponent</abbr>
+                                    </td>
+                                    <td>$component</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>$name</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>null</td>
+                                    <td>$insertBefore</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_addContainer">
+                        <div class="location">in
+                            <a href="../../../Czubehead/BootstrapForms/Traits/BootstrapContainerTrait.html#method_addContainer">
+                                <abbr title="Czubehead\BootstrapForms\Traits\BootstrapContainerTrait">
+                                    BootstrapContainerTrait
+                                </abbr>
+                            </a>
+                                              at line 85
+                        </div>
+                        <code>
+                            <a href="../../../Czubehead/BootstrapForms/BootstrapContainer.html">
+                                <abbr title="Czubehead\BootstrapForms\BootstrapContainer">BootstrapContainer</abbr>
+                            </a>
+                            <strong>addContainer</strong>(string $name)
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="tags">
+                            <h4>Parameters</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>string</td>
+                                    <td>$name</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                            
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>
+                                        <a href="../../../Czubehead/BootstrapForms/BootstrapContainer.html">
+                                            <abbr title="Czubehead\BootstrapForms\BootstrapContainer">
+                                                BootstrapContainer
+                                            </abbr>
+                                        </a>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_addDateTime">
+                        <div class="location">in
+                            <a href="../../../Czubehead/BootstrapForms/Traits/BootstrapContainerTrait.html#method_addDateTime">
+                                <abbr title="Czubehead\BootstrapForms\Traits\BootstrapContainerTrait">
+                                    BootstrapContainerTrait
+                                </abbr>
+                            </a>
+                                              at line 103
+                        </div>
+                        <code>
+                            <a href="../../../Czubehead/BootstrapForms/Inputs/DateTimeInput.html">
+                                <abbr title="Czubehead\BootstrapForms\Inputs\DateTimeInput">DateTimeInput</abbr>
+                            </a>
+                            <strong>addDateTime</strong>(string $name, string $label)
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="method-description">
+                            <p>Adds a datetime input.</p></div>
+                        <div class="tags">
+                            <h4>Parameters</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>string</td>
+                                    <td>$name</td>
+                                    <td>name</td>
+                                </tr>
+                                <tr>
+                                    <td>string</td>
+                                    <td>$label</td>
+                                    <td>label</td>
+                                </tr>
+                            </table>
+                            
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>
+                                        <a href="../../../Czubehead/BootstrapForms/Inputs/DateTimeInput.html">
+                                            <abbr title="Czubehead\BootstrapForms\Inputs\DateTimeInput">DateTimeInput
+                                            </abbr>
+                                        </a>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_addEmail">
+                        <div class="location">in
+                            <a href="../../../Czubehead/BootstrapForms/Traits/BootstrapContainerTrait.html#method_addEmail">
+                                <abbr title="Czubehead\BootstrapForms\Traits\BootstrapContainerTrait">
+                                    BootstrapContainerTrait
+                                </abbr>
+                            </a>
+                                              at line 116
+                        </div>
+                        <code>
+                            <a href="../../../Czubehead/BootstrapForms/Inputs/TextInput.html">
+                                <abbr title="Czubehead\BootstrapForms\Inputs\TextInput">TextInput</abbr>
+                            </a>
+                            <strong>addEmail</strong>($name, null $label = NULL)
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="tags">
+                            <h4>Parameters</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td></td>
+                                    <td>$name</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>null</td>
+                                    <td>$label</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                            
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>
+                                        <a href="../../../Czubehead/BootstrapForms/Inputs/TextInput.html">
+                                            <abbr title="Czubehead\BootstrapForms\Inputs\TextInput">TextInput</abbr>
+                                        </a>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_addInputError">
+                        <div class="location">in
+                            <a href="../../../Czubehead/BootstrapForms/Traits/BootstrapContainerTrait.html#method_addInputError">
+                                <abbr title="Czubehead\BootstrapForms\Traits\BootstrapContainerTrait">
+                                    BootstrapContainerTrait
+                                </abbr>
+                            </a>
+                                              at line 127
+                        </div>
+                        <code>
+                            <strong>addInputError</strong>(string $componentName, string $message)
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="method-description">
+                            <p>Adds error to a specific component</p></div>
+                        <div class="tags">
+                            <h4>Parameters</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>string</td>
+                                    <td>$componentName</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>string</td>
+                                    <td>$message</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_addInteger">
+                        <div class="location">in
+                            <a href="../../../Czubehead/BootstrapForms/Traits/BootstrapContainerTrait.html#method_addInteger">
+                                <abbr title="Czubehead\BootstrapForms\Traits\BootstrapContainerTrait">
+                                    BootstrapContainerTrait
+                                </abbr>
+                            </a>
+                                              at line 138
+                        </div>
+                        <code>
+                            <a href="../../../Czubehead/BootstrapForms/Inputs/TextInput.html">
+                                <abbr title="Czubehead\BootstrapForms\Inputs\TextInput">TextInput</abbr>
+                            </a>
+                            <strong>addInteger</strong>(string $name, string $label = NULL)
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="tags">
+                            <h4>Parameters</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>string</td>
+                                    <td>$name</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>string</td>
+                                    <td>$label</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                            
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>
+                                        <a href="../../../Czubehead/BootstrapForms/Inputs/TextInput.html">
+                                            <abbr title="Czubehead\BootstrapForms\Inputs\TextInput">TextInput</abbr>
+                                        </a>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_addMultiSelect">
+                        <div class="location">in
+                            <a href="../../../Czubehead/BootstrapForms/Traits/BootstrapContainerTrait.html#method_addMultiSelect">
+                                <abbr title="Czubehead\BootstrapForms\Traits\BootstrapContainerTrait">
+                                    BootstrapContainerTrait
+                                </abbr>
+                            </a>
+                                              at line 151
+                        </div>
+                        <code>
+                            <a href="../../../Czubehead/BootstrapForms/Inputs/MultiselectInput.html">
+                                <abbr title="Czubehead\BootstrapForms\Inputs\MultiselectInput">MultiselectInput</abbr>
+                            </a>
+                            <strong>addMultiSelect</strong>(string $name, null $label = NULL, array $items = NULL, null
+                                                           $size = NULL)
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="tags">
+                            <h4>Parameters</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>string</td>
+                                    <td>$name</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>null</td>
+                                    <td>$label</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>array</td>
+                                    <td>$items</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>null</td>
+                                    <td>$size</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                            
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>
+                                        <a href="../../../Czubehead/BootstrapForms/Inputs/MultiselectInput.html">
+                                            <abbr title="Czubehead\BootstrapForms\Inputs\MultiselectInput">
+                                                MultiselectInput
+                                            </abbr>
+                                        </a>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_addMultiUpload">
+                        <div class="location">in
+                            <a href="../../../Czubehead/BootstrapForms/Traits/BootstrapContainerTrait.html#method_addMultiUpload">
+                                <abbr title="Czubehead\BootstrapForms\Traits\BootstrapContainerTrait">
+                                    BootstrapContainerTrait
+                                </abbr>
+                            </a>
+                                              at line 167
+                        </div>
+                        <code>
+                            <a href="../../../Czubehead/BootstrapForms/Inputs/UploadInput.html">
+                                <abbr title="Czubehead\BootstrapForms\Inputs\UploadInput">UploadInput</abbr>
+                            </a>
+                            <strong>addMultiUpload</strong>(string $name, string $label = NULL)
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="tags">
+                            <h4>Parameters</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>string</td>
+                                    <td>$name</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>string</td>
+                                    <td>$label</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                            
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>
+                                        <a href="../../../Czubehead/BootstrapForms/Inputs/UploadInput.html">
+                                            <abbr title="Czubehead\BootstrapForms\Inputs\UploadInput">UploadInput</abbr>
+                                        </a>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_addPassword">
+                        <div class="location">in
+                            <a href="../../../Czubehead/BootstrapForms/Traits/BootstrapContainerTrait.html#method_addPassword">
+                                <abbr title="Czubehead\BootstrapForms\Traits\BootstrapContainerTrait">
+                                    BootstrapContainerTrait
+                                </abbr>
+                            </a>
+                                              at line 179
+                        </div>
+                        <code>
+                            <a href="../../../Czubehead/BootstrapForms/Inputs/TextInput.html">
+                                <abbr title="Czubehead\BootstrapForms\Inputs\TextInput">TextInput</abbr>
+                            </a>
+                            <strong>addPassword</strong>(string $name, string $label = NULL, null $cols = NULL, null
+                                                        $maxLength = NULL)
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="tags">
+                            <h4>Parameters</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>string</td>
+                                    <td>$name</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>string</td>
+                                    <td>$label</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>null</td>
+                                    <td>$cols</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>null</td>
+                                    <td>$maxLength</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                            
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>
+                                        <a href="../../../Czubehead/BootstrapForms/Inputs/TextInput.html">
+                                            <abbr title="Czubehead\BootstrapForms\Inputs\TextInput">TextInput</abbr>
+                                        </a>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_addRadioList">
+                        <div class="location">in
+                            <a href="../../../Czubehead/BootstrapForms/Traits/BootstrapContainerTrait.html#method_addRadioList">
+                                <abbr title="Czubehead\BootstrapForms\Traits\BootstrapContainerTrait">
+                                    BootstrapContainerTrait
+                                </abbr>
+                            </a>
+                                              at line 185
+                        </div>
+                        <code>
+                            <strong>addRadioList</strong>($name, $label = NULL, array $items = NULL)
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="tags">
+                            <h4>Parameters</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td></td>
+                                    <td>$name</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>$label</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>array</td>
+                                    <td>$items</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_addSelect">
+                        <div class="location">in
+                            <a href="../../../Czubehead/BootstrapForms/Traits/BootstrapContainerTrait.html#method_addSelect">
+                                <abbr title="Czubehead\BootstrapForms\Traits\BootstrapContainerTrait">
+                                    BootstrapContainerTrait
+                                </abbr>
+                            </a>
+                                              at line 200
+                        </div>
+                        <code>
+                            <a href="../../../Czubehead/BootstrapForms/Inputs/SelectInput.html">
+                                <abbr title="Czubehead\BootstrapForms\Inputs\SelectInput">SelectInput</abbr>
+                            </a>
+                            <strong>addSelect</strong>(string $name, string $label = NULL, array $items = NULL, null
+                                                      $size = NULL)
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="tags">
+                            <h4>Parameters</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>string</td>
+                                    <td>$name</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>string</td>
+                                    <td>$label</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>array</td>
+                                    <td>$items</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>null</td>
+                                    <td>$size</td>
+                                    <td>ignore</td>
+                                </tr>
+                            </table>
+                            
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>
+                                        <a href="../../../Czubehead/BootstrapForms/Inputs/SelectInput.html">
+                                            <abbr title="Czubehead\BootstrapForms\Inputs\SelectInput">SelectInput</abbr>
+                                        </a>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_addSubmit">
+                        <div class="location">in
+                            <a href="../../../Czubehead/BootstrapForms/Traits/BootstrapContainerTrait.html#method_addSubmit">
+                                <abbr title="Czubehead\BootstrapForms\Traits\BootstrapContainerTrait">
+                                    BootstrapContainerTrait
+                                </abbr>
+                            </a>
+                                              at line 217
+                        </div>
+                        <code>
+                            <a href="../../../Czubehead/BootstrapForms/Inputs/SubmitButtonInput.html">
+                                <abbr title="Czubehead\BootstrapForms\Inputs\SubmitButtonInput">SubmitButtonInput</abbr>
+                            </a>
+                            <strong>addSubmit</strong>(string $name, string $caption = NULL, string $btnClass = &#039;btn-primary&#039;)
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="tags">
+                            <h4>Parameters</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>string</td>
+                                    <td>$name</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>string</td>
+                                    <td>$caption</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>string</td>
+                                    <td>$btnClass</td>
+                                    <td>secondary button class (primary is 'btn')</td>
+                                </tr>
+                            </table>
+                            
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>
+                                        <a href="../../../Czubehead/BootstrapForms/Inputs/SubmitButtonInput.html">
+                                            <abbr title="Czubehead\BootstrapForms\Inputs\SubmitButtonInput">
+                                                SubmitButtonInput
+                                            </abbr>
+                                        </a>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_addText">
+                        <div class="location">in
+                            <a href="../../../Czubehead/BootstrapForms/Traits/BootstrapContainerTrait.html#method_addText">
+                                <abbr title="Czubehead\BootstrapForms\Traits\BootstrapContainerTrait">
+                                    BootstrapContainerTrait
+                                </abbr>
+                            </a>
+                                              at line 233
+                        </div>
+                        <code>
+                            <a href="../../../Czubehead/BootstrapForms/Inputs/TextInput.html">
+                                <abbr title="Czubehead\BootstrapForms\Inputs\TextInput">TextInput</abbr>
+                            </a>
+                            <strong>addText</strong>(string $name, string $label = NULL, null $cols = NULL, null
+                                                    $maxLength = NULL)
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="tags">
+                            <h4>Parameters</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>string</td>
+                                    <td>$name</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>string</td>
+                                    <td>$label</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>null</td>
+                                    <td>$cols</td>
+                                    <td>ignored</td>
+                                </tr>
+                                <tr>
+                                    <td>null</td>
+                                    <td>$maxLength</td>
+                                    <td>ignored</td>
+                                </tr>
+                            </table>
+                            
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>
+                                        <a href="../../../Czubehead/BootstrapForms/Inputs/TextInput.html">
+                                            <abbr title="Czubehead\BootstrapForms\Inputs\TextInput">TextInput</abbr>
+                                        </a>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_addTextArea">
+                        <div class="location">in
+                            <a href="../../../Czubehead/BootstrapForms/Traits/BootstrapContainerTrait.html#method_addTextArea">
+                                <abbr title="Czubehead\BootstrapForms\Traits\BootstrapContainerTrait">
+                                    BootstrapContainerTrait
+                                </abbr>
+                            </a>
+                                              at line 254
+                        </div>
+                        <code>
+                            <a href="../../../Czubehead/BootstrapForms/Inputs/TextAreaInput.html">
+                                <abbr title="Czubehead\BootstrapForms\Inputs\TextAreaInput">TextAreaInput</abbr>
+                            </a>
+                            <strong>addTextArea</strong>(string $name, string $label = NULL, null $cols = NULL, null
+                                                        $rows = NULL)
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="tags">
+                            <h4>Parameters</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>string</td>
+                                    <td>$name</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>string</td>
+                                    <td>$label</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>null</td>
+                                    <td>$cols</td>
+                                    <td>ignored</td>
+                                </tr>
+                                <tr>
+                                    <td>null</td>
+                                    <td>$rows</td>
+                                    <td>ignored</td>
+                                </tr>
+                            </table>
+                            
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>
+                                        <a href="../../../Czubehead/BootstrapForms/Inputs/TextAreaInput.html">
+                                            <abbr title="Czubehead\BootstrapForms\Inputs\TextAreaInput">TextAreaInput
+                                            </abbr>
+                                        </a>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_addUpload">
+                        <div class="location">in
+                            <a href="../../../Czubehead/BootstrapForms/Traits/BootstrapContainerTrait.html#method_addUpload">
+                                <abbr title="Czubehead\BootstrapForms\Traits\BootstrapContainerTrait">
+                                    BootstrapContainerTrait
+                                </abbr>
+                            </a>
+                                              at line 275
+                        </div>
+                        <code>
+                            <a href="../../../Czubehead/BootstrapForms/Inputs/UploadInput.html">
+                                <abbr title="Czubehead\BootstrapForms\Inputs\UploadInput">UploadInput</abbr>
+                            </a>
+                            <strong>addUpload</strong>(string $name, string $label = NULL, bool $multiple = FALSE)
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="tags">
+                            <h4>Parameters</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>string</td>
+                                    <td>$name</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>string</td>
+                                    <td>$label</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>bool</td>
+                                    <td>$multiple</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                            
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>
+                                        <a href="../../../Czubehead/BootstrapForms/Inputs/UploadInput.html">
+                                            <abbr title="Czubehead\BootstrapForms\Inputs\UploadInput">UploadInput</abbr>
+                                        </a>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method___construct">
+                        <div class="location">at line 66</div>
+                        <code>
+                            <strong>__construct</strong>(
+                            <a href="../../../Czubehead/BootstrapForms/Grid/BootstrapRow.html">
+                                <abbr title="Czubehead\BootstrapForms\Grid\BootstrapRow">BootstrapRow</abbr>
+                            </a>
+                                                        $row, int|null|
+                            <abbr title="Czubehead\BootstrapForms\Grid\false">false</abbr>
+                                                        $numOfColumns)
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="method-description">
+                            <p>BootstrapRow constructor.</p></div>
+                        <div class="tags">
+                            <h4>Parameters</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>
+                                        <a href="../../../Czubehead/BootstrapForms/Grid/BootstrapRow.html">
+                                            <abbr title="Czubehead\BootstrapForms\Grid\BootstrapRow">BootstrapRow</abbr>
+                                        </a>
+                                    </td>
+                                    <td>$row</td>
+                                    <td>Row this is a child of</td>
+                                </tr>
+                                <tr>
+                                    <td>int|null|
+                                        <abbr title="Czubehead\BootstrapForms\Grid\false">false</abbr>
+                                    </td>
+                                    <td>$numOfColumns</td>
+                                    <td>Number of Bootstrap columns to occupy. You can use an integer or
+                                        BootstrapCell::COLUMNS_* constant (see their docs for more)
+                                    </td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_getElementPrototype">
+                        <div class="location">at line 79</div>
+                        <code>
+                            <abbr title="Nette\Utils\Html">Html</abbr>
+                            <strong>getElementPrototype</strong>()
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="method-description">
+                            <p>Gets the prototype of this cell so you can define additional attributes. Col-* class is
+                               added during
+                               rendering and is not present, so don't add it.</p>
+                            <p>..</p></div>
+                        <div class="tags">
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>
+                                        <abbr title="Nette\Utils\Html">Html</abbr>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_getNumOfColumns">
+                        <div class="location">at line 88</div>
+                        <code> int|
+                            <abbr title="Czubehead\BootstrapForms\Grid\false">false</abbr>
+                               |null
+                            <strong>getNumOfColumns</strong>()
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="tags">
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>int|
+                                        <abbr title="Czubehead\BootstrapForms\Grid\false">false</abbr>
+                                        |null
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                            
+                            
+                            <h4>See also</h4>
+                            
+                            <table class="table table-condensed">
+                            </table>
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_render">
+                        <div class="location">at line 97</div>
+                        <code>
+                            <abbr title="Nette\Utils\Html">Html</abbr>
+                            <strong>render</strong>()
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="method-description">
+                            <p>Renders the cell into Html object</p></div>
+                        <div class="tags">
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>
+                                        <abbr title="Nette\Utils\Html">Html</abbr>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_createClass">
+                        <div class="location">at line 135</div>
+                        <code> protected string
+                            <strong>createClass</strong>()
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="method-description">
+                            <p>Creates column class based on numOfColumns</p></div>
+                        <div class="tags">
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>string</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+        
+        
+        </div>
+        <div id="footer">
+            Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+        </div>
+    
+    </div>
+</div>
+</body>
+
+</html>

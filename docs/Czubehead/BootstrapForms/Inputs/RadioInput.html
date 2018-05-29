@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="robots" content="index, follow, all"/>
+    <title>Czubehead\BootstrapForms\Inputs\RadioInput | Nette Boostrap 4 forms api</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/sami.css">
+    <script src="../../../js/jquery-1.11.1.min.js"></script>
+    <script src="../../../js/bootstrap.min.js"></script>
+    <script src="../../../js/typeahead.min.js"></script>
+    <script src="../../../sami.js"></script>
+    <meta name="MobileOptimized" content="width">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+
+</head>
+
+<body id="class" data-name="class:Czubehead_BootstrapForms_Inputs_RadioInput" data-root-path="../../../">
+<div id="content">
+    <div id="left-column">
+        <div id="control-panel">
+            <script>
+                $('option[data-version="' + window.projectVersion + '"]').prop('selected', true);
+            </script>
+            <form id="search-form" action="../../../search.html" method="GET">
+                <span class="glyphicon glyphicon-search"></span>
+                <input name="search"
+                       class="typeahead form-control"
+                       type="search"
+                       placeholder="Search">
+            </form>
+        </div>
+        
+        <div id="api-tree"></div>
+    
+    </div>
+    <div id="right-column">
+        <nav id="site-nav" class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../../../index.html">Nette Boostrap 4 forms api</a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-elements">
+                    <ul class="nav navbar-nav">
+                        <li><a href="../../../classes.html">Classes</a></li>
+                        <li><a href="../../../namespaces.html">Namespaces</a></li>
+                        <li><a href="../../../interfaces.html">Interfaces</a></li>
+                        <li><a href="../../../traits.html">Traits</a></li>
+                        <li><a href="../../../doc-index.html">Index</a></li>
+                        <li><a href="../../../search.html">Search</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                <li><a href="../../../Czubehead.html">Czubehead</a></li>
+                <li class="backslash">\</li>
+                <li><a href="../../../Czubehead/BootstrapForms.html">BootstrapForms</a></li>
+                <li class="backslash">\</li>
+                <li><a href="../../../Czubehead/BootstrapForms/Inputs.html">Inputs</a></li>
+                <li class="backslash">\</li>
+                <li>RadioInput</li>
+            </ol>
+        </div>
+        <div id="page-content">
+            
+            <div class="page-header">
+                <h1>
+                    RadioInput
+                
+                </h1>
+            </div>
+            
+            <p> class
+                <strong>RadioInput</strong> extends
+                <abbr title="Nette\Forms\Controls\ChoiceControl">ChoiceControl</abbr>
+                implements
+                <a href="../../../Czubehead/BootstrapForms/Inputs/IValidationInput.html">
+                    <abbr title="Czubehead\BootstrapForms\Inputs\IValidationInput">IValidationInput</abbr>
+                </a>
+            </p>
+            
+            
+            <div class="description">
+                <p>Class RadioInput. Lets user choose one out of multiple options.</p></div>
+            
+            <h2>Traits</h2>
+            
+            
+            <div class="container-fluid underlined">
+                <div class="row">
+                    <div class="col-md-6">
+                        <a href="../../../Czubehead/BootstrapForms/Traits/ChoiceInputTrait.html">
+                            <abbr title="Czubehead\BootstrapForms\Traits\ChoiceInputTrait">ChoiceInputTrait</abbr>
+                        </a>
+                    
+                    </div>
+                    <div class="col-md-6">
+                        Trait ChoiceInputTrait.
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <a href="../../../Czubehead/BootstrapForms/Traits/StandardValidationTrait.html">
+                            <abbr title="Czubehead\BootstrapForms\Traits\StandardValidationTrait">
+                                StandardValidationTrait
+                            </abbr>
+                        </a>
+                    
+                    </div>
+                    <div class="col-md-6">
+                        Trait StandardValidationTrait.
+                    </div>
+                </div>
+            </div>
+            
+            
+            <h2>Properties</h2>
+            
+            <table class="table table-condensed">
+                <tr>
+                    <td class="type" id="property_rawItems">
+                        protected array
+                    </td>
+                    <td>$rawItems</td>
+                    <td class="last"></td>
+                    <td>
+                        <small>from&nbsp;<a href="../../../Czubehead/BootstrapForms/Traits/ChoiceInputTrait.html#property_rawItems">
+                            <abbr title="Czubehead\BootstrapForms\Traits\ChoiceInputTrait">ChoiceInputTrait</abbr>
+                        </a>
+                        </small>
+                    </td>
+                </tr>
+            </table>
+            
+            
+            <h2>Methods</h2>
+            
+            <div class="container-fluid underlined">
+                <div class="row">
+                    <div class="col-md-2 type">
+                        array
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_flatAssocArray">flatAssocArray</a>(array $array)
+                        
+                        <p>Processes an associative array in a way that it has no nesting. Keys for
+                           nested arrays are lost, but nested arrays are merged.</p></div>
+                    <div class="col-md-2">
+                        <small>from&nbsp;<a href="../../../Czubehead/BootstrapForms/Traits/ChoiceInputTrait.html#method_flatAssocArray">
+                            <abbr title="Czubehead\BootstrapForms\Traits\ChoiceInputTrait">ChoiceInputTrait</abbr>
+                        </a>
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        array
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_makeOptionList">makeOptionList</a>(array $items, callable $optionArgs, array
+                                                                           $valuesRendered = [])
+                        
+                        <p>Makes array of &lt;option&gt;. Can handle associative arrays just fine. Checks for duplicate
+                           values.</p></div>
+                    <div class="col-md-2">
+                        <small>from&nbsp;<a href="../../../Czubehead/BootstrapForms/Traits/ChoiceInputTrait.html#method_makeOptionList">
+                            <abbr title="Czubehead\BootstrapForms\Traits\ChoiceInputTrait">ChoiceInputTrait</abbr>
+                        </a>
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        <a href="../../../Czubehead/BootstrapForms/Traits/ChoiceInputTrait.html">
+                            <abbr title="Czubehead\BootstrapForms\Traits\ChoiceInputTrait">ChoiceInputTrait</abbr>
+                        </a>
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_setItems">setItems</a>(array $items, bool $useKeys = TRUE)
+                        
+                        <p class="no-description">No description</p>
+                    </div>
+                    <div class="col-md-2">
+                        <small>from&nbsp;<a href="../../../Czubehead/BootstrapForms/Traits/ChoiceInputTrait.html#method_setItems">
+                            <abbr title="Czubehead\BootstrapForms\Traits\ChoiceInputTrait">ChoiceInputTrait</abbr>
+                        </a>
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        bool
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_isControlDisabled">isControlDisabled</a>()
+                        
+                        <p>Check if whole control is disabled.</p></div>
+                    <div class="col-md-2">
+                        <small>from&nbsp;<a href="../../../Czubehead/BootstrapForms/Traits/ChoiceInputTrait.html#method_isControlDisabled">
+                            <abbr title="Czubehead\BootstrapForms\Traits\ChoiceInputTrait">ChoiceInputTrait</abbr>
+                        </a>
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        bool
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_isValueDisabled">isValueDisabled</a>($value)
+                        
+                        <p>Check if a specific value is disabled. If whole control is disabled, returns false.</p></div>
+                    <div class="col-md-2">
+                        <small>from&nbsp;<a href="../../../Czubehead/BootstrapForms/Traits/ChoiceInputTrait.html#method_isValueDisabled">
+                            <abbr title="Czubehead\BootstrapForms\Traits\ChoiceInputTrait">ChoiceInputTrait</abbr>
+                        </a>
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        bool
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_isValueSelected">isValueSelected</a>($value)
+                        
+                        <p>Self-explanatory</p></div>
+                    <div class="col-md-2">
+                        <small>from&nbsp;<a href="../../../Czubehead/BootstrapForms/Traits/ChoiceInputTrait.html#method_isValueSelected">
+                            <abbr title="Czubehead\BootstrapForms\Traits\ChoiceInputTrait">ChoiceInputTrait</abbr>
+                        </a>
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        <abbr title="Nette\Utils\Html">Html</abbr>
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_showValidation">showValidation</a>(
+                        <abbr title="Nette\Utils\Html">Html</abbr>
+                                                                           $control)
+                        
+                        <p>Modify control in such a way that it explicitly shows its validation state.</p></div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                    
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method___construct">__construct</a>(string|object $label = NULL, array $items = NULL)
+                        
+                        <p class="no-description">No description</p>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        <abbr title="Nette\Utils\Html">Html</abbr>
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_getControl">getControl</a>()
+                        
+                        <p>Generates control's HTML element.</p></div>
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+            
+            
+            <h2>Details</h2>
+            
+            <div id="method-details">
+                <div class="method-item">
+                    <h3 id="method_flatAssocArray">
+                        <div class="location">in
+                            <a href="../../../Czubehead/BootstrapForms/Traits/ChoiceInputTrait.html#method_flatAssocArray">
+                                <abbr title="Czubehead\BootstrapForms\Traits\ChoiceInputTrait">ChoiceInputTrait</abbr>
+                            </a>
+                                              at line 35
+                        </div>
+                        <code> array
+                            <strong>flatAssocArray</strong>(array $array)
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="method-description">
+                            <p>Processes an associative array in a way that it has no nesting. Keys for
+                               nested arrays are lost, but nested arrays are merged.</p></div>
+                        <div class="tags">
+                            <h4>Parameters</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>array</td>
+                                    <td>$array</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                            
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>array</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_makeOptionList">
+                        <div class="location">in
+                            <a href="../../../Czubehead/BootstrapForms/Traits/ChoiceInputTrait.html#method_makeOptionList">
+                                <abbr title="Czubehead\BootstrapForms\Traits\ChoiceInputTrait">ChoiceInputTrait</abbr>
+                            </a>
+                                              at line 59
+                        </div>
+                        <code> array
+                            <strong>makeOptionList</strong>(array $items, callable $optionArgs, array $valuesRendered =
+                               [])
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="method-description">
+                            <p>Makes array of &lt;option&gt;. Can handle associative arrays just fine. Checks for
+                               duplicate values.</p></div>
+                        <div class="tags">
+                            <h4>Parameters</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>array</td>
+                                    <td>$items</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>callable</td>
+                                    <td>$optionArgs</td>
+                                    <td>takes ($value,$caption) and spits out an array of &lt;option&gt;
+                                        attributes
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>array</td>
+                                    <td>$valuesRendered</td>
+                                    <td>for internal use. Do not change.</td>
+                                </tr>
+                            </table>
+                            
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>array</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                            
+                            
+                            <h4>Exceptions</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>
+                                        <abbr title="Nette\InvalidArgumentException">InvalidArgumentException</abbr>
+                                    </td>
+                                    <td>when $items have multiple of the same values</td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_setItems">
+                        <div class="location">in
+                            <a href="../../../Czubehead/BootstrapForms/Traits/ChoiceInputTrait.html#method_setItems">
+                                <abbr title="Czubehead\BootstrapForms\Traits\ChoiceInputTrait">ChoiceInputTrait</abbr>
+                            </a>
+                                              at line 100
+                        </div>
+                        <code>
+                            <a href="../../../Czubehead/BootstrapForms/Traits/ChoiceInputTrait.html">
+                                <abbr title="Czubehead\BootstrapForms\Traits\ChoiceInputTrait">ChoiceInputTrait</abbr>
+                            </a>
+                            <strong>setItems</strong>(array $items, bool $useKeys = TRUE)
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="tags">
+                            <h4>Parameters</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>array</td>
+                                    <td>$items</td>
+                                    <td>Items to set. Associative arrays are supported.</td>
+                                </tr>
+                                <tr>
+                                    <td>bool</td>
+                                    <td>$useKeys</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                            
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>
+                                        <a href="../../../Czubehead/BootstrapForms/Traits/ChoiceInputTrait.html">
+                                            <abbr title="Czubehead\BootstrapForms\Traits\ChoiceInputTrait">
+                                                ChoiceInputTrait
+                                            </abbr>
+                                        </a>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_isControlDisabled">
+                        <div class="location">in
+                            <a href="../../../Czubehead/BootstrapForms/Traits/ChoiceInputTrait.html#method_isControlDisabled">
+                                <abbr title="Czubehead\BootstrapForms\Traits\ChoiceInputTrait">ChoiceInputTrait</abbr>
+                            </a>
+                                              at line 117
+                        </div>
+                        <code> protected bool
+                            <strong>isControlDisabled</strong>()
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="method-description">
+                            <p>Check if whole control is disabled.</p>
+                            <p>This is false if only a set of values is disabled</p></div>
+                        <div class="tags">
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>bool</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_isValueDisabled">
+                        <div class="location">in
+                            <a href="../../../Czubehead/BootstrapForms/Traits/ChoiceInputTrait.html#method_isValueDisabled">
+                                <abbr title="Czubehead\BootstrapForms\Traits\ChoiceInputTrait">ChoiceInputTrait</abbr>
+                            </a>
+                                              at line 131
+                        </div>
+                        <code> protected bool
+                            <strong>isValueDisabled</strong>($value)
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="method-description">
+                            <p>Check if a specific value is disabled. If whole control is disabled, returns false.</p>
+                        </div>
+                        <div class="tags">
+                            <h4>Parameters</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td></td>
+                                    <td>$value</td>
+                                    <td>mixed value to check for</td>
+                                </tr>
+                            </table>
+                            
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>bool</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_isValueSelected">
+                        <div class="location">in
+                            <a href="../../../Czubehead/BootstrapForms/Traits/ChoiceInputTrait.html#method_isValueSelected">
+                                <abbr title="Czubehead\BootstrapForms\Traits\ChoiceInputTrait">ChoiceInputTrait</abbr>
+                            </a>
+                                              at line 149
+                        </div>
+                        <code> protected bool
+                            <strong>isValueSelected</strong>($value)
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="method-description">
+                            <p>Self-explanatory</p></div>
+                        <div class="tags">
+                            <h4>Parameters</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td></td>
+                                    <td>$value</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                            
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>bool</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_showValidation">
+                        <div class="location">at line 102</div>
+                        <code>
+                            <abbr title="Nette\Utils\Html">Html</abbr>
+                            <strong>showValidation</strong>(
+                            <abbr title="Nette\Utils\Html">Html</abbr>
+                                                           $control)
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="method-description">
+                            <p>Modify control in such a way that it explicitly shows its validation state.</p>
+                            <p>Returns the modified element.</p></div>
+                        <div class="tags">
+                            <h4>Parameters</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>
+                                        <abbr title="Nette\Utils\Html">Html</abbr>
+                                    </td>
+                                    <td>$control</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                            
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>
+                                        <abbr title="Nette\Utils\Html">Html</abbr>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method___construct">
+                        <div class="location">at line 40</div>
+                        <code>
+                            <strong>__construct</strong>(string|object $label = NULL, array $items = NULL)
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="tags">
+                            <h4>Parameters</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>string|object</td>
+                                    <td>$label</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>array</td>
+                                    <td>$items</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_getControl">
+                        <div class="location">at line 52</div>
+                        <code>
+                            <abbr title="Nette\Utils\Html">Html</abbr>
+                            <strong>getControl</strong>()
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="method-description">
+                            <p>Generates control's HTML element.</p></div>
+                        <div class="tags">
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>
+                                        <abbr title="Nette\Utils\Html">Html</abbr>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+        
+        
+        </div>
+        <div id="footer">
+            Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+        </div>
+    
+    </div>
+</div>
+</body>
+
+</html>

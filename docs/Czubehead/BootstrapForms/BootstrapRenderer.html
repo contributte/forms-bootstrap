@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="robots" content="index, follow, all"/>
+    <title>Czubehead\BootstrapForms\BootstrapRenderer | Nette Boostrap 4 forms api</title>
+    
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/sami.css">
+    <script src="../../js/jquery-1.11.1.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/typeahead.min.js"></script>
+    <script src="../../sami.js"></script>
+    <meta name="MobileOptimized" content="width">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
+
+</head>
+
+<body id="class" data-name="class:Czubehead_BootstrapForms_BootstrapRenderer" data-root-path="../../">
+<div id="content">
+    <div id="left-column">
+        <div id="control-panel">
+            <script>
+                $('option[data-version="' + window.projectVersion + '"]').prop('selected', true);
+            </script>
+            <form id="search-form" action="../../search.html" method="GET">
+                <span class="glyphicon glyphicon-search"></span>
+                <input name="search"
+                       class="typeahead form-control"
+                       type="search"
+                       placeholder="Search">
+            </form>
+        </div>
+        
+        <div id="api-tree"></div>
+    
+    </div>
+    <div id="right-column">
+        <nav id="site-nav" class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-elements">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="../../index.html">Nette Boostrap 4 forms api</a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-elements">
+                    <ul class="nav navbar-nav">
+                        <li><a href="../../classes.html">Classes</a></li>
+                        <li><a href="../../namespaces.html">Namespaces</a></li>
+                        <li><a href="../../interfaces.html">Interfaces</a></li>
+                        <li><a href="../../traits.html">Traits</a></li>
+                        <li><a href="../../doc-index.html">Index</a></li>
+                        <li><a href="../../search.html">Search</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="namespace-breadcrumbs">
+            <ol class="breadcrumb">
+                <li><span class="label label-default">class</span></li>
+                <li><a href="../../Czubehead.html">Czubehead</a></li>
+                <li class="backslash">\</li>
+                <li><a href="../../Czubehead/BootstrapForms.html">BootstrapForms</a></li>
+                <li class="backslash">\</li>
+                <li>BootstrapRenderer</li>
+            </ol>
+        </div>
+        <div id="page-content">
+            
+            <div class="page-header">
+                <h1>
+                    BootstrapRenderer
+                
+                </h1>
+            </div>
+            
+            <p> class
+                <strong>BootstrapRenderer</strong> implements
+                <abbr title="Nette\Forms\IFormRenderer">IFormRenderer</abbr>
+            </p>
+            
+            
+            <div class="description">
+                <p>Converts a Form into Bootstrap 4 HTML output.</p></div>
+            
+            <h2>Traits</h2>
+            
+            
+            <div class="container-fluid underlined">
+                <div class="row">
+                    <div class="col-md-6">
+                        <abbr title="Nette\SmartObject">SmartObject</abbr>
+                    
+                    </div>
+                    <div class="col-md-6">
+                    
+                    </div>
+                </div>
+            </div>
+            
+            <h2>Constants</h2>
+            
+            <table class="table table-condensed">
+                <tr>
+                    <td>defaultLabelColumns</td>
+                    <td class="last">
+                        <p>
+                            <em></em>
+                        </p>
+                        <p></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>defaultControlColumns</td>
+                    <td class="last">
+                        <p>
+                            <em></em>
+                        </p>
+                        <p></p>
+                    </td>
+                </tr>
+            </table>
+            
+            
+            <h2>Properties</h2>
+            
+            <table class="table table-condensed">
+                <tr>
+                    <td class="type" id="property_gridBreakPoint">
+                        string
+                    </td>
+                    <td>$gridBreakPoint</td>
+                    <td class="last">Bootstrap grid breakpoint for side-by-side view. Default is 'sm'.
+                                     NULL means not to use a breakpoint
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="type" id="property_form">
+                        protected
+                        <a href="../../Czubehead/BootstrapForms/BootstrapForm.html">
+                            <abbr title="Czubehead\BootstrapForms\BootstrapForm">BootstrapForm</abbr>
+                        </a>
+                    </td>
+                    <td>$form</td>
+                    <td class="last"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="type" id="property_labelColumns">
+                        protected int
+                    </td>
+                    <td>$labelColumns</td>
+                    <td class="last"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="type" id="property_controlColumns">
+                        protected int
+                    </td>
+                    <td>$controlColumns</td>
+                    <td class="last"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="type" id="property_mode">
+                        int
+                    </td>
+                    <td>$mode</td>
+                    <td class="last"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="type" id="property_groupHidden">
+                        bool
+                    </td>
+                    <td>$groupHidden</td>
+                    <td class="last">if true, hidden fields will be grouped at the end. If false,
+                                     hidden fields are placed where they were added. Default is true.
+                    </td>
+                    <td></td>
+                </tr>
+            </table>
+            
+            
+            <h2>Methods</h2>
+            
+            <div class="container-fluid underlined">
+                <div class="row">
+                    <div class="col-md-2 type">
+                    
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method___construct">__construct</a>(int $mode = RenderMode::VerticalMode)
+                        
+                        <p>BootstrapRenderer constructor.</p></div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                    
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_attachForm">attachForm</a>(
+                        <abbr title="Nette\Forms\Form">Form</abbr>
+                                                                   $form)
+                        
+                        <p>Sets the form for which to render. Used only if a specific function of the renderer must be
+                           executed
+                           outside of render(), such as during assisted manual rendering.</p></div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        <abbr title="Nette\Utils\Html">Html</abbr>
+                        |null
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_configElem">configElem</a>($config, $el = NULL)
+                        
+                        <p>Turns configuration or and existing element and configures it appropriately</p></div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                    
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_getConfig">getConfig</a>()
+                        
+                        <p class="no-description">No description</p>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                    
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_getConfigOverride">getConfigOverride</a>()
+                        
+                        <p class="no-description">No description</p>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        string
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_getGridBreakPoint">getGridBreakPoint</a>()
+                        
+                        <p class="no-description">No description</p>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        <a href="../../Czubehead/BootstrapForms/BootstrapRenderer.html">
+                            <abbr title="Czubehead\BootstrapForms\BootstrapRenderer">BootstrapRenderer</abbr>
+                        </a>
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_setGridBreakPoint">setGridBreakPoint</a>(string $gridBreakPoint)
+                        
+                        <p class="no-description">No description</p>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        int
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_getMode">getMode</a>()
+                        
+                        <p>Returns render mode</p></div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        bool
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_isGroupHidden">isGroupHidden</a>()
+                        
+                        <p class="no-description">No description</p>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        <a href="../../Czubehead/BootstrapForms/BootstrapRenderer.html">
+                            <abbr title="Czubehead\BootstrapForms\BootstrapRenderer">BootstrapRenderer</abbr>
+                        </a>
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_setGroupHidden">setGroupHidden</a>(bool $groupHidden)
+                        
+                        <p class="no-description">No description</p>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        string
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_render">render</a>(
+                        <abbr title="Nette\Forms\Form">Form</abbr>
+                                                           $form, null $mode = NULL)
+                        
+                        <p>Provides complete form rendering.</p></div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        string
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_renderBegin">renderBegin</a>()
+                        
+                        <p>Renders form begin.</p></div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        string
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_renderBody">renderBody</a>()
+                        
+                        <p>Renders form body.</p></div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        string
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_renderControl">renderControl</a>(
+                        <abbr title="Nette\Forms\IControl">IControl</abbr>
+                                                                         $control)
+                        
+                        <p>Renders 'control' part of visual row of controls.</p></div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        string
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_renderControls">renderControls</a>(
+                        <abbr title="Nette\Forms\Container">Container</abbr>
+                                                                           |
+                        <abbr title="Nette\Forms\ControlGroup">ControlGroup</abbr>
+                                                                           $parent)
+                        
+                        <p>Renders group of controls.</p></div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        string
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_renderEnd">renderEnd</a>()
+                        
+                        <p>Renders form end.</p></div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        <abbr title="Nette\Utils\Html">Html</abbr>
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_renderLabel">renderLabel</a>(
+                        <abbr title="Nette\Forms\IControl">IControl</abbr>
+                                                                     $control)
+                        
+                        <p>Renders 'label' part of visual row of controls.</p></div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        string
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_renderPair">renderPair</a>(
+                        <abbr title="Nette\Forms\IControl">IControl</abbr>
+                                                                   $control)
+                        
+                        <p>Renders single visual row.</p></div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                    
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_setColumns">setColumns</a>(int $label, int|null $control = NULL)
+                        
+                        <p>Set how many of Bootstrap rows shall the label and control occupy</p></div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                    
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_setMode">setMode</a>(int $renderMode)
+                        
+                        <p>Sets render mode</p></div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        array
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_fetchConfig">fetchConfig</a>(string $key)
+                        
+                        <p>Fetch config tailored for current render mode</p></div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        <abbr title="Nette\Utils\Html">Html</abbr>
+                        |null
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_getElem">getElem</a>($key, array ...$additionalKeys)
+                        
+                        <p>Get element based on its first-level key</p></div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        <abbr title="Nette\Utils\Html">Html</abbr>
+                        |null
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_renderDescription">renderDescription</a>(
+                        <abbr title="Nette\Forms\IControl">IControl</abbr>
+                                                                                 $control)
+                        
+                        <p>Renders control description (help text)</p></div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 type">
+                        <abbr title="Nette\Utils\Html">Html</abbr>
+                        |null
+                    </div>
+                    <div class="col-md-8 type">
+                        <a href="#method_renderFeedback">renderFeedback</a>(
+                        <abbr title="Nette\Forms\Controls\BaseControl">BaseControl</abbr>
+                                                                           |null $control = NULL)
+                        
+                        <p>Renders valid or invalid feedback of form or control</p></div>
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+            
+            
+            <h2>Details</h2>
+            
+            <div id="method-details">
+                <div class="method-item">
+                    <h3 id="method___construct">
+                        <div class="location">at line 68</div>
+                        <code>
+                            <strong>__construct</strong>(int $mode = RenderMode::VerticalMode)
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="method-description">
+                            <p>BootstrapRenderer constructor.</p></div>
+                        <div class="tags">
+                            <h4>Parameters</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>int</td>
+                                    <td>$mode</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_attachForm">
+                        <div class="location">at line 78</div>
+                        <code>
+                            <strong>attachForm</strong>(
+                            <abbr title="Nette\Forms\Form">Form</abbr>
+                                                       $form)
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="method-description">
+                            <p>Sets the form for which to render. Used only if a specific function of the renderer must
+                               be executed
+                               outside of render(), such as during assisted manual rendering.</p></div>
+                        <div class="tags">
+                            <h4>Parameters</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>
+                                        <abbr title="Nette\Forms\Form">Form</abbr>
+                                    </td>
+                                    <td>$form</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_configElem">
+                        <div class="location">at line 89</div>
+                        <code>
+                            <abbr title="Nette\Utils\Html">Html</abbr>
+                            |null
+                            <strong>configElem</strong>($config, $el = NULL)
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="method-description">
+                            <p>Turns configuration or and existing element and configures it appropriately</p></div>
+                        <div class="tags">
+                            <h4>Parameters</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td></td>
+                                    <td>$config</td>
+                                    <td>array|string top-level config key</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>$el</td>
+                                    <td>Html|null elem to config.</td>
+                                </tr>
+                            </table>
+                            
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>
+                                        <abbr title="Nette\Utils\Html">Html</abbr>
+                                        |null
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_getConfig">
+                        <div class="location">at line 165</div>
+                        <code>
+                            <strong>getConfig</strong>()
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="tags">
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_getConfigOverride">
+                        <div class="location">at line 229</div>
+                        <code>
+                            <strong>getConfigOverride</strong>()
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="tags">
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_getGridBreakPoint">
+                        <div class="location">at line 268</div>
+                        <code> string
+                            <strong>getGridBreakPoint</strong>()
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="tags">
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>string</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_setGridBreakPoint">
+                        <div class="location">at line 277</div>
+                        <code>
+                            <a href="../../Czubehead/BootstrapForms/BootstrapRenderer.html">
+                                <abbr title="Czubehead\BootstrapForms\BootstrapRenderer">BootstrapRenderer</abbr>
+                            </a>
+                            <strong>setGridBreakPoint</strong>(string $gridBreakPoint)
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="tags">
+                            <h4>Parameters</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>string</td>
+                                    <td>$gridBreakPoint</td>
+                                    <td>null for none</td>
+                                </tr>
+                            </table>
+                            
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>
+                                        <a href="../../Czubehead/BootstrapForms/BootstrapRenderer.html">
+                                            <abbr title="Czubehead\BootstrapForms\BootstrapRenderer">BootstrapRenderer
+                                            </abbr>
+                                        </a>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_getMode">
+                        <div class="location">at line 289</div>
+                        <code> int
+                            <strong>getMode</strong>()
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="method-description">
+                            <p>Returns render mode</p></div>
+                        <div class="tags">
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>int</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                            
+                            
+                            <h4>See also</h4>
+                            
+                            <table class="table table-condensed">
+                            </table>
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_isGroupHidden">
+                        <div class="location">at line 298</div>
+                        <code> bool
+                            <strong>isGroupHidden</strong>()
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="tags">
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>bool</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                            
+                            
+                            <h4>See also</h4>
+                            
+                            <table class="table table-condensed">
+                            </table>
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_setGroupHidden">
+                        <div class="location">at line 308</div>
+                        <code>
+                            <a href="../../Czubehead/BootstrapForms/BootstrapRenderer.html">
+                                <abbr title="Czubehead\BootstrapForms\BootstrapRenderer">BootstrapRenderer</abbr>
+                            </a>
+                            <strong>setGroupHidden</strong>(bool $groupHidden)
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="tags">
+                            <h4>Parameters</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>bool</td>
+                                    <td>$groupHidden</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                            
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>
+                                        <a href="../../Czubehead/BootstrapForms/BootstrapRenderer.html">
+                                            <abbr title="Czubehead\BootstrapForms\BootstrapRenderer">BootstrapRenderer
+                                            </abbr>
+                                        </a>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                            
+                            
+                            <h4>See also</h4>
+                            
+                            <table class="table table-condensed">
+                            </table>
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_render">
+                        <div class="location">at line 321</div>
+                        <code> string
+                            <strong>render</strong>(
+                            <abbr title="Nette\Forms\Form">Form</abbr>
+                               $form, null $mode = NULL)
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="method-description">
+                            <p>Provides complete form rendering.</p></div>
+                        <div class="tags">
+                            <h4>Parameters</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>
+                                        <abbr title="Nette\Forms\Form">Form</abbr>
+                                    </td>
+                                    <td>$form</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>null</td>
+                                    <td>$mode</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                            
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>string</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_renderBegin">
+                        <div class="location">at line 338</div>
+                        <code> string
+                            <strong>renderBegin</strong>()
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="method-description">
+                            <p>Renders form begin.</p></div>
+                        <div class="tags">
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>string</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_renderBody">
+                        <div class="location">at line 372</div>
+                        <code> string
+                            <strong>renderBody</strong>()
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="method-description">
+                            <p>Renders form body.</p></div>
+                        <div class="tags">
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>string</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_renderControl">
+                        <div class="location">at line 441</div>
+                        <code> string
+                            <strong>renderControl</strong>(
+                            <abbr title="Nette\Forms\IControl">IControl</abbr>
+                               $control)
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="method-description">
+                            <p>Renders 'control' part of visual row of controls.</p></div>
+                        <div class="tags">
+                            <h4>Parameters</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>
+                                        <abbr title="Nette\Forms\IControl">IControl</abbr>
+                                    </td>
+                                    <td>$control</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                            
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>string</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_renderControls">
+                        <div class="location">at line 461</div>
+                        <code> string
+                            <strong>renderControls</strong>(
+                            <abbr title="Nette\Forms\Container">Container</abbr>
+                               |
+                            <abbr title="Nette\Forms\ControlGroup">ControlGroup</abbr>
+                               $parent)
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="method-description">
+                            <p>Renders group of controls.</p></div>
+                        <div class="tags">
+                            <h4>Parameters</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>
+                                        <abbr title="Nette\Forms\Container">Container</abbr>
+                                        |
+                                        <abbr title="Nette\Forms\ControlGroup">ControlGroup</abbr>
+                                    </td>
+                                    <td>$parent</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                            
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>string</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_renderEnd">
+                        <div class="location">at line 503</div>
+                        <code> string
+                            <strong>renderEnd</strong>()
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="method-description">
+                            <p>Renders form end.</p></div>
+                        <div class="tags">
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>string</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_renderLabel">
+                        <div class="location">at line 513</div>
+                        <code>
+                            <abbr title="Nette\Utils\Html">Html</abbr>
+                            <strong>renderLabel</strong>(
+                            <abbr title="Nette\Forms\IControl">IControl</abbr>
+                                                        $control)
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="method-description">
+                            <p>Renders 'label' part of visual row of controls.</p></div>
+                        <div class="tags">
+                            <h4>Parameters</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>
+                                        <abbr title="Nette\Forms\IControl">IControl</abbr>
+                                    </td>
+                                    <td>$control</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                            
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>
+                                        <abbr title="Nette\Utils\Html">Html</abbr>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_renderPair">
+                        <div class="location">at line 541</div>
+                        <code> string
+                            <strong>renderPair</strong>(
+                            <abbr title="Nette\Forms\IControl">IControl</abbr>
+                               $control)
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="method-description">
+                            <p>Renders single visual row.</p></div>
+                        <div class="tags">
+                            <h4>Parameters</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>
+                                        <abbr title="Nette\Forms\IControl">IControl</abbr>
+                                    </td>
+                                    <td>$control</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                            
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>string</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_setColumns">
+                        <div class="location">at line 583</div>
+                        <code>
+                            <strong>setColumns</strong>(int $label, int|null $control = NULL)
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="method-description">
+                            <p>Set how many of Bootstrap rows shall the label and control occupy</p></div>
+                        <div class="tags">
+                            <h4>Parameters</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>int</td>
+                                    <td>$label</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>int|null</td>
+                                    <td>$control</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_setMode">
+                        <div class="location">at line 598</div>
+                        <code>
+                            <strong>setMode</strong>(int $renderMode)
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="method-description">
+                            <p>Sets render mode</p></div>
+                        <div class="tags">
+                            <h4>Parameters</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>int</td>
+                                    <td>$renderMode</td>
+                                    <td>RenderMode</td>
+                                </tr>
+                            </table>
+                            
+                            
+                            <h4>See also</h4>
+                            
+                            <table class="table table-condensed">
+                            </table>
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_fetchConfig">
+                        <div class="location">at line 608</div>
+                        <code> protected array
+                            <strong>fetchConfig</strong>(string $key)
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="method-description">
+                            <p>Fetch config tailored for current render mode</p></div>
+                        <div class="tags">
+                            <h4>Parameters</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>string</td>
+                                    <td>$key</td>
+                                    <td>first-level key of $this->config</td>
+                                </tr>
+                            </table>
+                            
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>array</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_getElem">
+                        <div class="location">at line 626</div>
+                        <code> protected
+                            <abbr title="Nette\Utils\Html">Html</abbr>
+                               |null
+                            <strong>getElem</strong>($key, array ...$additionalKeys)
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="method-description">
+                            <p>Get element based on its first-level key</p></div>
+                        <div class="tags">
+                            <h4>Parameters</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td></td>
+                                    <td>$key</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>array</td>
+                                    <td>...$additionalKeys</td>
+                                    <td>config will be overridden in this order</td>
+                                </tr>
+                            </table>
+                            
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>
+                                        <abbr title="Nette\Utils\Html">Html</abbr>
+                                        |null
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_renderDescription">
+                        <div class="location">at line 643</div>
+                        <code> protected
+                            <abbr title="Nette\Utils\Html">Html</abbr>
+                               |null
+                            <strong>renderDescription</strong>(
+                            <abbr title="Nette\Forms\IControl">IControl</abbr>
+                               $control)
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="method-description">
+                            <p>Renders control description (help text)</p></div>
+                        <div class="tags">
+                            <h4>Parameters</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>
+                                        <abbr title="Nette\Forms\IControl">IControl</abbr>
+                                    </td>
+                                    <td>$control</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                            
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>
+                                        <abbr title="Nette\Utils\Html">Html</abbr>
+                                        |null
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+                <div class="method-item">
+                    <h3 id="method_renderFeedback">
+                        <div class="location">at line 670</div>
+                        <code> protected
+                            <abbr title="Nette\Utils\Html">Html</abbr>
+                               |null
+                            <strong>renderFeedback</strong>(
+                            <abbr title="Nette\Forms\Controls\BaseControl">BaseControl</abbr>
+                               |null $control = NULL)
+                        </code>
+                    </h3>
+                    <div class="details">
+                        
+                        
+                        <div class="method-description">
+                            <p>Renders valid or invalid feedback of form or control</p></div>
+                        <div class="tags">
+                            <h4>Parameters</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>
+                                        <abbr title="Nette\Forms\Controls\BaseControl">BaseControl</abbr>
+                                        |null
+                                    </td>
+                                    <td>$control</td>
+                                    <td>null = whole form</td>
+                                </tr>
+                            </table>
+                            
+                            
+                            <h4>Return Value</h4>
+                            
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>
+                                        <abbr title="Nette\Utils\Html">Html</abbr>
+                                        |null
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        
+                        
+                        </div>
+                    </div>
+                
+                </div>
+            </div>
+        
+        
+        </div>
+        <div id="footer">
+            Generated by <a href="http://sami.sensiolabs.org/">Sami, the API Documentation Generator</a>.
+        </div>
+    
+    </div>
+</div>
+</body>
+
+</html>
