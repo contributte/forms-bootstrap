@@ -34,7 +34,7 @@ class CheckboxInput extends Checkbox implements IValidationInput
 	{
 		parent::getControl();
 
-		return self::makeCheckbox($this->getHtmlName(), $this->getHtmlId(), $this->caption, $this->value, FALSE, $this->required,
+		return self::makeCheckbox($this->getHtmlName(), $this->getHtmlId(), $this->translate($this->caption), $this->value, FALSE, $this->required,
 			$this->disabled);
 	}
 
