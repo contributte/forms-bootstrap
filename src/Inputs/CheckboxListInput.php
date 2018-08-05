@@ -42,7 +42,7 @@ class CheckboxListInput extends CheckboxList implements IValidationInput
 		$c = 0;
 		foreach ($this->items as $value => $caption) {
 			$line = CheckboxInput::makeCheckbox($this->getHtmlName(), $baseId . $c, $caption, $this->isValueSelected($value),
-				$value, FALSE, $this->isValueDisabled($value));
+				$value, FALSE, $this->isValueDisabled($value), $this->getRules());
 
 			$fieldset->addHtml($line);
 			$c++;
