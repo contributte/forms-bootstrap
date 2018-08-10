@@ -150,7 +150,9 @@
                         <a href="#method_makeCheckbox">makeCheckbox</a>(string $name, string $htmlId, string|null
                                                                        $caption = NULL, bool $checked = FALSE,
                                                                        bool|mixed $value = FALSE, bool $required =
-                                                                       FALSE, bool $disabled = FALSE)
+                                                                       FALSE, bool $disabled = FALSE,
+                        <abbr title="Nette\Forms\Rules">Rules</abbr>
+                                                                       |null $rules = NULL)
                         
                         <p>Makes a Bootstrap checkbox HTML</p></div>
                     <div class="col-md-2"></div>
@@ -163,7 +165,7 @@
             <div id="method-details">
                 <div class="method-item">
                     <h3 id="method_showValidation">
-                        <div class="location">at line 92</div>
+                        <div class="location">at line 93</div>
                         <code>
                             <abbr title="Nette\Utils\Html">Html</abbr>
                             <strong>showValidation</strong>(
@@ -209,7 +211,7 @@
                 </div>
                 <div class="method-item">
                     <h3 id="method_getControl">
-                        <div class="location">at line 33</div>
+                        <div class="location">at line 34</div>
                         <code>
                             <abbr title="Nette\Utils\Html">Html</abbr>
                             <strong>getControl</strong>()
@@ -245,7 +247,9 @@
                             <abbr title="Nette\Utils\Html">Html</abbr>
                             <strong>makeCheckbox</strong>(string $name, string $htmlId, string|null $caption = NULL,
                                bool $checked = FALSE, bool|mixed $value = FALSE, bool $required = FALSE, bool $disabled
-                               = FALSE)
+                               = FALSE,
+                            <abbr title="Nette\Forms\Rules">Rules</abbr>
+                               |null $rules = NULL)
                         </code>
                     </h3>
                     <div class="details">
@@ -290,6 +294,14 @@
                                 <tr>
                                     <td>bool</td>
                                     <td>$disabled</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <abbr title="Nette\Forms\Rules">Rules</abbr>
+                                        |null
+                                    </td>
+                                    <td>$rules</td>
                                     <td></td>
                                 </tr>
                             </table>

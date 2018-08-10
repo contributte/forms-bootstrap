@@ -1466,7 +1466,7 @@ window.projectVersion = 'master';
         tokens = tokens.concat(term.match(/(([A-Z]?[^A-Z]*)|([a-z]?[^a-z]*))/g).slice(0, -1));
 
         return tokens;
-    }
+    };
 
     root.Sami = {
         /**

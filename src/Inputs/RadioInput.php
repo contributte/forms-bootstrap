@@ -13,8 +13,8 @@ namespace Czubehead\BootstrapForms\Inputs;
 use Czubehead\BootstrapForms\Enums\RendererOptions;
 use Czubehead\BootstrapForms\Traits\ChoiceInputTrait;
 use Czubehead\BootstrapForms\Traits\StandardValidationTrait;
-use Nette;
 use Nette\Forms\Controls\ChoiceControl;
+use Nette\Forms\Helpers;
 use Nette\Utils\Html;
 
 
@@ -68,17 +68,21 @@ class RadioInput extends ChoiceControl implements IValidationInput
 				'class' => ['custom-control', 'custom-radio'],
 			]);
 
-			$wrapper->addHtml(
-				Html::el('input', [
-					'class'    => ['custom-control-input'],
-					'type'     => 'radio',
-					'value'    => $value,
-					'name'     => $this->getHtmlName(),
-					'checked'  => $this->isValueSelected($value),
-					'disabled' => $disabledOption,
-					'id'       => $itemHtmlId,
-				])
-			);
+			$input = Html::el('input', [
+				'class'    => ['custom-control-input'],
+				'type'     => 'radio',
+				'value'    => $value,
+				'name'     => $this->getHtmlName(),
+				'checked'  => $this->isValueSelected($value),
+				'disabled' => $disabledOption,
+				'id'       => $itemHtmlId,
+			]);
+			if ($c == 0) {
+				// the first (0th) input has data-nette-rules, none other
+				$input->setAttribute('data-nette-rules', Helpers::exportRules($this->getRules()));
+			}
+
+			$wrapper->addHtml($input);
 
 			$wrapper->addHtml(
 				Html::el('label', [
@@ -89,12 +93,6 @@ class RadioInput extends ChoiceControl implements IValidationInput
 
 			$container->addHtml($wrapper);
 			$c++;
-		}
-		if ($this->getRules()) {
-
-			$container->getChildren()[0] 	// wrapper
-				->getChildren()[0]			// input
-				->setAttribute('data-nette-rules', Nette\Forms\Helpers::exportRules($this->getRules()));
 		}
 
 		return $container;

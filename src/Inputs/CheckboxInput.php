@@ -39,13 +39,14 @@ class CheckboxInput extends Checkbox implements IValidationInput
 
 	/**
 	 * Makes a Bootstrap checkbox HTML
-	 * @param string      $name
-	 * @param string      $htmlId
-	 * @param string|null $caption
-	 * @param bool        $checked
-	 * @param bool|mixed  $value pass false to omit
-	 * @param bool        $required
-	 * @param bool        $disabled
+	 * @param string                 $name
+	 * @param string                 $htmlId
+	 * @param string|null            $caption
+	 * @param bool                   $checked
+	 * @param bool|mixed             $value pass false to omit
+	 * @param bool                   $required
+	 * @param bool                   $disabled
+	 * @param Nette\Forms\Rules|null $rules
 	 * @return Html
 	 */
 	public static function makeCheckbox(
@@ -54,14 +55,14 @@ class CheckboxInput extends Checkbox implements IValidationInput
 	{
 		$label = Html::el('label', ['class' => ['custom-control', 'custom-checkbox']]);
 		$input = Html::el('input', [
-			'type'     => 'checkbox',
-			'class'    => ['custom-control-input'],
-			'name'     => $name,
-			'disabled' => $disabled,
-			'required' => $required,
-			'checked'  => $checked,
-			'id'       => $htmlId,
-			'data-nette-rules' => $rules ? Nette\Forms\Helpers::exportRules($rules) : null,
+			'type'             => 'checkbox',
+			'class'            => ['custom-control-input'],
+			'name'             => $name,
+			'disabled'         => $disabled,
+			'required'         => $required,
+			'checked'          => $checked,
+			'id'               => $htmlId,
+			'data-nette-rules' => $rules ? Nette\Forms\Helpers::exportRules($rules) : FALSE,
 		]);
 		if ($value !== FALSE) {
 			$input->attrs += [
