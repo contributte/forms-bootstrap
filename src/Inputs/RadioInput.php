@@ -13,6 +13,7 @@ namespace Czubehead\BootstrapForms\Inputs;
 use Czubehead\BootstrapForms\Enums\RendererOptions;
 use Czubehead\BootstrapForms\Traits\ChoiceInputTrait;
 use Czubehead\BootstrapForms\Traits\StandardValidationTrait;
+use Nette;
 use Nette\Forms\Controls\ChoiceControl;
 use Nette\Utils\Html;
 
@@ -88,6 +89,12 @@ class RadioInput extends ChoiceControl implements IValidationInput
 
 			$container->addHtml($wrapper);
 			$c++;
+		}
+		if ($this->getRules()) {
+
+			$container->getChildren()[0] 	// wrapper
+				->getChildren()[0]			// input
+				->setAttribute('data-nette-rules', Nette\Forms\Helpers::exportRules($this->getRules()));
 		}
 
 		return $container;

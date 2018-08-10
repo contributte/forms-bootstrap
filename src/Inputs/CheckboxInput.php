@@ -11,6 +11,7 @@ namespace Czubehead\BootstrapForms\Inputs;
 
 
 use Czubehead\BootstrapForms\Traits\StandardValidationTrait;
+use Nette;
 use Nette\Forms\Controls\Checkbox;
 use Nette\Utils\Html;
 
@@ -32,10 +33,8 @@ class CheckboxInput extends Checkbox implements IValidationInput
 	 */
 	public function getControl()
 	{
-		parent::getControl();
-
 		return self::makeCheckbox($this->getHtmlName(), $this->getHtmlId(), $this->translate($this->caption), $this->value, FALSE, $this->required,
-			$this->disabled);
+			$this->disabled, $this->getRules());
 	}
 
 	/**
@@ -51,7 +50,7 @@ class CheckboxInput extends Checkbox implements IValidationInput
 	 */
 	public static function makeCheckbox(
 		$name, $htmlId, $caption = NULL, $checked = FALSE, $value = FALSE, $required = FALSE,
-		$disabled = FALSE)
+		$disabled = FALSE, $rules = NULL)
 	{
 		$label = Html::el('label', ['class' => ['custom-control', 'custom-checkbox']]);
 		$input = Html::el('input', [
@@ -62,6 +61,7 @@ class CheckboxInput extends Checkbox implements IValidationInput
 			'required' => $required,
 			'checked'  => $checked,
 			'id'       => $htmlId,
+			'data-nette-rules' => $rules ? Nette\Forms\Helpers::exportRules($rules) : null,
 		]);
 		if ($value !== FALSE) {
 			$input->attrs += [
