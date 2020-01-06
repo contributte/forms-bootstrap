@@ -1,26 +1,28 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Contributte\FormsBootstrap\Enums;
 
 /**
  * Class RenderMode
  * Defines the mode BootstrapRenderer works in.
- * @package Nette\Forms\Rendering
+ *
  * @see     BootstrapRenderer
  */
 class RenderMode
 {
+
 	/**
 	 * Labels above controls
 	 */
-	const VerticalMode = 0;
+	public const VERTICAL_MODE = 0;
 	/**
 	 * Labels beside controls
 	 */
-	const SideBySideMode = 1;
+	public const SIDE_BY_SIDE_MODE = 1;
 
 	/**
 	 * Everything is inline if possible
 	 */
-	const Inline = 2;
+	public const INLINE = 2;
+
 }

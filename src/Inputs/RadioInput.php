@@ -1,7 +1,6 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Contributte\FormsBootstrap\Inputs;
-
 
 use Contributte\FormsBootstrap\Enums\RendererOptions;
 use Contributte\FormsBootstrap\Traits\ChoiceInputTrait;
@@ -11,33 +10,31 @@ use Nette\Forms\Controls\RadioList;
 use Nette\Forms\Helpers;
 use Nette\Utils\Html;
 
-
 /**
  * Class RadioInput. Lets user choose one out of multiple options.
- * @package Contributte\FormsBootstrap
  */
 class RadioInput extends RadioList  implements IValidationInput
 {
+
 	use ChoiceInputTrait;
 	use StandardValidationTrait {
 		showValidation as protected _rawShowValidation;
 	}
 
 	/**
-	 * @param  string|object
-	 * @param array|null $items
+	 * @param  string|object $label
+	 * @param string[]|null $items
 	 */
-	public function __construct($label = NULL, array $items = NULL)
+	public function __construct($label = null, ?array $items = null)
 	{
 		parent::__construct($label, $items);
 		$this->control->type = 'radio';
 		$this->container = Html::el('fieldset');
-		$this->setOption(RendererOptions::type, 'radio');
+		$this->setOption(RendererOptions::TYPE, 'radio');
 	}
 
 	/**
 	 * Generates control's HTML element.
-	 * @return Html
 	 */
 	public function getControl(): Html
 	{
@@ -66,7 +63,7 @@ class RadioInput extends RadioList  implements IValidationInput
 				'disabled' => $disabledOption,
 				'id'       => $itemHtmlId,
 			]);
-			if ($c == 0) {
+			if ($c === 0) {
 				// the first (0th) input has data-nette-rules, none other
 				$input->setAttribute('data-nette-rules', Helpers::exportRules($this->getRules()));
 			}
@@ -90,10 +87,8 @@ class RadioInput extends RadioList  implements IValidationInput
 	/**
 	 * Modify control in such a way that it explicitly shows its validation state.
 	 * Returns the modified element.
-	 * @param Html $control
-	 * @return Html
 	 */
-	public function showValidation(Html $control)
+	public function showValidation(Html $control): Html
 	{
 		$fieldset = Html::el($control->getName(), $control->attrs);
 		/** @var Html $rowDiv */
@@ -105,4 +100,5 @@ class RadioInput extends RadioList  implements IValidationInput
 
 		return $control;
 	}
+
 }

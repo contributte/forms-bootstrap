@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Contributte\FormsBootstrap\Inputs;
 
@@ -9,31 +9,25 @@ use Nette\Utils\Html;
 
 /**
  * Class TextInput
+ *
  * @property string $placeholder HTML placeholder
  * @property bool   $autocomplete
- * @package Contributte\FormsBootstrap\Inputs
  */
 class TextInput extends \Nette\Forms\Controls\TextInput implements IValidationInput, IAutocompleteInput
 {
+
 	use StandardValidationTrait;
 
-	/**
-	 * @var string
-	 */
+	/** @var string */
 	private $placeholder;
 
-	/**
-	 * @var null|bool
-	 */
-	private $autocomplete = NULL;
+	/** @var bool|null */
+	private $autocomplete = null;
 
-	/*
-	 * @inheritdoc
-	 */
-	public function __construct($label = NULL, $maxLength = NULL)
+	public function __construct(?string $label = null, ?int $maxLength = null)
 	{
 		parent::__construct($label, $maxLength);
-		$this->setRequired(FALSE);
+		$this->setRequired(false);
 	}
 
 	/*
@@ -42,24 +36,24 @@ class TextInput extends \Nette\Forms\Controls\TextInput implements IValidationIn
 
 	/**
 	 * Gets the state of autocomplete: true=on,false=off,null=omit attribute
-	 * @param $bool
-	 * @return bool|null
 	 */
-	public function getAutocomplete($bool)
+	public function getAutocomplete(): ?bool
 	{
 		return $this->autocomplete;
 	}
 
 	/**
 	 * Turns autocomplete on or off.
+	 *
 	 * @param bool|null $bool null to omit attribute (default)
 	 * @return static
 	 */
-	public function setAutocomplete($bool)
+	public function setAutocomplete(?bool $bool)
 	{
-		if (!in_array($bool, [TRUE, FALSE, NULL], TRUE)) {
+		if (!in_array($bool, [true, false, null], true)) {
 			throw new InvalidArgumentException('valid values are only true/false/null');
 		}
+
 		$this->autocomplete = $bool;
 
 		return $this;
@@ -77,7 +71,8 @@ class TextInput extends \Nette\Forms\Controls\TextInput implements IValidationIn
 		if (!empty($this->placeholder)) {
 			$control->setAttribute('placeholder', $this->placeholder);
 		}
-		if ($this->autocomplete !== NULL) {
+
+		if ($this->autocomplete !== null) {
 			$control->setAttribute('autocomplete', $this->autocomplete ? 'on' : 'off');
 		}
 
@@ -85,23 +80,22 @@ class TextInput extends \Nette\Forms\Controls\TextInput implements IValidationIn
 	}
 
 	/**
-	 * @return string
 	 * @see TextInput::$placeholder
 	 */
-	public function getPlaceholder()
+	public function getPlaceholder(): string
 	{
 		return $this->placeholder;
 	}
 
 	/**
-	 * @param string $placeholder
 	 * @return static
 	 * @see TextInput::$placeholder
 	 */
-	public function setPlaceholder($placeholder)
+	public function setPlaceholder(string $placeholder)
 	{
 		$this->placeholder = $placeholder;
 
 		return $this;
 	}
+
 }

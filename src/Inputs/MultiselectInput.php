@@ -1,7 +1,6 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Contributte\FormsBootstrap\Inputs;
-
 
 use Contributte\FormsBootstrap\Traits\ChoiceInputTrait;
 use Contributte\FormsBootstrap\Traits\InputPromptTrait;
@@ -12,17 +11,20 @@ use Nette\Utils\Html;
 /**
  * Class MultiselectInput.
  * Selectbox where multiple options can be selected.
- * @package Contributte\FormsBootstrap\Inputs
  */
 class MultiselectInput extends MultiSelectBox implements IValidationInput
 {
+
 	use ChoiceInputTrait;
 	use InputPromptTrait;
 	use StandardValidationTrait;
 
-	public function __construct($label = NULL, array $items = NULL)
+	/**
+	 * @param string[] $items
+	 */
+	public function __construct(?string $label = null, ?array $items = null)
 	{
-		parent::__construct($label, NULL);
+		parent::__construct($label, null);
 		$this->setItems($items);
 	}
 
@@ -31,7 +33,7 @@ class MultiselectInput extends MultiSelectBox implements IValidationInput
 	 */
 	public function getControl(): Html
 	{
-		$select = parent::getControl()->setHtml(NULL);
+		$select = parent::getControl()->setHtml(null);
 
 		$select->attrs += [
 			'class'    => ['form-control'],
@@ -39,7 +41,7 @@ class MultiselectInput extends MultiSelectBox implements IValidationInput
 		];
 		$options = $this->rawItems;
 		if (!empty($this->prompt)) {
-			$options = [NULL => $this->prompt] + $options;
+			$options = [null => $this->prompt] + $options;
 		}
 
 		$optList = $this->makeOptionList($options, function ($value) {
@@ -54,4 +56,5 @@ class MultiselectInput extends MultiSelectBox implements IValidationInput
 
 		return $select;
 	}
+
 }

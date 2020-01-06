@@ -1,7 +1,6 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Contributte\FormsBootstrap\Grid;
-
 
 use Contributte\FormsBootstrap\BootstrapRenderer;
 use Contributte\FormsBootstrap\Enums\RendererConfig;
@@ -12,12 +11,11 @@ use Nette\Forms\IControl;
 use Nette\SmartObject;
 use Nette\Utils\Html;
 
-
 /**
  * Class BootstrapCell.
  * Represents a row-column pair = table cell in Bootstrap grid system. This is the part with col-*-* class.
  * Only one component can be present.
- * @package Contributte\FormsBootstrap\Grid
+ *
  * @property-read int  $numOfColumns     Number of Bootstrap columns to occupy
  * @property-read IControl $childControl|null     Nested child control if any
  * @property-read Html $elementPrototype the Html div that will be rendered. You may define additional
@@ -25,39 +23,35 @@ use Nette\Utils\Html;
  */
 class BootstrapCell
 {
+
 	use SmartObject;
 	use BootstrapContainerTrait;
 
 	/**
 	 * Only use 'col' class (auto stretch)
 	 */
-	const COLUMNS_NONE = FALSE;
+	public const COLUMNS_NONE = false;
 	/**
 	 * Use 'col-auto'
 	 */
-	const COLUMNS_AUTO = NULL;
-	/**
-	 * @var int
-	 */
+	public const COLUMNS_AUTO = null;
+
+	/** @var int */
 	private $numOfColumns;
-	/**
-	 * @var IControl|null
-	 */
+
+	/** @var IControl|null */
 	private $childControl;
-	/**
-	 * @var BootstrapRow
-	 */
+
+	/** @var BootstrapRow */
 	private $row;
-	/**
-	 * @var Html
-	 */
+
+	/** @var Html */
 	private $elementPrototype;
 
 	/**
-	 * BootstrapRow constructor.
 	 * @param BootstrapRow   $row          Row this is a child of
-	 * @param int|null|false $numOfColumns Number of Bootstrap columns to occupy. You can use an integer or
-	 *                                     BootstrapCell::COLUMNS_* constant (see their docs for more)
+	 * @param int|false|null $numOfColumns Number of Bootstrap columns to occupy. You can use an integer or
+	 * BootstrapCell::COLUMNS_* constant (see their docs for more)
 	 */
 	public function __construct(BootstrapRow $row, $numOfColumns)
 	{
@@ -70,9 +64,8 @@ class BootstrapCell
 	/**
 	 * Gets the prototype of this cell so you can define additional attributes. Col-* class is added during
 	 * rendering and is not present, so don't add it...
-	 * @return Html
 	 */
-	public function getElementPrototype()
+	public function getElementPrototype(): Html
 	{
 		return $this->elementPrototype;
 	}
@@ -88,15 +81,14 @@ class BootstrapCell
 
 	/**
 	 * Renders the cell into Html object
-	 * @return Html
 	 */
-	public function render()
+	public function render(): Html
 	{
 		$element = $this->elementPrototype;
 		/** @var BootstrapRenderer $renderer */
 		$renderer = $this->row->getParent()->form->renderer;
 
-		$element = $renderer->configElem(RendererConfig::gridCell, $element);
+		$element = $renderer->configElem(RendererConfig::GRID_CELL, $element);
 		$element->class[] = $this->createClass();
 
 		if ($this->childControl) {
@@ -109,11 +101,10 @@ class BootstrapCell
 
 	/**
 	 * Delegate to underlying component.
-	 * @param IComponent $component
-	 * @param            $name
-	 * @param null       $insertBefore
+	 *
+	 * @param null $insertBefore
 	 */
-	protected function addComponent(IComponent $component, $name, $insertBefore = NULL)
+	public function addComponent(IComponent $component, ?string $name, $insertBefore = null): void
 	{
 		if ($this->childControl) {
 			throw new LogicException('child control for this cell has already been set, you cannot add another one');
@@ -126,9 +117,8 @@ class BootstrapCell
 
 	/**
 	 * Creates column class based on numOfColumns
-	 * @return string
 	 */
-	protected function createClass()
+	protected function createClass(): string
 	{
 		$cols = $this->numOfColumns;
 		if ($cols === self::COLUMNS_NONE) {
@@ -137,11 +127,8 @@ class BootstrapCell
 			return 'col-auto';
 		} else {
 			// number
-			if ($this->row->gridBreakPoint != NULL) {
-				return 'col-' . $this->row->gridBreakPoint . '-' . $this->numOfColumns;
-			} else {
-				return 'col-' . $this->numOfColumns;
-			}
+			return $this->row->gridBreakPoint !== null ? 'col-' . $this->row->gridBreakPoint . '-' . $this->numOfColumns : 'col-' . $this->numOfColumns;
 		}
 	}
+
 }

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Contributte\FormsBootstrap\Grid;
 
@@ -13,11 +13,10 @@ use Nette\InvalidArgumentException;
 use Nette\SmartObject;
 use Nette\Utils\Html;
 
-
 /**
  * Class BootstrapRow.
  * Represents a row in Bootstrap grid system.
- * @package Contributte\FormsBootstrap\Grid
+ *
  * @property string               $gridBreakPoint   Bootstrap breakpoint - usually xs, sm, md, lg. sm by
  *           default. Use NULL for no breakpoint.
  * @property-read string[]        $ownedNames       list of names of components which were added to this row
@@ -28,67 +27,68 @@ use Nette\Utils\Html;
  */
 class BootstrapRow implements IComponent, IControl
 {
+
 	use SmartObject;
 	use FakeControlTrait;
 
 	/**
 	 * Global name counter
+	 *
 	 * @var int
 	 */
 	private static $uidCounter = 0;
+
 	/**
 	 * Number of columns in Bootstrap grid. Default is 12, but it can be customized.
+	 *
 	 * @var int
 	 */
 	public $numOfColumns = 12;
-	/**
-	 * @var string $name
-	 */
+
+	/** @var string $name */
 	private $name;
+
 	/**
 	 * Number of columns used by added cells.
+	 *
 	 * @var int
 	 */
 	private $columnsOccupied = 0;
 
 	/**
 	 * Form or container this belong to
+	 *
 	 * @var Container
 	 */
 	private $container;
-	/**
-	 * @var string
-	 */
+
+	/** @var string */
 	private $gridBreakPoint = 'sm';
-	/**
-	 * @var string[]
-	 */
+
+	/** @var string[] */
 	private $ownedNames = [];
-	/**
-	 * @var BootstrapCell[]
-	 */
+
+	/** @var BootstrapCell[] */
 	private $cells = [];
-	/**
-	 * @var Html
-	 */
+
+	/** @var Html */
 	private $elementPrototype;
-	/**
-	 * @var array
-	 */
+
+	/** @var mixed[] */
 	private $options = [];
 
 	/**
-	 * BootstrapRow constructor.
 	 * @param Container $container Form or container this belongs to. Components will be added to this
 	 * @param null      $name      Optional name of this row. If none is supplied, it is generated
 	 *                             automatically.
 	 */
-	public function __construct(Container $container, $name = NULL)
+	public function __construct(Container $container, $name = null)
 	{
 		$this->container = $container;
 		if (!$name) {
 			$name = 'bootstrap_row_' . ++self::$uidCounter;
 		}
+
 		$this->name = $name;
 
 		$this->elementPrototype = Html::el();
@@ -96,15 +96,17 @@ class BootstrapRow implements IComponent, IControl
 
 	/**
 	 * Adds a new cell to which a control can be added.
+	 *
 	 * @param int $numOfColumns Number of grid columns to use up
 	 * @return BootstrapCell the cell added.
 	 */
-	public function addCell($numOfColumns = BootstrapCell::COLUMNS_NONE)
+	public function addCell(int $numOfColumns = BootstrapCell::COLUMNS_NONE): BootstrapCell
 	{
 		if ($this->columnsOccupied + $numOfColumns > $this->numOfColumns) {
 			throw new InvalidArgumentException(
-				"the given number of columns with combination of already used"
-				. " columns exceeds column limit ({$this->numOfColumns})");
+				'the given number of columns with combination of already used'
+				. ' columns exceeds column limit (' . $this->numOfColumns . ')'
+			);
 		}
 
 		$cell = new BootstrapCell($this, $numOfColumns);
@@ -115,12 +117,10 @@ class BootstrapRow implements IComponent, IControl
 
 	/**
 	 * Delegate to underlying container and remember it.
-	 * @param IComponent $component
-	 * @param            $name
-	 * @param null       $insertBefore
+	 *
 	 * @internal
 	 */
-	public function addComponent(IComponent $component, $name, $insertBefore = NULL)
+	public function addComponent(IComponent $component, ?string $name = null, ?string $insertBefore = null): void
 	{
 		$this->container->addComponent($component, $name, $insertBefore);
 		$this->ownedNames[] = $name;
@@ -130,37 +130,36 @@ class BootstrapRow implements IComponent, IControl
 	 * @return BootstrapCell[]
 	 * @see BootstrapRow::$cells
 	 */
-	public function getCells()
+	public function getCells(): array
 	{
 		return $this->cells;
 	}
 
 	/**
 	 * The container without content
-	 * @return Html
+	 *
 	 * @see BootstrapRow::$elementPrototype
 	 */
-	public function getElementPrototype()
+	public function getElementPrototype(): Html
 	{
 		return $this->elementPrototype;
 	}
 
 	/**
-	 * @return string
 	 * @see BootstrapRow::$gridBreakPoint
 	 */
-	public function getGridBreakPoint()
+	public function getGridBreakPoint(): string
 	{
 		return $this->gridBreakPoint;
 	}
 
 	/**
 	 * Sets the xs, sm, md, lg part.
+	 *
 	 * @see BootstrapRow::$gridBreakPoint
 	 * @param string $gridBreakPoint . NULL for no breakpoint.
-	 * @return BootstrapRow
 	 */
-	public function setGridBreakPoint($gridBreakPoint)
+	public function setGridBreakPoint(string $gridBreakPoint): BootstrapRow
 	{
 		$this->gridBreakPoint = $gridBreakPoint;
 
@@ -169,7 +168,6 @@ class BootstrapRow implements IComponent, IControl
 
 	/**
 	 * Component name
-	 * @return string
 	 */
 	public function getName(): ?string
 	{
@@ -178,6 +176,7 @@ class BootstrapRow implements IComponent, IControl
 
 	/**
 	 * Returns the container
+	 *
 	 * @return Container
 	 */
 	public function getParent(): IContainer
@@ -187,35 +186,35 @@ class BootstrapRow implements IComponent, IControl
 
 	/**
 	 * Sets the container
+	 *
 	 * @param Container|NULL $parent
-	 * @param null           $name ignored
+	 * @param null $name ignored
 	 */
-	public function setParent(IContainer $parent = NULL, ?string $name = NULL)
+	public function setParent(?IContainer $parent = null, ?string $name = null): void
 	{
 		$this->container = $parent;
 	}
 
 	/**
 	 * Gets previously set option
-	 * @param string $option
-	 * @param null   $default
+	 *
+	 * @param mixed|null $default
 	 * @return mixed|null
 	 */
-	public function getOption($option, $default = NULL)
+	public function getOption(string $option, $default = null)
 	{
-		return isset($this->options[ $option ]) ? $this->options[ $option ] : $default;
+		return $this->options[$option] ?? $default;
 	}
 
 	/**
 	 * Renders the row into a Html object
-	 * @return Html
 	 */
-	public function render()
+	public function render(): Html
 	{
 		/** @var BootstrapRenderer $renderer */
 		$renderer = $this->container->form->renderer;
 
-		$element = $renderer->configElem(RendererConfig::gridRow, $this->elementPrototype);
+		$element = $renderer->configElem(RendererConfig::GRID_ROW, $this->elementPrototype);
 		foreach ($this->cells as $cell) {
 			$cellHtml = $cell->render();
 			$element->addHtml($cellHtml);
@@ -226,12 +225,13 @@ class BootstrapRow implements IComponent, IControl
 
 	/**
 	 * Sets option
-	 * @param $option
-	 * @param $value
+	 *
+	 * @param mixed|null $value
 	 * @internal
 	 */
-	public function setOption($option, $value)
+	public function setOption(string $option, $value): void
 	{
-		$this->options[ $option ] = $value;
+		$this->options[$option] = $value;
 	}
+
 }

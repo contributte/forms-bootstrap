@@ -1,0 +1,40 @@
+language: php
+php:
+  - 7.1
+  - 7.2
+  - 7.3
+  - 7.4
+install:
+  - travis_retry composer install --no-progress --prefer-dist
+
+jobs:
+  include:
+    - env: title="Lowest Dependencies 7.1"
+      php: 7.1
+      install:
+        - travis_retry composer update --no-progress --prefer-dist --prefer-lowest
+      script:
+        - composer run-script tests
+
+    - stage: Quality Assurance
+      php: 7.1
+      script:
+        - composer run-script qa
+
+    - stage: Phpstan
+      php: 7.1
+      script:
+        - composer run-script phpstan-install
+        - composer run-script phpstan
+
+    - stage: Outdated Dependencies
+      if: branch = master AND type = cron
+      php: 7.1
+      script:
+        - composer outdated --direct --strict
+
+sudo: false
+
+cache:
+  directories:
+    - $HOME/.composer/cache

@@ -1,7 +1,6 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Contributte\FormsBootstrap\Inputs;
-
 
 use Contributte\FormsBootstrap\Traits\ChoiceInputTrait;
 use Contributte\FormsBootstrap\Traits\InputPromptTrait;
@@ -12,20 +11,19 @@ use Nette\Utils\Html;
 /**
  * Class SelectInput.
  * Single select.
- * @package Contributte\FormsBootstrap
  */
 class SelectInput extends SelectBox implements IValidationInput
 {
+
 	use ChoiceInputTrait;
 	use InputPromptTrait;
 	use StandardValidationTrait;
 
 	/**
-	 * SelectInput constructor.
 	 * @param null       $label
-	 * @param array|null $items
+	 * @param string[]|null $items
 	 */
-	public function __construct($label = NULL, $items = NULL)
+	public function __construct($label = null, ?array $items = null)
 	{
 		parent::__construct($label);
 		$this->setItems($items);
@@ -36,7 +34,7 @@ class SelectInput extends SelectBox implements IValidationInput
 	 */
 	public function getControl(): Html
 	{
-		$select = parent::getControl()->setHtml(NULL);
+		$select = parent::getControl()->setHtml(null);
 
 		$select->attrs += [
 			'class'    => ['custom-select'],
@@ -44,7 +42,7 @@ class SelectInput extends SelectBox implements IValidationInput
 		];
 		$options = $this->rawItems;
 		if (!empty($this->prompt)) {
-			$options = [NULL => $this->prompt] + $options;
+			$options = [null => $this->prompt] + $options;
 		}
 
 		$optList = $this->makeOptionList($options, function ($value) {
@@ -59,4 +57,5 @@ class SelectInput extends SelectBox implements IValidationInput
 
 		return $select;
 	}
+
 }

@@ -1,21 +1,19 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Contributte\FormsBootstrap\Inputs;
-
 
 use Contributte\FormsBootstrap\Traits\ChoiceInputTrait;
 use Contributte\FormsBootstrap\Traits\StandardValidationTrait;
 use Nette\Forms\Controls\CheckboxList;
 use Nette\Utils\Html;
 
-
 /**
  * Class CheckboxListInput.
  * Multiple checkboxes in a list.
- * @package Contributte\FormsBootstrap\Inputs
  */
 class CheckboxListInput extends CheckboxList implements IValidationInput
 {
+
 	use ChoiceInputTrait;
 	use StandardValidationTrait {
 		showValidation as protected _rawShowValidation;
@@ -34,8 +32,16 @@ class CheckboxListInput extends CheckboxList implements IValidationInput
 		$baseId = $this->getHtmlId();
 		$c = 0;
 		foreach ($this->items as $value => $caption) {
-			$line = CheckboxInput::makeCheckbox($this->getHtmlName(), $baseId . $c, $caption, $this->isValueSelected($value),
-				$value, FALSE, $this->isValueDisabled($value), $this->getRules());
+			$line = CheckboxInput::makeCheckbox(
+				$this->getHtmlName(),
+				$baseId . $c,
+				$caption,
+				$this->isValueSelected($value),
+				$value,
+				false,
+				$this->isValueDisabled($value),
+				$this->getRules()
+			);
 
 			$fieldset->addHtml($line);
 			$c++;
@@ -47,10 +53,8 @@ class CheckboxListInput extends CheckboxList implements IValidationInput
 	/**
 	 * Modify control in such a way that it explicitly shows its validation state.
 	 * Returns the modified element.
-	 * @param Html $control
-	 * @return Html
 	 */
-	public function showValidation(Html $control)
+	public function showValidation(Html $control): Html
 	{
 		// same parent, but no children
 		$fieldset = Html::el($control->getName(), $control->attrs);
@@ -63,4 +67,5 @@ class CheckboxListInput extends CheckboxList implements IValidationInput
 
 		return $fieldset;
 	}
+
 }

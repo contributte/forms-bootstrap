@@ -1,45 +1,45 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Contributte\FormsBootstrap\Traits;
 
 use Contributte\FormsBootstrap\BootstrapUtils;
 use Nette\Utils\Html;
 
-
 /**
  * Trait BootstrapButtonTrait. Modifies an existing button class such that it returns a bootstrap button.
- * @package Contributte\FormsBootstrap
+ *
  * @property string $btnType
  */
 trait BootstrapButtonTrait
 {
-	/**
-	 * @var string
-	 */
+
+	/** @var string */
 	private $btnClass = 'btn-primary';
 
 	/**
 	 * Gets additional button class. Default is btn-primary.
-	 * @return string
 	 */
-	public function getBtnClass()
+	public function getBtnClass(): string
 	{
 		return $this->btnClass;
 	}
 
 	/**
 	 * Sets additional button class. Default is btn-primary
-	 * @param string $btnClass
+	 *
 	 * @return static
 	 */
-	public function setBtnClass($btnClass)
+	public function setBtnClass(string $btnClass)
 	{
 		$this->btnClass = $btnClass;
 
 		return $this;
 	}
 
-	public function getControl($caption = NULL): Html
+	/**
+	 * @param string|null $caption
+	 */
+	public function getControl($caption = null): Html
 	{
 		$control = parent::getControl($caption);
 		$this->addBtnClass($control);
@@ -47,12 +47,10 @@ trait BootstrapButtonTrait
 		return $control;
 	}
 
-	/**
-	 * @param Html $element
-	 */
-	protected function addBtnClass($element)
+	protected function addBtnClass(Html $element): void
 	{
 		BootstrapUtils::standardizeClass($element);
 		$element->class[] = 'btn ' . $this->getBtnClass();
 	}
+
 }
