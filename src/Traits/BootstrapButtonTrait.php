@@ -39,7 +39,7 @@ trait BootstrapButtonTrait
 		return $this;
 	}
 
-	public function getControl($caption = NULL)
+	public function getControl($caption = NULL): Html
 	{
 		$control = parent::getControl($caption);
 		$this->addBtnClass($control);

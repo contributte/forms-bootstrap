@@ -71,15 +71,15 @@ class BootstrapForm extends Form
 		};
 	}
 
-	public function getElementPrototype()
+	public function getElementPrototype(): Html
 	{
 		return $this->elementPrototype;
 	}
 
 	/**
-	 * @return \Contributte\FormsBootstrap\BootstrapRenderer|\Nette\Forms\IFormRenderer
+	 * @return \Contributte\FormsBootstrap\BootstrapRenderer
 	 */
-	public function getRenderer()
+	public function getRenderer() : IFormRenderer
 	{
 		return parent::getRenderer();
 	}

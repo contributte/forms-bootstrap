@@ -171,7 +171,7 @@ class BootstrapRow implements IComponent, IControl
 	 * Component name
 	 * @return string
 	 */
-	public function getName()
+	public function getName(): ?string
 	{
 		return $this->name;
 	}
@@ -180,7 +180,7 @@ class BootstrapRow implements IComponent, IControl
 	 * Returns the container
 	 * @return Container
 	 */
-	public function getParent()
+	public function getParent(): IContainer
 	{
 		return $this->container;
 	}
@@ -190,7 +190,7 @@ class BootstrapRow implements IComponent, IControl
 	 * @param Container|NULL $parent
 	 * @param null           $name ignored
 	 */
-	public function setParent(IContainer $parent = NULL, $name = NULL)
+	public function setParent(IContainer $parent = NULL, ?string $name = NULL)
 	{
 		$this->container = $parent;
 	}

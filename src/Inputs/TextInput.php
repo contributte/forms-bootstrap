@@ -5,7 +5,7 @@ namespace Contributte\FormsBootstrap\Inputs;
 use Contributte\FormsBootstrap\BootstrapUtils;
 use Contributte\FormsBootstrap\Traits\StandardValidationTrait;
 use Nette\InvalidArgumentException;
-
+use Nette\Utils\Html;
 
 /**
  * Class TextInput
@@ -68,7 +68,7 @@ class TextInput extends \Nette\Forms\Controls\TextInput implements IValidationIn
 	/**
 	 * @inheritdoc
 	 */
-	public function getControl()
+	public function getControl(): Html
 	{
 		$control = parent::getControl();
 		BootstrapUtils::standardizeClass($control);

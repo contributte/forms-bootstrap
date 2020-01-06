@@ -227,6 +227,8 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 			$nonLabelColClass = "col-{$this->controlColumns}";
 		}
 
+		$labelColClass .= ' col-form-label';
+
 		return [
 			RenderMode::Inline         => [
 				Cnf::form     => [
@@ -305,11 +307,8 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 
 	/**
 	 * Provides complete form rendering.
-	 * @param \Nette\Forms\Form $form
-	 * @param null              $mode
-	 * @return string
 	 */
-	public function render(Nette\Forms\Form $form, $mode = NULL)
+	public function render(Nette\Forms\Form $form): string
 	{
 		$this->attachForm($form);
 
@@ -503,6 +502,11 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 	 */
 	public function renderLabel(Nette\Forms\IControl $control)
 	{
+
+		if ($control->caption === null) {
+			return Html::el();
+		}
+
 		/** @noinspection PhpUndefinedMethodInspection */
 		$controlLabel = $control->getLabel();
 		if ($controlLabel instanceof Html && $controlLabel->getName() == 'label') {

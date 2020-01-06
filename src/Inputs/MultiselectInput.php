@@ -7,7 +7,7 @@ use Contributte\FormsBootstrap\Traits\ChoiceInputTrait;
 use Contributte\FormsBootstrap\Traits\InputPromptTrait;
 use Contributte\FormsBootstrap\Traits\StandardValidationTrait;
 use Nette\Forms\Controls\MultiSelectBox;
-
+use Nette\Utils\Html;
 
 /**
  * Class MultiselectInput.
@@ -29,7 +29,7 @@ class MultiselectInput extends MultiSelectBox implements IValidationInput
 	/**
 	 * @inheritdoc
 	 */
-	public function getControl()
+	public function getControl(): Html
 	{
 		$select = parent::getControl()->setHtml(NULL);
 

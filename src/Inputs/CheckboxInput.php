@@ -24,7 +24,7 @@ class CheckboxInput extends Checkbox implements IValidationInput
 	 * Generates a checkbox
 	 * @return Html
 	 */
-	public function getControl()
+	public function getControl(): Html
 	{
 		return self::makeCheckbox($this->getHtmlName(), $this->getHtmlId(), $this->translate($this->caption), $this->value, FALSE, $this->required,
 			$this->disabled, $this->getRules());

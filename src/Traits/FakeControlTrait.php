@@ -17,7 +17,7 @@ trait FakeControlTrait
 	 * Always returns an empty array
 	 * @internal
 	 */
-	function getErrors()
+	function getErrors(): array
 	{
 		return [];
 	}
@@ -40,7 +40,7 @@ trait FakeControlTrait
 	 * Is control value excluded from $form->getValues() result?
 	 * @return true
 	 */
-	function isOmitted()
+	function isOmitted(): bool
 	{
 		return TRUE;
 	}
@@ -58,7 +58,7 @@ trait FakeControlTrait
 	 * Do nothing
 	 * @internal
 	 */
-	function validate()
+	function validate(): void
 	{
 
 	}

@@ -50,7 +50,7 @@ class DateTimeInput extends TextInput
 	/**
 	 * @inheritdoc
 	 */
-	public function cleanErrors()
+	public function cleanErrors(): void
 	{
 		$this->isValidated = FALSE;
 	}
@@ -103,7 +103,7 @@ class DateTimeInput extends TextInput
 	/**
 	 * @inheritdoc
 	 */
-	public function validate()
+	public function validate(): void
 	{
 		parent::validate();
 		$this->isValidated = TRUE;
