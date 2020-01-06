@@ -1,4 +1,9 @@
-# Bootstrap 4 forms for Nette
+# Bootstrap 4 forms for Nette 3
+
+[![Licence](https://img.shields.io/packagist/l/contributte/forms-bootstrap.svg?style=flat-square)](https://packagist.org/packages/contributte/forms-bootstrap)
+[![Downloads this Month](https://img.shields.io/packagist/dm/contributte/forms-bootstrap.svg?style=flat-square)](https://packagist.org/packages/contributte/forms-bootstrap)
+[![Downloads total](https://img.shields.io/packagist/dt/contributte/forms-bootstrap.svg?style=flat-square)](https://packagist.org/packages/contributte/forms-bootstrap)
+[![Latest stable](https://img.shields.io/packagist/v/contributte/forms-bootstrap.svg?style=flat-square)](https://packagist.org/packages/contributte/forms-bootstrap)
 
 **Please use English in potential issues, let's keep it clean, shall we?**
 
@@ -211,7 +216,4 @@ That will result in
 
 ------
 
-- Made by [czubehead](https://petrcech.eu)
-- [API documentation](https://czubehead.github.io/bootstrap-4-forms/)
-- [Componette link](https://componette.com/czubehead/bootstrap-4-forms/)
-- [Packagist link](https://packagist.org/packages/czubehead/bootstrap-4-forms)
+- Based on [czubehead](https://petrcech.eu) package [bootstrap-4-forms](https://github.com/czubehead/bootstrap-4-forms) 
