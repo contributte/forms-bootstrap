@@ -1,25 +1,18 @@
 <?php
-/**
- * Created by Petr Čech (czubehead) : https://petrcech.eu
- * Date: 9.7.17
- * Time: 20:02
- * This file belongs to the project bootstrap-4-forms
- * https://github.com/czubehead/bootstrap-4-forms
- */
 
-namespace Czubehead\BootstrapForms\Inputs;
+namespace Contributte\FormsBootstrap\Inputs;
 
 
-use Czubehead\BootstrapForms\Traits\ChoiceInputTrait;
-use Czubehead\BootstrapForms\Traits\InputPromptTrait;
-use Czubehead\BootstrapForms\Traits\StandardValidationTrait;
+use Contributte\FormsBootstrap\Traits\ChoiceInputTrait;
+use Contributte\FormsBootstrap\Traits\InputPromptTrait;
+use Contributte\FormsBootstrap\Traits\StandardValidationTrait;
 use Nette\Forms\Controls\SelectBox;
-
+use Nette\Utils\Html;
 
 /**
  * Class SelectInput.
  * Single select.
- * @package Czubehead\BootstrapForms
+ * @package Contributte\FormsBootstrap
  */
 class SelectInput extends SelectBox implements IValidationInput
 {
@@ -41,7 +34,7 @@ class SelectInput extends SelectBox implements IValidationInput
 	/**
 	 * @inheritdoc
 	 */
-	public function getControl()
+	public function getControl(): Html
 	{
 		$select = parent::getControl()->setHtml(NULL);
 

@@ -1,24 +1,17 @@
 <?php
-/**
- * Created by Petr Čech (czubehead) : https://petrcech.eu
- * Date: 9.7.17
- * Time: 20:02
- * This file belongs to the project bootstrap-4-forms
- * https://github.com/czubehead/bootstrap-4-forms
- */
 
-namespace Czubehead\BootstrapForms\Inputs;
+namespace Contributte\FormsBootstrap\Inputs;
 
-use Czubehead\BootstrapForms\BootstrapUtils;
-use Czubehead\BootstrapForms\Traits\StandardValidationTrait;
+use Contributte\FormsBootstrap\BootstrapUtils;
+use Contributte\FormsBootstrap\Traits\StandardValidationTrait;
 use Nette\InvalidArgumentException;
-
+use Nette\Utils\Html;
 
 /**
  * Class TextInput
  * @property string $placeholder HTML placeholder
  * @property bool   $autocomplete
- * @package Czubehead\BootstrapForms\Inputs
+ * @package Contributte\FormsBootstrap\Inputs
  */
 class TextInput extends \Nette\Forms\Controls\TextInput implements IValidationInput, IAutocompleteInput
 {
@@ -75,7 +68,7 @@ class TextInput extends \Nette\Forms\Controls\TextInput implements IValidationIn
 	/**
 	 * @inheritdoc
 	 */
-	public function getControl()
+	public function getControl(): Html
 	{
 		$control = parent::getControl();
 		BootstrapUtils::standardizeClass($control);

@@ -1,21 +1,12 @@
 <?php
 
-/**
- * Created by Petr Čech (czubehead) : https://petrcech.eu
- * Date: 9.7.17
- * Time: 20:02
- * This file belongs to the project bootstrap-4-forms
- * https://github.com/czubehead/bootstrap-4-forms
- * based on the original FormRenderer by David Grudl
- */
+namespace Contributte\FormsBootstrap;
 
-namespace Czubehead\BootstrapForms;
-
-use Czubehead\BootstrapForms\Enums\RendererConfig as Cnf;
-use Czubehead\BootstrapForms\Enums\RendererOptions;
-use Czubehead\BootstrapForms\Enums\RenderMode;
-use Czubehead\BootstrapForms\Grid\BootstrapRow;
-use Czubehead\BootstrapForms\Inputs\IValidationInput;
+use Contributte\FormsBootstrap\Enums\RendererConfig as Cnf;
+use Contributte\FormsBootstrap\Enums\RendererOptions;
+use Contributte\FormsBootstrap\Enums\RenderMode;
+use Contributte\FormsBootstrap\Grid\BootstrapRow;
+use Contributte\FormsBootstrap\Inputs\IValidationInput;
 use Nette;
 use Nette\Utils\Html;
 
@@ -236,6 +227,8 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 			$nonLabelColClass = "col-{$this->controlColumns}";
 		}
 
+		$labelColClass .= ' col-form-label';
+
 		return [
 			RenderMode::Inline         => [
 				Cnf::form     => [
@@ -314,11 +307,8 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 
 	/**
 	 * Provides complete form rendering.
-	 * @param \Nette\Forms\Form $form
-	 * @param null              $mode
-	 * @return string
 	 */
-	public function render(Nette\Forms\Form $form, $mode = NULL)
+	public function render(Nette\Forms\Form $form): string
 	{
 		$this->attachForm($form);
 
@@ -512,6 +502,11 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 	 */
 	public function renderLabel(Nette\Forms\IControl $control)
 	{
+
+		if ($control->caption === null) {
+			return Html::el();
+		}
+
 		/** @noinspection PhpUndefinedMethodInspection */
 		$controlLabel = $control->getLabel();
 		if ($controlLabel instanceof Html && $controlLabel->getName() == 'label') {

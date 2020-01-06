@@ -1,14 +1,10 @@
 <?php
-/**
- * Created by Petr Čech (czubehead).
- * Timestamp: 20.5.18 17:01
- */
 
-namespace Czubehead\BootstrapForms\Grid;
+namespace Contributte\FormsBootstrap\Grid;
 
-use Czubehead\BootstrapForms\BootstrapRenderer;
-use Czubehead\BootstrapForms\Enums\RendererConfig;
-use Czubehead\BootstrapForms\Traits\FakeControlTrait;
+use Contributte\FormsBootstrap\BootstrapRenderer;
+use Contributte\FormsBootstrap\Enums\RendererConfig;
+use Contributte\FormsBootstrap\Traits\FakeControlTrait;
 use Nette\ComponentModel\IComponent;
 use Nette\ComponentModel\IContainer;
 use Nette\Forms\Container;
@@ -21,7 +17,7 @@ use Nette\Utils\Html;
 /**
  * Class BootstrapRow.
  * Represents a row in Bootstrap grid system.
- * @package Czubehead\BootstrapForms\Grid
+ * @package Contributte\FormsBootstrap\Grid
  * @property string               $gridBreakPoint   Bootstrap breakpoint - usually xs, sm, md, lg. sm by
  *           default. Use NULL for no breakpoint.
  * @property-read string[]        $ownedNames       list of names of components which were added to this row
@@ -175,7 +171,7 @@ class BootstrapRow implements IComponent, IControl
 	 * Component name
 	 * @return string
 	 */
-	public function getName()
+	public function getName(): ?string
 	{
 		return $this->name;
 	}
@@ -184,7 +180,7 @@ class BootstrapRow implements IComponent, IControl
 	 * Returns the container
 	 * @return Container
 	 */
-	public function getParent()
+	public function getParent(): IContainer
 	{
 		return $this->container;
 	}
@@ -194,7 +190,7 @@ class BootstrapRow implements IComponent, IControl
 	 * @param Container|NULL $parent
 	 * @param null           $name ignored
 	 */
-	public function setParent(IContainer $parent = NULL, $name = NULL)
+	public function setParent(IContainer $parent = NULL, ?string $name = NULL)
 	{
 		$this->container = $parent;
 	}

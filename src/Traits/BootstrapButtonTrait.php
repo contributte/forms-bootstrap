@@ -1,21 +1,14 @@
 <?php
-/**
- * Created by Petr Čech (czubehead) : https://petrcech.eu
- * Date: 9.7.17
- * Time: 20:02
- * This file belongs to the project bootstrap-4-forms
- * https://github.com/czubehead/bootstrap-4-forms
- */
 
-namespace Czubehead\BootstrapForms\Traits;
+namespace Contributte\FormsBootstrap\Traits;
 
-use Czubehead\BootstrapForms\BootstrapUtils;
+use Contributte\FormsBootstrap\BootstrapUtils;
 use Nette\Utils\Html;
 
 
 /**
  * Trait BootstrapButtonTrait. Modifies an existing button class such that it returns a bootstrap button.
- * @package Czubehead\BootstrapForms
+ * @package Contributte\FormsBootstrap
  * @property string $btnType
  */
 trait BootstrapButtonTrait
@@ -46,7 +39,7 @@ trait BootstrapButtonTrait
 		return $this;
 	}
 
-	public function getControl($caption = NULL)
+	public function getControl($caption = NULL): Html
 	{
 		$control = parent::getControl($caption);
 		$this->addBtnClass($control);

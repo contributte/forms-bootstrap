@@ -1,10 +1,6 @@
 <?php
-/**
- * Created by Petr Čech (czubehead).
- * Timestamp: 24.3.18 14:39
- */
 
-namespace Czubehead\BootstrapForms;
+namespace Contributte\FormsBootstrap;
 
 
 use Nette\Utils\Html;
@@ -12,7 +8,7 @@ use Nette\Utils\Html;
 
 /**
  * Class BootstrapUtils. Utils for this library.
- * @package Czubehead\BootstrapForms
+ * @package Contributte\FormsBootstrap
  */
 class BootstrapUtils
 {

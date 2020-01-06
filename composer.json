@@ -1,8 +1,8 @@
 {
-  "name": "czubehead/bootstrap-4-forms",
+  "name": "contributte/forms-bootstrap",
   "type": "library",
-  "description": "Nette extension for Bootstrap 4 forms",
-  "homepage": "https://github.com/czubehead/bootstrap-4-forms",
+  "description": "Nette extension for Bootstrap forms",
+  "homepage": "https://github.com/contributte/forms-bootstrap",
   "license": "MIT",
   "keywords": [
     "nette",
@@ -12,18 +12,18 @@
   ],
   "authors": [
     {
-      "name": "Petr Čech",
-      "email": "petr.cech.robot@gmail.com"
+      "name": "Dalibor Korpar",
+      "email": "dalibor.korpar@gmail.com"
     }
   ],
   "require": {
-    "php": ">=5.6",
-    "nette/forms": "^2.4",
-    "nette/application": "^2.4"
+    "php": ">=7.2",
+    "nette/forms": "^3.0",
+    "nette/application": "^3.0"
   },
   "autoload": {
     "psr-4": {
-      "Czubehead\\BootstrapForms\\": "src/"
+      "Contributte\\FormsBootstrap\\": "src/"
     }
   }
 }

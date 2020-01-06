@@ -1,15 +1,11 @@
 <?php
-/**
- * Created by Petr Čech (czubehead).
- * Timestamp: 12.2.18 19:23
- */
 
-namespace Czubehead\BootstrapForms\Enums;
+namespace Contributte\FormsBootstrap\Enums;
 
 /**
  * Class RendererOptions.
  * This class provides a list of BootstrapRenderer recognised options.
- * @package Czubehead\BootstrapForms\Enums
+ * @package Contributte\FormsBootstrap\Enums
  */
 class RendererOptions
 {

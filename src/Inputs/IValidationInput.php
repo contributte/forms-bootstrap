@@ -1,10 +1,6 @@
 <?php
-/**
- * Created by Petr Čech (czubehead).
- * Timestamp: 11.2.18 22:13
- */
 
-namespace Czubehead\BootstrapForms\Inputs;
+namespace Contributte\FormsBootstrap\Inputs;
 
 use Nette\Utils\Html;
 
@@ -12,7 +8,7 @@ use Nette\Utils\Html;
 /**
  * Classes implementing this interface can explicitly show their validation status.
  * Interface IValidationInput
- * @package Czubehead\BootstrapForms\Inputs
+ * @package Contributte\FormsBootstrap\Inputs
  */
 interface IValidationInput
 {
