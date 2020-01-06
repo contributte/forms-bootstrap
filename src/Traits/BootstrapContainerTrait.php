@@ -1,27 +1,20 @@
 <?php
-/**
- * Created by Petr Čech (czubehead) : https://petrcech.eu
- * Date: 9.7.17
- * Time: 20:02
- * This file belongs to the project bootstrap-4-forms
- * https://github.com/czubehead/bootstrap-4-forms
- */
 
-namespace Czubehead\BootstrapForms\Traits;
+namespace Contributte\FormsBootstrap\Traits;
 
 
-use Czubehead\BootstrapForms\BootstrapContainer;
-use Czubehead\BootstrapForms\Inputs\ButtonInput;
-use Czubehead\BootstrapForms\Inputs\CheckboxInput;
-use Czubehead\BootstrapForms\Inputs\CheckboxListInput;
-use Czubehead\BootstrapForms\Inputs\DateTimeInput;
-use Czubehead\BootstrapForms\Inputs\MultiselectInput;
-use Czubehead\BootstrapForms\Inputs\RadioInput;
-use Czubehead\BootstrapForms\Inputs\SelectInput;
-use Czubehead\BootstrapForms\Inputs\SubmitButtonInput;
-use Czubehead\BootstrapForms\Inputs\TextAreaInput;
-use Czubehead\BootstrapForms\Inputs\TextInput;
-use Czubehead\BootstrapForms\Inputs\UploadInput;
+use Contributte\FormsBootstrap\BootstrapContainer;
+use Contributte\FormsBootstrap\Inputs\ButtonInput;
+use Contributte\FormsBootstrap\Inputs\CheckboxInput;
+use Contributte\FormsBootstrap\Inputs\CheckboxListInput;
+use Contributte\FormsBootstrap\Inputs\DateTimeInput;
+use Contributte\FormsBootstrap\Inputs\MultiselectInput;
+use Contributte\FormsBootstrap\Inputs\RadioInput;
+use Contributte\FormsBootstrap\Inputs\SelectInput;
+use Contributte\FormsBootstrap\Inputs\SubmitButtonInput;
+use Contributte\FormsBootstrap\Inputs\TextAreaInput;
+use Contributte\FormsBootstrap\Inputs\TextInput;
+use Contributte\FormsBootstrap\Inputs\UploadInput;
 use Nette\ComponentModel\IComponent;
 use Nette\Forms\Form;
 use Nette\Utils\Html;
@@ -30,7 +23,7 @@ use Nette\Utils\Html;
 /**
  * Trait BootstrapContainerTrait.
  * Implements methods to add inputs.
- * @package Czubehead\BootstrapForms
+ * @package Contributte\FormsBootstrap
  */
 trait BootstrapContainerTrait
 {

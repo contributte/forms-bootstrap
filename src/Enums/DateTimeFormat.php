@@ -1,12 +1,6 @@
 <?php
-/**
- * Created by Petr Čech (czubehead) : https://petrcech.eu
- * Date: 10.7.17
- * Time: 17:34
- * This file belongs to the project bootstrap-4-forms.code
- */
 
-namespace Czubehead\BootstrapForms\Enums;
+namespace Contributte\FormsBootstrap\Enums;
 
 use DateTime;
 
@@ -20,7 +14,7 @@ use DateTime;
  * 3. `DMY`,`YMD` and `MDY` specify the *order* of day, month and year
  * 4. `_NO_LEAD` suffix means no leading zeros
  * 5. `T_12` `LOWER`/`UPPER` point to AM/am, PM/pm
- * @package Czubehead\BootstrapForms\Enums
+ * @package Contributte\FormsBootstrap\Enums
  */
 class DateTimeFormat
 {

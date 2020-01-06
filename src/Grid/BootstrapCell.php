@@ -1,15 +1,11 @@
 <?php
-/**
- * Created by Petr Čech (czubehead).
- * Timestamp: 20.5.18 17:12
- */
 
-namespace Czubehead\BootstrapForms\Grid;
+namespace Contributte\FormsBootstrap\Grid;
 
 
-use Czubehead\BootstrapForms\BootstrapRenderer;
-use Czubehead\BootstrapForms\Enums\RendererConfig;
-use Czubehead\BootstrapForms\Traits\BootstrapContainerTrait;
+use Contributte\FormsBootstrap\BootstrapRenderer;
+use Contributte\FormsBootstrap\Enums\RendererConfig;
+use Contributte\FormsBootstrap\Traits\BootstrapContainerTrait;
 use LogicException;
 use Nette\ComponentModel\IComponent;
 use Nette\Forms\IControl;
@@ -21,7 +17,7 @@ use Nette\Utils\Html;
  * Class BootstrapCell.
  * Represents a row-column pair = table cell in Bootstrap grid system. This is the part with col-*-* class.
  * Only one component can be present.
- * @package Czubehead\BootstrapForms\Grid
+ * @package Contributte\FormsBootstrap\Grid
  * @property-read int  $numOfColumns     Number of Bootstrap columns to occupy
  * @property-read IControl $childControl|null     Nested child control if any
  * @property-read Html $elementPrototype the Html div that will be rendered. You may define additional

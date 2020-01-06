@@ -1,15 +1,11 @@
 <?php
-/**
- * Created by Petr Čech (czubehead).
- * Timestamp: 11.2.18 23:12
- */
 
-namespace Czubehead\BootstrapForms\Inputs;
+namespace Contributte\FormsBootstrap\Inputs;
 
 /**
  * Interface IAutocompleteInput.
  * Inputs which have toggleable autocomplete.
- * @package Czubehead\BootstrapForms\Inputs
+ * @package Contributte\FormsBootstrap\Inputs
  */
 interface IAutocompleteInput
 {

@@ -1,18 +1,14 @@
 <?php
-/**
- * Created by Petr Čech (czubehead).
- * Timestamp: 28.5.18 20:51
- */
 
-namespace Czubehead\BootstrapForms\Traits;
+namespace Contributte\FormsBootstrap\Traits;
 
 
-use Czubehead\BootstrapForms\Grid\BootstrapRow;
+use Contributte\FormsBootstrap\Grid\BootstrapRow;
 
 
 /**
  * Trait AddRowTrait. Implements method to add a bootstrap row.
- * @package Czubehead\BootstrapForms\Traits
+ * @package Contributte\FormsBootstrap\Traits
  */
 trait AddRowTrait
 {

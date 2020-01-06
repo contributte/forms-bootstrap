@@ -1,18 +1,11 @@
 <?php
-/**
- * Created by Petr Čech (czubehead) : https://petrcech.eu
- * Date: 9.7.17
- * Time: 20:02
- * This file belongs to the project bootstrap-4-forms
- * https://github.com/czubehead/bootstrap-4-forms
- */
 
-namespace Czubehead\BootstrapForms\Inputs;
+namespace Contributte\FormsBootstrap\Inputs;
 
 
-use Czubehead\BootstrapForms\Enums\RendererOptions;
-use Czubehead\BootstrapForms\Traits\ChoiceInputTrait;
-use Czubehead\BootstrapForms\Traits\StandardValidationTrait;
+use Contributte\FormsBootstrap\Enums\RendererOptions;
+use Contributte\FormsBootstrap\Traits\ChoiceInputTrait;
+use Contributte\FormsBootstrap\Traits\StandardValidationTrait;
 use Nette\Forms\Controls\ChoiceControl;
 use Nette\Forms\Helpers;
 use Nette\Utils\Html;
@@ -20,7 +13,7 @@ use Nette\Utils\Html;
 
 /**
  * Class RadioInput. Lets user choose one out of multiple options.
- * @package Czubehead\BootstrapForms
+ * @package Contributte\FormsBootstrap
  */
 class RadioInput extends ChoiceControl implements IValidationInput
 {

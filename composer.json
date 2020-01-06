@@ -14,10 +14,6 @@
     {
       "name": "Dalibor Korpar",
       "email": "dalibor.korpar@gmail.com"
-    },
-    {
-      "name": "Petr Čech",
-      "email": "petr.cech.robot@gmail.com"
     }
   ],
   "require": {
@@ -27,7 +23,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Czubehead\\BootstrapForms\\": "src/"
+      "Contributte\\FormsBootstrap\\": "src/"
     }
   }
 }

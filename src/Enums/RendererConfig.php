@@ -1,21 +1,17 @@
 <?php
-/**
- * Created by Petr Čech (czubehead).
- * Timestamp: 11.2.18 14:22
- */
 
-namespace Czubehead\BootstrapForms\Enums;
+namespace Contributte\FormsBootstrap\Enums;
 
 
-use Czubehead\BootstrapForms\BootstrapRenderer;
-use Czubehead\BootstrapForms\Grid\BootstrapCell;
-use Czubehead\BootstrapForms\Grid\BootstrapRow;
+use Contributte\FormsBootstrap\BootstrapRenderer;
+use Contributte\FormsBootstrap\Grid\BootstrapCell;
+use Contributte\FormsBootstrap\Grid\BootstrapRow;
 
 
 /**
  * Class RendererConfig.
  * An enum of possible BootstrapRenderer configuration options.
- * @package Czubehead\BootstrapForms\Enums
+ * @package Contributte\FormsBootstrap\Enums
  * @see     BootstrapRenderer
  */
 class RendererConfig

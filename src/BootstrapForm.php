@@ -1,16 +1,10 @@
 <?php
-/**
- * Created by PhpStorm
- * Author: czubehead (http://petrcech.eu)
- * Date: 19.11.16
- * Time: 14:37
- */
 
-namespace Czubehead\BootstrapForms;
+namespace Contributte\FormsBootstrap;
 
 
-use Czubehead\BootstrapForms\Traits\AddRowTrait;
-use Czubehead\BootstrapForms\Traits\BootstrapContainerTrait;
+use Contributte\FormsBootstrap\Traits\AddRowTrait;
+use Contributte\FormsBootstrap\Traits\BootstrapContainerTrait;
 use Nette\Application\UI\Form;
 use Nette\ComponentModel\IContainer;
 use Nette\Forms\IFormRenderer;
@@ -21,7 +15,7 @@ use Nette\Utils\Html;
 /**
  * Class BootstrapForm
  * Form rendered using Bootstrap 4
- * @package Czubehead\BootstrapForms
+ * @package Contributte\FormsBootstrap
  * @property bool $ajax
  * @property int  $renderMode
  * @property bool $showValidation     If valid fields should explicitly be green if valid
@@ -83,7 +77,7 @@ class BootstrapForm extends Form
 	}
 
 	/**
-	 * @return \Czubehead\BootstrapForms\BootstrapRenderer|\Nette\Forms\IFormRenderer
+	 * @return \Contributte\FormsBootstrap\BootstrapRenderer|\Nette\Forms\IFormRenderer
 	 */
 	public function getRenderer()
 	{

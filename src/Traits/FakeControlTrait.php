@@ -1,10 +1,6 @@
 <?php
-/**
- * Created by Petr Čech (czubehead).
- * Timestamp: 20.5.18 19:36
- */
 
-namespace Czubehead\BootstrapForms\Traits;
+namespace Contributte\FormsBootstrap\Traits;
 
 
 use Nette\NotImplementedException;
@@ -13,7 +9,7 @@ use Nette\NotImplementedException;
 /**
  * Trait FakeControlTrait.
  * Implements absolute minimum of functionality to be used as a control
- * @package Czubehead\BootstrapForms\Traits
+ * @package Contributte\FormsBootstrap\Traits
  */
 trait FakeControlTrait
 {

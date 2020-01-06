@@ -56,10 +56,10 @@ This package is compatible with any version version of Bootstrap 4
 
 ### Form
 
-Probably the main class you will be using is `Czubehead\BootstrapForms\BootstrapForm`.
+Probably the main class you will be using is `Contributte\FormsBootstrap\BootstrapForm`.
 It has all the features of this library pre-configured and extends 
 `Nette\Application\UI\Form` functionality by:
- - Only accepts `Czubehead\BootstrapForms\BootstrapRenderer` or its children (which is default)
+ - Only accepts `Contributte\FormsBootstrap\BootstrapRenderer` or its children (which is default)
  - Built-in AJAX support (adds `ajax` class upon rendering) via `ajax`(bool) property
  - Has direct access to render mode property of renderer (property `renderMode`)
  - All add* methods are overridden by bootstrap-enabled controls
@@ -164,8 +164,8 @@ And firstname and surname will be beside each other.
 - By calling `getElementPrototype()` on row or cell, you can influence the elements of row / cell
 - A cell can only hold one control (or none)
 - You are not limited to numerical column specification. 
-Also check out `\Czubehead\BootstrapForms\Grid\BootstrapCell::COLUMNS_NONE` 
-and `\Czubehead\BootstrapForms\Grid\BootstrapCell::COLUMNS_AUTO`
+Also check out `\Contributte\FormsBootstrap\Grid\BootstrapCell::COLUMNS_NONE` 
+and `\Contributte\FormsBootstrap\Grid\BootstrapCell::COLUMNS_AUTO`
 
 # Assisted manual rendering
 

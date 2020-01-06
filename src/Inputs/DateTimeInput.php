@@ -1,24 +1,17 @@
 <?php
-/**
- * Created by Petr Čech (czubehead) : https://petrcech.eu
- * Date: 9.7.17
- * Time: 20:02
- * This file belongs to the project bootstrap-4-forms
- * https://github.com/czubehead/bootstrap-4-forms
- */
 
 
-namespace Czubehead\BootstrapForms\Inputs;
+namespace Contributte\FormsBootstrap\Inputs;
 
 
-use Czubehead\BootstrapForms\Enums\DateTimeFormat;
+use Contributte\FormsBootstrap\Enums\DateTimeFormat;
 use DateTime;
 use Nette\NotSupportedException;
 
 
 /**
  * Class DateTimeInput. Textual datetime input.
- * @package Czubehead\BootstrapForms\Inputs
+ * @package Contributte\FormsBootstrap\Inputs
  * @property string $format expected PHP format for datetime
  */
 class DateTimeInput extends TextInput

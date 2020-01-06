@@ -1,25 +1,18 @@
 <?php
-/**
- * Created by Petr Čech (czubehead) : https://petrcech.eu
- * Date: 9.7.17
- * Time: 20:02
- * This file belongs to the project bootstrap-4-forms
- * https://github.com/czubehead/bootstrap-4-forms
- */
 
-namespace Czubehead\BootstrapForms\Inputs;
+namespace Contributte\FormsBootstrap\Inputs;
 
 
-use Czubehead\BootstrapForms\Traits\ChoiceInputTrait;
-use Czubehead\BootstrapForms\Traits\InputPromptTrait;
-use Czubehead\BootstrapForms\Traits\StandardValidationTrait;
+use Contributte\FormsBootstrap\Traits\ChoiceInputTrait;
+use Contributte\FormsBootstrap\Traits\InputPromptTrait;
+use Contributte\FormsBootstrap\Traits\StandardValidationTrait;
 use Nette\Forms\Controls\MultiSelectBox;
 
 
 /**
  * Class MultiselectInput.
  * Selectbox where multiple options can be selected.
- * @package Czubehead\BootstrapForms\Inputs
+ * @package Contributte\FormsBootstrap\Inputs
  */
 class MultiselectInput extends MultiSelectBox implements IValidationInput
 {

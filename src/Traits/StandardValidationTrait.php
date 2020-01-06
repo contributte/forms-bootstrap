@@ -1,13 +1,9 @@
 <?php
-/**
- * Created by Petr Čech (czubehead).
- * Timestamp: 11.2.18 22:14
- */
 
-namespace Czubehead\BootstrapForms\Traits;
+namespace Contributte\FormsBootstrap\Traits;
 
-use Czubehead\BootstrapForms\BootstrapRenderer;
-use Czubehead\BootstrapForms\Enums\RendererConfig;
+use Contributte\FormsBootstrap\BootstrapRenderer;
+use Contributte\FormsBootstrap\Enums\RendererConfig;
 use Nette\Forms\Controls\BaseControl;
 use Nette\Utils\Html;
 
@@ -15,7 +11,7 @@ use Nette\Utils\Html;
 /**
  * Trait StandardValidationTrait.
  * Standard way to implement control validation.
- * @package Czubehead\BootstrapForms\Traits
+ * @package Contributte\FormsBootstrap\Traits
  */
 trait StandardValidationTrait
 {
