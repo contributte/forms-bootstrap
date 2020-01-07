@@ -5,6 +5,8 @@
 [![Downloads total](https://img.shields.io/packagist/dt/contributte/forms-bootstrap.svg?style=flat-square)](https://packagist.org/packages/contributte/forms-bootstrap)
 [![Latest stable](https://img.shields.io/packagist/v/contributte/forms-bootstrap.svg?style=flat-square)](https://packagist.org/packages/contributte/forms-bootstrap)
 [![PHPStan](https://img.shields.io/badge/PHPStan-enabled-brightgreen.svg?style=flat-square)](https://github.com/phpstan/phpstan)
+
+
 **Please use English in potential issues, let's keep it clean, shall we?**
 
 This is a library that lets you use Bootstrap 4 forms in 
