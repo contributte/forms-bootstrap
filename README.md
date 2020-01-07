@@ -44,13 +44,12 @@ composer require czubehead/bootstrap-4-forms
 
 - Works with `Nette\Application\UI\Form`, not `Nette\Forms\Form`, so you need the
   whole Nette framework.
-- PHP 5.6+
+- PHP 7.1+
 - Client-side bootstrap 4 stylesheets and JS (obviously)
 
 ### Compatibility
 
 This package is compatible with any version version of Bootstrap 4 
-(last tested on v4.0.0-beta.2)
 
 ## How to use
 
