@@ -1,7 +1,6 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Contributte\FormsBootstrap\Traits;
-
 
 use Contributte\FormsBootstrap\BootstrapContainer;
 use Contributte\FormsBootstrap\Inputs\ButtonInput;
@@ -30,21 +29,19 @@ use Nette\Forms\Controls\UploadControl;
 use Nette\Forms\Form;
 use Nette\Utils\Html;
 
-
 /**
  * Trait BootstrapContainerTrait.
  * Implements methods to add inputs.
- * @package Contributte\FormsBootstrap
  */
 trait BootstrapContainerTrait
 {
+
 	/**
-	 * @param string           $name
-	 * @param null|string|Html $content
-	 * @param string           $btnClass secondary button class (primary is 'btn')
+	 * @param string|Html|null $content
+	 * @param string $btnClass secondary button class (primary is 'btn')
 	 * @return ButtonInput
 	 */
-	public function addButton(string $name, $content = NULL): Button
+	public function addButton(string $name, $content = null): Button
 	{
 		$comp = new ButtonInput($content);
 		$comp->setBtnClass('btn-secondary');
@@ -54,11 +51,10 @@ trait BootstrapContainerTrait
 	}
 
 	/**
-	 * @param string $name
-	 * @param null   $caption
+	 * @param string|null $caption
 	 * @return CheckboxInput
 	 */
-	public function addCheckbox(string $name, $caption = NULL): Checkbox
+	public function addCheckbox(string $name, $caption = null): Checkbox
 	{
 		$comp = new CheckboxInput($caption);
 		$this->addComponent($comp, $name);
@@ -67,12 +63,11 @@ trait BootstrapContainerTrait
 	}
 
 	/**
-	 * @param string     $name
-	 * @param null       $label
-	 * @param array|null $items
+	 * @param string|null $label
+	 * @param string[]|null $items
 	 * @return CheckboxListInput
 	 */
-	public function addCheckboxList(string $name, $label = NULL, ?array $items = NULL): CheckboxList
+	public function addCheckboxList(string $name, $label = null, ?array $items = null): CheckboxList
 	{
 		$comp = new CheckboxListInput($label, $items);
 		$this->addComponent($comp, $name);
@@ -80,7 +75,8 @@ trait BootstrapContainerTrait
 		return $comp;
 	}
 
-	public abstract function addComponent(IComponent $component, ?string $name, ?string $insertBefore = NULL);
+	// phpcs:ignore
+	abstract public function addComponent(IComponent $component, ?string $name, ?string $insertBefore = null); //
 
 	/**
 	 * @param string $name
@@ -88,23 +84,20 @@ trait BootstrapContainerTrait
 	 */
 	public function addContainer($name): Container
 	{
-		$control = new BootstrapContainer;
+		$control = new BootstrapContainer();
 		$control->currentGroup = $this->currentGroup;
-		if ($this->currentGroup !== NULL) {
+		if ($this->currentGroup !== null) {
 			/** @noinspection PhpUndefinedMethodInspection */
 			$this->currentGroup->add($control);
 		}
 
-		return $this[ $name ] = $control;
+		return $this[$name] = $control;
 	}
 
 	/**
 	 * Adds a datetime input.
-	 * @param string $name  name
-	 * @param string $label label
-	 * @return DateTimeInput
 	 */
-	public function addDateTime(string $name, $label): DateTimeInput
+	public function addDateTime(string $name, string $label): DateTimeInput
 	{
 		$comp = new DateTimeInput($label);
 		$this->addComponent($comp, $name);
@@ -113,80 +106,75 @@ trait BootstrapContainerTrait
 	}
 
 	/**
-	 * @param      $name
 	 * @param null $label
 	 * @return TextInput
 	 */
-	public function addEmail(string $name, $label = NULL): NetteTextInput
+	public function addEmail(string $name, $label = null): NetteTextInput
 	{
 		return $this->addText($name, $label)
-					->addRule(Form::EMAIL);
+			->addRule(Form::EMAIL);
 	}
 
 	/**
 	 * Adds error to a specific component
-	 * @param string $componentName
-	 * @param string $message
 	 */
 	public function addInputError(string $componentName, string $message): void
 	{
 		/** @noinspection PhpUndefinedMethodInspection */
-		$this[ $componentName ]->addError($message);
+		$this[$componentName]->addError($message);
 	}
 
 	/**
-	 * @param string $name
-	 * @param string $label
+	 * @param string|null $label
 	 * @return TextInput
 	 */
-	public function addInteger(string $name, $label = NULL): NetteTextInput
+	public function addInteger(string $name, $label = null): NetteTextInput
 	{
 		return $this->addText($name, $label)
-					->addRule(Form::INTEGER);
+			->addRule(Form::INTEGER);
 	}
 
 	/**
-	 * @param string     $name
-	 * @param null       $label
-	 * @param array|null $items
-	 * @param null       $size
+	 * @param string|null $label
+	 * @param string[]|null $items
 	 * @return MultiselectInput
 	 */
-	public function addMultiSelect(string $name, $label = NULL, ?array $items = NULL, ?int $size = NULL): MultiSelectBox
+	public function addMultiSelect(string $name, $label = null, ?array $items = null, ?int $size = null): MultiSelectBox
 	{
 		$comp = new MultiselectInput($label, $items);
-		if ($size !== NULL) {
+		if ($size !== null) {
 			$comp->setHtmlAttribute('size', $size);
 		}
+
 		$this->addComponent($comp, $name);
 
 		return $comp;
 	}
 
 	/**
-	 * @param string $name
-	 * @param string $label
+	 * @param string|null $label
 	 * @return UploadInput
 	 */
-	public function addMultiUpload(string $name, $label = NULL): UploadControl
+	public function addMultiUpload(string $name, $label = null): UploadControl
 	{
-		return $this->addUpload($name, $label, TRUE);
+		return $this->addUpload($name, $label, true);
 	}
 
 	/**
-	 * @param string $name
-	 * @param string $label
-	 * @param null   $cols
-	 * @param null   $maxLength
+	 * @param string|null $label
 	 * @return TextInput
 	 */
-	public function addPassword(string $name, $label = NULL, ?int $cols = NULL, ?int $maxLength = NULL): NetteTextInput
+	public function addPassword(string $name, $label = null, ?int $cols = null, ?int $maxLength = null): NetteTextInput
 	{
 		return $this->addText($name, $label, $cols, $maxLength)
-					->setType('password');
+			->setHtmlType('password');
 	}
 
-	public function addRadioList(string $name, $label = NULL, array $items = NULL): RadioList
+	/**
+	 * @param string|null $label
+	 * @param string[]|null $items
+	 */
+	public function addRadioList(string $name, $label = null, ?array $items = null): RadioList
 	{
 		$comp = new RadioInput($label, $items);
 		$this->addComponent($comp, $name);
@@ -195,30 +183,27 @@ trait BootstrapContainerTrait
 	}
 
 	/**
-	 * @param string $name
-	 * @param string $label
-	 * @param array  $items
-	 * @param null   $size ignore
+	 * @param string|null $label
+	 * @param string[] $items
 	 * @return SelectInput
 	 */
-	public function addSelect(string $name, $label = NULL, ?array $items = NULL, ?int $size = NULL): SelectBox
+	public function addSelect(string $name, $label = null, ?array $items = null, ?int $size = null): SelectBox
 	{
 		$comp = new SelectInput($label, $items);
-		if ($size !== NULL) {
+		if ($size !== null) {
 			$comp->setHtmlAttribute('size', $size);
 		}
+
 		$this->addComponent($comp, $name);
 
 		return $comp;
 	}
 
 	/**
-	 * @param string $name
-	 * @param string $caption
-	 * @param string $btnClass secondary button class (primary is 'btn')
+	 * @param string|null $caption
 	 * @return SubmitButtonInput
 	 */
-	public function addSubmit(string $name, $caption = NULL): SubmitButton
+	public function addSubmit(string $name, $caption = null): SubmitButton
 	{
 		$comp = new SubmitButtonInput($caption);
 		$comp->setBtnClass('btn-primary');
@@ -228,40 +213,41 @@ trait BootstrapContainerTrait
 	}
 
 	/**
-	 * @param string $name
-	 * @param string $label
-	 * @param null   $cols      ignored
-	 * @param null   $maxLength ignored
+	 * @param string|null $label
+	 * @param int|null $cols ignored
+	 * @param int|null $maxLength ignored
 	 * @return TextInput
 	 */
-	public function addText(string $name, $label = NULL, ?int $cols = NULL, ?int $maxLength = NULL): NetteTextInput
+	public function addText(string $name, $label = null, ?int $cols = null, ?int $maxLength = null): NetteTextInput
 	{
 		$comp = new TextInput($label);
-		if ($cols !== NULL) {
+		if ($cols !== null) {
 			$comp->setHtmlAttribute('cols', $cols);
 		}
-		if ($maxLength != NULL) {
+
+		if ($maxLength !== null) {
 			$comp->setHtmlAttribute('maxlength', $cols);
 		}
+
 		$this->addComponent($comp, $name);
 
 		return $comp;
 	}
 
 	/**
-	 * @param string $name
-	 * @param string $label
-	 * @param null   $cols ignored
-	 * @param null   $rows ignored
+	 * @param string|null $label
+	 * @param int|null $cols ignored
+	 * @param int|null $rows ignored
 	 * @return TextAreaInput
 	 */
-	public function addTextArea(string $name, $label = NULL, ?int $cols = NULL, ?int $rows = NULL): TextArea
+	public function addTextArea(string $name, $label = null, ?int $cols = null, ?int $rows = null): TextArea
 	{
 		$comp = new TextAreaInput($label);
-		if ($cols !== NULL) {
+		if ($cols !== null) {
 			$comp->setHtmlAttribute('cols', $cols);
 		}
-		if ($rows !== NULL) {
+
+		if ($rows !== null) {
 			$comp->setHtmlAttribute('rows', $rows);
 		}
 
@@ -271,16 +257,15 @@ trait BootstrapContainerTrait
 	}
 
 	/**
-	 * @param string $name
-	 * @param string $label
-	 * @param bool   $multiple
+	 * @param string|null $label
 	 * @return UploadInput
 	 */
-	public function addUpload(string $name, $label = NULL, bool $multiple = FALSE): UploadControl
+	public function addUpload(string $name, $label = null, bool $multiple = false): UploadControl
 	{
 		$comp = new UploadInput($label, $multiple);
 		$this->addComponent($comp, $name);
 
 		return $comp;
 	}
+
 }

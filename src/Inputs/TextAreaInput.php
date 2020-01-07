@@ -1,7 +1,6 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Contributte\FormsBootstrap\Inputs;
-
 
 use Contributte\FormsBootstrap\BootstrapUtils;
 use Contributte\FormsBootstrap\Traits\StandardValidationTrait;
@@ -9,46 +8,40 @@ use Nette\Forms\Controls\TextArea;
 use Nette\InvalidArgumentException;
 use Nette\Utils\Html;
 
-/**
- * Class TextAreaInput
- * @package Contributte\FormsBootstrap\Inputs
- * @property bool|null $autocomplete
- */
 class TextAreaInput extends TextArea implements IValidationInput, IAutocompleteInput
 {
+
 	use StandardValidationTrait;
 
-	private $autocomplete = NULL;
+	/** @var bool|null */
+	private $autocomplete = null;
 
-	/*
-	 * @inheritdoc
-	 */
-	public function __construct($label = NULL)
+	public function __construct(?string $label = null)
 	{
 		parent::__construct($label);
-		$this->setRequired(FALSE);
+		$this->setRequired(false);
 	}
 
 	/**
 	 * Gets the state of autocomplete: true=on,false=off,null=omit attribute
-	 * @param $bool
-	 * @return bool|null
 	 */
-	public function getAutocomplete($bool)
+	public function getAutocomplete(): ?bool
 	{
 		return $this->autocomplete;
 	}
 
 	/**
 	 * Turns autocomplete on or off.
+	 *
 	 * @param bool|null $bool null to omit attribute (default)
 	 * @return static
 	 */
-	public function setAutocomplete($bool)
+	public function setAutocomplete(?bool $bool)
 	{
-		if (!in_array($bool, [TRUE, FALSE, NULL], TRUE)) {
+		if (!in_array($bool, [true, false, null], true)) {
 			throw new InvalidArgumentException('valid values are only true/false/null');
 		}
+
 		$this->autocomplete = $bool;
 
 		return $this;
@@ -63,10 +56,11 @@ class TextAreaInput extends TextArea implements IValidationInput, IAutocompleteI
 		BootstrapUtils::standardizeClass($control);
 
 		$control->class[] = 'form-control';
-		if ($this->autocomplete !== NULL) {
+		if ($this->autocomplete !== null) {
 			$control->setAttribute('autocomplete', $this->autocomplete ? 'on' : 'off');
 		}
 
 		return $control;
 	}
+
 }

@@ -1,65 +1,66 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Contributte\FormsBootstrap\Traits;
 
-
 use Nette\NotImplementedException;
-
 
 /**
  * Trait FakeControlTrait.
  * Implements absolute minimum of functionality to be used as a control
- * @package Contributte\FormsBootstrap\Traits
  */
 trait FakeControlTrait
 {
+
 	/**
 	 * Always returns an empty array
-	 * @internal
+	 *
+	 * @return mixed[]
 	 */
-	function getErrors(): array
+	public function getErrors(): array
 	{
 		return [];
 	}
 
 	/**
 	 * Not supported
-	 * @internal
+	 *
+	 * @return null
 	 */
-	function getValue()
+	public function getValue()
 	{
-		return NULL;
+		return null;
 	}
 
-	public function isDisabled()
+	public function isDisabled(): bool
 	{
-		return TRUE;
+		return true;
 	}
 
 	/**
 	 * Is control value excluded from $form->getValues() result?
-	 * @return true
 	 */
-	function isOmitted(): bool
+	public function isOmitted(): bool
 	{
-		return TRUE;
+		return true;
 	}
 
 	/**
 	 * Not supported
-	 * @param $value
+	 *
+	 * @param mixed $value
 	 */
-	function setValue($value)
+	public function setValue($value): void
 	{
-		throw new NotImplementedException;
+		throw new NotImplementedException();
 	}
 
 	/**
 	 * Do nothing
+	 *
 	 * @internal
 	 */
-	function validate(): void
+	public function validate(): void
 	{
-
 	}
+
 }

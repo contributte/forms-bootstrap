@@ -1,7 +1,6 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Contributte\FormsBootstrap;
-
 
 use Contributte\FormsBootstrap\Traits\AddRowTrait;
 use Contributte\FormsBootstrap\Traits\BootstrapContainerTrait;
@@ -11,11 +10,10 @@ use Nette\Forms\IFormRenderer;
 use Nette\InvalidArgumentException;
 use Nette\Utils\Html;
 
-
 /**
  * Class BootstrapForm
  * Form rendered using Bootstrap 4
- * @package Contributte\FormsBootstrap
+ *
  * @property bool $ajax
  * @property int  $renderMode
  * @property bool $showValidation     If valid fields should explicitly be green if valid
@@ -23,38 +21,32 @@ use Nette\Utils\Html;
  */
 class BootstrapForm extends Form
 {
+
 	use BootstrapContainerTrait;
 	use AddRowTrait;
 
-	/**
-	 * @var string Class to be added if this is ajax. Defaults to 'ajax'
-	 */
+	/** @var string Class to be added if this is ajax. Defaults to 'ajax' */
 	public $ajaxClass = 'ajax';
-	/**
-	 * @var Html
-	 */
+
+	/** @var Html */
 	protected $elementPrototype;
-	/**
-	 * @var bool
-	 */
-	private $isAjax = TRUE;
-	/**
-	 * @var bool
-	 */
-	private $showValidation = FALSE;
-	/**
-	 * @var bool
-	 */
-	private $autoShowValidation = TRUE;
+
+	/** @var bool */
+	private $isAjax = true;
+
+	/** @var bool */
+	private $showValidation = false;
+
+	/** @var bool */
+	private $autoShowValidation = true;
 
 	/**
-	 * BootstrapForm constructor.
 	 * @param int|IContainer|null $container
 	 */
-	public function __construct($container = NULL)
+	public function __construct($container = null)
 	{
 		parent::__construct($container);
-		$this->setRenderer(new BootstrapRenderer);
+		$this->setRenderer(new BootstrapRenderer());
 
 		$prototype = Html::el('form', [
 			'action' => '',
@@ -66,7 +58,7 @@ class BootstrapForm extends Form
 		/**
 		 * @param BootstrapForm $form
 		 */
-		$this->onError[] = function ($form) {
+		$this->onError[] = function ($form): void {
 			$form->showValidation = $this->autoShowValidation;
 		};
 	}
@@ -77,31 +69,28 @@ class BootstrapForm extends Form
 	}
 
 	/**
-	 * @return \Contributte\FormsBootstrap\BootstrapRenderer
+	 * @return BootstrapRenderer
 	 */
-	public function getRenderer() : IFormRenderer
+	public function getRenderer(): IFormRenderer
 	{
 		return parent::getRenderer();
 	}
 
 	/**
-	 * @param IFormRenderer $renderer
 	 * @return static
 	 */
-	public function setRenderer(IFormRenderer $renderer = NULL)
+	public function setRenderer(?IFormRenderer $renderer = null)
 	{
 		if (!$renderer instanceof BootstrapRenderer) {
 			throw new InvalidArgumentException('Must be a BootstrapRenderer');
 		}
+
 		parent::setRenderer($renderer);
 
 		return $this;
 	}
 
-	/**
-	 * @return int
-	 */
-	public function getRenderMode()
+	public function getRenderMode(): int
 	{
 		return $this->getRenderer()->getMode();
 	}
@@ -109,24 +98,17 @@ class BootstrapForm extends Form
 	/**
 	 * @return bool if form is ajax. True by default.
 	 */
-	public function isAjax()
+	public function isAjax(): bool
 	{
 		return $this->isAjax;
 	}
 
-	/**
-	 * @return bool
-	 */
-	public function isAutoShowValidation()
+	public function isAutoShowValidation(): bool
 	{
 		return $this->autoShowValidation;
 	}
 
-	/**
-	 * @param bool $autoShowValidation
-	 * @return BootstrapForm
-	 */
-	public function setAutoShowValidation($autoShowValidation)
+	public function setAutoShowValidation(bool $autoShowValidation): BootstrapForm
 	{
 		$this->autoShowValidation = $autoShowValidation;
 
@@ -135,19 +117,18 @@ class BootstrapForm extends Form
 
 	/**
 	 * If valid fields should explicitly be green
-	 * @return bool
 	 */
-	public function isShowValidation()
+	public function isShowValidation(): bool
 	{
 		return $this->showValidation;
 	}
 
 	/**
 	 * If valid fields should explicitly be green
-	 * @param bool $showValidation
+	 *
 	 * @return static
 	 */
-	public function setShowValidation($showValidation)
+	public function setShowValidation(bool $showValidation)
 	{
 		$this->showValidation = $showValidation;
 
@@ -155,10 +136,9 @@ class BootstrapForm extends Form
 	}
 
 	/**
-	 * @param bool $isAjax
 	 * @return static
 	 */
-	public function setAjax($isAjax = TRUE)
+	public function setAjax(bool $isAjax = true)
 	{
 		$this->isAjax = $isAjax;
 
@@ -173,19 +153,20 @@ class BootstrapForm extends Form
 			// add class
 			$prototypeClass[] = $this->ajaxClass;
 		}
+
 		$this->getElementPrototype()->class = $prototypeClass;
 
 		return $this;
 	}
 
 	/**
-	 * @param int $renderMode
 	 * @return static
 	 */
-	public function setRenderMode($renderMode)
+	public function setRenderMode(int $renderMode)
 	{
 		$this->getRenderer()->setMode($renderMode);
 
 		return $this;
 	}
+
 }

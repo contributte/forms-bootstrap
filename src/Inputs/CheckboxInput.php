@@ -1,20 +1,18 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Contributte\FormsBootstrap\Inputs;
-
 
 use Contributte\FormsBootstrap\Traits\StandardValidationTrait;
 use Nette;
 use Nette\Forms\Controls\Checkbox;
 use Nette\Utils\Html;
 
-
 /**
  * Class CheckboxInput. Single checkbox.
- * @package Contributte\FormsBootstrap\Inputs
  */
 class CheckboxInput extends Checkbox implements IValidationInput
 {
+
 	use StandardValidationTrait {
 		// we only want to use it on a specific child
 		showValidation as protected _rawShowValidation;
@@ -22,29 +20,36 @@ class CheckboxInput extends Checkbox implements IValidationInput
 
 	/**
 	 * Generates a checkbox
-	 * @return Html
 	 */
 	public function getControl(): Html
 	{
-		return self::makeCheckbox($this->getHtmlName(), $this->getHtmlId(), $this->translate($this->caption), $this->value, FALSE, $this->required,
-			$this->disabled, $this->getRules());
+		return self::makeCheckbox(
+			$this->getHtmlName(),
+			$this->getHtmlId(),
+			$this->translate($this->caption),
+			$this->value,
+			false,
+			$this->required,
+			$this->disabled,
+			$this->getRules()
+		);
 	}
 
 	/**
 	 * Makes a Bootstrap checkbox HTML
-	 * @param string                 $name
-	 * @param string                 $htmlId
-	 * @param string|null            $caption
-	 * @param bool                   $checked
+	 *
 	 * @param bool|mixed             $value pass false to omit
-	 * @param bool                   $required
-	 * @param bool                   $disabled
-	 * @param Nette\Forms\Rules|null $rules
-	 * @return Html
 	 */
 	public static function makeCheckbox(
-		$name, $htmlId, $caption = NULL, $checked = FALSE, $value = FALSE, $required = FALSE,
-		$disabled = FALSE, $rules = NULL)
+		string $name,
+		string $htmlId,
+		?string $caption = null,
+		bool $checked = false,
+		$value = false,
+		bool $required = false,
+		bool $disabled = false,
+		?Nette\Forms\Rules $rules = null
+	): Html
 	{
 		$label = Html::el('label', ['class' => ['custom-control', 'custom-checkbox']]);
 		$input = Html::el('input', [
@@ -55,9 +60,9 @@ class CheckboxInput extends Checkbox implements IValidationInput
 			'required'         => $required,
 			'checked'          => $checked,
 			'id'               => $htmlId,
-			'data-nette-rules' => $rules ? Nette\Forms\Helpers::exportRules($rules) : FALSE,
+			'data-nette-rules' => $rules ? Nette\Forms\Helpers::exportRules($rules) : false,
 		]);
-		if ($value !== FALSE) {
+		if ($value !== false) {
 			$input->attrs += [
 				'value' => $value,
 			];
@@ -80,14 +85,13 @@ class CheckboxInput extends Checkbox implements IValidationInput
 	/**
 	 * Modify control in such a way that it explicitly shows its validation state.
 	 * Returns the modified element.
-	 * @param Html $control
-	 * @return Html
 	 */
-	public function showValidation(Html $control)
+	public function showValidation(Html $control): Html
 	{
 		// add validation classes to the first child, which is <input>
 		$control->getChildren()[0] = $this->_rawShowValidation($control->getChildren()[0]);
 
 		return $control;
 	}
+
 }

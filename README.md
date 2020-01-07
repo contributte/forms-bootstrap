@@ -4,7 +4,7 @@
 [![Downloads this Month](https://img.shields.io/packagist/dm/contributte/forms-bootstrap.svg?style=flat-square)](https://packagist.org/packages/contributte/forms-bootstrap)
 [![Downloads total](https://img.shields.io/packagist/dt/contributte/forms-bootstrap.svg?style=flat-square)](https://packagist.org/packages/contributte/forms-bootstrap)
 [![Latest stable](https://img.shields.io/packagist/v/contributte/forms-bootstrap.svg?style=flat-square)](https://packagist.org/packages/contributte/forms-bootstrap)
-
+[![PHPStan](https://img.shields.io/badge/PHPStan-enabled-brightgreen.svg?style=flat-square)](https://github.com/phpstan/phpstan)
 **Please use English in potential issues, let's keep it clean, shall we?**
 
 This is a library that lets you use Bootstrap 4 forms in 
@@ -73,12 +73,12 @@ That feature would only add unnecessary and deceiving overhead to this library,
 **use grid instead, it will give you much finer control**
 
 #### Render modes
- 1. **Vertical** (`Enums\RenderMode::VerticalMode`) all controls are below their labels
- 2. **Side-by-side** (`Enums\RenderMode::SideBySideMode`) controls have their labels
+ 1. **Vertical** (`Enums\RenderMode::VERTICAL_MODE`) all controls are below their labels
+ 2. **Side-by-side** (`Enums\RenderMode::SIDE_BY_SIDE_MODE`) controls have their labels
  on the left. It is made up using [Bootstrap grid](http://v4-alpha.getbootstrap.com/layout/grid/).
  The default layout is 3 columns for labels and 9 for controls. This can be altered
  using `BootstrapRenderer::setColumns($label, $input)`.
- 3. **Inline** `Enums\RenderMode::Inline` all controls and labels will be in one
+ 3. **Inline** `Enums\RenderMode::INLINE` all controls and labels will be in one
  enormous line
 
 ### Controls / inputs

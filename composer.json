@@ -17,13 +17,40 @@
     }
   ],
   "require": {
-    "php": ">=7.2",
+    "php": ">=7.1",
     "nette/forms": "^3.0",
     "nette/application": "^3.0"
+  },
+  "require-dev": {
+    "ninjify/qa": "^v0.10"
   },
   "autoload": {
     "psr-4": {
       "Contributte\\FormsBootstrap\\": "src/"
     }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "extra": {
+    "branch-alias": {
+      "dev-master": "0.1.x-dev"
+    }
+  },
+  "scripts": {
+    "qa": [
+      "linter src",
+      "codesniffer src"
+    ],
+    "phpstan-install": [
+      "mkdir -p temp/phpstan",
+      "composer require -d temp/phpstan phpstan/phpstan:^0.11",
+      "composer require -d temp/phpstan phpstan/phpstan-dibi:^0.11",
+      "composer require -d temp/phpstan phpstan/phpstan-deprecation-rules:^0.11",
+      "composer require -d temp/phpstan phpstan/phpstan-nette:^0.11",
+      "composer require -d temp/phpstan phpstan/phpstan-strict-rules:^0.11"
+    ],
+    "phpstan": [
+      "temp/phpstan/vendor/bin/phpstan analyse -l 1 -c phpstan.neon src --memory-limit 1024M"
+    ]
   }
 }

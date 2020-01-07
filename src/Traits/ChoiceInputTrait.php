@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Contributte\FormsBootstrap\Traits;
 
@@ -6,34 +6,35 @@ use Nette\Forms\Controls\ChoiceControl;
 use Nette\InvalidArgumentException;
 use Nette\Utils\Html;
 
-
 /**
  * Trait ChoiceInputTrait.
  * Provides basic functionality for inputs where one of more than one predefined values are possible.
- * @package Contributte\FormsBootstrap\Traits
  */
 trait ChoiceInputTrait
 {
+
 	/**
-	 * @var array items as user entered them - may be nested, unlike items, which are always flat.
+	 * items as user entered them - may be nested, unlike items, which are always flat.
+	 *
+	 * @var string[]
 	 */
 	protected $rawItems;
 
 	/**
 	 * Processes an associative array in a way that it has no nesting. Keys for
 	 * nested arrays are lost, but nested arrays are merged.
-	 * @param array $array
-	 * @return array
+	 *
+	 * @param mixed[] $array
+	 * @return mixed[]
 	 */
-	public function flatAssocArray(array $array)
+	public function flatAssocArray(array $array): array
 	{
 		$ret = [];
 		foreach ($array as $key => $value) {
 			if (is_array($value)) {
 				$ret += $this->flatAssocArray($value);
-			}
-			else {
-				$ret[ $key ] = $value;
+			} else {
+				$ret[$key] = $value;
 			}
 		}
 
@@ -41,20 +42,21 @@ trait ChoiceInputTrait
 	}
 
 	/**
-	 * Makes array of &lt;option&gt;. Can handle associative arrays just fine. Checks for duplicate values.
-	 * @param array    $items
+	 * Makes array of <option>. Can handle associative arrays just fine. Checks for duplicate values.
+	 *
+	 * @param mixed[] $items
 	 * @param callable $optionArgs     takes ($value,$caption) and spits out an array of &lt;option&gt;
 	 *                                 attributes
-	 * @param array    $valuesRendered for internal use. Do not change.
-	 * @return array
+	 * @param mixed[] $valuesRendered for internal use. Do not change.
+	 * @return Html[]
 	 * @throws InvalidArgumentException when $items have multiple of the same values
 	 */
-	public function makeOptionList($items, callable $optionArgs, array &$valuesRendered = [])
+	public function makeOptionList(array $items, callable $optionArgs, array &$valuesRendered = []): array
 	{
 		$ret = [];
 		foreach ($items as $value => $caption) {
 			if (is_int($value)) {
-				$value = (string)$value;
+				$value = (string) $value;
 			}
 
 			if (is_array($caption)) {
@@ -67,18 +69,21 @@ trait ChoiceInputTrait
 				foreach ($nested as $item) {
 					$option->addHtml($item);
 				}
-			}
-			else {
+			} else {
 				if (in_array($value, $valuesRendered)) {
-					throw new InvalidArgumentException("Value '$value' is used multiple times.");
+					throw new InvalidArgumentException('Value "' . $value . '" is used multiple times.');
 				}
+
 				$valuesRendered[] = $value;
 
 				// normal option
-				$option = Html::el('option',
-					array_merge(['value' => (string)$value], $optionArgs($value, $caption)));
+				$option = Html::el(
+					'option',
+					array_merge(['value' => (string) $value], $optionArgs($value, $caption))
+				);
 				$option->setText($caption);
 			}
+
 			$ret[] = $option;
 		}
 
@@ -86,11 +91,10 @@ trait ChoiceInputTrait
 	}
 
 	/**
-	 * @param array $items Items to set. Associative arrays are supported.
-	 * @param  bool $useKeys
+	 * @param mixed[] $items Items to set. Associative arrays are supported.
 	 * @return static
 	 */
-	public function setItems(array $items, $useKeys = TRUE)
+	public function setItems(array $items, bool $useKeys = true)
 	{
 		/** @var ChoiceControl $this */
 		$this->rawItems = $items;
@@ -105,50 +109,48 @@ trait ChoiceInputTrait
 	/**
 	 * Check if whole control is disabled.
 	 * This is false if only a set of values is disabled
-	 * @return bool
 	 */
-	protected function isControlDisabled()
+	protected function isControlDisabled(): bool
 	{
 		if (is_bool($this->disabled)) {
 			return $this->disabled;
 		}
 
-		return FALSE;
+		return false;
 	}
 
 	/**
 	 * Check if a specific value is disabled. If whole control is disabled, returns false.
-	 * @param $value mixed value to check for
-	 * @return bool
+	 *
+	 * @param mixed $value value to check for
 	 */
-	protected function isValueDisabled($value)
+	protected function isValueDisabled($value): bool
 	{
 		$disabled = $this->disabled;
 		if (is_array($disabled)) {
-			return isset($disabled[ $value ]) && $disabled[ $value ];
-		}
-		elseif (!is_bool($disabled)) {
-			return $disabled == $value;
+			return isset($disabled[$value]) && $disabled[$value];
+		} elseif (!is_bool($disabled)) {
+			return $disabled === $value;
 		}
 
-		return FALSE;
+		return false;
 	}
 
 	/**
-	 * Self-explanatory
-	 * @param $value
-	 * @return bool
+	 * @param mixed $value
 	 */
-	protected function isValueSelected($value)
+	protected function isValueSelected($value): bool
 	{
 		$val = $this->getValue();
-		if (is_null($value)) {
-			return FALSE;
+		if ($value === null) {
+			return false;
 		}
-		elseif (is_array($val)) {
+
+		if (is_array($val)) {
 			return in_array($value, $val);
 		}
 
-		return $value == $val;
+		return $value === $val;
 	}
+
 }

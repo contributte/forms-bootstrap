@@ -1,68 +1,68 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Contributte\FormsBootstrap\Enums;
-
 
 use Contributte\FormsBootstrap\BootstrapRenderer;
 use Contributte\FormsBootstrap\Grid\BootstrapCell;
 use Contributte\FormsBootstrap\Grid\BootstrapRow;
 
-
 /**
  * Class RendererConfig.
  * An enum of possible BootstrapRenderer configuration options.
- * @package Contributte\FormsBootstrap\Enums
+ *
  * @see     BootstrapRenderer
  */
 class RendererConfig
 {
+
 	/**
 	 * The form element
 	 */
-	const form = 'form';
+	public const FORM = 'form';
 
 	/**
 	 * Form group
 	 */
-	const group = 'group';
+	public const GROUP = 'group';
 	/**
 	 * Label of a group
 	 */
-	const groupLabel = 'group-label';
+	public const GROUP_LABEL = 'group-label';
 
 	/**
 	 * Bootstrap row
+	 *
 	 * @see BootstrapRow
 	 */
-	const gridRow = 'grid-row';
+	public const GRID_ROW = 'grid-row';
 	/**
 	 * @see BootstrapCell
 	 */
-	const gridCell = 'grid-cell';
+	public const GRID_CELL = 'grid-cell';
 
 	/**
 	 * Errors belonging to the form rather than an individual control. This is a container.
 	 */
-	const formOwnErrors = 'form-own-errors';
+	public const FORM_OWN_ERRORS = 'form-own-errors';
 	/**
-	 * Multiple of those will be inside formOwnErrors
+	 * Multiple of those will be inside FORM_OWN_ERRORS
 	 */
-	const formOwnError = 'form-own-error';
+	public const FORM_OWN_ERROR = 'form-own-error';
 
-	const pair = 'pair';
-	const label = 'label';
-	const description = 'description';
+	public const PAIR = 'pair';
+	public const LABEL = 'label';
+	public const DESCRIPTION = 'description';
 	/**
 	 * form group parts which are not label - input, feedback, description
 	 */
-	const nonLabel = 'non-label';
+	public const NON_LABEL = 'non-label';
 
 	/**
 	 * Influences on control HTML. Applied after validation.
 	 */
-	const input = 'input';
-	const inputValid = 'input-valid';
-	const inputInvalid = 'input-invalid';
+	public const INPUT = 'input';
+	public const INPUT_VALID = 'input-valid';
+	public const INPUT_INVALID = 'input-invalid';
 	/**
 	 * Element that is normally an inline element within bootstrap
 	 */
@@ -70,36 +70,37 @@ class RendererConfig
 	/**
 	 * Text saying if field is valid or invalid
 	 */
-	const feedback = 'feedback';
+	public const FEEDBACK = 'feedback';
 	/**
 	 * Child of 'feedback'. Extra attributes for invalid feedback
 	 */
-	const feedbackValid = 'feedback-valid';
+	public const FEEDBACK_VALID = 'feedback-valid';
 	/**
 	 * Child of 'feedback'. Extra attributes for valid feedback
 	 */
-	const feedbackInvalid = 'feedback-invalid';
+	public const FEEDBACK_INVALID = 'feedback-invalid';
 
 	/**
 	 * Element name
 	 */
-	const elementName = 'element';
+	public const ELEMENT_NAME = 'element';
 	/**
 	 * Container. Must contain 'element' key. May be recursive.
 	 */
-	const container = 'container';
+	public const CONTAINER = 'container';
 
-	const attributes = 'attributes';
+	public const ATTRIBUTES = 'attributes';
 	/**
 	 * Class or array of classes to set
 	 */
-	const classSet = 'class-set';
+	public const CLASS_SET = 'class-set';
 	/**
 	 * Class or array of classes to add
 	 */
-	const classAdd = 'class-add';
+	public const CLASS_ADD = 'class-add';
 	/**
 	 * Class or array to classes to remove if they exist
 	 */
-	const classRemove = 'class-remove';
+	public const CLASS_REMOVE = 'class-remove';
+
 }

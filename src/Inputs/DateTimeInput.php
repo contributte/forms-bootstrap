@@ -1,25 +1,25 @@
-<?php
-
+<?php declare(strict_types = 1);
 
 namespace Contributte\FormsBootstrap\Inputs;
 
-
 use Contributte\FormsBootstrap\Enums\DateTimeFormat;
 use DateTime;
+use DateTimeInterface;
 use Nette\NotSupportedException;
-
 
 /**
  * Class DateTimeInput. Textual datetime input.
- * @package Contributte\FormsBootstrap\Inputs
+ *
  * @property string $format expected PHP format for datetime
  */
 class DateTimeInput extends TextInput
 {
-	const DEFAULT_FORMAT = DateTimeFormat::D_DMY_DOTS_NO_LEAD . ' ' . DateTimeFormat::T_24_NO_LEAD;
+
+	public const DEFAULT_FORMAT = DateTimeFormat::D_DMY_DOTS_NO_LEAD . ' ' . DateTimeFormat::T_24_NO_LEAD;
 
 	/**
 	 * This errorMessage is added for invalid format
+	 *
 	 * @var string
 	 */
 	public $invalidFormatMessage = 'invalid/incorrect format';
@@ -27,18 +27,24 @@ class DateTimeInput extends TextInput
 	/**
 	 * Input accepted format.
 	 * Default is d.m.yyyy h:mm
+	 *
 	 * @var string
 	 */
 	private $format;
 
-	private $isValidated = FALSE;
+	/** @var bool */
+	private $isValidated = false;
 
-	public function __construct($label = NULL, $maxLength = NULL)
+	/**
+	 * @param null $maxLength
+	 */
+	public function __construct(?string $label = null, $maxLength = null)
 	{
-		if ($maxLength !== NULL) {
+		if ($maxLength !== null) {
 			throw new NotSupportedException('Do not set $maxLength!');
 		}
-		parent::__construct($label, NULL);
+
+		parent::__construct($label, null);
 
 		$this->addRule(function ($input) {
 			return DateTimeFormat::validate($this->format, $input->value);
@@ -52,7 +58,7 @@ class DateTimeInput extends TextInput
 	 */
 	public function cleanErrors(): void
 	{
-		$this->isValidated = FALSE;
+		$this->isValidated = false;
 	}
 
 	/**
@@ -67,19 +73,19 @@ class DateTimeInput extends TextInput
 
 		$value = DateTime::createFromFormat($this->format, $val);
 		if (!$value) {
-			return NULL;
+			return null;
 		}
 
 		return $value;
 	}
 
 	/**
-	 * @param DateTime|null $value
+	 * @param DateTimeInterface|null $value
 	 * @return static
 	 */
 	public function setValue($value)
 	{
-		if ($value instanceof DateTime) {
+		if ($value instanceof DateTimeInterface) {
 			parent::setValue($value->format($this->format));
 
 			return $this;
@@ -87,8 +93,8 @@ class DateTimeInput extends TextInput
 			parent::setValue($value);
 
 			return $this;
-		} elseif ($value === NULL) {
-			parent::setValue(NULL);
+		} elseif ($value === null) {
+			parent::setValue(null);
 
 			return $this;
 		} else {
@@ -106,14 +112,13 @@ class DateTimeInput extends TextInput
 	public function validate(): void
 	{
 		parent::validate();
-		$this->isValidated = TRUE;
+		$this->isValidated = true;
 	}
 
 	/**
-	 * @return string
 	 * @see DateTimeInput::$format
 	 */
-	public function getFormat()
+	public function getFormat(): string
 	{
 		return $this->format;
 	}
@@ -121,17 +126,15 @@ class DateTimeInput extends TextInput
 	/**
 	 * Input accepted format.
 	 * Default is d.m.yyyy h:mm
-	 * @param string      $format
-	 * @param null|string $placeholder
-	 * @return DateTimeInput
 	 */
-	public function setFormat($format, $placeholder = NULL)
+	public function setFormat(string $format, ?string $placeholder = null): DateTimeInput
 	{
 		$this->format = $format;
 
-		if ($placeholder === NULL) {
+		if ($placeholder === null) {
 			$placeholder = self::makeFormatPlaceholder($format);
 		}
+
 		if (!empty($placeholder)) {
 			$this->setPlaceholder($placeholder);
 		}
@@ -142,12 +145,11 @@ class DateTimeInput extends TextInput
 	/**
 	 * Turns datetime format into a placeholder,  e.g. 'd.m.Y' => 'dd.mm.yyyy'.
 	 * Supported values: d, j, m, n, Y, y, a, A, g, G, h, H, i, s, c, U
-	 * @param string $format
+	 *
 	 * @param bool   $example       whether to use e.g. 'd' or '01'
 	 * @param bool   $appendExample attach example at the end of placeholder (true) or replace (false)e?
-	 * @return string
 	 */
-	public static function makeFormatPlaceholder($format, $example = TRUE, $appendExample = TRUE)
+	public static function makeFormatPlaceholder(string $format, bool $example = true, bool $appendExample = true): string
 	{
 		$letterSubs = [
 			'd' => 'dd',
@@ -190,12 +192,17 @@ class DateTimeInput extends TextInput
 
 		if (!$example) {
 			return $letters;
-		} elseif ($example && $appendExample) {
-			return "$letters ($ex)";
-		} elseif ($example && !$appendExample) {
-			return $ex;
-		} else {
-			return $letters;
 		}
+
+		if ($appendExample) {
+			return $letters . '(' . $ex . ')';
+		}
+
+		if (!$appendExample) {
+			return $ex;
+		}
+
+		return $letters;
 	}
+
 }
