@@ -90,6 +90,7 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 		}
 
 		if ($el instanceof Html && $el !== null) {
+			$origClass = null;
 			// go through all config and configure element accordingly
 			foreach ($config as $key => $value) {
 				if (in_array($key, [Cnf::CLASS_SET, Cnf::CLASS_ADD, Cnf::CLASS_ADD, Cnf::CLASS_REMOVE])) {

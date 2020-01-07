@@ -7,6 +7,7 @@ use Contributte\FormsBootstrap\Enums\RendererConfig;
 use Contributte\FormsBootstrap\Traits\BootstrapContainerTrait;
 use LogicException;
 use Nette\ComponentModel\IComponent;
+use Nette\Forms\ControlGroup;
 use Nette\Forms\IControl;
 use Nette\SmartObject;
 use Nette\Utils\Html;
@@ -31,10 +32,14 @@ class BootstrapCell
 	 * Only use 'col' class (auto stretch)
 	 */
 	public const COLUMNS_NONE = false;
+
 	/**
 	 * Use 'col-auto'
 	 */
 	public const COLUMNS_AUTO = null;
+
+	/** @var ControlGroup|null */
+	protected $currentGroup;
 
 	/** @var int */
 	private $numOfColumns;
