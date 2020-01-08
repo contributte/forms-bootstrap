@@ -29,16 +29,16 @@ trait ChoiceInputTrait
 	 */
 	public function flatAssocArray(array $array): array
 	{
-		$ret = [];
+		$result = [];
 		foreach ($array as $key => $value) {
 			if (is_array($value)) {
-				$ret += $this->flatAssocArray($value);
+				$result += $this->flatAssocArray($value);
 			} else {
-				$ret[$key] = $value;
+				$result[$key] = $value;
 			}
 		}
 
-		return $ret;
+		return $result;
 	}
 
 	/**
@@ -100,7 +100,6 @@ trait ChoiceInputTrait
 		$this->rawItems = $items;
 
 		$processed = $this->flatAssocArray($items);
-		/** @noinspection PhpUndefinedMethodInspection */
 		parent::setItems($processed, $useKeys);
 
 		return $this;

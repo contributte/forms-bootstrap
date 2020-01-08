@@ -8,6 +8,8 @@ use Contributte\FormsBootstrap\Enums\RenderMode;
 use Contributte\FormsBootstrap\Grid\BootstrapRow;
 use Contributte\FormsBootstrap\Inputs\IValidationInput;
 use Nette;
+use Nette\Forms\Controls\BaseControl;
+use Nette\Forms\Form;
 use Nette\Utils\Html;
 
 /**
@@ -60,7 +62,7 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 	 * Sets the form for which to render. Used only if a specific function of the renderer must be executed
 	 * outside of render(), such as during assisted manual rendering.
 	 */
-	public function attachForm(Nette\Forms\Form $form): void
+	public function attachForm(Form $form): void
 	{
 		$this->form = $form;
 	}
@@ -301,7 +303,7 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 	/**
 	 * Provides complete form rendering.
 	 */
-	public function render(Nette\Forms\Form $form): string
+	public function render(Form $form): string
 	{
 		$this->attachForm($form);
 
@@ -421,13 +423,10 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 	/**
 	 * Renders 'control' part of visual row of controls.
 	 */
-	public function renderControl(Nette\Forms\IControl $control): string
+	public function renderControl(BaseControl $control): string
 	{
-		/** @noinspection PhpUndefinedMethodInspection */
 		$controlHtml = $control->getControl();
-		/** @noinspection PhpUndefinedMethodInspection */
 		$control->setOption(RendererOptions::_RENDERED, true);
-		/** @noinspection PhpUndefinedMethodInspection */
 		if (($this->form->showValidation || $control->hasErrors()) && $control instanceof IValidationInput) {
 			$controlHtml = $control->showValidation($controlHtml);
 		}
@@ -492,13 +491,12 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 	/**
 	 * Renders 'label' part of visual row of controls.
 	 */
-	public function renderLabel(Nette\Forms\IControl $control): Html
+	public function renderLabel(BaseControl $control): Html
 	{
 		if ($control->caption === null) {
 			return Html::el();
 		}
 
-		/** @noinspection PhpUndefinedMethodInspection */
 		$controlLabel = $control->getLabel();
 		if ($controlLabel instanceof Html && $controlLabel->getName() === 'label') {
 			// the control has already provided us with the element, no need to create our own
@@ -522,11 +520,10 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 	/**
 	 * Renders single visual row.
 	 */
-	public function renderPair(Nette\Forms\IControl $control): string
+	public function renderPair(BaseControl $control): string
 	{
 		$pairHtml = $this->configElem(Cnf::PAIR);
-		/** @noinspection PhpUndefinedMethodInspection */
-		/** @noinspection PhpUndefinedFieldInspection */
+
 		$pairHtml->id = $control->getOption(RendererOptions::ID);
 
 		$labelHtml = $this->renderLabel($control);
@@ -607,7 +604,7 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 	/**
 	 * Get element based on its first-level key
 	 *
-	 * @param string[] $additionalKeys config will be overridden in this order
+	 * @param array<int, string> $additionalKeys config will be overridden in this order
 	 */
 	protected function getElem(string $key, ...$additionalKeys): ?Html
 	{
@@ -624,12 +621,11 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 	/**
 	 * Renders control description (help text)
 	 */
-	protected function renderDescription(Nette\Forms\IControl $control): ?Html
+	protected function renderDescription(BaseControl $control): ?Html
 	{
-		/** @noinspection PhpUndefinedMethodInspection */
 		$description = $control->getOption(RendererOptions::DESCRIPTION);
 		if (is_string($description)) {
-			if ($control instanceof Nette\Forms\Controls\BaseControl) {
+			if ($control instanceof BaseControl) {
 				$description = $control->translate($description);
 			}
 		} elseif (!$description instanceof Html) {
@@ -649,9 +645,9 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 	/**
 	 * Renders valid or invalid feedback of form or control
 	 *
-	 * @param Nette\Forms\Controls\BaseControl|null $control null = whole form
+	 * @param BaseControl|null $control null = whole form
 	 */
-	protected function renderFeedback(?Nette\Forms\Controls\BaseControl $control = null): ?Html
+	protected function renderFeedback(?BaseControl $control = null): ?Html
 	{
 		$validationHtml = null;
 		$isValid = true;

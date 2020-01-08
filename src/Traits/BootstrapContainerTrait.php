@@ -16,6 +16,8 @@ use Contributte\FormsBootstrap\Inputs\TextInput;
 use Contributte\FormsBootstrap\Inputs\UploadInput;
 use Nette\ComponentModel\IComponent;
 use Nette\Forms\Container;
+use Nette\Forms\ControlGroup;
+use Nette\Forms\Controls\BaseControl;
 use Nette\Forms\Controls\Button;
 use Nette\Forms\Controls\Checkbox;
 use Nette\Forms\Controls\CheckboxList;
@@ -32,13 +34,14 @@ use Nette\Utils\Html;
 /**
  * Trait BootstrapContainerTrait.
  * Implements methods to add inputs.
+ * @method BaseControl getComponent(string $name)
+ * @property ControlGroup|null $currentGroup
  */
 trait BootstrapContainerTrait
 {
 
 	/**
 	 * @param string|Html|null $content
-	 * @param string $btnClass secondary button class (primary is 'btn')
 	 * @return ButtonInput
 	 */
 	public function addButton(string $name, $content = null): Button
@@ -87,7 +90,6 @@ trait BootstrapContainerTrait
 		$control = new BootstrapContainer();
 		$control->currentGroup = $this->currentGroup;
 		if ($this->currentGroup !== null) {
-			/** @noinspection PhpUndefinedMethodInspection */
 			$this->currentGroup->add($control);
 		}
 
@@ -120,8 +122,7 @@ trait BootstrapContainerTrait
 	 */
 	public function addInputError(string $componentName, string $message): void
 	{
-		/** @noinspection PhpUndefinedMethodInspection */
-		$this[$componentName]->addError($message);
+		$this->getComponent($componentName)->addError($message);
 	}
 
 	/**
