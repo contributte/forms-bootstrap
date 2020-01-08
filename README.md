@@ -1,6 +1,7 @@
 # Bootstrap 4 forms for Nette 3
 
 [![Licence](https://img.shields.io/packagist/l/contributte/forms-bootstrap.svg?style=flat-square)](https://packagist.org/packages/contributte/forms-bootstrap)
+[![Build Status](https://travis-ci.org/contributte/forms-bootstrap.svg?branch=master)](https://travis-ci.org/contributte/forms-bootstrap)
 [![Downloads this Month](https://img.shields.io/packagist/dm/contributte/forms-bootstrap.svg?style=flat-square)](https://packagist.org/packages/contributte/forms-bootstrap)
 [![Downloads total](https://img.shields.io/packagist/dt/contributte/forms-bootstrap.svg?style=flat-square)](https://packagist.org/packages/contributte/forms-bootstrap)
 [![Latest stable](https://img.shields.io/packagist/v/contributte/forms-bootstrap.svg?style=flat-square)](https://packagist.org/packages/contributte/forms-bootstrap)
