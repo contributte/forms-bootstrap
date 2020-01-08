@@ -7,7 +7,6 @@ use Contributte\FormsBootstrap\Enums\RendererConfig;
 use Contributte\FormsBootstrap\Traits\BootstrapContainerTrait;
 use LogicException;
 use Nette\ComponentModel\IComponent;
-use Nette\Forms\Container;
 use Nette\Forms\ControlGroup;
 use Nette\Forms\IControl;
 use Nette\SmartObject;
@@ -148,4 +147,5 @@ class BootstrapCell
 			return $this->row->gridBreakPoint !== null ? 'col-' . $this->row->gridBreakPoint . '-' . $this->numOfColumns : 'col-' . $this->numOfColumns;
 		}
 	}
+
 }
