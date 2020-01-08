@@ -4,7 +4,6 @@ namespace Contributte\FormsBootstrap\Traits;
 
 use Contributte\FormsBootstrap\BootstrapRenderer;
 use Contributte\FormsBootstrap\Enums\RendererConfig;
-use Nette\Forms\Controls\BaseControl;
 use Nette\Forms\Form;
 use Nette\Utils\Html;
 
@@ -15,7 +14,7 @@ use Nette\Utils\Html;
 trait StandardValidationTrait
 {
 
-	abstract function getForm(bool $throw = true): ?Form;
+	abstract public function getForm(bool $throw = true): ?Form;
 
 	/**
 	 * Modify control in such a way that it explicitly shows its validation state.

@@ -34,6 +34,7 @@ use Nette\Utils\Html;
 /**
  * Trait BootstrapContainerTrait.
  * Implements methods to add inputs.
+ *
  * @method BaseControl getComponent(string $name)
  * @property ControlGroup|null $currentGroup
  */

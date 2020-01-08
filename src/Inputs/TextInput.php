@@ -106,6 +106,7 @@ class TextInput extends \Nette\Forms\Controls\TextInput implements IValidationIn
 				$label->insert(null, $child);
 			}
 		}
+
 		return $label;
 	}
 
