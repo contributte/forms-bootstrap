@@ -150,7 +150,7 @@ trait ChoiceInputTrait
 			return in_array($value, $val);
 		}
 
-		return $value === $val;
+		return ((string) $value) === ((string) $val);
 	}
 
 }
