@@ -16,7 +16,6 @@ use Contributte\FormsBootstrap\Inputs\TextInput;
 use Contributte\FormsBootstrap\Inputs\UploadInput;
 use Nette\ComponentModel\IComponent;
 use Nette\Forms\Container;
-use Nette\Forms\ControlGroup;
 use Nette\Forms\Controls\BaseControl;
 use Nette\Forms\Controls\Button;
 use Nette\Forms\Controls\Checkbox;
@@ -36,7 +35,6 @@ use Nette\Utils\Html;
  * Implements methods to add inputs.
  *
  * @method BaseControl getComponent(string $name)
- * @property ControlGroup|null $currentGroup
  */
 trait BootstrapContainerTrait
 {
@@ -89,9 +87,9 @@ trait BootstrapContainerTrait
 	public function addContainer($name): Container
 	{
 		$control = new BootstrapContainer();
-		$control->currentGroup = $this->currentGroup;
-		if ($this->currentGroup !== null) {
-			$this->currentGroup->add($control);
+		$control->setCurrentGroup($this->getCurrentGroup());
+		if ($this->getCurrentGroup() !== null) {
+			$this->getCurrentGroup()->add($control);
 		}
 
 		return $this[$name] = $control;
