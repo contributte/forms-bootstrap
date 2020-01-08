@@ -96,9 +96,6 @@ class BootstrapRow implements IComponent, IControl
 
 	/**
 	 * Adds a new cell to which a control can be added.
-	 *
-	 * @param int $numOfColumns Number of grid columns to use up
-	 * @return BootstrapCell the cell added.
 	 */
 	public function addCell(int $numOfColumns = BootstrapCell::COLUMNS_NONE): BootstrapCell
 	{

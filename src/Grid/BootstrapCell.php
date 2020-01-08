@@ -31,7 +31,7 @@ class BootstrapCell
 	/**
 	 * Only use 'col' class (auto stretch)
 	 */
-	public const COLUMNS_NONE = false;
+	public const COLUMNS_NONE = 0;
 
 	/**
 	 * Use 'col-auto'
@@ -118,6 +118,18 @@ class BootstrapCell
 		/** @noinspection PhpInternalEntityUsedInspection */
 		$this->row->addComponent($component, $name, $insertBefore);
 		$this->childControl = $component;
+	}
+
+	public function getCurrentGroup(): ?ControlGroup
+	{
+		return $this->currentGroup;
+	}
+
+	public function setCurrentGroup(?ControlGroup $currentGroup): self
+	{
+		$this->currentGroup = $currentGroup;
+
+		return $this;
 	}
 
 	/**

@@ -4,7 +4,7 @@ namespace Contributte\FormsBootstrap\Traits;
 
 use Contributte\FormsBootstrap\BootstrapRenderer;
 use Contributte\FormsBootstrap\Enums\RendererConfig;
-use Nette\Forms\Controls\BaseControl;
+use Nette\Forms\Form;
 use Nette\Utils\Html;
 
 /**
@@ -14,17 +14,17 @@ use Nette\Utils\Html;
 trait StandardValidationTrait
 {
 
+	abstract public function getForm(bool $throw = true): ?Form;
+
 	/**
 	 * Modify control in such a way that it explicitly shows its validation state.
 	 * Returns the modified element.
 	 */
 	public function showValidation(Html $control): Html
 	{
-		/** @var BaseControl $this */
-		$renderer = $this->getForm()->getRenderer();
 		/** @var BootstrapRenderer $renderer */
+		$renderer = $this->getForm()->getRenderer();
 
-		/** @var BaseControl $this */
 		$control = $renderer->configElem(
 			$this->hasErrors() ? RendererConfig::INPUT_INVALID : RendererConfig::INPUT_VALID,
 			$control

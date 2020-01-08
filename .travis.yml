@@ -1,6 +1,5 @@
 language: php
 php:
-  - 7.1
   - 7.2
   - 7.3
   - 7.4
@@ -9,12 +8,10 @@ install:
 
 jobs:
   include:
-    - env: title="Lowest Dependencies 7.1"
-      php: 7.1
+    - env: title="Lowest Dependencies 7.2"
+      php: 7.2
       install:
         - travis_retry composer update --no-progress --prefer-dist --prefer-lowest
-      script:
-        - composer run-script tests
 
     - stage: Quality Assurance
       php: 7.2
@@ -29,7 +26,7 @@ jobs:
 
     - stage: Outdated Dependencies
       if: branch = master AND type = cron
-      php: 7.1
+      php: 7.2
       script:
         - composer outdated --direct --strict
 

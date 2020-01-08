@@ -43,14 +43,13 @@
     ],
     "phpstan-install": [
       "mkdir -p temp/phpstan",
-      "composer require -d temp/phpstan phpstan/phpstan:^0.11",
-      "composer require -d temp/phpstan phpstan/phpstan-dibi:^0.11",
-      "composer require -d temp/phpstan phpstan/phpstan-deprecation-rules:^0.11",
-      "composer require -d temp/phpstan phpstan/phpstan-nette:^0.11",
-      "composer require -d temp/phpstan phpstan/phpstan-strict-rules:^0.11"
+      "composer require -d temp/phpstan phpstan/phpstan:^0.12",
+      "composer require -d temp/phpstan phpstan/phpstan-deprecation-rules:^0.12",
+      "composer require -d temp/phpstan phpstan/phpstan-nette:^0.12",
+      "composer require -d temp/phpstan phpstan/phpstan-strict-rules:^0.12"
     ],
     "phpstan": [
-      "temp/phpstan/vendor/bin/phpstan analyse -l 1 -c phpstan.neon src --memory-limit 1024M"
+      "temp/phpstan/vendor/bin/phpstan analyse -l 2 -c phpstan.neon src --memory-limit 1024M"
     ]
   }
 }
