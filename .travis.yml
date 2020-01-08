@@ -17,12 +17,12 @@ jobs:
         - composer run-script tests
 
     - stage: Quality Assurance
-      php: 7.1
+      php: 7.2
       script:
         - composer run-script qa
 
     - stage: Phpstan
-      php: 7.1
+      php: 7.2
       script:
         - composer run-script phpstan-install
         - composer run-script phpstan
