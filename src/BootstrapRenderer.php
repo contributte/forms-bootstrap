@@ -609,7 +609,7 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 	 *
 	 * @param string[] $additionalKeys config will be overridden in this order
 	 */
-	protected function getElem(string $key, array ...$additionalKeys): ?Html
+	protected function getElem(string $key, ...$additionalKeys): ?Html
 	{
 		$el = $this->configElem($key, Html::el());
 

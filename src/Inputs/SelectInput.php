@@ -16,7 +16,6 @@ class SelectInput extends SelectBox implements IValidationInput
 {
 
 	use ChoiceInputTrait;
-	use InputPromptTrait;
 	use StandardValidationTrait;
 
 	/**
@@ -41,8 +40,8 @@ class SelectInput extends SelectBox implements IValidationInput
 			'disabled' => $this->isControlDisabled(),
 		];
 		$options = $this->rawItems;
-		if (!empty($this->prompt)) {
-			$options = [null => $this->prompt] + $options;
+		if (!empty($this->getPrompt())) {
+			$options = [null => $this->getPrompt()] + $options;
 		}
 
 		$optList = $this->makeOptionList($options, function ($value) {

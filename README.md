@@ -37,7 +37,7 @@ help by reporting issues.
 The best way is via composer:
 
 ```cmd
-composer require czubehead/bootstrap-4-forms
+composer require contributte/forms-bootstrap
 ```
 
 *Note that if you simply clone the main branch from this repo, it is not guaranteed to work, use releases instead*
@@ -217,4 +217,4 @@ That will result in
 
 ------
 
-- Based on [czubehead](https://petrcech.eu) package [bootstrap-4-forms](https://github.com/czubehead/bootstrap-4-forms) 
+- Based on abandoned [czubehead](https://petrcech.eu) package [bootstrap-4-forms](https://github.com/czubehead/bootstrap-4-forms) 
