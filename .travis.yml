@@ -6,7 +6,10 @@ php:
   - 7.4
 install:
   - travis_retry composer install --no-progress --prefer-dist
-
+script:
+  - vendor/bin/phpunit --configuration tests/phpunit.xml tests --coverage-clover=coverage.xml
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
 jobs:
   include:
     - env: title="Lowest Dependencies 7.1"
