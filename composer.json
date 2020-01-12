@@ -22,11 +22,17 @@
     "nette/application": "^3.0"
   },
   "require-dev": {
-    "ninjify/qa": "^v0.10"
+    "ninjify/qa": "^v0.10",
+    "phpunit/phpunit": "^8.5"
   },
   "autoload": {
     "psr-4": {
       "Contributte\\FormsBootstrap\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests"
     }
   },
   "minimum-stability": "dev",

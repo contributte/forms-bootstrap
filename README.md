@@ -52,7 +52,7 @@ composer require contributte/forms-bootstrap
 
 ### Compatibility
 
-This package is compatible with any version version of Bootstrap 4 
+This package is compatible with any version of Bootstrap 4 
 
 ## How to use
 
