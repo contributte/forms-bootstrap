@@ -25,9 +25,11 @@ trait StandardValidationTrait
 	{
 		/** @var BootstrapRenderer $renderer */
 		$renderer = $this->getForm()->getRenderer();
-		if (!($renderer instanceof  BootstrapRenderer)) {
+
+		if (!($renderer instanceof BootstrapRenderer)) {
 			throw new NotSupportedException('Only Bootstrap renderer is supported');
 		}
+
 		$control = $renderer->configElem(
 			$this->hasErrors() ? RendererConfig::INPUT_INVALID : RendererConfig::INPUT_VALID,
 			$control
