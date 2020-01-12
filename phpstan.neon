@@ -6,5 +6,4 @@ includes:
 
 parameters:
 	ignoreErrors:
-	    - '#Call to an undefined method Nette\\Forms\\IFormRenderer::configElem()#'
 	    - '#Call to an undefined method Nette\\Forms\\Controls\\ChoiceControl::flatAssocArray().#'
