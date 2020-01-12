@@ -5,6 +5,7 @@ namespace Contributte\FormsBootstrap\Traits;
 use Contributte\FormsBootstrap\BootstrapRenderer;
 use Contributte\FormsBootstrap\Enums\RendererConfig;
 use Nette\Forms\Form;
+use Nette\NotSupportedException;
 use Nette\Utils\Html;
 
 /**
@@ -24,6 +25,10 @@ trait StandardValidationTrait
 	{
 		/** @var BootstrapRenderer $renderer */
 		$renderer = $this->getForm()->getRenderer();
+
+		if (!($renderer instanceof BootstrapRenderer)) {
+			throw new NotSupportedException('Only Bootstrap renderer is supported');
+		}
 
 		$control = $renderer->configElem(
 			$this->hasErrors() ? RendererConfig::INPUT_INVALID : RendererConfig::INPUT_VALID,
