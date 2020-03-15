@@ -37,7 +37,7 @@ help by reporting issues.
 
 The best way is via composer:
 
-```cmd
+```sh
 composer require contributte/forms-bootstrap
 ```
 
