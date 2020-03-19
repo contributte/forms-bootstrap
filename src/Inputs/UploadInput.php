@@ -11,13 +11,28 @@ use Nette\Utils\Html;
  * Class UploadInput. Single or multi upload of files.
  *
  * @property string $buttonCaption the text on the left part of the button, NOT label.
+ * @property string $browseButtonCaption the text on Browse button, NOT label
  */
 class UploadInput extends UploadControl implements IValidationInput
 {
 
 	/** @var string */
 	private $buttonCaption;
+	
+	/** @var string */
+	private $browseButtonCaption = "Browse";
 
+	public function setBrowseButtonCaption(string $browseButtonCaption)
+	{
+		$this->browseButtonCaption = $browseButtonCaption;
+		return $this;
+	}
+		
+	public function getBrowseButtonCaption(): string
+	{
+		return $this->browseButtonCaption;
+	}	
+		
 	/**
 	 * @see UploadInput::$buttonCaption
 	 */
@@ -53,6 +68,7 @@ class UploadInput extends UploadControl implements IValidationInput
 			Html::el('label', [
 				'class' => ['custom-file-label'],
 				'for'   => $this->getHtmlId(),
+				'data-browse' => $this->browseButtonCaption
 			])->setText($this->buttonCaption)
 		);
 
