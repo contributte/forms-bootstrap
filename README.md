@@ -18,7 +18,7 @@
 
 ## Usage
 
-To install latest version of `contributte/bare` use [Composer](https://getcomposer.com).
+To install latest version of `contributte/forms-bootstrap` use [Composer](https://getcomposer.com).
 
 ```
 composer require contributte/forms-bootstrap
