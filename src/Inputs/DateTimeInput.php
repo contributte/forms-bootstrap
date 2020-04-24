@@ -16,14 +16,12 @@ class DateTimeInput extends TextInput
 {
 
 	/**
-	 * @deprecated use DateTimeInput::$defaultFormat instead
+	 * @deprecated use DateTimeInput::$defaultDateTimeFormat instead
 	 */
 	public const DEFAULT_FORMAT = DateTimeFormat::D_DMY_DOTS_NO_LEAD . ' ' . DateTimeFormat::T_24_NO_LEAD;
 
-	/**
-	 * @var string
-	 */
-	public static $defaultFormat = self::DEFAULT_FORMAT;
+	/** @var string  */
+	public static $defaultDateTimeFormat = self::DEFAULT_FORMAT;
 
 	/**
 	 * This errorMessage is added for invalid format
@@ -58,7 +56,7 @@ class DateTimeInput extends TextInput
 			return DateTimeFormat::validate($this->format, $input->value);
 		}, $this->invalidFormatMessage);
 
-		$this->setFormat(self::$defaultFormat);
+		$this->setFormat(self::$defaultDateTimeFormat);
 	}
 
 	/**
