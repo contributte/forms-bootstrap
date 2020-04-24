@@ -5,7 +5,6 @@ namespace Contributte\FormsBootstrap\Grid;
 use Contributte\FormsBootstrap\BootstrapRenderer;
 use Contributte\FormsBootstrap\Enums\RendererConfig;
 use Contributte\FormsBootstrap\Traits\BootstrapContainerTrait;
-use LogicException;
 use Nette\ComponentModel\IComponent;
 use Nette\Forms\ControlGroup;
 use Nette\Forms\IControl;
@@ -18,7 +17,7 @@ use Nette\Utils\Html;
  * Only one component can be present.
  *
  * @property-read int  $numOfColumns     Number of Bootstrap columns to occupy
- * @property-read IControl $childControl|null     Nested child control if any
+ * @property-read IControl $childControls|null     Nested child control if any
  * @property-read Html $elementPrototype the Html div that will be rendered. You may define additional
  *                properties.
  */
@@ -44,8 +43,8 @@ class BootstrapCell
 	/** @var int */
 	private $numOfColumns;
 
-	/** @var IControl|null */
-	private $childControl;
+	/** @var IControl[]|null */
+	private $childControls = [];
 
 	/** @var BootstrapRow */
 	private $row;
@@ -90,14 +89,15 @@ class BootstrapCell
 	public function render(): Html
 	{
 		$element = $this->elementPrototype;
+
 		/** @var BootstrapRenderer $renderer */
 		$renderer = $this->row->getParent()->form->renderer;
 
 		$element = $renderer->configElem(RendererConfig::GRID_CELL, $element);
 		$element->class[] = $this->createClass();
 
-		if ($this->childControl) {
-			$pairHtml = $renderer->renderPair($this->childControl);
+		foreach ($this->childControls as $childControl) {
+			$pairHtml = $renderer->renderPair($childControl);
 			$element->addHtml($pairHtml);
 		}
 
@@ -111,13 +111,9 @@ class BootstrapCell
 	 */
 	public function addComponent(IComponent $component, ?string $name, $insertBefore = null): void
 	{
-		if ($this->childControl) {
-			throw new LogicException('child control for this cell has already been set, you cannot add another one');
-		}
-
 		/** @noinspection PhpInternalEntityUsedInspection */
 		$this->row->addComponent($component, $name, $insertBefore);
-		$this->childControl = $component;
+		$this->childControls[] = $component;
 	}
 
 	public function getCurrentGroup(): ?ControlGroup
@@ -146,6 +142,16 @@ class BootstrapCell
 			// number
 			return $this->row->gridBreakPoint !== null ? 'col-' . $this->row->gridBreakPoint . '-' . $this->numOfColumns : 'col-' . $this->numOfColumns;
 		}
+	}
+
+	/**
+	 * @return static
+	 */
+	public function addHtmlClass(string $class)
+	{
+		$this->elementPrototype->class[] = $class;
+
+		return $this;
 	}
 
 }
