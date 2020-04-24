@@ -15,7 +15,11 @@ use Nette\NotSupportedException;
 class DateTimeInput extends TextInput
 {
 
-	public const DEFAULT_FORMAT = DateTimeFormat::D_DMY_DOTS_NO_LEAD . ' ' . DateTimeFormat::T_24_NO_LEAD;
+	/** @var string  */
+	public static $defaultDateTimeFormat = DateTimeFormat::D_DMY_DOTS_NO_LEAD . ' ' . DateTimeFormat::T_24_NO_LEAD;
+
+	/** @var string  */
+	public static $defaultDateFormat = DateTimeFormat::D_DMY_DOTS_NO_LEAD;
 
 	/**
 	 * This errorMessage is added for invalid format
@@ -35,10 +39,7 @@ class DateTimeInput extends TextInput
 	/** @var bool */
 	private $isValidated = false;
 
-	/**
-	 * @param null $maxLength
-	 */
-	public function __construct(?string $label = null, $maxLength = null)
+	public function __construct(?string $label = null, $maxLength = null, bool $withTime = true)
 	{
 		if ($maxLength !== null) {
 			throw new NotSupportedException('Do not set $maxLength!');
@@ -50,7 +51,7 @@ class DateTimeInput extends TextInput
 			return DateTimeFormat::validate($this->format, $input->value);
 		}, $this->invalidFormatMessage);
 
-		$this->setFormat(self::DEFAULT_FORMAT);
+		$this->setFormat($withTime ? self::$defaultDateTimeFormat : self::$defaultDateFormat);
 	}
 
 	/**
