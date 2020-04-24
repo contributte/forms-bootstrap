@@ -10,7 +10,7 @@
 - TextInput placeholders
 - Highly configurable renderer
 - [Custom Bootstrap controls](http://getbootstrap.com/docs/4.0/components/forms/#custom-forms)
-- DateTime picker, variety of human readable date/time formats, placeholder example generation
+- Date(Time) picker, variety of human readable date/time formats, placeholder example generation
 - [Validation styles](http://getbootstrap.com/docs/4.0/components/forms/#server-side)
 - Programmatically generated [Bootstrap grid](https://getbootstrap.com/docs/4.1/layout/grid/)
 - Assisted manual rendering
@@ -84,9 +84,19 @@ Its format can be set (`$input->setFormat($str)`), the default is d.m.yyyy h:mm
 
 You may use DateTimeFormats class constants as a list of pretty much all formats:
 ```php
+DateTimeFormat::D_DMY_DOTS_NO_LEAD
+```
+is the default format for Date and
+```php
 DateTimeFormat::D_DMY_DOTS_NO_LEAD . ' ' . DateTimeFormat::T_24_NO_LEAD
 ```
-is the default format for DateTime. See its PhpDoc for further explanation.
+is the default format for DateTime. You can also change this globally with 
+```php
+DateTimeInput::$defaultDateFormat = DateTimeFormat::D_DMY_DOTS_NO_LEAD;
+DateTimeInput::$defaultDateTimeFormat = DateTimeFormat::D_DMY_DOTS_NO_LEAD . ' ' . DateTimeFormat::T_24_NO_LEAD;
+```
+
+See PhpDoc for further explanation.
 
 #### UploadInput
 

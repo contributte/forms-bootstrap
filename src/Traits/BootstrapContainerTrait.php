@@ -98,6 +98,17 @@ trait BootstrapContainerTrait
 	/**
 	 * Adds a datetime input.
 	 */
+	public function addDate(string $name, string $label): DateTimeInput
+	{
+		$comp = new DateTimeInput($label, null, false);
+		$this->addComponent($comp, $name);
+
+		return $comp;
+	}
+
+	/**
+	 * Adds a datetime input.
+	 */
 	public function addDateTime(string $name, string $label): DateTimeInput
 	{
 		$comp = new DateTimeInput($label);
