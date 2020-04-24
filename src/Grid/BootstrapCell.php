@@ -52,9 +52,6 @@ class BootstrapCell
 	/** @var Html */
 	private $elementPrototype;
 
-	/** @var BootstrapRenderer */
-	private $renderer;
-
 	/**
 	 * @param BootstrapRow   $row          Row this is a child of
 	 * @param int|false|null $numOfColumns Number of Bootstrap columns to occupy. You can use an integer or
@@ -99,7 +96,7 @@ class BootstrapCell
 		$element = $renderer->configElem(RendererConfig::GRID_CELL, $element);
 		$element->class[] = $this->createClass();
 
-		foreach($this->childControls as $childControl) {
+		foreach ($this->childControls as $childControl) {
 			$pairHtml = $renderer->renderPair($childControl);
 			$element->addHtml($pairHtml);
 		}
@@ -156,4 +153,5 @@ class BootstrapCell
 
 		return $this;
 	}
+
 }
