@@ -15,7 +15,7 @@ class DateInputTest extends TestCase
 	{
 		$form = new BootstrapForm();
 		$dt = $form->addDate('date', 'Date');
-		$this->assertEquals('<input type="text" name="date" id="frm-date" class="form-control" placeholder="d.m.yyyy(31.12.1998)">', $dt->getControl()->render());
+		$this->assertEquals('<input type="text" name="date" id="frm-date" class="form-control" placeholder="d.m.yyyy (31.12.1998)">', $dt->getControl()->render());
 	}
 
 	public function testWithCustomStaticFormat()
@@ -23,6 +23,6 @@ class DateInputTest extends TestCase
 		$form = new BootstrapForm();
 		DateInput::$defaultFormat = DateTimeFormat::D_YMD_DASHES;
 		$dt = $form->addDate('date', 'Date');
-		$this->assertEquals('<input type="text" name="date" id="frm-date" class="form-control" placeholder="yyyy-mm-dd(1998-12-31)">', $dt->getControl()->render());
+		$this->assertEquals('<input type="text" name="date" id="frm-date" class="form-control" placeholder="yyyy-mm-dd (1998-12-31)">', $dt->getControl()->render());
 	}
 }

@@ -17,4 +17,5 @@ class DateTimeInput extends DateInput
 
 	/** @var string[] */
 	public static $additionalHtmlClasses = [];
+
 }

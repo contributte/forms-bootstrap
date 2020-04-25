@@ -114,7 +114,7 @@ class DateTimeFormat
 		}
 
 		if ($appendExample) {
-			return $letters . '(' . $ex . ')';
+			return $letters . ' (' . $ex . ')';
 		}
 
 		if (!$appendExample) {
@@ -123,4 +123,5 @@ class DateTimeFormat
 
 		return $letters;
 	}
+
 }
