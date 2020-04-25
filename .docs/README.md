@@ -92,8 +92,14 @@ DateTimeFormat::D_DMY_DOTS_NO_LEAD . ' ' . DateTimeFormat::T_24_NO_LEAD
 ```
 is the default format for DateTime. You can also change this globally with 
 ```php
-DateTimeInput::$defaultDateFormat = DateTimeFormat::D_DMY_DOTS_NO_LEAD;
-DateTimeInput::$defaultDateTimeFormat = DateTimeFormat::D_DMY_DOTS_NO_LEAD . ' ' . DateTimeFormat::T_24_NO_LEAD;
+DateInput::$defaultFormat = DateTimeFormat::D_DMY_DOTS_NO_LEAD;
+DateTimeInput::$defaultFormat = DateTimeFormat::D_DMY_DOTS_NO_LEAD . ' ' . DateTimeFormat::T_24_NO_LEAD;
+```
+
+if U want to add html classes for those element so it's easy to connect it with any javascript date(time) picker use
+```php
+DateInput::$additionalHtmlClasses = 'datepicker';
+DateTimeInput:$additionalHtmlClasses = 'datetimepicker';
 ```
 
 See PhpDoc for further explanation.
