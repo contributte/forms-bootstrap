@@ -505,6 +505,9 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 
 			$labelHtml = $controlLabel;
 		} elseif ($controlLabel === null) {
+			if (method_exists($control, 'allignWithInputControls') && $control->allignWithInputControls()) {
+				return $this->configElem(Cnf::LABEL, null);
+			}
 			return Html::el();
 		} else {
 			// the control doesn't give us <label>, se we'll create our own
