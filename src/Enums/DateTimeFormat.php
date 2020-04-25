@@ -64,4 +64,63 @@ class DateTimeFormat
 		return ($time !== false) && ($timeString === $time->format($format));
 	}
 
+	/**
+	 * Turns datetime format into a human readable format,  e.g. 'd.m.Y' => 'dd.mm.yyyy'.
+	 * Supported values: d, j, m, n, Y, y, a, A, g, G, h, H, i, s, c, U
+	 */
+	public static function toHumanFormat(string $format, bool $example = true, bool $appendExample = true): string
+	{
+		$letterSubs = [
+			'd' => 'dd',
+			'j' => 'd',
+			'm' => 'mm',
+			'n' => 'm',
+			'Y' => 'yyyy',
+			'y' => 'yy',
+			'a' => 'am/pm',
+			'A' => 'AM/PM',
+			'g' => 'h',
+			'G' => 'h',
+			'h' => 'hh',
+			'H' => 'hh',
+			'i' => 'mm',
+			's' => 'ss',
+			'c' => 'yyyy-mm-ddThh:mm:ss+hh:mm',
+			'U' => 'unix timestamp',
+		];
+		$numSubs = [
+			'd' => '31',
+			'j' => '31',
+			'm' => '12',
+			'n' => '12',
+			'Y' => '1998',
+			'y' => '98',
+			'a' => 'am',
+			'A' => 'AM',
+			'g' => '12',
+			'G' => '23',
+			'h' => '12',
+			'H' => '23',
+			'i' => '59',
+			's' => '00',
+			'c' => '2012-12-21T17:42:00+00:00',
+			'U' => '1501444136',
+		];
+		$letters = strtr($format, $letterSubs);
+		$ex = strtr($format, $numSubs);
+
+		if (!$example) {
+			return $letters;
+		}
+
+		if ($appendExample) {
+			return $letters . '(' . $ex . ')';
+		}
+
+		if (!$appendExample) {
+			return $ex;
+		}
+
+		return $letters;
+	}
 }
