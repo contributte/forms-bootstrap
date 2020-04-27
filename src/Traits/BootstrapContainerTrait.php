@@ -6,6 +6,7 @@ use Contributte\FormsBootstrap\BootstrapContainer;
 use Contributte\FormsBootstrap\Inputs\ButtonInput;
 use Contributte\FormsBootstrap\Inputs\CheckboxInput;
 use Contributte\FormsBootstrap\Inputs\CheckboxListInput;
+use Contributte\FormsBootstrap\Inputs\DateInput;
 use Contributte\FormsBootstrap\Inputs\DateTimeInput;
 use Contributte\FormsBootstrap\Inputs\MultiselectInput;
 use Contributte\FormsBootstrap\Inputs\RadioInput;
@@ -98,9 +99,9 @@ trait BootstrapContainerTrait
 	/**
 	 * Adds a datetime input.
 	 */
-	public function addDate(string $name, string $label): DateTimeInput
+	public function addDate(string $name, string $label): DateInput
 	{
-		$comp = new DateTimeInput($label, null, false);
+		$comp = new DateInput($label, null);
 		$this->addComponent($comp, $name);
 
 		return $comp;
