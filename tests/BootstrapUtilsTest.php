@@ -4,9 +4,8 @@ namespace Tests;
 
 use Contributte\FormsBootstrap\BootstrapUtils;
 use Nette\Utils\Html;
-use PHPUnit\Framework\TestCase;
 
-class BootstrapUtilsTest extends TestCase
+class BootstrapUtilsTest extends BaseTest
 {
 
 	public function testStandardizeClass()
