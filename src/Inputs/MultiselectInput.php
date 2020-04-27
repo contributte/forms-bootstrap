@@ -25,7 +25,10 @@ class MultiselectInput extends MultiSelectBox implements IValidationInput
 	public function __construct(?string $label = null, ?array $items = null)
 	{
 		parent::__construct($label, null);
-		$this->setItems($items);
+
+		if ($items !== null) {
+			$this->setItems($items);
+		}
 	}
 
 	/**
