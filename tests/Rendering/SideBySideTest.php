@@ -47,4 +47,18 @@ class SideBySideTest extends BaseTest
 		$this->expectOutputString($this->loadTextData('side_by_side/checkbox_right.html'));
 		$this->form->render();
 	}
+
+	public function testSubmit()
+	{
+		$this->form->addSubmit('a', 'b');
+		$this->expectOutputString($this->loadTextData('side_by_side/submit.html'));
+		$this->form->render();
+	}
+
+	public function testSubmitOnRightSide()
+	{
+		$this->form->addSubmit('a', 'b')->setAllignWithInputControls();
+		$this->expectOutputString($this->loadTextData('side_by_side/submit_right.html'));
+		$this->form->render();
+	}
 }

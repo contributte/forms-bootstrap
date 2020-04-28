@@ -17,6 +17,20 @@ trait BootstrapButtonTrait
 	private $btnClass = 'btn-primary';
 
 	/**
+	 * set to true so that buttons by defaults are alligned on right with input fields
+	 *
+	 * @var bool
+	 */
+	public static $defaultAllignWithInputControls = false;
+
+	/**
+	 * set to true to allign buttons to right with all other input controls
+	 *
+	 * @var bool
+	 */
+	public $allignWithInputControls;
+
+	/**
 	 * Gets additional button class. Default is btn-primary.
 	 */
 	public function getBtnClass(): string
@@ -51,6 +65,16 @@ trait BootstrapButtonTrait
 	{
 		BootstrapUtils::standardizeClass($element);
 		$element->class[] = 'btn ' . $this->getBtnClass();
+	}
+
+	public function allignWithInputControls(): bool
+	{
+		return $this->allignWithInputControls ?? self::$defaultAllignWithInputControls;
+	}
+
+	public function setAllignWithInputControls(bool $allignWithControls = true): void
+	{
+		$this->allignWithInputControls = $allignWithControls;
 	}
 
 }
