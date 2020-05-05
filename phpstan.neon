@@ -4,6 +4,3 @@ includes:
 	- temp/phpstan/vendor/phpstan/phpstan-nette/rules.neon
 #	- temp/phpstan/vendor/phpstan/phpstan-strict-rules/rules.neon #we are not ready yet
 
-parameters:
-	ignoreErrors:
-	    - '#Call to an undefined method Nette\\Forms\\Controls\\ChoiceControl::flatAssocArray().#'
