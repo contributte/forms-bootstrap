@@ -102,6 +102,10 @@ trait ChoiceInputTrait
 		$processed = $this->flatAssocArray($items);
 		parent::setItems($processed, $useKeys);
 
+		if (!$useKeys) {
+			$this->rawItems = $this->items;
+		}
+
 		return $this;
 	}
 
