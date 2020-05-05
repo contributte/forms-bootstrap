@@ -93,7 +93,9 @@ trait BootstrapContainerTrait
 			$this->getCurrentGroup()->add($control);
 		}
 
-		return $this[$name] = $control;
+		$this->addComponent($control, $name);
+
+		return $control;
 	}
 
 	/**

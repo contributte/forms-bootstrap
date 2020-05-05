@@ -55,7 +55,7 @@
       "composer require -d temp/phpstan phpstan/phpstan-strict-rules:^0.12"
     ],
     "phpstan": [
-      "temp/phpstan/vendor/bin/phpstan analyse -l 2 -c phpstan.neon src --memory-limit 1024M"
+      "temp/phpstan/vendor/bin/phpstan analyse -l 3 -c phpstan.neon src --memory-limit 1024M"
     ]
   }
 }

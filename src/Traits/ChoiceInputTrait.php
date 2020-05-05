@@ -2,7 +2,6 @@
 
 namespace Contributte\FormsBootstrap\Traits;
 
-use Nette\Forms\Controls\ChoiceControl;
 use Nette\InvalidArgumentException;
 use Nette\Utils\Html;
 
@@ -96,14 +95,13 @@ trait ChoiceInputTrait
 	 */
 	public function setItems(array $items, bool $useKeys = true)
 	{
-		/** @var ChoiceControl $this */
 		$this->rawItems = $items;
 
 		$processed = $this->flatAssocArray($items);
 		parent::setItems($processed, $useKeys);
 
 		if (!$useKeys) {
-			$this->rawItems = $this->items;
+			$this->rawItems = $this->getItems();
 		}
 
 		return $this;

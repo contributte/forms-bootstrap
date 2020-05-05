@@ -62,7 +62,7 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 	 * Sets the form for which to render. Used only if a specific function of the renderer must be executed
 	 * outside of render(), such as during assisted manual rendering.
 	 */
-	public function attachForm(Form $form): void
+	public function attachForm(BootstrapForm $form): void
 	{
 		$this->form = $form;
 	}

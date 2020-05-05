@@ -187,9 +187,11 @@ class BootstrapRow implements IComponent, IControl
 	 * @param Container|NULL $parent
 	 * @param null $name ignored
 	 */
-	public function setParent(?IContainer $parent = null, ?string $name = null): void
+	public function setParent(?IContainer $parent = null, ?string $name = null): IComponent
 	{
 		$this->container = $parent;
+
+		return $this;
 	}
 
 	/**

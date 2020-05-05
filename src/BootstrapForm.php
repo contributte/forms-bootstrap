@@ -73,7 +73,10 @@ class BootstrapForm extends Form
 	 */
 	public function getRenderer(): IFormRenderer
 	{
-		return parent::getRenderer();
+		/** @var BootstrapRenderer $renderer */
+		$renderer = parent::getRenderer();
+
+		return $renderer;
 	}
 
 	/**
