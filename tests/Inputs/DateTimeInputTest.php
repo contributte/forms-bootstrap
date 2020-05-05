@@ -38,4 +38,16 @@ class DateTimeInputTest extends TestCase
 		$d = $form->addDate('date', 'Date');
 		$this->assertStringContainsString('class="form-control date"', $d->getControl()->render());
 	}
+
+	public function testValidation()
+	{
+		$form = new BootstrapForm();
+		$dt = $form->addDateTime('datetime', 'Date and time');
+		$dt->setValue('2020-05-05 20:00:00');
+		$this->assertEquals('5.5.2020 20:00', $dt->getValue());
+
+		$form->validate();
+		$this->assertEquals(new \DateTime('2020-05-05 20:00:00'), $dt->getValue());
+
+	}
 }

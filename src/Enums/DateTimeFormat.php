@@ -53,6 +53,9 @@ class DateTimeFormat
 	public const T_12_UPPER = 'h:i A';
 	public const T_12_UPPER_NO_LEAD = 'g:i A';
 
+	public const MYSQL_WITH_MICROSECONDS = 'Y-m-d H:i:s.u';
+	public const MYSQL_WITHOUT_MICROSECONDS = 'Y-m-d H:i:s';
+
 	/**
 	 * Checks if give time string is indeed in the format specified.
 	 * Some leading zeros check might be omitted.

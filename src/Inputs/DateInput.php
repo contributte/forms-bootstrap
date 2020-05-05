@@ -100,6 +100,20 @@ class DateInput extends TextInput
 
 			return $this;
 		} else {
+
+			//maybe date from database?
+			$date = DateTime::createFromFormat(DateTimeFormat::MYSQL_WITH_MICROSECONDS, $value);
+
+			if ($date === false) {
+				$date = DateTime::createFromFormat(DateTimeFormat::MYSQL_WITHOUT_MICROSECONDS, $value);
+			}
+
+			if ($date !== false) {
+				parent::setValue($date->format($this->format));
+
+				return $this;
+			}
+
 			// this will fail validation test, but we don't want to throw an exception here
 			parent::setValue($value);
 
