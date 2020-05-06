@@ -3,13 +3,12 @@
 namespace Tests\Inputs;
 
 use Contributte\FormsBootstrap\BootstrapForm;
-use Nette\Application\UI\Form;
-use PHPUnit\Framework\TestCase;
+use Tests\BaseTest;
 
-class SelectInputTest extends TestCase
+class SelectInputTest extends BaseTest
 {
 
-	public function testSetItemsWithKeysFalse()
+	public function testSetItemsWithKeysFalse(): void
 	{
 		$form = new BootstrapForm();
 		$items = ['Croatia', 'Czech', 'Iceland', 'Sweeden'];
@@ -17,11 +16,12 @@ class SelectInputTest extends TestCase
 		$this->assertArrayHasKey('Croatia', $select->getItems());
 	}
 
-	public function testSetItemsWithKeysTrue()
+	public function testSetItemsWithKeysTrue(): void
 	{
 		$form = new BootstrapForm();
 		$items = ['Croatia', 'Czech', 'Iceland', 'Sweeden'];
 		$select = $form->addSelect('country', 'Country')->setItems($items, true);
 		$this->assertArrayNotHasKey('Croatia', $select->getItems());
 	}
+
 }

@@ -10,7 +10,8 @@
     <rule ref="SlevomatCodingStandard.Files.TypeNameMatchesFileName">
         <properties>
             <property name="rootNamespaces" type="array" value="
-				src=>Contributte\FormsBootstrap
+				src=>Contributte\FormsBootstrap,
+				tests=>Tests,
 			"/>
         </properties>
     </rule>

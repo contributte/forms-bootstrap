@@ -23,7 +23,11 @@
   },
   "require-dev": {
     "ninjify/qa": "^v0.10",
-    "phpunit/phpunit": "^8.5"
+    "phpunit/phpunit": "^8.5",
+    "phpstan/phpstan": "^0.12",
+    "phpstan/phpstan-deprecation-rules":"^0.12",
+    "phpstan/phpstan-nette":"^0.12",
+    "phpstan/phpstan-strict-rules":"^0.12"
   },
   "autoload": {
     "psr-4": {
@@ -41,21 +45,5 @@
     "branch-alias": {
       "dev-master": "0.2.x-dev"
     }
-  },
-  "scripts": {
-    "qa": [
-      "linter src",
-      "codesniffer src"
-    ],
-    "phpstan-install": [
-      "mkdir -p temp/phpstan",
-      "composer require -d temp/phpstan phpstan/phpstan:^0.12",
-      "composer require -d temp/phpstan phpstan/phpstan-deprecation-rules:^0.12",
-      "composer require -d temp/phpstan phpstan/phpstan-nette:^0.12",
-      "composer require -d temp/phpstan phpstan/phpstan-strict-rules:^0.12"
-    ],
-    "phpstan": [
-      "temp/phpstan/vendor/bin/phpstan analyse -l 3 -c phpstan.neon src --memory-limit 1024M"
-    ]
   }
 }

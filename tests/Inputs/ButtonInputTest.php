@@ -3,16 +3,16 @@
 namespace Tests\Inputs;
 
 use Contributte\FormsBootstrap\BootstrapForm;
-use Contributte\FormsBootstrap\Inputs\ButtonInput;
-use PHPUnit\Framework\TestCase;
+use Tests\BaseTest;
 
-class ButtonInputTest extends TestCase
+class ButtonInputTest extends BaseTest
 {
 
-	public function testDefaultButton()
+	public function testDefaultButton(): void
 	{
 		$form = new BootstrapForm();
 		$btn = $form->addButton('btn', 'caption');
 		$this->assertEquals('<button type="button" name="btn" class="btn btn-secondary">caption</button>', $btn->getControl()->render());
 	}
+
 }
