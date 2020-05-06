@@ -2,8 +2,6 @@
 
 namespace Tests;
 
-use Heimkaup\Common\Utils\Strings;
-use Nette\Reflection\ClassType;
 use PHPUnit\Framework\TestCase;
 
 abstract class BaseTest extends TestCase
@@ -11,6 +9,7 @@ abstract class BaseTest extends TestCase
 
 	public function loadTextData(string $filename): string
 	{
-		return file_get_contents(__DIR__  . '/data/' . $filename);
+		return file_get_contents(__DIR__ . '/data/' . $filename);
 	}
+
 }

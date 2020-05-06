@@ -8,10 +8,11 @@ use Nette\Utils\Html;
 class BootstrapUtilsTest extends BaseTest
 {
 
-	public function testStandardizeClass()
+	public function testStandardizeClass(): void
 	{
 		$html = Html::el('div', ['class' => 'c1 c2']);
 		BootstrapUtils::standardizeClass($html);
 		$this->assertEquals(['c1', 'c2'], $html->class);
 	}
+
 }

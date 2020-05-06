@@ -5,28 +5,25 @@ namespace Tests\Grid;
 use Contributte\FormsBootstrap\BootstrapForm;
 use Contributte\FormsBootstrap\Grid\BootstrapCell;
 use Contributte\FormsBootstrap\Grid\BootstrapRow;
-use PHPUnit\Framework\TestCase;
+use Tests\BaseTest;
 
-class BootstrapCellTest extends TestCase
+class BootstrapCellTest extends BaseTest
 {
 
-	/**
-	 * @var BootstrapCell
-	 */
+	/** @var BootstrapCell */
 	protected $cell;
 
 	protected function setUp(): void
 	{
 		$form = new BootstrapForm();
 		$row = new BootstrapRow($form);
-		$this->cell = new BootstrapCell($row,12);
+		$this->cell = new BootstrapCell($row, 12);
 	}
 
-	public function testAddClass()
+	public function testAddClass(): void
 	{
 		$this->cell->addHtmlClass('new-class');
 		$this->assertEquals('<div class="new-class col-sm-12"></div>', $this->cell->render()->render());
 	}
-
 
 }

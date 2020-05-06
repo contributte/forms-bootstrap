@@ -3,7 +3,6 @@ php:
   - 7.2
   - 7.3
   - 7.4
-  - nightly
 before_install:
   - phpenv config-rm xdebug.ini || return 0 # Turn off XDebug
 install:
@@ -27,12 +26,6 @@ jobs:
       script:
         - make qa
 
-    - stage: Phpstan
-      php: 7.2
-      script:
-        - composer run-script phpstan-install
-        - composer run-script phpstan
-
     - stage: Test Coverage
       if: branch = master AND type = push
       php: 7.2
@@ -49,7 +42,6 @@ jobs:
         - composer outdated --direct
   allow_failures:
     - stage: Test Coverage
-    - php: nightly
 sudo: false
 
 cache:
