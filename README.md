@@ -10,6 +10,7 @@
 <p align=center>
     <a href="https://packagist.org/packages/contributte/forms-bootstrap"><img src="https://img.shields.io/packagist/l/contributte/forms-bootstrap.svg?style=flat-square"></a>
     <a href="https://travis-ci.org/contributte/forms-bootstrap"><img src="https://travis-ci.org/contributte/forms-bootstrap.svg?branch=master"></a>
+     <a href="https://coveralls.io/r/contributte/forms-bootstrap"><img src="https://img.shields.io/coveralls/contributte/forms-bootstrap.svg?style=flat-square"></a>
     <a href="https://packagist.org/packages/contributte/forms-bootstrap"><img src="https://img.shields.io/packagist/dm/contributte/forms-bootstrap.svg?style=flat-square"></a>
     <a href="https://packagist.org/packages/contributte/forms-bootstrap"><img src="https://img.shields.io/packagist/v/contributte/forms-bootstrap.svg?style=flat-square"></a>
     <a href="https://github.com/phpstan/phpstan"><img src="https://img.shields.io/badge/PHPStan-enabled-brightgreen.svg?style=flat-square"></a>
