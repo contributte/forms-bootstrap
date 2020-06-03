@@ -79,7 +79,7 @@ class BootstrapRow implements IComponent, IControl
 
 	/**
 	 * @param Container $container Form or container this belongs to. Components will be added to this
-	 * @param null      $name      Optional name of this row. If none is supplied, it is generated
+	 * @param string|null      $name      Optional name of this row. If none is supplied, it is generated
 	 *                             automatically.
 	 */
 	public function __construct(Container $container, $name = null)
