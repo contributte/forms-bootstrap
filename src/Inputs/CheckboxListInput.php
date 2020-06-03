@@ -35,7 +35,7 @@ class CheckboxListInput extends CheckboxList implements IValidationInput
 			$line = CheckboxInput::makeCheckbox(
 				$this->getHtmlName(),
 				$baseId . $c,
-				$caption,
+				$caption === null ? null : (string) $caption,
 				$this->isValueSelected($value),
 				$value,
 				false,
