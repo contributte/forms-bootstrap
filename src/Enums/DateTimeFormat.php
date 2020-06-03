@@ -116,15 +116,7 @@ class DateTimeFormat
 			return $letters;
 		}
 
-		if ($appendExample) {
-			return $letters . ' (' . $ex . ')';
-		}
-
-		if (!$appendExample) {
-			return $ex;
-		}
-
-		return $letters;
+		return $appendExample ? $letters . ' (' . $ex . ')' : $ex;
 	}
 
 }

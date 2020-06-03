@@ -40,7 +40,7 @@ class BootstrapCell
 	/** @var ControlGroup|null */
 	protected $currentGroup;
 
-	/** @var int */
+	/** @var int|null */
 	private $numOfColumns;
 
 	/** @var IControl[]|null */
