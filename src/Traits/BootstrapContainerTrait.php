@@ -3,6 +3,7 @@
 namespace Contributte\FormsBootstrap\Traits;
 
 use Contributte\FormsBootstrap\BootstrapContainer;
+use Contributte\FormsBootstrap\BootstrapForm;
 use Contributte\FormsBootstrap\Inputs\ButtonInput;
 use Contributte\FormsBootstrap\Inputs\CheckboxInput;
 use Contributte\FormsBootstrap\Inputs\CheckboxListInput;
@@ -104,6 +105,7 @@ trait BootstrapContainerTrait
 	public function addDate(string $name, string $label): DateInput
 	{
 		$comp = new DateInput($label, null);
+		$comp->setNullable(BootstrapForm::$allwaysUseNullable);
 		$this->addComponent($comp, $name);
 
 		return $comp;
@@ -115,6 +117,7 @@ trait BootstrapContainerTrait
 	public function addDateTime(string $name, string $label): DateTimeInput
 	{
 		$comp = new DateTimeInput($label);
+		$comp->setNullable(BootstrapForm::$allwaysUseNullable);
 		$this->addComponent($comp, $name);
 
 		return $comp;
@@ -127,6 +130,7 @@ trait BootstrapContainerTrait
 	public function addEmail(string $name, $label = null): NetteTextInput
 	{
 		return $this->addText($name, $label)
+			->setNullable(BootstrapForm::$allwaysUseNullable)
 			->addRule(Form::EMAIL);
 	}
 
@@ -145,6 +149,7 @@ trait BootstrapContainerTrait
 	public function addInteger(string $name, $label = null): NetteTextInput
 	{
 		return $this->addText($name, $label)
+			->setNullable(BootstrapForm::$allwaysUseNullable)
 			->addRule(Form::INTEGER);
 	}
 
@@ -235,6 +240,8 @@ trait BootstrapContainerTrait
 	public function addText(string $name, $label = null, ?int $cols = null, ?int $maxLength = null): NetteTextInput
 	{
 		$comp = new TextInput($label);
+		$comp->setNullable(BootstrapForm::$allwaysUseNullable);
+
 		if ($cols !== null) {
 			$comp->setHtmlAttribute('cols', $cols);
 		}
@@ -257,6 +264,8 @@ trait BootstrapContainerTrait
 	public function addTextArea(string $name, $label = null, ?int $cols = null, ?int $rows = null): TextArea
 	{
 		$comp = new TextAreaInput($label);
+		$comp->setNullable(BootstrapForm::$allwaysUseNullable);
+
 		if ($cols !== null) {
 			$comp->setHtmlAttribute('cols', $cols);
 		}

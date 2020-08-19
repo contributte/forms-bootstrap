@@ -14,6 +14,7 @@
 - [Validation styles](http://getbootstrap.com/docs/4.0/components/forms/#server-side)
 - Programmatically generated [Bootstrap grid](https://getbootstrap.com/docs/4.1/layout/grid/)
 - Assisted manual rendering
+- BootstrapForm::$allwaysUseNullable to set all fields as nullable (calls $component->setNullable() for all fields automatically)
  
 ## Installation
 
