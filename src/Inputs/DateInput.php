@@ -22,6 +22,9 @@ class DateInput extends TextInput
 	/** @var string[] */
 	public static $additionalHtmlClasses = [];
 
+	/** @var bool */
+	public static $addDefaultPlaceholder = true;
+
 	/**
 	 * This errorMessage is added for invalid format
 	 *
@@ -157,7 +160,7 @@ class DateInput extends TextInput
 	{
 		$this->format = $format;
 
-		if ($placeholder === null) {
+		if ($placeholder === null && static::$addDefaultPlaceholder) {
 			$placeholder = DateTimeFormat::toHumanFormat($format);
 		}
 
