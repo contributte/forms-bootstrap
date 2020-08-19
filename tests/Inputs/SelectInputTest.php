@@ -3,6 +3,7 @@
 namespace Tests\Inputs;
 
 use Contributte\FormsBootstrap\BootstrapForm;
+use Nette\Forms\Form;
 use Tests\BaseTest;
 
 class SelectInputTest extends BaseTest
@@ -51,4 +52,15 @@ class SelectInputTest extends BaseTest
 		$this->assertEquals($expectedHtml, $html);
 	}
 
+	public function testSetOptionAttributteRendering(): void
+	{
+		$form = new BootstrapForm();
+		$items = ['Croatia', 'Czech', 'Iceland', 'Sweeden'];
+		$select = $form->addSelect('country', 'Country')->setItems($items, false)->setOptionAttribute('style', ['Croatia' => 'color: blue', 'Czech' => 'color: red']);
+
+		$html = $select->getControl()->render();
+		$expectedHtml = '<select name="country" id="frm-country" class="custom-select"><option value="Croatia" style="color: blue">Croatia</option><option value="Czech" style="color: red">Czech</option><option value="Iceland">Iceland</option><option value="Sweeden">Sweeden</option></select>';
+		$this->assertEquals($expectedHtml, $html);
+
+	}
 }

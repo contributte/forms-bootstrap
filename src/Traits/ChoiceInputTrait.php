@@ -78,10 +78,24 @@ trait ChoiceInputTrait
 
 				$valuesRendered[] = $value;
 
+				$additionalAttrs = [];
+
+				foreach ($this->getOptionAttributes() as $attrName => $attrVal) {
+					if (!is_array($attrVal)) {
+						$additionalAttrs[$attrName] = $attrVal;
+
+						continue;
+					}
+
+					if (isset($attrVal[$value])) {
+						$additionalAttrs[$attrName] = $attrVal[$value];
+					}
+				}
+
 				// normal option
 				$option = Html::el(
 					'option',
-					array_merge(['value' => (string) $value], $optionArgs($value, $caption))
+					array_merge(['value' => (string) $value], $optionArgs($value, $caption), $additionalAttrs)
 				);
 				$option->setText($caption);
 			}
