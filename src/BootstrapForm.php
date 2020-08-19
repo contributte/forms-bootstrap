@@ -40,6 +40,9 @@ class BootstrapForm extends Form
 	/** @var bool */
 	private $autoShowValidation = true;
 
+	/** @var bool */
+	public static $allwaysUseNullable = false;
+
 	/**
 	 * @param int|IContainer|null $container
 	 */
