@@ -72,7 +72,8 @@ class DateInput extends TextInput
 	public function getValue()
 	{
 		$val = parent::getValue();
-		if (!$this->isValidated) {
+
+		if (empty($val) || !$this->isValidated) {
 			return $val;
 		}
 
