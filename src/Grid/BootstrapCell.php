@@ -134,14 +134,17 @@ class BootstrapCell
 	protected function createClass(): string
 	{
 		$cols = $this->numOfColumns;
+
 		if ($cols === self::COLUMNS_NONE) {
 			return 'col';
-		} elseif ($cols === self::COLUMNS_AUTO) {
-			return 'col-auto';
-		} else {
-			// number
-			return $this->row->gridBreakPoint !== null ? 'col-' . $this->row->gridBreakPoint . '-' . $this->numOfColumns : 'col-' . $this->numOfColumns;
 		}
+
+		if ($cols === self::COLUMNS_AUTO) {
+			return 'col-auto';
+		}
+
+		return $this->row->gridBreakPoint !== null ? 'col-' . $this->row->gridBreakPoint . '-' . $this->numOfColumns : 'col-' . $this->numOfColumns;
+
 	}
 
 	/**

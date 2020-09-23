@@ -6,6 +6,7 @@ use Contributte\FormsBootstrap\BootstrapForm;
 use Contributte\FormsBootstrap\Grid\BootstrapCell;
 use Contributte\FormsBootstrap\Grid\BootstrapRow;
 use Nette\Application\UI\Presenter;
+use Nette\InvalidArgumentException;
 use Tests\BaseTest;
 
 class BootstrapCellTest extends BaseTest
@@ -40,6 +41,22 @@ class BootstrapCellTest extends BaseTest
 		$this->cell->addSubmit('second', 'Second');
 		$this->form->render();
 		$this->expectOutputString($this->loadTextData('cell_with_2_submits.html'));
+	}
+
+	public function testMoreCellThenAvailable(): void
+	{
+		$this->expectException(InvalidArgumentException::class);
+		$this->row->addCell(15);
+	}
+
+	public function testGroup(): void
+	{
+		$first = $this->form->addGroup('first');
+		$first->add($this->form->addText('a'));
+		$this->form->addGroup('second');
+		$this->cell->setCurrentGroup($first);
+
+		$this->assertEquals($first, $this->cell->getCurrentGroup());
 	}
 
 }
