@@ -34,26 +34,12 @@ class SelectInput extends SelectBox implements IValidationInput
 	 */
 	public function getControl(): Html
 	{
-		$select = parent::getControl()->setHtml(null);
+		$select = parent::getControl();
 
 		$select->attrs += [
 			'class'    => ['custom-select'],
 			'disabled' => $this->isControlDisabled(),
 		];
-		$options = $this->rawItems;
-		if (!empty($this->getPrompt())) {
-			$options = [null => $this->getPrompt()] + $options;
-		}
-
-		$optList = $this->makeOptionList($options, function ($value) {
-			return [
-				'selected' => $this->isValueSelected($value),
-				'disabled' => $this->isValueDisabled($value),
-			];
-		});
-		foreach ($optList as $item) {
-			$select->addHtml($item);
-		}
 
 		return $select;
 	}

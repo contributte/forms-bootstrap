@@ -24,19 +24,6 @@ class SelectInputTest extends BaseTest
 		$this->assertArrayNotHasKey('Croatia', $select->getItems());
 	}
 
-	public function testItemsAsMultiDimensionalArrayWithDuplicateKeysShouldThrowException(): void
-	{
-		$this->expectExceptionMessage('Value "0" is used multiple times.');
-		$countries = [
-			'A' => ['B', 'C'],
-			'D' => ['E', 'F'],
-		];
-
-		$form = new BootstrapForm();
-		$select = $form->addSelect('test', 'test')->setItems($countries, true);
-		 $select->getControl()->render();
-	}
-
 	public function testItemsAsMultiDimensionalArrayRendering(): void
 	{
 		$countries = [

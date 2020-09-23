@@ -112,28 +112,6 @@ Nothing out of ordinary, but it **Needs `<html lang="xx">` attribute** to work.
 Has property `buttonCaption`, which sets the text on the button on the left. 
 The right button is set by [Bootstrap CSS](http://getbootstrap.com/docs/4.0/components/forms/#file-browser), which depends `<html lang="xx">`.
 
-#### SelectInput, MultiSelectInput
-
-These can accept nested arrays of options.
-
-```php
-[
-    'sub' => [
-        1 => 'opt1',
-        2 => 'opt2'
-    ],
-    3     => 'opt3',
-]
-```
-will generate
-```html
-<optgroup label="sub">
-    <option value="1">opt1</option>
-    <option value="2">opt2</option>
-</optgroup>
-<option value="3">opt3</option>
-```
-
 ### Renderer
 
 The renderer is enhanced by the following API:
