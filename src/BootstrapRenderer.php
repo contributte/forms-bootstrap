@@ -302,6 +302,8 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 
 	/**
 	 * Provides complete form rendering.
+	 *
+	 * @param BootstrapForm $form
 	 */
 	public function render(Form $form): string
 	{
@@ -611,7 +613,7 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 	/**
 	 * Get element based on its first-level key
 	 *
-	 * @param array<int, string> $additionalKeys config will be overridden in this order
+	 * @param string $additionalKeys config will be overridden in this order
 	 */
 	protected function getElem(string $key, ...$additionalKeys): ?Html
 	{
