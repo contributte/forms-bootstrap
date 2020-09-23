@@ -98,6 +98,7 @@ class TextInput extends \Nette\Forms\Controls\TextInput implements IValidationIn
 
 	public function getLabel($caption = null): Html
 	{
+		/** @var Html $label */
 		$label = parent::getLabel($caption);
 		if (!empty($this->getLabelPrototype()->getChildren())) {
 			foreach ($this->getLabelPrototype()->getChildren() as $child) {

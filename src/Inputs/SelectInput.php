@@ -18,7 +18,7 @@ class SelectInput extends SelectBox implements IValidationInput
 	use StandardValidationTrait;
 
 	/**
-	 * @param null       $label
+	 * @param string|null       $label
 	 * @param string[]|null $items
 	 */
 	public function __construct($label = null, ?array $items = null)

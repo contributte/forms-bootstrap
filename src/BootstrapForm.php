@@ -44,7 +44,7 @@ class BootstrapForm extends Form
 	public static $allwaysUseNullable = false;
 
 	/**
-	 * @param int|IContainer|null $container
+	 * @param IContainer|null $container
 	 */
 	public function __construct($container = null)
 	{

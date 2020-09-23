@@ -337,7 +337,8 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 			/** @noinspection PhpUndefinedFieldInspection */
 			$el->action = str_replace('?' . $query, '', $el->action);
 			$s = '';
-			foreach (preg_split('#[;&]#', $query, null, PREG_SPLIT_NO_EMPTY) as $param) {
+			$params = preg_split('#[;&]#', $query, null, PREG_SPLIT_NO_EMPTY) ?: [];
+			foreach ($params as $param) {
 				$parts = explode('=', $param, 2);
 				$name = urldecode($parts[0]);
 				if (!isset($this->form[$name])) {
@@ -346,9 +347,9 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 			}
 
 			return $el->startTag() . PHP_EOL . $s;
-		} else {
-			return $prototype->startTag();
 		}
+
+		return $prototype->startTag();
 	}
 
 	/**
