@@ -341,7 +341,7 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 			$s = '';
 			$params = ($query === null || $query === false)
 				? []
-				: (preg_split('#[;&]#', $query, null, PREG_SPLIT_NO_EMPTY) ?: []);
+				: (preg_split('#[;&]#', $query, -1, PREG_SPLIT_NO_EMPTY) ?: []);
 			foreach ($params as $param) {
 				$parts = explode('=', $param, 2);
 				$name = urldecode($parts[0]);
