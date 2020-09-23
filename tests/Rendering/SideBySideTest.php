@@ -27,6 +27,13 @@ class SideBySideTest extends BaseTest
 		$this->form->render();
 	}
 
+	public function testMethodGet(): void
+	{
+		$this->form->setMethod('get');
+		$this->expectOutputString($this->loadTextData('method_get.html'));
+		$this->form->render();
+	}
+
 	public function testTextInput(): void
 	{
 		$this->form->addText('a', 'b');
