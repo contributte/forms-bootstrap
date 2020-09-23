@@ -36,26 +36,12 @@ class MultiselectInput extends MultiSelectBox implements IValidationInput
 	 */
 	public function getControl(): Html
 	{
-		$select = parent::getControl()->setHtml(null);
+		$select = parent::getControl();
 
 		$select->attrs += [
 			'class'    => ['form-control'],
 			'disabled' => $this->isControlDisabled(),
 		];
-		$options = $this->rawItems;
-		if (!empty($this->prompt)) {
-			$options = [null => $this->prompt] + $options;
-		}
-
-		$optList = $this->makeOptionList($options, function ($value) {
-			return [
-				'selected' => $this->isValueSelected($value),
-				'disabled' => $this->isValueDisabled($value),
-			];
-		});
-		foreach ($optList as $item) {
-			$select->addHtml($item);
-		}
 
 		return $select;
 	}
