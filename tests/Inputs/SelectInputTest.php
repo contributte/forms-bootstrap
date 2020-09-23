@@ -3,6 +3,7 @@
 namespace Tests\Inputs;
 
 use Contributte\FormsBootstrap\BootstrapForm;
+use Nette\InvalidArgumentException;
 use Tests\BaseTest;
 
 class SelectInputTest extends BaseTest
@@ -36,6 +37,14 @@ class SelectInputTest extends BaseTest
 		$html = $select->getControl()->render();
 		$expectedHtml = '<select name="test" id="frm-test" class="custom-select"><optgroup label="A"><option value="0">B</option><option value="1">C</option></optgroup><optgroup label="D"><option value="2">E</option><option value="3">F</option></optgroup></select>';
 		$this->assertEquals($expectedHtml, $html);
+	}
+
+	public function testSetPromptWithOneItemAlreadyNullShouldThrowException(): void
+	{
+		$this->expectException(InvalidArgumentException::class);
+		$form = new BootstrapForm();
+		$select = $form->addSelect('test', 'test', [null => 'choose']);
+		$select->setPrompt('Hey');
 	}
 
 }
