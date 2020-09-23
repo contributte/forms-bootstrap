@@ -21,7 +21,7 @@ phpstan: vendor
 	vendor/bin/phpstan analyse -l 4 -c phpstan.neon src
 
 tests: vendor
-	vendor/bin/phpunit --configuration tests/phpunit.xml tests
+	vendor/bin/phpunit
 
 coverage: vendor
-	vendor/bin/phpunit --configuration tests/phpunit.xml tests --coverage-clover=coverage.xml
+	vendor/bin/phpunit --coverage-clover=coverage.xml
