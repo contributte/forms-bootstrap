@@ -12,7 +12,8 @@ class TextInputTest extends BaseTest
 	{
 		$form = new BootstrapForm();
 		$input = $form->addText('txt', 'lbl');
-		$this->assertEquals('<input type="text" name="txt" id="frm-txt" class="form-control">', $input->getControl()->render());
+		$input->setAutocomplete(true);
+		$this->assertEquals('<input type="text" name="txt" id="frm-txt" class="form-control" autocomplete="on">', $input->getControl()->render());
 		$this->assertEquals('<label for="frm-txt">lbl</label>', (string) $input->getLabel());
 	}
 

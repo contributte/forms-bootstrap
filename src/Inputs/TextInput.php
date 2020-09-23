@@ -4,7 +4,6 @@ namespace Contributte\FormsBootstrap\Inputs;
 
 use Contributte\FormsBootstrap\BootstrapUtils;
 use Contributte\FormsBootstrap\Traits\StandardValidationTrait;
-use Nette\InvalidArgumentException;
 use Nette\Utils\Html;
 
 /**
@@ -53,10 +52,6 @@ class TextInput extends \Nette\Forms\Controls\TextInput implements IValidationIn
 	 */
 	public function setAutocomplete(?bool $bool)
 	{
-		if (!in_array($bool, [true, false, null], true)) {
-			throw new InvalidArgumentException('valid values are only true/false/null');
-		}
-
 		$this->autocomplete = $bool;
 
 		return $this;
