@@ -44,6 +44,7 @@ class UploadInput extends UploadControl implements IValidationInput
 	 */
 	public function getControl()
 	{
+		/** @var Html $control */
 		$control = parent::getControl();
 		$control->class = 'custom-file-input';
 

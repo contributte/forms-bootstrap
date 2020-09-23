@@ -339,7 +339,9 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 			$el->action = str_replace('?' . $query, '', $el->action);
 
 			$s = '';
-			$params = $query === null ? [] : (preg_split('#[;&]#', $query, null, PREG_SPLIT_NO_EMPTY) ?: []);
+			$params = ($query === null || $query === false)
+				? []
+				: (preg_split('#[;&]#', $query, null, PREG_SPLIT_NO_EMPTY) ?: []);
 			foreach ($params as $param) {
 				$parts = explode('=', $param, 2);
 				$name = urldecode($parts[0]);
@@ -430,6 +432,7 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 	 */
 	public function renderControl(BaseControl $control): string
 	{
+		/** @var Html $controlHtml */
 		$controlHtml = $control->getControl();
 		$control->setOption(RendererOptions::_RENDERED, true);
 		if (($this->form->showValidation || $control->hasErrors()) && $control instanceof IValidationInput) {

@@ -36,7 +36,7 @@ class ButtonInput extends Button
 			'type' => 'button',
 			'name' => $this->getHtmlName(),
 		]);
-		$btn->setHtml($content ?? $this->caption);
+		$btn->setHtml($content ?? (string) $this->caption);
 		$this->addBtnClass($btn);
 
 		return $btn;

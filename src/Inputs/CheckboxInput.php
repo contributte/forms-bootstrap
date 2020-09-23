@@ -9,6 +9,8 @@ use Nette\Utils\Html;
 
 /**
  * Class CheckboxInput. Single checkbox.
+ *
+ * @property bool $disabled
  */
 class CheckboxInput extends Checkbox implements IValidationInput
 {
