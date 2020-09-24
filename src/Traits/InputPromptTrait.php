@@ -32,7 +32,7 @@ trait InputPromptTrait
 		$keys = array_keys($this->items);
 		if (in_array('', $keys, true) || in_array(null, $keys, true)) {
 			throw new InvalidArgumentException(
-				'There is an item whose value == null (non-strict comparison).' .
+				'There is an item whose value === "" or null .' .
 				'Setting prompt would interfere with this value.'
 			);
 		}
