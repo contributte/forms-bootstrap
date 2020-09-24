@@ -57,4 +57,5 @@ class SelectInputTest extends BaseTest
 
 		$this->assertStringContainsString('Choose', $html);
 	}
+
 }

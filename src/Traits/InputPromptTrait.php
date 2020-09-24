@@ -8,7 +8,6 @@ use Nette\NotSupportedException;
 /**
  * Trait InputPromptTrait.
  * Adds string property prompt. Prompt is the empty value of a select.
- *
  */
 trait InputPromptTrait
 {
