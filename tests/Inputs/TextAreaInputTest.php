@@ -11,8 +11,10 @@ class TextAreaInputTest extends BaseTest
 	public function testDefaultTextAreaInput(): void
 	{
 		$form = new BootstrapForm();
-		$input = $form->addTextArea('txt', 'lbl');
-		$this->assertEquals('<textarea name="txt" id="frm-txt" class="form-control"></textarea>', $input->getControl()->render());
+		$input = $form->addTextArea('txt', 'lbl', 5, 10);
+		$input->setAutocomplete(false);
+		$this->assertFalse($input->getAutocomplete());
+		$this->assertEquals('<textarea name="txt" cols="5" rows="10" id="frm-txt" class="form-control" autocomplete="off"></textarea>', $input->getControl()->render());
 		$this->assertEquals('<label for="frm-txt">lbl</label>', (string) $input->getLabel());
 	}
 

@@ -144,7 +144,6 @@ class BootstrapCell
 		}
 
 		return $this->row->gridBreakPoint !== null ? 'col-' . $this->row->gridBreakPoint . '-' . $this->numOfColumns : 'col-' . $this->numOfColumns;
-
 	}
 
 	/**

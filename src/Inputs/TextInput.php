@@ -9,7 +9,7 @@ use Nette\Utils\Html;
 /**
  * Class TextInput
  *
- * @property string $placeholder HTML placeholder
+ * @property string|null $placeholder HTML placeholder
  * @property bool   $autocomplete
  */
 class TextInput extends \Nette\Forms\Controls\TextInput implements IValidationInput, IAutocompleteInput
@@ -17,7 +17,7 @@ class TextInput extends \Nette\Forms\Controls\TextInput implements IValidationIn
 
 	use StandardValidationTrait;
 
-	/** @var string */
+	/** @var string|null */
 	private $placeholder;
 
 	/** @var bool|null */
@@ -80,7 +80,7 @@ class TextInput extends \Nette\Forms\Controls\TextInput implements IValidationIn
 	/**
 	 * @see TextInput::$placeholder
 	 */
-	public function getPlaceholder(): string
+	public function getPlaceholder(): ?string
 	{
 		return $this->placeholder;
 	}

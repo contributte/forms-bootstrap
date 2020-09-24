@@ -12,9 +12,12 @@ class TextInputTest extends BaseTest
 	{
 		$form = new BootstrapForm();
 		$input = $form->addText('txt', 'lbl');
+		$input->getLabelPrototype()->addHtml('<a href="#">here</a>');
 		$input->setAutocomplete(true);
+		$this->assertTrue($input->getAutocomplete());
+		$this->assertNull($input->getPlaceholder());
 		$this->assertEquals('<input type="text" name="txt" id="frm-txt" class="form-control" autocomplete="on">', $input->getControl()->render());
-		$this->assertEquals('<label for="frm-txt">lbl</label>', (string) $input->getLabel());
+		$this->assertEquals('<label for="frm-txt">lbl<a href="#">here</a></label>', (string) $input->getLabel());
 	}
 
 }
