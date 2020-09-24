@@ -24,15 +24,17 @@ trait InputPromptTrait
 			return $this;
 		}
 
-		if (isset($this->items)) {
-			if (in_array(null, array_keys($this->items))) {
-				throw new InvalidArgumentException(
-					'There is an item whose value == null (non-strict comparison).' .
-					'Setting prompt would interfere with this value.'
-				);
-			}
-		} else {
+		if (!isset($this->items)) {
 			throw new NotSupportedException('This must be a ChoiceControl');
+		}
+
+		/** @var array<int, int|string|null> $keys */
+		$keys = array_keys($this->items);
+		if (in_array('', $keys, true) || in_array(null, $keys, true)) {
+			throw new InvalidArgumentException(
+				'There is an item whose value == null (non-strict comparison).' .
+				'Setting prompt would interfere with this value.'
+			);
 		}
 
 		parent::setPrompt($prompt);
