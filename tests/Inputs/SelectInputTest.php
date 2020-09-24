@@ -47,4 +47,14 @@ class SelectInputTest extends BaseTest
 		$select->setPrompt('Hey');
 	}
 
+	public function testSetPrompt(): void
+	{
+		$form = new BootstrapForm();
+		$select = $form->addSelect('test', 'test', ['1' => 'First', '2' => 'Second']);
+		$select->setPrompt('');
+		$select->setPrompt('Choose');
+		$html = $select->getControl()->render();
+
+		$this->assertStringContainsString('Choose', $html);
+	}
 }

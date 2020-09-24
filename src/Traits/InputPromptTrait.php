@@ -9,18 +9,9 @@ use Nette\NotSupportedException;
  * Trait InputPromptTrait.
  * Adds string property prompt. Prompt is the empty value of a select.
  *
- * @property string $prompt
  */
 trait InputPromptTrait
 {
-
-	/** @var string|null */
-	protected $prompt = null;
-
-	public function getPrompt(): ?string
-	{
-		return $this->prompt;
-	}
 
 	/**
 	 * Sets the first unselectable item on list. Its value is null.
@@ -45,7 +36,7 @@ trait InputPromptTrait
 			throw new NotSupportedException('This must be a ChoiceControl');
 		}
 
-		$this->prompt = $prompt;
+		parent::setPrompt($prompt);
 
 		return $this;
 	}
