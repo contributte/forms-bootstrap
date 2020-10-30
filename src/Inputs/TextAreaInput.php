@@ -15,7 +15,10 @@ class TextAreaInput extends TextArea implements IValidationInput, IAutocompleteI
 	/** @var bool|null */
 	private $autocomplete = null;
 
-	public function __construct(?string $label = null)
+	/**
+	 * @param string|Html|null $label
+	 */
+	public function __construct($label = null)
 	{
 		parent::__construct($label);
 		$this->setRequired(false);

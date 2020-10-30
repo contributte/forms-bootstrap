@@ -43,7 +43,10 @@ class DateInput extends TextInput
 	/** @var bool */
 	private $isValidated = false;
 
-	public function __construct(?string $label = null, ?int $maxLength = null)
+	/**
+	 * @param Html|string|null $label
+	 */
+	public function __construct($label = null, ?int $maxLength = null)
 	{
 		if ($maxLength !== null) {
 			throw new NotSupportedException('Do not set $maxLength!');

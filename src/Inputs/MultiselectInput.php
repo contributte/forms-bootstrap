@@ -18,9 +18,10 @@ class MultiselectInput extends MultiSelectBox implements IValidationInput
 	use StandardValidationTrait;
 
 	/**
+	 * @param Html|string|null $label
 	 * @param string[] $items
 	 */
-	public function __construct(?string $label = null, ?array $items = null)
+	public function __construct($label = null, ?array $items = null)
 	{
 		parent::__construct($label, null);
 

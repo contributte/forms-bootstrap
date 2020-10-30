@@ -3,6 +3,7 @@
 namespace Tests\Inputs;
 
 use Contributte\FormsBootstrap\BootstrapForm;
+use Nette\Utils\Html;
 use Tests\BaseTest;
 
 class TextAreaInputTest extends BaseTest
@@ -16,6 +17,13 @@ class TextAreaInputTest extends BaseTest
 		$this->assertFalse($input->getAutocomplete());
 		$this->assertEquals('<textarea name="txt" cols="5" rows="10" id="frm-txt" class="form-control" autocomplete="off"></textarea>', $input->getControl()->render());
 		$this->assertEquals('<label for="frm-txt">lbl</label>', (string) $input->getLabel());
+	}
+
+	public function testTextAreaInputWithLabelHtml(): void
+	{
+		$form = new BootstrapForm();
+		$input = $form->addTextArea('txt', Html::fromHtml('te<strong>x</strong>t'));
+		$this->assertEquals('<label for="frm-txt">te<strong>x</strong>t</label>', (string) $input->getLabel());
 	}
 
 }
