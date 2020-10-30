@@ -22,8 +22,8 @@ class TextAreaInputTest extends BaseTest
 	public function testTextAreaInputWithLabelHtml(): void
 	{
 		$form = new BootstrapForm();
-		$input = $form->addTextArea('txt', Html::fromHtml('te<strong>x</strong>t'));
-		$this->assertEquals('<label for="frm-txt">te<strong>x</strong>t</label>', (string) $input->getLabel());
+		$input = $form->addTextArea('txt', Html::fromHtml('<strong>test</strong>'));
+		$this->assertEquals('<label for="frm-txt"><strong>test</strong></label>', (string) $input->getLabel());
 	}
 
 }
