@@ -22,7 +22,7 @@ class TextAreaInputTest extends BaseTest
 	public function testTextAreaInputWithLabelHtml(): void
 	{
 		$form = new BootstrapForm();
-		$input = $form->addTextArea('txt', Html::fromHtml('<strong>test</strong>'));
+		$input = $form->addTextArea('txt', Html::el('strong')->setText('test'));
 		$this->assertEquals('<label for="frm-txt"><strong>test</strong></label>', (string) $input->getLabel());
 	}
 
