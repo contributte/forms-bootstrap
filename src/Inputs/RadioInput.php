@@ -22,7 +22,7 @@ class RadioInput extends RadioList  implements IValidationInput
 	}
 
 	/**
-	 * @param  string|object $label
+	 * @param  string|Html $label
 	 * @param string[]|null $items
 	 */
 	public function __construct($label = null, ?array $items = null)

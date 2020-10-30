@@ -23,8 +23,8 @@ class TextInput extends \Nette\Forms\Controls\TextInput implements IValidationIn
 	/** @var bool|null */
 	private $autocomplete = null;
 
-	/***
-	 * @param string|Html $label
+	/**
+	 * @param string|Html|null $label
 	 */
 	public function __construct($label = null, ?int $maxLength = null)
 	{
