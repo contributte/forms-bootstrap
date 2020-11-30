@@ -112,9 +112,10 @@ trait BootstrapContainerTrait
 	}
 
 	/**
+	 * @param string|Html|null $label
 	 * Adds a datetime input.
 	 */
-	public function addDateTime(string $name, string $label): DateTimeInput
+	public function addDateTime(string $name, $label): DateTimeInput
 	{
 		$comp = new DateTimeInput($label);
 		$comp->setNullable(BootstrapForm::$allwaysUseNullable);
@@ -124,7 +125,7 @@ trait BootstrapContainerTrait
 	}
 
 	/**
-	 * @param null $label
+	 * @param Html|string|null $label
 	 * @return TextInput
 	 */
 	public function addEmail(string $name, $label = null): NetteTextInput
@@ -143,7 +144,7 @@ trait BootstrapContainerTrait
 	}
 
 	/**
-	 * @param string|null $label
+	 * @param string|Html|null $label
 	 * @return TextInput
 	 */
 	public function addInteger(string $name, $label = null): NetteTextInput
@@ -154,7 +155,7 @@ trait BootstrapContainerTrait
 	}
 
 	/**
-	 * @param string|null $label
+	 * @param string|Html|null $label
 	 * @param string[]|null $items
 	 * @return MultiselectInput
 	 */
@@ -171,7 +172,7 @@ trait BootstrapContainerTrait
 	}
 
 	/**
-	 * @param string|null $label
+	 * @param string|Html|null $label
 	 * @return UploadInput
 	 */
 	public function addMultiUpload(string $name, $label = null): UploadControl
@@ -180,7 +181,7 @@ trait BootstrapContainerTrait
 	}
 
 	/**
-	 * @param string|null $label
+	 * @param string|Html|null $label
 	 * @return TextInput
 	 */
 	public function addPassword(string $name, $label = null, ?int $cols = null, ?int $maxLength = null): NetteTextInput
@@ -190,7 +191,7 @@ trait BootstrapContainerTrait
 	}
 
 	/**
-	 * @param string|null $label
+	 * @param string|Html|null $label
 	 * @param string[]|null $items
 	 */
 	public function addRadioList(string $name, $label = null, ?array $items = null): RadioList
@@ -202,7 +203,7 @@ trait BootstrapContainerTrait
 	}
 
 	/**
-	 * @param string|null $label
+	 * @param string|Html|null $label
 	 * @param string[] $items
 	 * @return SelectInput
 	 */
@@ -219,7 +220,7 @@ trait BootstrapContainerTrait
 	}
 
 	/**
-	 * @param string|null $caption
+	 * @param string|Html|null $caption
 	 * @return SubmitButtonInput
 	 */
 	public function addSubmit(string $name, $caption = null): SubmitButton
@@ -232,7 +233,7 @@ trait BootstrapContainerTrait
 	}
 
 	/**
-	 * @param string|null $label
+	 * @param string|Html|null $label
 	 * @param int|null $cols ignored
 	 * @param int|null $maxLength ignored
 	 * @return TextInput
@@ -256,7 +257,7 @@ trait BootstrapContainerTrait
 	}
 
 	/**
-	 * @param string|null $label
+	 * @param string|Html|null $label
 	 * @param int|null $cols ignored
 	 * @param int|null $rows ignored
 	 * @return TextAreaInput
@@ -280,7 +281,7 @@ trait BootstrapContainerTrait
 	}
 
 	/**
-	 * @param string|null $label
+	 * @param string|Html|null $label
 	 * @return UploadInput
 	 */
 	public function addUpload(string $name, $label = null, bool $multiple = false): UploadControl
