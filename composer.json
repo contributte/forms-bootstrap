@@ -18,11 +18,11 @@
   ],
   "require": {
     "php": ">=7.2",
-    "nette/forms": "^3.0.4",
+    "nette/forms": "3.0.7",
     "nette/application": "^3.0"
   },
   "require-dev": {
-    "ninjify/qa": "^v0.10",
+    "ninjify/qa": "^v0.12",
     "phpunit/phpunit": "^8.5",
     "phpstan/phpstan": "^0.12.6",
     "phpstan/phpstan-deprecation-rules":"^0.12",
