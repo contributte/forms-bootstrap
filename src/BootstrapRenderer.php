@@ -664,7 +664,6 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 	 */
 	protected function renderFeedback(?BaseControl $control = null): ?Html
 	{
-		$validationHtml = null;
 		$isValid = true;
 		$showFeedback = false;
 		$messages = [];
