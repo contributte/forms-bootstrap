@@ -1,21 +1,22 @@
-<h1 align=center>Contributte bootstrap 4 forms</h1>
+![](https://heatbadger.now.sh/github/readme/contributte/forms-bootstrap/)
 
 <p align=center>
-    This is a library that lets you use Bootstrap 4 forms in 
-    <a href="http://nette.org">Nette framework</a>. <br>
-    Library introduces a custom set of controls 
-    (which covers all default controls) and a renderer.
+  <a href="https://github.com/contributte/forms-bootstrap/actions"><img src="https://github.com/contributte/forms-bootstrap/workflows/build/badge.svg"></a>
+  <a href="https://coveralls.io/r/contributte/forms-bootstrap"><img src="https://badgen.net/coveralls/c/github/contributte/forms-bootstrap?cache=300"></a>
+  <a href="https://packagist.org/packages/contributte/forms-bootstrap"><img src="https://badgen.net/packagist/dm/contributte/forms-bootstrap"></a>
+  <a href="https://packagist.org/packages/contributte/forms-bootstrap"><img src="https://badgen.net/packagist/v/contributte/forms-bootstrap"></a>
+</p>
+<p align=center>
+  <a href="https://packagist.org/packages/contributte/forms-bootstrap"><img src="https://badgen.net/packagist/php/contributte/forms-bootstrap"></a>
+  <a href="https://github.com/contributte/forms-bootstrap"><img src="https://badgen.net/github/license/contributte/forms-bootstrap"></a>
+  <a href="https://bit.ly/ctteg"><img src="https://badgen.net/badge/support/gitter/cyan"></a>
+  <a href="https://bit.ly/cttfo"><img src="https://badgen.net/badge/support/forum/yellow"></a>
+  <a href="https://contributte.org/partners.html"><img src="https://badgen.net/badge/sponsor/donations/F96854"></a>
 </p>
 
 <p align=center>
-    <a href="https://packagist.org/packages/contributte/forms-bootstrap"><img src="https://img.shields.io/packagist/l/contributte/forms-bootstrap.svg?style=flat-square"></a>
-    <a href="https://github.com/contributte/forms-bootstrap/actions"><img src="https://github.com/contributte/forms-bootstrap/workflows/build/badge.svg"></a>
-     <a href="https://coveralls.io/r/contributte/forms-bootstrap"><img src="https://img.shields.io/coveralls/contributte/forms-bootstrap.svg?style=flat-square"></a>
-    <a href="https://packagist.org/packages/contributte/forms-bootstrap"><img src="https://img.shields.io/packagist/dm/contributte/forms-bootstrap.svg?style=flat-square"></a>
-    <a href="https://packagist.org/packages/contributte/forms-bootstrap"><img src="https://img.shields.io/packagist/v/contributte/forms-bootstrap.svg?style=flat-square"></a>
-    <a href="https://github.com/phpstan/phpstan"><img src="https://img.shields.io/badge/PHPStan-enabled-brightgreen.svg?style=flat-square"></a>
-    <a href="http://bit.ly/ctteg"><img src="https://img.shields.io/gitter/room/contributte/contributte.svg?style=flat-square"></a>
-<p>
+Website 🚀 <a href="https://contributte.org">contributte.org</a> | Contact 👨🏻‍💻 <a href="https://f3l1x.io">f3l1x.io</a> | Twitter 🐦 <a href="https://twitter.com/contributte">@contributte</a>
+</p>
 
 ## Usage
 
