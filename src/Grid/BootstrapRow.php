@@ -8,7 +8,7 @@ use Contributte\FormsBootstrap\Traits\FakeControlTrait;
 use Nette\ComponentModel\IComponent;
 use Nette\ComponentModel\IContainer;
 use Nette\Forms\Container;
-use Nette\Forms\IControl;
+use Nette\Forms\Control;
 use Nette\InvalidArgumentException;
 use Nette\SmartObject;
 use Nette\Utils\Html;
@@ -25,7 +25,7 @@ use Nette\Utils\Html;
  *                additional properties.
  * @property-read string          $name             name of component
  */
-class BootstrapRow implements IComponent, IControl
+class BootstrapRow implements IComponent, Control
 {
 
 	use SmartObject;

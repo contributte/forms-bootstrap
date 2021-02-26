@@ -8,8 +8,10 @@ use Contributte\FormsBootstrap\Enums\RenderMode;
 use Contributte\FormsBootstrap\Grid\BootstrapRow;
 use Contributte\FormsBootstrap\Inputs\IValidationInput;
 use Nette;
+use Nette\Forms\Control;
 use Nette\Forms\Controls\BaseControl;
 use Nette\Forms\Form;
+use Nette\Forms\FormRenderer;
 use Nette\Utils\Html;
 
 /**
@@ -23,7 +25,7 @@ use Nette\Utils\Html;
  * @property bool       $groupHidden       if true, hidden fields will be grouped at the end. If false,
  *           hidden fields are placed where they were added. Default is true.
  */
-class BootstrapRenderer implements Nette\Forms\IFormRenderer
+class BootstrapRenderer implements FormRenderer
 {
 
 	use Nette\SmartObject;
@@ -327,11 +329,10 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 			$control->setOption(RendererOptions::_RENDERED, false);
 		}
 
-		$prototype = $this->form->getElementPrototype();
-		$prototype = $this->configElem('form', $prototype);
+		/** @var Html $el */
+		$el = $this->configElem('form', $this->form->getElementPrototype());
 
 		if ($this->form->isMethod('get')) {
-			$el = $prototype;
 			$el->action = (string) $el->action;
 			/** @noinspection PhpUndefinedFieldInspection */
 			$query = parse_url($el->action, PHP_URL_QUERY);
@@ -353,7 +354,7 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 			return $el->startTag() . PHP_EOL . $s;
 		}
 
-		return $prototype->startTag();
+		return $el->startTag();
 	}
 
 	/**
@@ -371,6 +372,7 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 			}
 
 			//region getting container
+
 			$container = $group->getOption(RendererOptions::CONTAINER, null);
 			if (is_string($container)) {
 				$container = $this->configElem(Cnf::GROUP, Html::el($container));
@@ -668,7 +670,7 @@ class BootstrapRenderer implements Nette\Forms\IFormRenderer
 		$showFeedback = false;
 		$messages = [];
 
-		if ($control instanceof Nette\Forms\IControl) {
+		if ($control instanceof Control) {
 			// specific control
 
 			if ($control->hasErrors()) {

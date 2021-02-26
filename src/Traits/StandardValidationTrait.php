@@ -23,13 +23,17 @@ trait StandardValidationTrait
 	 */
 	public function showValidation(Html $control): Html
 	{
+		/** @var Form $form */
+		$form = $this->getForm();
+
 		/** @var BootstrapRenderer $renderer */
-		$renderer = $this->getForm()->getRenderer();
+		$renderer = $form->getRenderer();
 
 		if (!($renderer instanceof BootstrapRenderer)) {
 			throw new NotSupportedException('Only Bootstrap renderer is supported');
 		}
 
+		/** @var Html $control */
 		$control = $renderer->configElem(
 			$this->hasErrors() ? RendererConfig::INPUT_INVALID : RendererConfig::INPUT_VALID,
 			$control

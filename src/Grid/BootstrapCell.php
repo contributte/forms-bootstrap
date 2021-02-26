@@ -6,8 +6,8 @@ use Contributte\FormsBootstrap\BootstrapRenderer;
 use Contributte\FormsBootstrap\Enums\RendererConfig;
 use Contributte\FormsBootstrap\Traits\BootstrapContainerTrait;
 use Nette\ComponentModel\IComponent;
+use Nette\Forms\Control;
 use Nette\Forms\ControlGroup;
-use Nette\Forms\IControl;
 use Nette\SmartObject;
 use Nette\Utils\Html;
 
@@ -17,7 +17,7 @@ use Nette\Utils\Html;
  * Only one component can be present.
  *
  * @property-read int  $numOfColumns     Number of Bootstrap columns to occupy
- * @property-read IControl $childControls|null     Nested child control if any
+ * @property-read Control $childControls|null     Nested child control if any
  * @property-read Html $elementPrototype the Html div that will be rendered. You may define additional
  *                properties.
  */
@@ -43,7 +43,7 @@ class BootstrapCell
 	/** @var int|false|null */
 	private $numOfColumns;
 
-	/** @var IControl[]|null */
+	/** @var Control[]|null */
 	private $childControls = [];
 
 	/** @var BootstrapRow */

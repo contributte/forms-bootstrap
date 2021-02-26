@@ -2,7 +2,7 @@
 
 namespace Contributte\FormsBootstrap\Traits;
 
-use Nette\Forms\IControl;
+use Nette\Forms\Control;
 use Nette\NotImplementedException;
 
 /**
@@ -50,7 +50,7 @@ trait FakeControlTrait
 	 *
 	 * @param mixed $value
 	 */
-	public function setValue($value): IControl
+	public function setValue($value): Control
 	{
 		throw new NotImplementedException();
 	}
