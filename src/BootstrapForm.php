@@ -6,12 +6,11 @@ use Contributte\FormsBootstrap\Traits\AddRowTrait;
 use Contributte\FormsBootstrap\Traits\BootstrapContainerTrait;
 use Nette\Application\UI\Form;
 use Nette\ComponentModel\IContainer;
-use Nette\Forms\IFormRenderer;
+use Nette\Forms\FormRenderer;
 use Nette\InvalidArgumentException;
 use Nette\Utils\Html;
 
 /**
- * Class BootstrapForm
  * Form rendered using Bootstrap 4
  *
  * @property bool $ajax
@@ -71,10 +70,11 @@ class BootstrapForm extends Form
 		return $this->elementPrototype;
 	}
 
+
 	/**
 	 * @return BootstrapRenderer
 	 */
-	public function getRenderer(): IFormRenderer
+	public function getRenderer(): FormRenderer
 	{
 		/** @var BootstrapRenderer $renderer */
 		$renderer = parent::getRenderer();
@@ -85,10 +85,10 @@ class BootstrapForm extends Form
 	/**
 	 * @return static
 	 */
-	public function setRenderer(?IFormRenderer $renderer = null)
+	public function setRenderer(?FormRenderer $renderer = null)
 	{
 		if (!$renderer instanceof BootstrapRenderer) {
-			throw new InvalidArgumentException('Must be a BootstrapRenderer');
+			throw new InvalidArgumentException('Renderer must be a BootstrapRenderer class');
 		}
 
 		parent::setRenderer($renderer);

@@ -77,4 +77,12 @@ class SideBySideTest extends BaseTest
 		$this->form->render();
 	}
 
+
+	public function testErrorRendering(): void
+	{
+		$this->form->addText('a')->addError('test-error');
+		$this->expectOutputString($this->loadTextData('side_by_side/text-error.html'));
+		$this->form->render();
+	}
+
 }

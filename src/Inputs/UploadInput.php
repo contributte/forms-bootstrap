@@ -4,6 +4,7 @@ namespace Contributte\FormsBootstrap\Inputs;
 
 use Contributte\FormsBootstrap\BootstrapRenderer;
 use Contributte\FormsBootstrap\Enums\RendererConfig;
+use Nette\Application\UI\Form;
 use Nette\Forms\Controls\UploadControl;
 use Nette\Utils\Html;
 
@@ -68,8 +69,10 @@ class UploadInput extends UploadControl implements IValidationInput
 	{
 		$input = $control->getChildren()[0];
 
+		/** @var Form $form */
+		$form = $this->getForm();
 		/** @var BootstrapRenderer $renderer */
-		$renderer = $this->getForm()->getRenderer();
+		$renderer = $form->getRenderer();
 
 		$renderer->configElem(
 			$this->hasErrors() ? RendererConfig::INPUT_INVALID : RendererConfig::INPUT_VALID,
