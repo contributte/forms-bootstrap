@@ -24,4 +24,4 @@ tests: vendor
 	vendor/bin/phpunit
 
 coverage: vendor
-	vendor/bin/phpunit --coverage-clover=coverage.xml
+	vendor/bin/phpunit --coverage-clover=tests/coverage.xml
