@@ -22,7 +22,7 @@ Website ðŸš€ <a href="https://contributte.org">contributte.org</a> | Contact ðŸ‘
 
 To install latest version of `contributte/forms-bootstrap` use [Composer](https://getcomposer.org).
 
-```
+```bash
 composer require contributte/forms-bootstrap
 ```
 

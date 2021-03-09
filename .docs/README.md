@@ -20,7 +20,7 @@
 
 The best way is via composer:
 
-```sh
+```bash
 composer require contributte/forms-bootstrap
 ```
 
