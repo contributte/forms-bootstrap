@@ -4,7 +4,6 @@
 [See example here](https://codepen.io/czubehead/pen/ZryJQd?editors=1000)
 
 ## Features
-
 - [Bootstrap 4 forms](http://getbootstrap.com/docs/4.0/components/forms/) HTML generation
 - All layout modes: vertical, side-by-side and inline
 - TextInput placeholders
@@ -20,7 +19,7 @@
 
 The best way is via composer:
 
-```sh
+```bash
 composer require contributte/forms-bootstrap
 ```
 
@@ -131,9 +130,9 @@ Simply add a new row like this:
 ```php
 $row = $form->addRow();
 $row->addCell(6)
-    ->addText('firstname', 'First name');
+	->addText('firstname', 'First name');
 $row->addCell(6)
-    ->addText('surname', 'Surname');
+	->addText('surname', 'Surname');
 ```
 
 And firstname and surname will be beside each other.
@@ -170,11 +169,11 @@ It works like this:
 add a new filter to your latte engine, for example:
 ```php
 $this->template->addFilter('formPair', function ($control) {
-    /** @var BootstrapRenderer $renderer */
-    $renderer = $control->form->renderer;
-    $renderer->attachForm($control->form);
+	/** @var BootstrapRenderer $renderer */
+	$renderer = $control->form->renderer;
+	$renderer->attachForm($control->form);
 
-    return $renderer->renderPair($control);
+	return $renderer->renderPair($control);
 });
 ```
 ### 2. Use it
