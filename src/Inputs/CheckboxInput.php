@@ -60,12 +60,13 @@ class CheckboxInput extends Checkbox implements IValidationInput
 	/**
 	 * Makes a Bootstrap checkbox HTML
 	 *
+	 * @param string|Html|null $caption
 	 * @param bool|mixed             $value pass false to omit
 	 */
 	public static function makeCheckbox(
 		string $name,
 		string $htmlId,
-		?string $caption = null,
+		$caption = null,
 		bool $checked = false,
 		$value = false,
 		bool $required = false,
