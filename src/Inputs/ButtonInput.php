@@ -32,12 +32,11 @@ class ButtonInput extends Button
 	 */
 	public function getControl($content = null): Html
 	{
-		$btn = Html::el('button', [
-			'type' => 'button',
-			'name' => $this->getHtmlName(),
-		]);
-		$btn->setHtml($content ?? (string) $this->caption);
+		$btn = parent::getControl($content);
+		$btn->setName('button');
 		$this->addBtnClass($btn);
+		$btn->setHtml($content ?? (string) $this->caption);
+		$btn->removeAttribute('value');
 
 		return $btn;
 	}
