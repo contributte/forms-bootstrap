@@ -15,4 +15,12 @@ class ButtonInputTest extends BaseTest
 		$this->assertEquals('<button type="button" name="btn" class="btn btn-secondary">caption</button>', $btn->getControl()->render());
 	}
 
+	public function testHtmlAttributeButton(): void
+	{
+		$form = new BootstrapForm();
+		$btn = $form->addButton('btn', 'caption')
+			->setHtmlAttribute('onclick', 'someFunc()');
+		$this->assertEquals('<button type="button" name="btn" onclick="someFunc()" class="btn btn-secondary">caption</button>', $btn->getControl()->render());
+	}
+
 }
