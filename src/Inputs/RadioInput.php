@@ -74,7 +74,7 @@ class RadioInput extends RadioList  implements IValidationInput
 				Html::el('label', [
 					'class' => ['custom-control-label'],
 					'for'   => $itemHtmlId,
-				])->addHtml($caption)
+				])->addHtml($this->translate($caption))
 			);
 
 			$container->addHtml($wrapper);
