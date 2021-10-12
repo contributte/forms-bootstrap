@@ -68,11 +68,11 @@ That feature would only add unnecessary and deceiving overhead to this library,
  enormous line
 
 #### Bootstrap versions support
- 1. **^4** (`Enums\BoostrapVesrion::V4`) version 4 mode (default)
- 2. **^5** (`Enums\BoostrapVesrion::V5`) version 5 mode
+ 1. **^4** (`Enums\BoostrapVersion::V4`) version 4 mode (default)
+ 2. **^5** (`Enums\BoostrapVersion::V5`) version 5 mode
 
 ```php
-BootstrapForm::switchBootstrapVersion(Enums\BoostrapVesrion::V5)
+BootstrapForm::switchBootstrapVersion(Enums\BoostrapVersion::V5)
 $form = new BootstrapForm;
 ```
 
