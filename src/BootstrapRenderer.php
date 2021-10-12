@@ -2,6 +2,7 @@
 
 namespace Contributte\FormsBootstrap;
 
+use Contributte\FormsBootstrap\Enums\BootstrapVersion;
 use Contributte\FormsBootstrap\Enums\RendererConfig as Cnf;
 use Contributte\FormsBootstrap\Enums\RendererOptions;
 use Contributte\FormsBootstrap\Enums\RenderMode;
@@ -182,10 +183,11 @@ class BootstrapRenderer implements FormRenderer
 
 			Cnf::PAIR  => [
 				Cnf::ELEMENT_NAME => 'div',
-				Cnf::CLASS_SET    => 'form-group',
+				Cnf::CLASS_SET    => BootstrapForm::getBootstrapVersion() === BootstrapVersion::V5 ? 'mb-3' : 'form-group',
 			],
 			Cnf::LABEL => [
 				Cnf::ELEMENT_NAME => 'label',
+				Cnf::CLASS_SET    => BootstrapForm::getBootstrapVersion() === BootstrapVersion::V5 ? 'form-label' : null,
 			],
 
 			Cnf::INPUT        => [],

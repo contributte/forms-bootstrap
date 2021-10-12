@@ -3,6 +3,7 @@
 namespace Tests\Inputs;
 
 use Contributte\FormsBootstrap\BootstrapForm;
+use Contributte\FormsBootstrap\Enums\BootstrapVersion;
 use Nette\InvalidArgumentException;
 use Tests\BaseTest;
 
@@ -37,6 +38,24 @@ class SelectInputTest extends BaseTest
 		$html = $select->getControl()->render();
 		$expectedHtml = '<select name="test" id="frm-test" class="custom-select"><optgroup label="A"><option value="0">B</option><option value="1">C</option></optgroup><optgroup label="D"><option value="2">E</option><option value="3">F</option></optgroup></select>';
 		$this->assertEquals($expectedHtml, $html);
+	}
+
+	public function testItemsAsMultiDimensionalArrayRenderingV5(): void
+	{
+		BootstrapForm::switchBootstrapVersion(BootstrapVersion::V5);
+
+		$countries = [
+			'A' => ['B', 'C'],
+			'D' => [2 => 'E', 'F'],
+		];
+
+		$form = new BootstrapForm();
+		$select = $form->addSelect('test', 'test')->setItems($countries, true);
+		$html = $select->getControl()->render();
+		$expectedHtml = '<select name="test" id="frm-test" class="form-select"><optgroup label="A"><option value="0">B</option><option value="1">C</option></optgroup><optgroup label="D"><option value="2">E</option><option value="3">F</option></optgroup></select>';
+		$this->assertEquals($expectedHtml, $html);
+
+		BootstrapForm::switchBootstrapVersion(BootstrapVersion::V4);
 	}
 
 	public function testSetPromptWithOneItemAlreadyNullShouldThrowException(): void

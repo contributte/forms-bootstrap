@@ -2,6 +2,7 @@
 
 namespace Contributte\FormsBootstrap;
 
+use Contributte\FormsBootstrap\Enums\BootstrapVersion;
 use Contributte\FormsBootstrap\Traits\AddRowTrait;
 use Contributte\FormsBootstrap\Traits\BootstrapContainerTrait;
 use Nette\Application\UI\Form;
@@ -42,6 +43,9 @@ class BootstrapForm extends Form
 	/** @var bool */
 	public static $allwaysUseNullable = false;
 
+	/** @var int BootstrapVersion of Bootstrap – 4 or 5 */
+	private static $bootstrapVersion = BootstrapVersion::V4;
+
 	/**
 	 * @param IContainer|null $container
 	 */
@@ -63,6 +67,18 @@ class BootstrapForm extends Form
 		$this->onError[] = function ($form): void {
 			$form->showValidation = $this->autoShowValidation;
 		};
+	}
+
+	public static function switchBootstrapVersion(int $version): void
+	{
+		self::$bootstrapVersion = in_array($version, [BootstrapVersion::V4, BootstrapVersion::V5], true)
+			? $version
+			: BootstrapVersion::V4;
+	}
+
+	public static function getBootstrapVersion(): int
+	{
+		return self::$bootstrapVersion;
 	}
 
 	public function getElementPrototype(): Html
