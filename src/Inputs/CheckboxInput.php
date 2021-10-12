@@ -2,6 +2,8 @@
 
 namespace Contributte\FormsBootstrap\Inputs;
 
+use Contributte\FormsBootstrap\BootstrapForm;
+use Contributte\FormsBootstrap\Enums\BootstrapVersion;
 use Contributte\FormsBootstrap\Traits\StandardValidationTrait;
 use Nette;
 use Nette\Forms\Controls\Checkbox;
@@ -74,10 +76,10 @@ class CheckboxInput extends Checkbox implements IValidationInput
 		?Nette\Forms\Rules $rules = null
 	): Html
 	{
-		$label = Html::el('label', ['class' => ['custom-control', 'custom-checkbox']]);
+		$label = Html::el('label', ['class' => BootstrapForm::getBootstrapVersion() === BootstrapVersion::V5 ? 'form-check' : ['custom-control', 'custom-checkbox']]);
 		$input = Html::el('input', [
 			'type'             => 'checkbox',
-			'class'            => ['custom-control-input'],
+			'class'            => [BootstrapForm::getBootstrapVersion() === BootstrapVersion::V5 ? 'form-check-input' : 'custom-control-input'],
 			'name'             => $name,
 			'disabled'         => $disabled,
 			'required'         => $required,
@@ -94,7 +96,7 @@ class CheckboxInput extends Checkbox implements IValidationInput
 		$label->addHtml($input);
 		$label->addHtml(
 			Html::el('label', [
-				'class' => ['custom-control-label'],
+				'class' => [BootstrapForm::getBootstrapVersion() === BootstrapVersion::V5 ? 'form-check-label' : 'custom-control-label'],
 				'for'   => $htmlId,
 			])->setText($caption)
 		);

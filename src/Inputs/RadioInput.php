@@ -2,6 +2,8 @@
 
 namespace Contributte\FormsBootstrap\Inputs;
 
+use Contributte\FormsBootstrap\BootstrapForm;
+use Contributte\FormsBootstrap\Enums\BootstrapVersion;
 use Contributte\FormsBootstrap\Enums\RendererOptions;
 use Contributte\FormsBootstrap\Traits\ChoiceInputTrait;
 use Contributte\FormsBootstrap\Traits\StandardValidationTrait;
@@ -51,11 +53,11 @@ class RadioInput extends RadioList  implements IValidationInput
 			$itemHtmlId = $htmlId . $c;
 
 			$wrapper = Html::el('div', [
-				'class' => ['custom-control', 'custom-radio'],
+				'class' => BootstrapForm::getBootstrapVersion() === BootstrapVersion::V5 ? 'form-check' : ['custom-control', 'custom-radio'],
 			]);
 
 			$input = Html::el('input', [
-				'class'    => ['custom-control-input'],
+				'class'    => [BootstrapForm::getBootstrapVersion() === BootstrapVersion::V5 ? 'form-check-input' : 'custom-control-input'],
 				'type'     => 'radio',
 				'value'    => $value,
 				'name'     => $this->getHtmlName(),
@@ -72,7 +74,7 @@ class RadioInput extends RadioList  implements IValidationInput
 
 			$wrapper->addHtml(
 				Html::el('label', [
-					'class' => ['custom-control-label'],
+					'class' => [BootstrapForm::getBootstrapVersion() === BootstrapVersion::V5 ? 'form-check-label' : 'custom-control-label'],
 					'for'   => $itemHtmlId,
 				])->addHtml($this->translate($caption))
 			);

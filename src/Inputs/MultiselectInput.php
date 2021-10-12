@@ -2,6 +2,8 @@
 
 namespace Contributte\FormsBootstrap\Inputs;
 
+use Contributte\FormsBootstrap\BootstrapForm;
+use Contributte\FormsBootstrap\Enums\BootstrapVersion;
 use Contributte\FormsBootstrap\Traits\ChoiceInputTrait;
 use Contributte\FormsBootstrap\Traits\StandardValidationTrait;
 use Nette\Forms\Controls\MultiSelectBox;
@@ -38,7 +40,7 @@ class MultiselectInput extends MultiSelectBox implements IValidationInput
 		$select = parent::getControl();
 
 		$select->attrs += [
-			'class'    => ['form-control'],
+			'class'    => [BootstrapForm::getBootstrapVersion() === BootstrapVersion::V5 ? 'form-select' : 'form-control'],
 			'disabled' => $this->isControlDisabled(),
 		];
 

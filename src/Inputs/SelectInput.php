@@ -2,6 +2,8 @@
 
 namespace Contributte\FormsBootstrap\Inputs;
 
+use Contributte\FormsBootstrap\BootstrapForm;
+use Contributte\FormsBootstrap\Enums\BootstrapVersion;
 use Contributte\FormsBootstrap\Traits\ChoiceInputTrait;
 use Contributte\FormsBootstrap\Traits\InputPromptTrait;
 use Contributte\FormsBootstrap\Traits\StandardValidationTrait;
@@ -39,7 +41,7 @@ class SelectInput extends SelectBox implements IValidationInput
 		$select = parent::getControl();
 
 		$select->attrs += [
-			'class'    => ['custom-select'],
+			'class'    => [BootstrapForm::getBootstrapVersion() === BootstrapVersion::V5 ? 'form-select' : 'custom-select'],
 			'disabled' => $this->isControlDisabled(),
 		];
 

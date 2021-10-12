@@ -4,6 +4,7 @@
 [See example here](https://codepen.io/czubehead/pen/ZryJQd?editors=1000)
 
 ## Features
+- [Bootstrap 5 forms](https://getbootstrap.com/docs/5.1/forms/overview/) HTML generation
 - [Bootstrap 4 forms](http://getbootstrap.com/docs/4.0/components/forms/) HTML generation
 - All layout modes: vertical, side-by-side and inline
 - TextInput placeholders
@@ -14,7 +15,7 @@
 - Programmatically generated [Bootstrap grid](https://getbootstrap.com/docs/4.1/layout/grid/)
 - Assisted manual rendering
 - BootstrapForm::$allwaysUseNullable to set all fields as nullable (calls $component->setNullable() for all fields automatically)
- 
+
 ## Installation
 
 The best way is via composer:
@@ -34,14 +35,14 @@ composer require contributte/forms-bootstrap
 
 ### Compatibility
 
-This package is compatible with any version of Bootstrap 4 
+This package is compatible with any version of Bootstrap 4 and 5
 
 ## How to use
 
 ### Form
 
 Probably the main class you will be using is `Contributte\FormsBootstrap\BootstrapForm`.
-It has all the features of this library pre-configured and extends 
+It has all the features of this library pre-configured and extends
 `Nette\Application\UI\Form` functionality by:
  - Only accepts `Contributte\FormsBootstrap\BootstrapRenderer` or its children (which is default)
  - Built-in AJAX support (adds `ajax` class upon rendering) via `ajax`(bool) property
@@ -50,10 +51,10 @@ It has all the features of this library pre-configured and extends
 
 ```php
 $form = new BootstrapForm;
-$form->renderMode = RenderMode::Vertical;		
+$form->renderMode = RenderMode::Vertical;
 ```
 
-It will behave pretty much the same as the default Nette form, with the exception of not grouping buttons. 
+It will behave pretty much the same as the default Nette form, with the exception of not grouping buttons.
 That feature would only add unnecessary and deceiving overhead to this library,
 **use grid instead, it will give you much finer control**
 
@@ -65,6 +66,15 @@ That feature would only add unnecessary and deceiving overhead to this library,
  using `BootstrapRenderer::setColumns($label, $input)`.
  3. **Inline** `Enums\RenderMode::INLINE` all controls and labels will be in one
  enormous line
+
+#### Bootstrap versions support
+ 1. **^4** (`Enums\BoostrapVesrion::V4`) version 4 mode (default)
+ 2. **^5** (`Enums\BoostrapVesrion::V5`) version 5 mode
+
+```php
+BootstrapForm::switchBootstrapVersion(Enums\BoostrapVesrion::V5)
+$form = new BootstrapForm;
+```
 
 ### Controls / inputs
 
@@ -90,7 +100,7 @@ is the default format for Date and
 ```php
 DateTimeFormat::D_DMY_DOTS_NO_LEAD . ' ' . DateTimeFormat::T_24_NO_LEAD
 ```
-is the default format for DateTime. You can also change this globally with 
+is the default format for DateTime. You can also change this globally with
 ```php
 DateInput::$defaultFormat = DateTimeFormat::D_DMY_DOTS_NO_LEAD;
 DateTimeInput::$defaultFormat = DateTimeFormat::D_DMY_DOTS_NO_LEAD . ' ' . DateTimeFormat::T_24_NO_LEAD;
@@ -108,7 +118,7 @@ See PhpDoc for further explanation.
 
 Nothing out of ordinary, but it **Needs `<html lang="xx">` attribute** to work.
 
-Has property `buttonCaption`, which sets the text on the button on the left. 
+Has property `buttonCaption`, which sets the text on the button on the left.
 The right button is set by [Bootstrap CSS](http://getbootstrap.com/docs/4.0/components/forms/#file-browser), which depends `<html lang="xx">`.
 
 ### Renderer
@@ -141,8 +151,8 @@ And firstname and surname will be beside each other.
 
 - By calling `getElementPrototype()` on row or cell, you can influence the elements of row / cell
 - A cell can only hold one control (or none)
-- You are not limited to numerical column specification. 
-Also check out `\Contributte\FormsBootstrap\Grid\BootstrapCell::COLUMNS_NONE` 
+- You are not limited to numerical column specification.
+Also check out `\Contributte\FormsBootstrap\Grid\BootstrapCell::COLUMNS_NONE`
 and `\Contributte\FormsBootstrap\Grid\BootstrapCell::COLUMNS_AUTO`
 
 # Assisted manual rendering
@@ -155,16 +165,16 @@ let the renderer do most of the work...
 
 ## What can it do
 
-Assisted manual rendering will render label-input pairs for you using a filter. 
-This means that it will take care of wrapping things into `div.form-group` and validation 
-messages - the most mundane thing to implement in a template. 
+Assisted manual rendering will render label-input pairs for you using a filter.
+This means that it will take care of wrapping things into `div.form-group` and validation
+messages - the most mundane thing to implement in a template.
 
 ## Implementation
 
 First of all, **you must implement this yourself, this won't work out of the box!**
 The implementation is quite dirty, but I think the benefits outweigh this cost.
 
-It works like this: 
+It works like this:
 ### 1. Implement a filter
 add a new filter to your latte engine, for example:
 ```php
