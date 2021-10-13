@@ -43,7 +43,7 @@ class BootstrapForm extends Form
 	/** @var bool */
 	public static $allwaysUseNullable = false;
 
-	/** @var int BootstrapVersion of Bootstrap – 4 or 5 */
+	/** @var int */
 	private static $bootstrapVersion = BootstrapVersion::V4;
 
 	/**
