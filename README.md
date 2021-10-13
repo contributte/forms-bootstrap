@@ -32,13 +32,13 @@ For details on how to use this package, check out our [documentation](.docs).
 
 ## Versions
 
-| State       | Version       | Branch   | Nette | PHP     |
-|-------------|---------------|----------|-------|---------|
-| dev         | `^0.5`        | `master` | 3.0+  | `^7.2`  |
-| stable      | `^0.4`        | `master` | 3.0+  | `^7.2`  |
-| stable      | `^0.3`        | `master` | 3.0+  | `^7.2`  |
-| stable      | `^0.2`        | `master` | 3.0+  | `^7.2`  |
-| stable      | `^0.1`        | `master` | 3.0+  | `^7.2`  |
+| State       | Version       | Branch   | Nette | PHP     | Bootstrap   |
+|-------------|---------------|----------|-------|---------|-------------|
+| dev         | `^0.5`        | `master` | 3.0+  | `^7.2`  | `4.x` `5.x` |
+| stable      | `^0.4`        | `master` | 3.0+  | `^7.2`  | `4.x`       |
+| stable      | `^0.3`        | `master` | 3.0+  | `^7.2`  | `4.x`       |
+| stable      | `^0.2`        | `master` | 3.0+  | `^7.2`  | `4.x`       |
+| stable      | `^0.1`        | `master` | 3.0+  | `^7.2`  | `4.x`       |
 
 ## Development
 
@@ -53,7 +53,7 @@ This package is currently maintaining by these authors.
 -----
 
 
-- Based on abandoned [czubehead](https://petrcech.eu) package [bootstrap-4-forms](https://github.com/czubehead/bootstrap-4-forms) 
+- Based on abandoned [czubehead](https://petrcech.eu) package [bootstrap-4-forms](https://github.com/czubehead/bootstrap-4-forms)
 
 ------
 Consider to [support](https://contributte.org/partners.html) **contributte** development team.
