@@ -4,6 +4,7 @@ namespace Contributte\FormsBootstrap\Grid;
 
 use Contributte\FormsBootstrap\BootstrapRenderer;
 use Contributte\FormsBootstrap\Enums\RendererConfig;
+use Contributte\FormsBootstrap\Enums\RendererOptions;
 use Contributte\FormsBootstrap\Traits\FakeControlTrait;
 use Nette\ComponentModel\IComponent;
 use Nette\ComponentModel\IContainer;
@@ -218,6 +219,8 @@ class BootstrapRow implements IComponent, Control
 			$cellHtml = $cell->render();
 			$element->addHtml($cellHtml);
 		}
+
+		$this->setOption(RendererOptions::_RENDERED, true);
 
 		return $element;
 	}
