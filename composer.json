@@ -24,10 +24,10 @@
   "require-dev": {
     "ninjify/qa": "^v0.12",
     "phpunit/phpunit": "^8.5",
-    "phpstan/phpstan": "^0.12.6",
-    "phpstan/phpstan-deprecation-rules": "^0.12",
-    "phpstan/phpstan-nette": "^0.12",
-    "phpstan/phpstan-strict-rules": "^0.12"
+    "phpstan/phpstan": "^1.0",
+    "phpstan/phpstan-deprecation-rules": "^1.0",
+    "phpstan/phpstan-nette": "^1.0",
+    "phpstan/phpstan-strict-rules": "^1.0"
   },
   "autoload": {
     "psr-4": {
