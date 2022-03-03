@@ -169,7 +169,7 @@ class BootstrapRenderer implements FormRenderer
 
 			Cnf::GRID_ROW  => [
 				Cnf::ELEMENT_NAME => 'div',
-				Cnf::CLASS_SET    => 'form-row',
+				Cnf::CLASS_SET    => BootstrapForm::getBootstrapVersion() === BootstrapVersion::V5 ? 'row' : 'form-row',
 			],
 			Cnf::GRID_CELL => [
 				Cnf::ELEMENT_NAME => 'div',
