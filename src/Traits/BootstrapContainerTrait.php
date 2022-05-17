@@ -204,7 +204,7 @@ trait BootstrapContainerTrait
 
 	/**
 	 * @param string|Html|null $label
-	 * @param string[] $items
+	 * @param array<string|int, array<string|int, string>|string> $items
 	 * @return SelectInput
 	 */
 	public function addSelect(string $name, $label = null, ?array $items = null, ?int $size = null): SelectBox

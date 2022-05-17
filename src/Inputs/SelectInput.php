@@ -23,7 +23,7 @@ class SelectInput extends SelectBox implements IValidationInput
 
 	/**
 	 * @param string|Html|null       $label
-	 * @param string[]|null $items
+	 * @param array<string|int, array<string|int, string>|string>|null $items
 	 */
 	public function __construct($label = null, ?array $items = null)
 	{
