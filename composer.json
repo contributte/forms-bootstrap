@@ -18,7 +18,7 @@
   ],
   "require": {
     "php": ">=7.2",
-    "nette/forms": "3.1.6",
+    "nette/forms": "3.1.7",
     "nette/application": "^3.0"
   },
   "require-dev": {
@@ -44,6 +44,11 @@
   "extra": {
     "branch-alias": {
       "dev-master": "0.6.x-dev"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
     }
   }
 }
