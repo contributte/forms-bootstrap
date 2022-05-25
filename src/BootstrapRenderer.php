@@ -14,6 +14,7 @@ use Nette\Forms\Controls\BaseControl;
 use Nette\Forms\Form;
 use Nette\Forms\FormRenderer;
 use Nette\Utils\Html;
+use Contributte\FormsBootstrap\Controls\CustomControl;
 
 /**
  * Converts a Form into Bootstrap 4 HTML output.
@@ -468,15 +469,20 @@ class BootstrapRenderer implements FormRenderer
 				continue;
 			}
 
-			if ($control instanceof BootstrapRow) {
+			if ($control instanceof CustomControl) {
 				$html->addHtml($control->render());
 			} else {
 				if ($control->getOption(RendererOptions::TYPE) === 'hidden') {
 					$isHidden = true;
 					$pairHtml = $this->renderControl($control);
 				} else {
-					$pairHtml = $this->renderPair($control);
-					$isHidden = false;
+				    if ($control->getOption(RendererOptions::ONLY_CONTROL) === true) {
+				        $pairHtml = $this->renderControl($control);
+				        $isHidden = false;
+				    } else {
+    					$pairHtml = $this->renderPair($control);
+    					$isHidden = false;
+				    }
 				}
 
 				if ($this->groupHidden && $isHidden) {

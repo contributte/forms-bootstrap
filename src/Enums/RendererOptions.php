@@ -48,5 +48,9 @@ class RendererOptions
 	 * shown instead of an error
 	 */
 	public const FEEDBACK_VALID = 'feedback-valid';
+	/**
+	 * Boolean. Can be set on control, if true control will be rendered only by BootstrapRenderer->renderControl().
+	 */
+	public const ONLY_CONTROL = 'only-control';
 
 }
