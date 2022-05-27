@@ -2,11 +2,11 @@
 
 namespace Contributte\FormsBootstrap;
 
+use Contributte\FormsBootstrap\Controls\CustomControl;
 use Contributte\FormsBootstrap\Enums\BootstrapVersion;
 use Contributte\FormsBootstrap\Enums\RendererConfig as Cnf;
 use Contributte\FormsBootstrap\Enums\RendererOptions;
 use Contributte\FormsBootstrap\Enums\RenderMode;
-use Contributte\FormsBootstrap\Grid\BootstrapRow;
 use Contributte\FormsBootstrap\Inputs\IValidationInput;
 use Nette;
 use Nette\Forms\Control;
@@ -14,7 +14,6 @@ use Nette\Forms\Controls\BaseControl;
 use Nette\Forms\Form;
 use Nette\Forms\FormRenderer;
 use Nette\Utils\Html;
-use Contributte\FormsBootstrap\Controls\CustomControl;
 
 /**
  * Converts a Form into Bootstrap 4 HTML output.
