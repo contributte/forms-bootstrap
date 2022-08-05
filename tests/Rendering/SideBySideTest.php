@@ -42,6 +42,17 @@ class SideBySideTest extends BaseTest
 		$this->form->render();
 	}
 
+	public function testTextRow(): void
+	{
+		$row1 = $this->form->addRow();
+		$cell1 = $row1->addCell(6);
+		$cell1->addText('name', 'Name');
+		$cell2 = $row1->addCell(6);
+		$cell2->addText('mail', 'Mail');
+		$this->expectOutputString($this->loadTextData('side_by_side/simple_grid.html'));
+		$this->form->render();
+	}
+
 	public function testCheckbox(): void
 	{
 		$this->form->addCheckbox('a', 'b');
