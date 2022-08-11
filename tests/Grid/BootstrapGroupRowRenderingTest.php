@@ -15,6 +15,7 @@ class BootstrapGroupRowRenderingTest extends BaseTest
 	{
 		$form = new BootstrapForm();
 		$row1 = $form->addRow('line1');
+		$row1->getElementPrototype()->setAttribute('class', 'class1');
 		$row1->addCell(6)
 			->addSelect('category', 'Category', [1 => 'Category 1', 2 => 'Category 2'])
 			->setHtmlAttribute('class', 'selectpicker form-control')
