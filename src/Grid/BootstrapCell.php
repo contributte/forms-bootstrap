@@ -54,10 +54,10 @@ class BootstrapCell
 
 	/**
 	 * @param BootstrapRow   $row          Row this is a child of
-	 * @param int|false|null $numOfColumns Number of Bootstrap columns to occupy. You can use an integer or
+	 * @param int|null $numOfColumns Number of Bootstrap columns to occupy. You can use an integer or
 	 * BootstrapCell::COLUMNS_* constant (see their docs for more)
 	 */
-	public function __construct(BootstrapRow $row, $numOfColumns)
+	public function __construct(BootstrapRow $row, ?int $numOfColumns)
 	{
 		$this->numOfColumns = $numOfColumns;
 		$this->row = $row;
@@ -75,10 +75,9 @@ class BootstrapCell
 	}
 
 	/**
-	 * @return int|false|null
 	 * @see BootstrapCell::$numOfColumns
 	 */
-	public function getNumOfColumns()
+	public function getNumOfColumns(): ?int
 	{
 		return $this->numOfColumns;
 	}

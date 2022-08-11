@@ -98,9 +98,9 @@ class BootstrapRow implements IComponent, Control
 	/**
 	 * Adds a new cell to which a control can be added.
 	 */
-	public function addCell(int $numOfColumns = BootstrapCell::COLUMNS_NONE): BootstrapCell
+	public function addCell(?int $numOfColumns = BootstrapCell::COLUMNS_NONE): BootstrapCell
 	{
-		if ($this->columnsOccupied + $numOfColumns > $this->numOfColumns) {
+		if ($this->columnsOccupied + ($numOfColumns ?? 0) > $this->numOfColumns) {
 			throw new InvalidArgumentException(
 				'the given number of columns with combination of already used'
 				. ' columns exceeds column limit (' . $this->numOfColumns . ')'
