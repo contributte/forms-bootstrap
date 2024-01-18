@@ -17,13 +17,13 @@
     }
   ],
   "require": {
-    "php": ">=7.2",
+    "php": ">=8.1",
     "nette/forms": "3.1.12",
     "nette/application": "^3.0"
   },
   "require-dev": {
-    "ninjify/qa": "^v0.12",
-    "phpunit/phpunit": "^8.5",
+    "contributte/qa": "^v0.3",
+    "phpunit/phpunit": "^9.5",
     "phpstan/phpstan": "^0.12.6",
     "phpstan/phpstan-deprecation-rules": "^0.12",
     "phpstan/phpstan-nette": "^0.12",

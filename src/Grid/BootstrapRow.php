@@ -33,18 +33,18 @@ class BootstrapRow implements IComponent, Control
 	use FakeControlTrait;
 
 	/**
-	 * Global name counter
-	 *
-	 * @var int
-	 */
-	private static $uidCounter = 0;
-
-	/**
 	 * Number of columns in Bootstrap grid. Default is 12, but it can be customized.
 	 *
 	 * @var int
 	 */
 	public $numOfColumns = 12;
+
+	/**
+	 * Global name counter
+	 *
+	 * @var int
+	 */
+	private static $uidCounter = 0;
 
 	/** @var string $name */
 	private $name;

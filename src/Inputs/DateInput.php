@@ -16,7 +16,7 @@ use Nette\Utils\Html;
 class DateInput extends TextInput
 {
 
-	/** @var string  */
+	/** @var string */
 	public static $defaultFormat = DateTimeFormat::D_DMY_DOTS_NO_LEAD;
 
 	/** @var string[] */
@@ -54,9 +54,7 @@ class DateInput extends TextInput
 
 		parent::__construct($label, null);
 
-		$this->addRule(function ($input) {
-			return DateTimeFormat::validate($this->format, $input->value);
-		}, $this->invalidFormatMessage);
+		$this->addRule(fn ($input) => DateTimeFormat::validate($this->format, $input->value), $this->invalidFormatMessage);
 
 		$this->setFormat(static::$defaultFormat);
 	}
@@ -96,11 +94,13 @@ class DateInput extends TextInput
 	{
 		if ($value instanceof DateTimeInterface) {
 			parent::setValue($value->format($this->format));
+
 			$this->validate();
 
 			return $this;
 		} elseif (is_string($value) && DateTimeFormat::validate($this->format, $value)) {
 			parent::setValue($value);
+
 			$this->validate();
 
 			return $this;
@@ -119,6 +119,7 @@ class DateInput extends TextInput
 
 			if ($date !== false) {
 				parent::setValue($date->format($this->format));
+
 				$this->validate();
 
 				return $this;
@@ -145,6 +146,7 @@ class DateInput extends TextInput
 	public function validate(): void
 	{
 		parent::validate();
+
 		$this->isValidated = true;
 	}
 

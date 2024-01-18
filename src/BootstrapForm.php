@@ -25,11 +25,17 @@ class BootstrapForm extends Form
 	use BootstrapContainerTrait;
 	use AddRowTrait;
 
+	/** @var bool */
+	public static $allwaysUseNullable = false;
+
 	/** @var string Class to be added if this is ajax. Defaults to 'ajax' */
 	public $ajaxClass = 'ajax';
 
 	/** @var Html */
 	protected $elementPrototype;
+
+	/** @var int */
+	private static $bootstrapVersion = BootstrapVersion::V4;
 
 	/** @var bool */
 	private $isAjax = true;
@@ -40,24 +46,19 @@ class BootstrapForm extends Form
 	/** @var bool */
 	private $autoShowValidation = true;
 
-	/** @var bool */
-	public static $allwaysUseNullable = false;
-
-	/** @var int */
-	private static $bootstrapVersion = BootstrapVersion::V4;
-
 	/**
 	 * @param IContainer|null $container
 	 */
 	public function __construct($container = null)
 	{
 		parent::__construct($container);
+
 		$this->setRenderer(new BootstrapRenderer());
 
 		$prototype = Html::el('form', [
 			'action' => '',
 			'method' => self::POST,
-			'class'  => [],
+			'class' => [],
 		]);
 		$this->elementPrototype = $prototype;
 
@@ -85,7 +86,6 @@ class BootstrapForm extends Form
 	{
 		return $this->elementPrototype;
 	}
-
 
 	/**
 	 * @return BootstrapRenderer

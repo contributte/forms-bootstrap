@@ -21,14 +21,6 @@ class BootstrapCellTest extends BaseTest
 	/** @var BootstrapRow */
 	private $row;
 
-	protected function setUp(): void
-	{
-		$this->form = new BootstrapForm();
-		$this->row = $this->form->addRow();
-		$this->cell = $this->row->addCell(12);
-		$this->form->setParent($this->createMock(Presenter::class));
-	}
-
 	public function testAddClass(): void
 	{
 		$this->cell->addHtmlClass('new-class');
@@ -57,6 +49,14 @@ class BootstrapCellTest extends BaseTest
 		$this->cell->setCurrentGroup($first);
 
 		$this->assertEquals($first, $this->cell->getCurrentGroup());
+	}
+
+	protected function setUp(): void
+	{
+		$this->form = new BootstrapForm();
+		$this->row = $this->form->addRow();
+		$this->cell = $this->row->addCell(12);
+		$this->form->setParent($this->createMock(Presenter::class));
 	}
 
 }

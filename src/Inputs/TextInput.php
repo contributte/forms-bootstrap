@@ -29,6 +29,7 @@ class TextInput extends \Nette\Forms\Controls\TextInput implements IValidationIn
 	public function __construct($label = null, ?int $maxLength = null)
 	{
 		parent::__construct($label, $maxLength);
+
 		$this->setRequired(false);
 	}
 
@@ -96,6 +97,9 @@ class TextInput extends \Nette\Forms\Controls\TextInput implements IValidationIn
 		return $this;
 	}
 
+	/**
+	 * @param object|string $caption
+	 */
 	public function getLabel($caption = null): Html
 	{
 		/** @var Html $label */

@@ -36,27 +36,14 @@ class CheckboxInput extends Checkbox implements IValidationInput
 	 */
 	public $allignWithInputControls;
 
+	/**
+	 * @param  string|object  $label
+	 */
 	public function __construct($label = null)
 	{
 		$this->allignWithInputControls = static::$defaultAllignWithInputControls;
-		parent::__construct($label);
-	}
 
-	/**
-	 * Generates a checkbox
-	 */
-	public function getControl(): Html
-	{
-		return self::makeCheckbox(
-			$this->getHtmlName(),
-			$this->getHtmlId(),
-			$this->translate($this->caption),
-			$this->value,
-			false,
-			$this->required,
-			$this->disabled,
-			$this->getRules()
-		);
+		parent::__construct($label);
 	}
 
 	/**
@@ -78,13 +65,13 @@ class CheckboxInput extends Checkbox implements IValidationInput
 	{
 		$label = Html::el('label', ['class' => BootstrapForm::getBootstrapVersion() === BootstrapVersion::V5 ? 'form-check' : ['custom-control', 'custom-checkbox']]);
 		$input = Html::el('input', [
-			'type'             => 'checkbox',
-			'class'            => [BootstrapForm::getBootstrapVersion() === BootstrapVersion::V5 ? 'form-check-input' : 'custom-control-input'],
-			'name'             => $name,
-			'disabled'         => $disabled,
-			'required'         => $required,
-			'checked'          => $checked,
-			'id'               => $htmlId,
+			'type' => 'checkbox',
+			'class' => [BootstrapForm::getBootstrapVersion() === BootstrapVersion::V5 ? 'form-check-input' : 'custom-control-input'],
+			'name' => $name,
+			'disabled' => $disabled,
+			'required' => $required,
+			'checked' => $checked,
+			'id' => $htmlId,
 			'data-nette-rules' => $rules ? Nette\Forms\Helpers::exportRules($rules) : false,
 		]);
 		if ($value !== false) {
@@ -97,7 +84,7 @@ class CheckboxInput extends Checkbox implements IValidationInput
 		$label->addHtml(
 			Html::el('label', [
 				'class' => [BootstrapForm::getBootstrapVersion() === BootstrapVersion::V5 ? 'form-check-label' : 'custom-control-label'],
-				'for'   => $htmlId,
+				'for' => $htmlId,
 			])->setText($caption)
 		);
 
@@ -107,6 +94,22 @@ class CheckboxInput extends Checkbox implements IValidationInput
 		return $label;
 	}
 
+	/**
+	 * Generates a checkbox
+	 */
+	public function getControl(): Html
+	{
+		return self::makeCheckbox(
+			$this->getHtmlName(),
+			$this->getHtmlId(),
+			$this->translate($this->caption),
+			$this->value,
+			false,
+			$this->required,
+			$this->disabled,
+			$this->getRules()
+		);
+	}
 
 	/**
 	 * Modify control in such a way that it explicitly shows its validation state.

@@ -68,7 +68,7 @@ class DateTimeFormat
 	}
 
 	/**
-	 * Turns datetime format into a human readable format,  e.g. 'd.m.Y' => 'dd.mm.yyyy'.
+	 * Turns datetime format into a human readable format, e.g. 'd.m.Y' => 'dd.mm.yyyy'.
 	 * Supported values: d, j, m, n, Y, y, a, A, g, G, h, H, i, s, c, U
 	 */
 	public static function toHumanFormat(string $format, bool $example = true, bool $appendExample = true): string
