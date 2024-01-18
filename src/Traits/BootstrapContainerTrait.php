@@ -156,6 +156,19 @@ trait BootstrapContainerTrait
 
 	/**
 	 * @param string|Html|null $label
+	 * @return TextInput
+	 */
+	public function addFloat(string $name, $label = null): NetteTextInput
+	{
+		return $this->addText($name, $label)
+			->setNullable(BootstrapForm::$allwaysUseNullable)
+			->setHtmlType('number')
+			->setHtmlAttribute('step', 'any')
+			->addRule(Form::Float);
+	}
+
+	/**
+	 * @param string|Html|null $label
 	 * @param string[]|null $items
 	 * @return MultiselectInput
 	 */
