@@ -28,6 +28,7 @@ class SelectInput extends SelectBox implements IValidationInput
 	public function __construct($label = null, ?array $items = null)
 	{
 		parent::__construct($label);
+
 		if ($items !== null) {
 			$this->setItems($items);
 		}
@@ -41,7 +42,7 @@ class SelectInput extends SelectBox implements IValidationInput
 		$select = parent::getControl();
 
 		$select->attrs += [
-			'class'    => [BootstrapForm::getBootstrapVersion() === BootstrapVersion::V5 ? 'form-select' : 'custom-select'],
+			'class' => [BootstrapForm::getBootstrapVersion() === BootstrapVersion::V5 ? 'form-select' : 'custom-select'],
 			'disabled' => $this->isControlDisabled(),
 		];
 

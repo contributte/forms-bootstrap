@@ -13,9 +13,6 @@ use Nette\Utils\Html;
 trait BootstrapButtonTrait
 {
 
-	/** @var string */
-	private $btnClass = 'btn-primary';
-
 	/**
 	 * set to true so that buttons by defaults are alligned on right with input fields
 	 *
@@ -29,6 +26,9 @@ trait BootstrapButtonTrait
 	 * @var bool
 	 */
 	public $allignWithInputControls;
+
+	/** @var string */
+	private $btnClass = 'btn-primary';
 
 	/**
 	 * Gets additional button class. Default is btn-primary.
@@ -61,12 +61,6 @@ trait BootstrapButtonTrait
 		return $control;
 	}
 
-	protected function addBtnClass(Html $element): void
-	{
-		BootstrapUtils::standardizeClass($element);
-		$element->class[] = 'btn ' . $this->getBtnClass();
-	}
-
 	public function allignWithInputControls(): bool
 	{
 		return $this->allignWithInputControls ?? self::$defaultAllignWithInputControls;
@@ -75,6 +69,12 @@ trait BootstrapButtonTrait
 	public function setAllignWithInputControls(bool $allignWithControls = true): void
 	{
 		$this->allignWithInputControls = $allignWithControls;
+	}
+
+	protected function addBtnClass(Html $element): void
+	{
+		BootstrapUtils::standardizeClass($element);
+		$element->class[] = 'btn ' . $this->getBtnClass();
 	}
 
 }

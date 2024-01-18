@@ -40,7 +40,7 @@ class MultiselectInput extends MultiSelectBox implements IValidationInput
 		$select = parent::getControl();
 
 		$select->attrs += [
-			'class'    => [BootstrapForm::getBootstrapVersion() === BootstrapVersion::V5 ? 'form-select' : 'form-control'],
+			'class' => [BootstrapForm::getBootstrapVersion() === BootstrapVersion::V5 ? 'form-select' : 'form-control'],
 			'disabled' => $this->isControlDisabled(),
 		];
 

@@ -15,7 +15,7 @@ use Nette\Utils\Html;
 /**
  * Class RadioInput. Lets user choose one out of multiple options.
  */
-class RadioInput extends RadioList  implements IValidationInput
+class RadioInput extends RadioList implements IValidationInput
 {
 
 	use ChoiceInputTrait;
@@ -30,6 +30,7 @@ class RadioInput extends RadioList  implements IValidationInput
 	public function __construct($label = null, ?array $items = null)
 	{
 		parent::__construct($label, $items);
+
 		$this->control->type = 'radio';
 		$this->container = Html::el('fieldset');
 		$this->setOption(RendererOptions::TYPE, 'radio');
@@ -57,13 +58,13 @@ class RadioInput extends RadioList  implements IValidationInput
 			]);
 
 			$input = Html::el('input', [
-				'class'    => [BootstrapForm::getBootstrapVersion() === BootstrapVersion::V5 ? 'form-check-input' : 'custom-control-input'],
-				'type'     => 'radio',
-				'value'    => $value,
-				'name'     => $this->getHtmlName(),
-				'checked'  => $this->isValueSelected($value),
+				'class' => [BootstrapForm::getBootstrapVersion() === BootstrapVersion::V5 ? 'form-check-input' : 'custom-control-input'],
+				'type' => 'radio',
+				'value' => $value,
+				'name' => $this->getHtmlName(),
+				'checked' => $this->isValueSelected($value),
 				'disabled' => $disabledOption,
-				'id'       => $itemHtmlId,
+				'id' => $itemHtmlId,
 			]);
 			if ($c === 0) {
 				// the first (0th) input has data-nette-rules, none other
@@ -75,7 +76,7 @@ class RadioInput extends RadioList  implements IValidationInput
 			$wrapper->addHtml(
 				Html::el('label', [
 					'class' => [BootstrapForm::getBootstrapVersion() === BootstrapVersion::V5 ? 'form-check-label' : 'custom-control-label'],
-					'for'   => $itemHtmlId,
+					'for' => $itemHtmlId,
 				])->addHtml($this->translate($caption))
 			);
 

@@ -128,6 +128,16 @@ class BootstrapCell
 	}
 
 	/**
+	 * @return static
+	 */
+	public function addHtmlClass(string $class)
+	{
+		$this->elementPrototype->class[] = $class;
+
+		return $this;
+	}
+
+	/**
 	 * Creates column class based on numOfColumns
 	 */
 	protected function createClass(): string
@@ -143,16 +153,6 @@ class BootstrapCell
 		}
 
 		return $this->row->gridBreakPoint !== null ? 'col-' . $this->row->gridBreakPoint . '-' . $this->numOfColumns : 'col-' . $this->numOfColumns;
-	}
-
-	/**
-	 * @return static
-	 */
-	public function addHtmlClass(string $class)
-	{
-		$this->elementPrototype->class[] = $class;
-
-		return $this;
 	}
 
 }

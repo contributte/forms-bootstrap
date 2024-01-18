@@ -56,7 +56,7 @@ class UploadInput extends UploadControl implements IValidationInput
 		$el->addHtml(
 			Html::el('label', [
 				'class' => [BootstrapForm::getBootstrapVersion() === BootstrapVersion::V5 ? 'form-label' : 'custom-file-label'],
-				'for'   => $this->getHtmlId(),
+				'for' => $this->getHtmlId(),
 			])->setText($this->buttonCaption)
 		);
 

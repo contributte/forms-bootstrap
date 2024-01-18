@@ -15,6 +15,7 @@ class RenderMode
 	 * Labels above controls
 	 */
 	public const VERTICAL_MODE = 0;
+
 	/**
 	 * Labels beside controls
 	 */

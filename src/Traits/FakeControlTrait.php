@@ -62,6 +62,7 @@ trait FakeControlTrait
 	 */
 	public function validate(): void
 	{
+		//intentionally empty
 	}
 
 }

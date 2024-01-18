@@ -11,15 +11,8 @@ use Tests\BaseTest;
 class SideBySideTest extends BaseTest
 {
 
-	/** @var BootstrapForm  */
+	/** @var BootstrapForm */
 	private $form;
-
-	protected function setUp(): void
-	{
-		$this->form = new BootstrapForm();
-		$this->form->setRenderer(new BootstrapRenderer(RenderMode::SIDE_BY_SIDE_MODE));
-		$this->form->setParent($this->createMock(Presenter::class));
-	}
 
 	public function testEmpty(): void
 	{
@@ -88,12 +81,18 @@ class SideBySideTest extends BaseTest
 		$this->form->render();
 	}
 
-
 	public function testErrorRendering(): void
 	{
 		$this->form->addText('a')->addError('test-error');
 		$this->expectOutputString($this->loadTextData('side_by_side/text-error.html'));
 		$this->form->render();
+	}
+
+	protected function setUp(): void
+	{
+		$this->form = new BootstrapForm();
+		$this->form->setRenderer(new BootstrapRenderer(RenderMode::SIDE_BY_SIDE_MODE));
+		$this->form->setParent($this->createMock(Presenter::class));
 	}
 
 }

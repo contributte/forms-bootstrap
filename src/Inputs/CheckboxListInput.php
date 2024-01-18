@@ -25,6 +25,7 @@ class CheckboxListInput extends CheckboxList implements IValidationInput
 	public function getControl(): Html
 	{
 		parent::getControl();
+
 		$fieldset = Html::el('fieldset', [
 			'disabled' => $this->isControlDisabled(),
 		]);

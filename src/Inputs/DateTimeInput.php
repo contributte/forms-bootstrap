@@ -12,7 +12,7 @@ use Contributte\FormsBootstrap\Enums\DateTimeFormat;
 class DateTimeInput extends DateInput
 {
 
-	/** @var string  */
+	/** @var string */
 	public static $defaultFormat = DateTimeFormat::D_DMY_DOTS_NO_LEAD . ' ' . DateTimeFormat::T_24_NO_LEAD;
 
 	/** @var string[] */

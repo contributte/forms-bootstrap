@@ -1,9 +1,16 @@
 <?xml version="1.0"?>
 <ruleset>
     <!-- Contributte Coding Standard -->
-    <rule ref="./vendor/ninjify/coding-standard/contributte.xml">
+    <rule ref="./vendor/contributte/qa/ruleset.xml">
         <exclude name="SlevomatCodingStandard.Classes.SuperfluousTraitNaming.SuperfluousSuffix" />
-        <exclude name="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint" /> <!-- We have code in traits which has to be compatible with other classes and this rule breaks it-->
+		<exclude name="SlevomatCodingStandard.Namespaces.ReferenceUsedNamesOnly.PartialUse" />
+
+		<!-- We have code in traits which has to be compatible with other classes and this rule breaks it-->
+        <exclude name="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint" />
+		<exclude name="SlevomatCodingStandard.TypeHints.PropertyTypeHint.MissingNativeTypeHint" />
+		<exclude name="SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingNativeTypeHint" />
+		<exclude name="SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint" />
+		<exclude name="SlevomatCodingStandard.Functions.StrictCall.StrictParameterMissing" />
     </rule>
 
     <!-- Specific rules -->
