@@ -424,9 +424,7 @@ class BootstrapRenderer implements FormRenderer
 			$out->addHtml($formControls);
 		}
 
-		if (!empty($groups)) {
-			$out->addHtml($groups);
-		}
+		$out->addHtml($groups);
 
 		return (string) $out;
 	}
@@ -546,9 +544,7 @@ class BootstrapRenderer implements FormRenderer
 		$pairHtml->id = $control->getOption(RendererOptions::ID);
 
 		$labelHtml = $this->renderLabel($control);
-		if (!empty($labelHtml)) {
-			$pairHtml->addHtml($labelHtml);
-		}
+		$pairHtml->addHtml($labelHtml);
 
 		$nonLabel = $this->getElem(Cnf::NON_LABEL);
 

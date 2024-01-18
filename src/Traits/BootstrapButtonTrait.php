@@ -23,7 +23,7 @@ trait BootstrapButtonTrait
 	/**
 	 * set to true to allign buttons to right with all other input controls
 	 *
-	 * @var bool
+	 * @var bool|null
 	 */
 	public $allignWithInputControls;
 
