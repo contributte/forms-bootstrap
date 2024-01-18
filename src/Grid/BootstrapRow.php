@@ -20,7 +20,6 @@ use Nette\Utils\Html;
  *
  * @property string               $gridBreakPoint   Bootstrap breakpoint - usually xs, sm, md, lg. sm by
  *           default. Use NULL for no breakpoint.
- * @property-read string[]        $ownedNames       list of names of components which were added to this row
  * @property-read BootstrapCell[] $cells            cells in this row
  * @property-read Html            $elementPrototype the Html div that will be rendered. You may define
  *                additional properties.
@@ -234,6 +233,16 @@ class BootstrapRow implements IComponent, Control
 	public function setOption(string $option, $value): void
 	{
 		$this->options[$option] = $value;
+	}
+
+	/**
+	 * List of names of components which were added to this row
+	 *
+	 * @return string[]
+	 */
+	public function getOwnedNames(): array
+	{
+		return $this->ownedNames;
 	}
 
 }
