@@ -7,7 +7,9 @@ use Contributte\FormsBootstrap\BootstrapForm;
 use Contributte\FormsBootstrap\Inputs\ButtonInput;
 use Contributte\FormsBootstrap\Inputs\CheckboxInput;
 use Contributte\FormsBootstrap\Inputs\CheckboxListInput;
+use Contributte\FormsBootstrap\Inputs\ColorPicker;
 use Contributte\FormsBootstrap\Inputs\DateInput;
+use Contributte\FormsBootstrap\Inputs\DateTimeControl;
 use Contributte\FormsBootstrap\Inputs\DateTimeInput;
 use Contributte\FormsBootstrap\Inputs\MultiselectInput;
 use Contributte\FormsBootstrap\Inputs\RadioInput;
@@ -22,6 +24,8 @@ use Nette\Forms\Controls\BaseControl;
 use Nette\Forms\Controls\Button;
 use Nette\Forms\Controls\Checkbox;
 use Nette\Forms\Controls\CheckboxList;
+use Nette\Forms\Controls\ColorPicker as NetteColorPicker;
+use Nette\Forms\Controls\DateTimeControl as NetteDateTimeControl;
 use Nette\Forms\Controls\MultiSelectBox;
 use Nette\Forms\Controls\RadioList;
 use Nette\Forms\Controls\SelectBox;
@@ -101,10 +105,62 @@ trait BootstrapContainerTrait
 
 	/**
 	 * Adds a datetime input.
+	 *
+	 * @param string|null $label
 	 */
-	public function addDate(string $name, string $label): DateInput
+	public function addDate(string $name, $label = null): NetteDateTimeControl
 	{
-		$comp = new DateInput($label, null);
+		$comp = new DateTimeControl($label, NetteDateTimeControl::TypeDate);
+		$this->addComponent($comp, $name);
+
+		return $comp;
+	}
+
+	/**
+	 * Adds a datetime input.
+	 *
+	 * @param string|Html|null $label
+	 */
+	public function addDateTime(string $name, $label = null, bool $withSeconds = false): NetteDateTimeControl
+	{
+		$comp = new DateTimeControl($label, NetteDateTimeControl::TypeDateTime);
+		$this->addComponent($comp, $name);
+
+		return $comp;
+	}
+
+	/**
+	 * Adds a time input
+	 *
+	 * @param string|null $label
+	 */
+	public function addTime(string $name, $label = null, bool $withSeconds = false): NetteDateTimeControl
+	{
+		$comp = new DateTimeControl($label, NetteDateTimeControl::TypeTime);
+		$this->addComponent($comp, $name);
+
+		return $comp;
+	}
+
+	/**
+	 * Adds a color input
+	 *
+	 * @param string|null $label
+	 */
+	public function addColor(string $name, $label = null, bool $withSeconds = false): NetteColorPicker
+	{
+		$comp = new ColorPicker($label);
+		$this->addComponent($comp, $name);
+
+		return $comp;
+	}
+
+	/**
+	 * Adds a datetime input.
+	 */
+	public function addBootstrapDate(string $name, string $label): DateInput
+	{
+		$comp = new DateInput($label);
 		$comp->setNullable(BootstrapForm::$allwaysUseNullable);
 		$this->addComponent($comp, $name);
 
@@ -115,7 +171,7 @@ trait BootstrapContainerTrait
 	 * @param string|Html|null $label
 	 * Adds a datetime input.
 	 */
-	public function addDateTime(string $name, $label): DateTimeInput
+	public function addBootstrapDateTime(string $name, $label): DateTimeInput
 	{
 		$comp = new DateTimeInput($label);
 		$comp->setNullable(BootstrapForm::$allwaysUseNullable);

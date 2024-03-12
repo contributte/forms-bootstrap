@@ -13,7 +13,7 @@ class DateInputTest extends BaseTest
 	public function testDefaultDate(): void
 	{
 		$form = new BootstrapForm();
-		$dt = $form->addDate('date', 'Date');
+		$dt = $form->addBootstrapDate('date', 'Date');
 		$this->assertEquals('<input type="text" name="date" id="frm-date" class="form-control" placeholder="d.m.yyyy (31.12.1998)">', $dt->getControl()->render());
 	}
 
@@ -21,7 +21,7 @@ class DateInputTest extends BaseTest
 	{
 		$form = new BootstrapForm();
 		DateInput::$defaultFormat = DateTimeFormat::D_YMD_DASHES;
-		$dt = $form->addDate('date', 'Date');
+		$dt = $form->addBootstrapDate('date', 'Date');
 		$this->assertEquals('<input type="text" name="date" id="frm-date" class="form-control" placeholder="yyyy-mm-dd (1998-12-31)">', $dt->getControl()->render());
 	}
 
