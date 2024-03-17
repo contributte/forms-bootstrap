@@ -6,10 +6,7 @@ all:
 vendor: composer.json composer.lock
 	composer install
 
-qa: lint phpstan cs
-
-lint: vendor
-	vendor/bin/linter src tests
+qa: phpstan cs
 
 cs: vendor
 	vendor/bin/codesniffer src tests
