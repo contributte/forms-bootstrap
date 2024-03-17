@@ -57,7 +57,7 @@ class BootstrapForm extends Form
 
 		$prototype = Html::el('form', [
 			'action' => '',
-			'method' => self::POST,
+			'method' => self::Post,
 			'class' => [],
 		]);
 		$this->elementPrototype = $prototype;
@@ -98,10 +98,7 @@ class BootstrapForm extends Form
 		return $renderer;
 	}
 
-	/**
-	 * @return static
-	 */
-	public function setRenderer(?FormRenderer $renderer = null)
+	public function setRenderer(?FormRenderer $renderer = null): static
 	{
 		if (!$renderer instanceof BootstrapRenderer) {
 			throw new InvalidArgumentException('Renderer must be a BootstrapRenderer class');

@@ -24,22 +24,15 @@ class CheckboxInput extends Checkbox implements IValidationInput
 
 	/**
 	 * set to true so that checkboxes by defaults are alligned on right with input fields, you can also set
-	 *
-	 * @var bool
 	 */
-	public static $defaultAllignWithInputControls = false;
+	public static bool $defaultAllignWithInputControls = false;
 
 	/**
 	 * set to true to allign checkbox to right with all other input controls
-	 *
-	 * @var bool
 	 */
-	public $allignWithInputControls;
+	public bool $allignWithInputControls;
 
-	/**
-	 * @param  string|object  $label
-	 */
-	public function __construct($label = null)
+	public function __construct(string|\Stringable|null $label = null)
 	{
 		$this->allignWithInputControls = static::$defaultAllignWithInputControls;
 
@@ -54,7 +47,7 @@ class CheckboxInput extends Checkbox implements IValidationInput
 	 */
 	public static function makeCheckbox(
 		string $name,
-		string $htmlId,
+		bool|null|string $htmlId,
 		$caption = null,
 		bool $checked = false,
 		$value = false,

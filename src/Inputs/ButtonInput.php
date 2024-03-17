@@ -35,7 +35,7 @@ class ButtonInput extends Button
 		$btn = parent::getControl($content);
 		$btn->setName('button');
 		$this->addBtnClass($btn);
-		$btn->setHtml($content ?? (string) $this->caption); //@phpstan-ignore-line
+		$btn->setHtml($content ?? (string) $this->caption);
 		$btn->removeAttribute('value');
 
 		return $btn;

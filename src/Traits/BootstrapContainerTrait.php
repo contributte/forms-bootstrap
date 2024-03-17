@@ -188,7 +188,7 @@ trait BootstrapContainerTrait
 	{
 		return $this->addText($name, $label)
 			->setNullable(BootstrapForm::$allwaysUseNullable)
-			->addRule(Form::EMAIL);
+			->addRule(Form::Email);
 	}
 
 	/**
@@ -207,7 +207,7 @@ trait BootstrapContainerTrait
 	{
 		return $this->addText($name, $label)
 			->setNullable(BootstrapForm::$allwaysUseNullable)
-			->addRule(Form::INTEGER);
+			->addRule(Form::Integer);
 	}
 
 	/**

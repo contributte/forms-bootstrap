@@ -197,12 +197,11 @@ class BootstrapRow implements IComponent, Control
 	/**
 	 * Gets previously set option
 	 *
-	 * @param mixed|null $default
 	 * @return mixed|null
 	 */
-	public function getOption(string $option, $default = null)
+	public function getOption(string $option)
 	{
-		return $this->options[$option] ?? $default;
+		return $this->options[$option];
 	}
 
 	/**
