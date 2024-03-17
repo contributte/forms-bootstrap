@@ -10,10 +10,6 @@ use Contributte\FormsBootstrap\Traits\StandardValidationTrait;
 use Nette\Forms\Controls\SelectBox;
 use Nette\Utils\Html;
 
-/**
- * Class SelectInput.
- * Single select.
- */
 class SelectInput extends SelectBox implements IValidationInput
 {
 

@@ -97,10 +97,7 @@ class TextInput extends \Nette\Forms\Controls\TextInput implements IValidationIn
 		return $this;
 	}
 
-	/**
-	 * @param object|string $caption
-	 */
-	public function getLabel($caption = null): Html
+	public function getLabel(string|\Stringable|null $caption = null): Html
 	{
 		/** @var Html $label */
 		$label = parent::getLabel($caption);

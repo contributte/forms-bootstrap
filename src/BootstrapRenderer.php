@@ -375,7 +375,7 @@ class BootstrapRenderer implements FormRenderer
 
 			//region getting container
 
-			$container = $group->getOption(RendererOptions::CONTAINER, null);
+			$container = $group->getOption(RendererOptions::CONTAINER);
 			if (is_string($container)) {
 				$container = $this->configElem(Cnf::GROUP, Html::el($container));
 			} elseif ($container instanceof Html) {
@@ -462,7 +462,7 @@ class BootstrapRenderer implements FormRenderer
 
 		// note that these are NOT form groups, these are groups specified to group
 		foreach ($parent->getControls() as $control) {
-			if ($control->getOption(RendererOptions::_RENDERED, false)) {
+			if ($control->getOption(RendererOptions::_RENDERED)) {
 				continue;
 			}
 

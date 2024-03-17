@@ -70,7 +70,7 @@ class DateInput extends TextInput
 	/**
 	 * @inheritdoc
 	 */
-	public function getValue()
+	public function getValue(): mixed
 	{
 		$val = parent::getValue();
 
