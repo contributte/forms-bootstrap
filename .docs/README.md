@@ -51,7 +51,7 @@ It has all the features of this library pre-configured and extends
 
 ```php
 $form = new BootstrapForm;
-$form->renderMode = RenderMode::Vertical;
+$form->renderMode = RenderMode::VERTICAL_MODE;
 ```
 
 It will behave pretty much the same as the default Nette form, with the exception of not grouping buttons.
@@ -68,11 +68,11 @@ That feature would only add unnecessary and deceiving overhead to this library,
  enormous line
 
 #### Bootstrap versions support
- 1. **^4** (`Enums\BoostrapVersion::V4`) version 4 mode (default)
- 2. **^5** (`Enums\BoostrapVersion::V5`) version 5 mode
+ 1. **^4** (`Enums\BootstrapVersion::V4`) version 4 mode (default)
+ 2. **^5** (`Enums\BootstrapVersion::V5`) version 5 mode
 
 ```php
-BootstrapForm::switchBootstrapVersion(Enums\BoostrapVersion::V5)
+BootstrapForm::switchBootstrapVersion(Enums\BootstrapVersion::V5)
 $form = new BootstrapForm;
 ```
 
