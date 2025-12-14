@@ -41,7 +41,7 @@ class BootstrapRenderer implements FormRenderer
 	 */
 	protected $gridBreakPoint = 'sm';
 
-	/** @var BootstrapForm */
+	/** @var BootstrapForm|Form */
 	protected $form;
 
 	/** @var int */
@@ -64,8 +64,10 @@ class BootstrapRenderer implements FormRenderer
 	/**
 	 * Sets the form for which to render. Used only if a specific function of the renderer must be executed
 	 * outside of render(), such as during assisted manual rendering.
+	 *
+	 * Accepts any Form instance for compatibility with {formPrint} and Blueprint::latte().
 	 */
-	public function attachForm(BootstrapForm $form): void
+	public function attachForm(Form $form): void
 	{
 		$this->form = $form;
 	}
@@ -434,10 +436,16 @@ class BootstrapRenderer implements FormRenderer
 	 */
 	public function renderControl(BaseControl $control): string
 	{
-		/** @var Html $controlHtml */
+		/** @var Html|string $controlHtml */
 		$controlHtml = $control->getControl();
 		$control->setOption(RendererOptions::_RENDERED, true);
-		if (($this->form->showValidation || $control->hasErrors()) && $control instanceof IValidationInput) {
+
+		// Handle string returns from getControl() for compatibility with Blueprint/formPrint
+		if (is_string($controlHtml)) {
+			return $controlHtml;
+		}
+
+		if (($this->isShowValidation() || $control->hasErrors()) && $control instanceof IValidationInput) {
 			$controlHtml = $control->showValidation($controlHtml);
 		}
 
@@ -499,15 +507,40 @@ class BootstrapRenderer implements FormRenderer
 	}
 
 	/**
-	 * Renders 'label' part of visual row of controls.
+	 * Returns whether validation styling should be shown.
+	 * Returns false for non-BootstrapForm instances for compatibility with {formPrint}.
 	 */
-	public function renderLabel(BaseControl $control): Html
+	protected function isShowValidation(): bool
 	{
+		return $this->form instanceof BootstrapForm && $this->form->isShowValidation();
+	}
+
+	/**
+	 * Renders 'label' part of visual row of controls.
+	 *
+	 * @return Html|string Returns Html element or string for compatibility with Blueprint/formPrint
+	 */
+	public function renderLabel(BaseControl $control): Html|string
+	{
+		// For regular BootstrapForm rendering, check caption first to maintain original behavior
 		if ($control->caption === null) {
+			// Still call getLabel() to check for Blueprint/formPrint string returns
+			$controlLabel = $control->getLabel();
+
+			// Handle string returns from getLabel() for compatibility with Blueprint/formPrint
+			if (is_string($controlLabel)) {
+				return $controlLabel;
+			}
+
 			return Html::el();
 		}
 
 		$controlLabel = $control->getLabel();
+
+		// Handle string returns from getLabel() for compatibility with Blueprint/formPrint
+		if (is_string($controlLabel)) {
+			return $controlLabel;
+		}
 
 		if ($controlLabel instanceof Html && $controlLabel->getName() === 'label') {
 			// the control has already provided us with the element, no need to create our own
@@ -676,7 +709,7 @@ class BootstrapRenderer implements FormRenderer
 				$isValid = false;
 				$showFeedback = true;
 				$messages = $control->getErrors();
-			} elseif ($this->form->showValidation) {
+			} elseif ($this->isShowValidation()) {
 				$isValid = true;
 				// control is valid and we want to explicitly show that it's valid
 				$message = $control->getOption(RendererOptions::FEEDBACK_VALID);
