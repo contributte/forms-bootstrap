@@ -96,7 +96,7 @@ class BootstrapCell
 		$element = $renderer->configElem(RendererConfig::GRID_CELL, $element);
 		$element->class[] = $this->createClass();
 
-		foreach ($this->childControls as $childControl) { //@phpstan-ignore-line phpstan bug
+		foreach ($this->childControls as $childControl) {
 			$pairHtml = $renderer->renderPair($childControl);
 			$element->addHtml($pairHtml);
 		}
