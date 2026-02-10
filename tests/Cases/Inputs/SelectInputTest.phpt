@@ -57,7 +57,7 @@ Toolkit::test(function (): void {
 Toolkit::test(function (): void {
 	Assert::exception(function (): void {
 		$form = new BootstrapForm();
-		$select = $form->addSelect('test', 'test', [null => 'choose']);
+		$select = $form->addSelect('test', 'test', ['' => 'choose']);
 		$select->setPrompt('Hey');
 	}, InvalidArgumentException::class);
 });
