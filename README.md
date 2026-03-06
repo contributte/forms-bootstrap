@@ -2,7 +2,7 @@
 
 <p align=center>
   <a href="https://github.com/contributte/forms-bootstrap/actions"><img src="https://github.com/contributte/forms-bootstrap/workflows/build/badge.svg"></a>
-  <a href="https://coveralls.io/r/contributte/forms-bootstrap"><img src="https://badgen.net/coveralls/c/github/contributte/forms-bootstrap?cache=300"></a>
+  <a href="https://codecov.io/gh/contributte/forms-bootstrap"><img src="https://badgen.net/codecov/c/github/contributte/forms-bootstrap?cache=300"></a>
   <a href="https://packagist.org/packages/contributte/forms-bootstrap"><img src="https://badgen.net/packagist/dm/contributte/forms-bootstrap"></a>
   <a href="https://packagist.org/packages/contributte/forms-bootstrap"><img src="https://badgen.net/packagist/v/contributte/forms-bootstrap"></a>
 </p>
