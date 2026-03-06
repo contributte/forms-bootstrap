@@ -1,8 +1,17 @@
-parameters:
-    treatPhpDocTypesAsCertain: false
 includes:
-	- vendor/phpstan/phpstan-deprecation-rules/rules.neon
-	- vendor/phpstan/phpstan-nette/extension.neon
-	- vendor/phpstan/phpstan-nette/rules.neon
-#	- temp/phpstan/vendor/phpstan/phpstan-strict-rules/rules.neon #we are not ready yet
+	- vendor/contributte/phpstan/phpstan.neon
+	- phpstan-baseline.neon
 
+parameters:
+	level: 7
+	phpVersion: 80200
+	treatPhpDocTypesAsCertain: false
+
+	scanDirectories:
+		- src
+
+	fileExtensions:
+		- php
+
+	paths:
+		- src

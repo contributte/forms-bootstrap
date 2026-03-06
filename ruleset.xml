@@ -1,25 +1,26 @@
-<?xml version="1.0"?>
-<ruleset>
-    <!-- Contributte Coding Standard -->
-    <rule ref="./vendor/contributte/qa/ruleset.xml">
-        <exclude name="SlevomatCodingStandard.Classes.SuperfluousTraitNaming.SuperfluousSuffix" />
-		<exclude name="SlevomatCodingStandard.Namespaces.ReferenceUsedNamesOnly.PartialUse" />
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="Contributte" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="vendor/squizlabs/php_codesniffer/phpcs.xsd">
+	<!-- Rulesets -->
+	<rule ref="./vendor/contributte/qa/ruleset-8.2.xml">
+		<exclude name="SlevomatCodingStandard.Classes.SuperfluousTraitNaming.SuperfluousSuffix"/>
+		<exclude name="SlevomatCodingStandard.Namespaces.ReferenceUsedNamesOnly.PartialUse"/>
+		<exclude name="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint"/>
+		<exclude name="SlevomatCodingStandard.TypeHints.PropertyTypeHint.MissingNativeTypeHint"/>
+		<exclude name="SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingNativeTypeHint"/>
+		<exclude name="SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint"/>
+		<exclude name="SlevomatCodingStandard.Functions.StrictCall.StrictParameterMissing"/>
+	</rule>
 
-		<!-- We have code in traits which has to be compatible with other classes and this rule breaks it-->
-        <exclude name="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint" />
-		<exclude name="SlevomatCodingStandard.TypeHints.PropertyTypeHint.MissingNativeTypeHint" />
-		<exclude name="SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingNativeTypeHint" />
-		<exclude name="SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint" />
-		<exclude name="SlevomatCodingStandard.Functions.StrictCall.StrictParameterMissing" />
-    </rule>
+	<!-- Rules -->
+	<rule ref="SlevomatCodingStandard.Files.TypeNameMatchesFileName">
+		<properties>
+			<property name="rootNamespaces" type="array">
+				<element key="src" value="Contributte\FormsBootstrap"/>
+				<element key="tests" value="Tests"/>
+			</property>
+		</properties>
+	</rule>
 
-    <!-- Specific rules -->
-    <rule ref="SlevomatCodingStandard.Files.TypeNameMatchesFileName">
-        <properties>
-            <property name="rootNamespaces" type="array" value="
-				src=>Contributte\FormsBootstrap,
-				tests=>Tests,
-			"/>
-        </properties>
-    </rule>
+	<!-- Excludes -->
+	<exclude-pattern>/tests/tmp</exclude-pattern>
 </ruleset>

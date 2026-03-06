@@ -1,0 +1,571 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Parameter \#1 \$name \(string\) of method Contributte\\FormsBootstrap\\BootstrapContainer\:\:addContainer\(\) should be contravariant with parameter \$name \(int\|string\) of method Nette\\Forms\\Container\:\:addContainer\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapContainer.php
+
+		-
+			message: '#^Parameter \#2 \$caption \(Nette\\Utils\\Html\|string\|null\) of method Contributte\\FormsBootstrap\\BootstrapContainer\:\:addSubmit\(\) should be contravariant with parameter \$caption \(string\|Stringable\|null\) of method Nette\\Forms\\Container\:\:addSubmit\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapContainer.php
+
+		-
+			message: '#^Parameter \#2 \$caption \(string\|null\) of method Contributte\\FormsBootstrap\\BootstrapContainer\:\:addCheckbox\(\) should be contravariant with parameter \$caption \(string\|Stringable\|null\) of method Nette\\Forms\\Container\:\:addCheckbox\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapContainer.php
+
+		-
+			message: '#^Parameter \#2 \$content \(Nette\\Utils\\Html\|string\|null\) of method Contributte\\FormsBootstrap\\BootstrapContainer\:\:addButton\(\) should be contravariant with parameter \$caption \(string\|Stringable\|null\) of method Nette\\Forms\\Container\:\:addButton\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapContainer.php
+
+		-
+			message: '#^Parameter \#2 \$label \(Nette\\Utils\\Html\|string\|null\) of method Contributte\\FormsBootstrap\\BootstrapContainer\:\:addDateTime\(\) should be contravariant with parameter \$label \(object\|string\|null\) of method Nette\\Forms\\Container\:\:addDateTime\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapContainer.php
+
+		-
+			message: '#^Parameter \#2 \$label \(Nette\\Utils\\Html\|string\|null\) of method Contributte\\FormsBootstrap\\BootstrapContainer\:\:addEmail\(\) should be contravariant with parameter \$label \(string\|Stringable\|null\) of method Nette\\Forms\\Container\:\:addEmail\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapContainer.php
+
+		-
+			message: '#^Parameter \#2 \$label \(Nette\\Utils\\Html\|string\|null\) of method Contributte\\FormsBootstrap\\BootstrapContainer\:\:addFloat\(\) should be contravariant with parameter \$label \(string\|Stringable\|null\) of method Nette\\Forms\\Container\:\:addFloat\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapContainer.php
+
+		-
+			message: '#^Parameter \#2 \$label \(Nette\\Utils\\Html\|string\|null\) of method Contributte\\FormsBootstrap\\BootstrapContainer\:\:addInteger\(\) should be contravariant with parameter \$label \(string\|Stringable\|null\) of method Nette\\Forms\\Container\:\:addInteger\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapContainer.php
+
+		-
+			message: '#^Parameter \#2 \$label \(Nette\\Utils\\Html\|string\|null\) of method Contributte\\FormsBootstrap\\BootstrapContainer\:\:addMultiSelect\(\) should be contravariant with parameter \$label \(string\|Stringable\|null\) of method Nette\\Forms\\Container\:\:addMultiSelect\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapContainer.php
+
+		-
+			message: '#^Parameter \#2 \$label \(Nette\\Utils\\Html\|string\|null\) of method Contributte\\FormsBootstrap\\BootstrapContainer\:\:addMultiUpload\(\) should be contravariant with parameter \$label \(string\|Stringable\|null\) of method Nette\\Forms\\Container\:\:addMultiUpload\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapContainer.php
+
+		-
+			message: '#^Parameter \#2 \$label \(Nette\\Utils\\Html\|string\|null\) of method Contributte\\FormsBootstrap\\BootstrapContainer\:\:addPassword\(\) should be contravariant with parameter \$label \(string\|Stringable\|null\) of method Nette\\Forms\\Container\:\:addPassword\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapContainer.php
+
+		-
+			message: '#^Parameter \#2 \$label \(Nette\\Utils\\Html\|string\|null\) of method Contributte\\FormsBootstrap\\BootstrapContainer\:\:addRadioList\(\) should be contravariant with parameter \$label \(string\|Stringable\|null\) of method Nette\\Forms\\Container\:\:addRadioList\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapContainer.php
+
+		-
+			message: '#^Parameter \#2 \$label \(Nette\\Utils\\Html\|string\|null\) of method Contributte\\FormsBootstrap\\BootstrapContainer\:\:addSelect\(\) should be contravariant with parameter \$label \(string\|Stringable\|null\) of method Nette\\Forms\\Container\:\:addSelect\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapContainer.php
+
+		-
+			message: '#^Parameter \#2 \$label \(Nette\\Utils\\Html\|string\|null\) of method Contributte\\FormsBootstrap\\BootstrapContainer\:\:addText\(\) should be contravariant with parameter \$label \(string\|Stringable\|null\) of method Nette\\Forms\\Container\:\:addText\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapContainer.php
+
+		-
+			message: '#^Parameter \#2 \$label \(Nette\\Utils\\Html\|string\|null\) of method Contributte\\FormsBootstrap\\BootstrapContainer\:\:addTextArea\(\) should be contravariant with parameter \$label \(string\|Stringable\|null\) of method Nette\\Forms\\Container\:\:addTextArea\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapContainer.php
+
+		-
+			message: '#^Parameter \#2 \$label \(Nette\\Utils\\Html\|string\|null\) of method Contributte\\FormsBootstrap\\BootstrapContainer\:\:addUpload\(\) should be contravariant with parameter \$label \(string\|Stringable\|null\) of method Nette\\Forms\\Container\:\:addUpload\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapContainer.php
+
+		-
+			message: '#^Parameter \#2 \$label \(string\|null\) of method Contributte\\FormsBootstrap\\BootstrapContainer\:\:addCheckboxList\(\) should be contravariant with parameter \$label \(string\|Stringable\|null\) of method Nette\\Forms\\Container\:\:addCheckboxList\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapContainer.php
+
+		-
+			message: '#^Parameter \#2 \$label \(string\|null\) of method Contributte\\FormsBootstrap\\BootstrapContainer\:\:addColor\(\) should be contravariant with parameter \$label \(string\|Stringable\|null\) of method Nette\\Forms\\Container\:\:addColor\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapContainer.php
+
+		-
+			message: '#^Parameter \#2 \$label \(string\|null\) of method Contributte\\FormsBootstrap\\BootstrapContainer\:\:addDate\(\) should be contravariant with parameter \$label \(object\|string\|null\) of method Nette\\Forms\\Container\:\:addDate\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapContainer.php
+
+		-
+			message: '#^Parameter \#2 \$label \(string\|null\) of method Contributte\\FormsBootstrap\\BootstrapContainer\:\:addTime\(\) should be contravariant with parameter \$label \(object\|string\|null\) of method Nette\\Forms\\Container\:\:addTime\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapContainer.php
+
+		-
+			message: '#^Parameter \#3 \$items \(array\<int\|string, array\<int\|string, string\>\|string\>\|null\) of method Contributte\\FormsBootstrap\\BootstrapContainer\:\:addSelect\(\) should be contravariant with parameter \$items \(array\|null\) of method Nette\\Forms\\Container\:\:addSelect\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapContainer.php
+
+		-
+			message: '#^Parameter \#3 \$items \(array\<string\>\|null\) of method Contributte\\FormsBootstrap\\BootstrapContainer\:\:addCheckboxList\(\) should be contravariant with parameter \$items \(array\|null\) of method Nette\\Forms\\Container\:\:addCheckboxList\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapContainer.php
+
+		-
+			message: '#^Parameter \#3 \$items \(array\<string\>\|null\) of method Contributte\\FormsBootstrap\\BootstrapContainer\:\:addMultiSelect\(\) should be contravariant with parameter \$items \(array\|null\) of method Nette\\Forms\\Container\:\:addMultiSelect\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapContainer.php
+
+		-
+			message: '#^Parameter \#3 \$items \(array\<string\>\|null\) of method Contributte\\FormsBootstrap\\BootstrapContainer\:\:addRadioList\(\) should be contravariant with parameter \$items \(array\|null\) of method Nette\\Forms\\Container\:\:addRadioList\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapContainer.php
+
+		-
+			message: '#^Call to function in_array\(\) requires parameter \#3 to be set\.$#'
+			identifier: function.strict
+			count: 1
+			path: src/BootstrapForm.php
+
+		-
+			message: '#^Parameter \#1 \$name \(string\) of method Contributte\\FormsBootstrap\\BootstrapForm\:\:addContainer\(\) should be contravariant with parameter \$name \(int\|string\) of method Nette\\Forms\\Container\:\:addContainer\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapForm.php
+
+		-
+			message: '#^Parameter \#2 \$caption \(Nette\\Utils\\Html\|string\|null\) of method Contributte\\FormsBootstrap\\BootstrapForm\:\:addSubmit\(\) should be contravariant with parameter \$caption \(string\|Stringable\|null\) of method Nette\\Forms\\Container\:\:addSubmit\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapForm.php
+
+		-
+			message: '#^Parameter \#2 \$caption \(string\|null\) of method Contributte\\FormsBootstrap\\BootstrapForm\:\:addCheckbox\(\) should be contravariant with parameter \$caption \(string\|Stringable\|null\) of method Nette\\Forms\\Container\:\:addCheckbox\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapForm.php
+
+		-
+			message: '#^Parameter \#2 \$content \(Nette\\Utils\\Html\|string\|null\) of method Contributte\\FormsBootstrap\\BootstrapForm\:\:addButton\(\) should be contravariant with parameter \$caption \(string\|Stringable\|null\) of method Nette\\Forms\\Container\:\:addButton\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapForm.php
+
+		-
+			message: '#^Parameter \#2 \$label \(Nette\\Utils\\Html\|string\|null\) of method Contributte\\FormsBootstrap\\BootstrapForm\:\:addDateTime\(\) should be contravariant with parameter \$label \(object\|string\|null\) of method Nette\\Forms\\Container\:\:addDateTime\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapForm.php
+
+		-
+			message: '#^Parameter \#2 \$label \(Nette\\Utils\\Html\|string\|null\) of method Contributte\\FormsBootstrap\\BootstrapForm\:\:addEmail\(\) should be contravariant with parameter \$label \(string\|Stringable\|null\) of method Nette\\Forms\\Container\:\:addEmail\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapForm.php
+
+		-
+			message: '#^Parameter \#2 \$label \(Nette\\Utils\\Html\|string\|null\) of method Contributte\\FormsBootstrap\\BootstrapForm\:\:addFloat\(\) should be contravariant with parameter \$label \(string\|Stringable\|null\) of method Nette\\Forms\\Container\:\:addFloat\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapForm.php
+
+		-
+			message: '#^Parameter \#2 \$label \(Nette\\Utils\\Html\|string\|null\) of method Contributte\\FormsBootstrap\\BootstrapForm\:\:addInteger\(\) should be contravariant with parameter \$label \(string\|Stringable\|null\) of method Nette\\Forms\\Container\:\:addInteger\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapForm.php
+
+		-
+			message: '#^Parameter \#2 \$label \(Nette\\Utils\\Html\|string\|null\) of method Contributte\\FormsBootstrap\\BootstrapForm\:\:addMultiSelect\(\) should be contravariant with parameter \$label \(string\|Stringable\|null\) of method Nette\\Forms\\Container\:\:addMultiSelect\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapForm.php
+
+		-
+			message: '#^Parameter \#2 \$label \(Nette\\Utils\\Html\|string\|null\) of method Contributte\\FormsBootstrap\\BootstrapForm\:\:addMultiUpload\(\) should be contravariant with parameter \$label \(string\|Stringable\|null\) of method Nette\\Forms\\Container\:\:addMultiUpload\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapForm.php
+
+		-
+			message: '#^Parameter \#2 \$label \(Nette\\Utils\\Html\|string\|null\) of method Contributte\\FormsBootstrap\\BootstrapForm\:\:addPassword\(\) should be contravariant with parameter \$label \(string\|Stringable\|null\) of method Nette\\Forms\\Container\:\:addPassword\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapForm.php
+
+		-
+			message: '#^Parameter \#2 \$label \(Nette\\Utils\\Html\|string\|null\) of method Contributte\\FormsBootstrap\\BootstrapForm\:\:addRadioList\(\) should be contravariant with parameter \$label \(string\|Stringable\|null\) of method Nette\\Forms\\Container\:\:addRadioList\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapForm.php
+
+		-
+			message: '#^Parameter \#2 \$label \(Nette\\Utils\\Html\|string\|null\) of method Contributte\\FormsBootstrap\\BootstrapForm\:\:addSelect\(\) should be contravariant with parameter \$label \(string\|Stringable\|null\) of method Nette\\Forms\\Container\:\:addSelect\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapForm.php
+
+		-
+			message: '#^Parameter \#2 \$label \(Nette\\Utils\\Html\|string\|null\) of method Contributte\\FormsBootstrap\\BootstrapForm\:\:addText\(\) should be contravariant with parameter \$label \(string\|Stringable\|null\) of method Nette\\Forms\\Container\:\:addText\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapForm.php
+
+		-
+			message: '#^Parameter \#2 \$label \(Nette\\Utils\\Html\|string\|null\) of method Contributte\\FormsBootstrap\\BootstrapForm\:\:addTextArea\(\) should be contravariant with parameter \$label \(string\|Stringable\|null\) of method Nette\\Forms\\Container\:\:addTextArea\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapForm.php
+
+		-
+			message: '#^Parameter \#2 \$label \(Nette\\Utils\\Html\|string\|null\) of method Contributte\\FormsBootstrap\\BootstrapForm\:\:addUpload\(\) should be contravariant with parameter \$label \(string\|Stringable\|null\) of method Nette\\Forms\\Container\:\:addUpload\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapForm.php
+
+		-
+			message: '#^Parameter \#2 \$label \(string\|null\) of method Contributte\\FormsBootstrap\\BootstrapForm\:\:addCheckboxList\(\) should be contravariant with parameter \$label \(string\|Stringable\|null\) of method Nette\\Forms\\Container\:\:addCheckboxList\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapForm.php
+
+		-
+			message: '#^Parameter \#2 \$label \(string\|null\) of method Contributte\\FormsBootstrap\\BootstrapForm\:\:addColor\(\) should be contravariant with parameter \$label \(string\|Stringable\|null\) of method Nette\\Forms\\Container\:\:addColor\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapForm.php
+
+		-
+			message: '#^Parameter \#2 \$label \(string\|null\) of method Contributte\\FormsBootstrap\\BootstrapForm\:\:addDate\(\) should be contravariant with parameter \$label \(object\|string\|null\) of method Nette\\Forms\\Container\:\:addDate\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapForm.php
+
+		-
+			message: '#^Parameter \#2 \$label \(string\|null\) of method Contributte\\FormsBootstrap\\BootstrapForm\:\:addTime\(\) should be contravariant with parameter \$label \(object\|string\|null\) of method Nette\\Forms\\Container\:\:addTime\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapForm.php
+
+		-
+			message: '#^Parameter \#3 \$items \(array\<int\|string, array\<int\|string, string\>\|string\>\|null\) of method Contributte\\FormsBootstrap\\BootstrapForm\:\:addSelect\(\) should be contravariant with parameter \$items \(array\|null\) of method Nette\\Forms\\Container\:\:addSelect\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapForm.php
+
+		-
+			message: '#^Parameter \#3 \$items \(array\<string\>\|null\) of method Contributte\\FormsBootstrap\\BootstrapForm\:\:addCheckboxList\(\) should be contravariant with parameter \$items \(array\|null\) of method Nette\\Forms\\Container\:\:addCheckboxList\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapForm.php
+
+		-
+			message: '#^Parameter \#3 \$items \(array\<string\>\|null\) of method Contributte\\FormsBootstrap\\BootstrapForm\:\:addMultiSelect\(\) should be contravariant with parameter \$items \(array\|null\) of method Nette\\Forms\\Container\:\:addMultiSelect\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapForm.php
+
+		-
+			message: '#^Parameter \#3 \$items \(array\<string\>\|null\) of method Contributte\\FormsBootstrap\\BootstrapForm\:\:addRadioList\(\) should be contravariant with parameter \$items \(array\|null\) of method Nette\\Forms\\Container\:\:addRadioList\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapForm.php
+
+		-
+			message: '#^Call to function in_array\(\) requires parameter \#3 to be set\.$#'
+			identifier: function.strict
+			count: 1
+			path: src/BootstrapRenderer.php
+
+		-
+			message: '#^Class Contributte\\FormsBootstrap\\BootstrapRenderer has PHPDoc tag @property\-read for property \$config with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/BootstrapRenderer.php
+
+		-
+			message: '#^Class Contributte\\FormsBootstrap\\BootstrapRenderer has PHPDoc tag @property\-read for property \$configOverride with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/BootstrapRenderer.php
+
+		-
+			message: '#^Construct empty\(\) is not allowed\. Use more strict comparison\.$#'
+			identifier: empty.notAllowed
+			count: 8
+			path: src/BootstrapRenderer.php
+
+		-
+			message: '#^Instanceof between Nette\\Forms\\Controls\\BaseControl and Nette\\Forms\\Controls\\BaseControl will always evaluate to true\.$#'
+			identifier: instanceof.alwaysTrue
+			count: 1
+			path: src/BootstrapRenderer.php
+
+		-
+			message: '#^Only booleans are allowed in &&, int\<0, max\> given on the right side\.$#'
+			identifier: booleanAnd.rightNotBoolean
+			count: 2
+			path: src/BootstrapRenderer.php
+
+		-
+			message: '#^Only booleans are allowed in a negated boolean, Nette\\Utils\\Html\|null given\.$#'
+			identifier: booleanNot.exprNotBoolean
+			count: 1
+			path: src/BootstrapRenderer.php
+
+		-
+			message: '#^Only booleans are allowed in a negated boolean, array\<Nette\\Forms\\Control\> given\.$#'
+			identifier: booleanNot.exprNotBoolean
+			count: 1
+			path: src/BootstrapRenderer.php
+
+		-
+			message: '#^Only booleans are allowed in a negated boolean, mixed given\.$#'
+			identifier: booleanNot.exprNotBoolean
+			count: 1
+			path: src/BootstrapRenderer.php
+
+		-
+			message: '#^Only booleans are allowed in an if condition, Nette\\Utils\\Html\|string given\.$#'
+			identifier: if.condNotBoolean
+			count: 1
+			path: src/BootstrapRenderer.php
+
+		-
+			message: '#^Only booleans are allowed in an if condition, mixed given\.$#'
+			identifier: if.condNotBoolean
+			count: 1
+			path: src/BootstrapRenderer.php
+
+		-
+			message: '#^Parameter \#1 \$form \(Contributte\\FormsBootstrap\\BootstrapForm\) of method Contributte\\FormsBootstrap\\BootstrapRenderer\:\:render\(\) should be contravariant with parameter \$form \(Nette\\Forms\\Form\) of method Nette\\Forms\\FormRenderer\:\:render\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/BootstrapRenderer.php
+
+		-
+			message: '#^Short ternary operator is not allowed\. Use null coalesce operator if applicable or consider using long ternary\.$#'
+			identifier: ternary.shortNotAllowed
+			count: 1
+			path: src/BootstrapRenderer.php
+
+		-
+			message: '#^Strict comparison using \!\=\= between Nette\\Utils\\Html and null will always evaluate to true\.$#'
+			identifier: notIdentical.alwaysTrue
+			count: 1
+			path: src/BootstrapRenderer.php
+
+		-
+			message: '#^Parameter \#3 \$insertBefore \(null\) of method Contributte\\FormsBootstrap\\Grid\\BootstrapCell\:\:addComponent\(\) should be contravariant with parameter \$insertBefore \(string\|null\) of method Contributte\\FormsBootstrap\\Traits\\BootstrapContainerTrait\:\:addComponent\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/Grid/BootstrapCell.php
+
+		-
+			message: '#^Only booleans are allowed in a negated boolean, string\|null given\.$#'
+			identifier: booleanNot.exprNotBoolean
+			count: 1
+			path: src/Grid/BootstrapRow.php
+
+		-
+			message: '#^Parameter \#1 \$parent \(Nette\\Forms\\Container\|null\) of method Contributte\\FormsBootstrap\\Grid\\BootstrapRow\:\:setParent\(\) should be contravariant with parameter \$parent \(Nette\\ComponentModel\\IContainer\|null\) of method Nette\\ComponentModel\\IComponent\:\:setParent\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/Grid/BootstrapRow.php
+
+		-
+			message: '#^Parameter \#1 \$content \(Nette\\Utils\\Html\|string\|null\) of method Contributte\\FormsBootstrap\\Inputs\\ButtonInput\:\:getControl\(\) should be contravariant with parameter \$caption \(string\|Stringable\|null\) of method Nette\\Forms\\Controls\\Button\:\:getControl\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/Inputs/ButtonInput.php
+
+		-
+			message: '#^Only booleans are allowed in a ternary operator condition, Nette\\Forms\\Rules\|null given\.$#'
+			identifier: ternary.condNotBoolean
+			count: 1
+			path: src/Inputs/CheckboxInput.php
+
+		-
+			message: '#^Parameter \#1 \$control of method Contributte\\FormsBootstrap\\Inputs\\CheckboxInput\:\:_rawShowValidation\(\) expects Nette\\Utils\\Html, Nette\\Utils\\Html\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Inputs/CheckboxInput.php
+
+		-
+			message: '#^Call to function in_array\(\) requires parameter \#3 to be set\.$#'
+			identifier: function.strict
+			count: 1
+			path: src/Inputs/CheckboxListInput.php
+
+		-
+			message: '#^Call to function is_bool\(\) with bool will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: src/Inputs/CheckboxListInput.php
+
+		-
+			message: '#^Parameter \#1 \$control of method Contributte\\FormsBootstrap\\Inputs\\CheckboxListInput\:\:_rawShowValidation\(\) expects Nette\\Utils\\Html, Nette\\Utils\\Html\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Inputs/CheckboxListInput.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between \*NEVER\* and mixed will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: src/Inputs/CheckboxListInput.php
+
+		-
+			message: '#^Construct empty\(\) is not allowed\. Use more strict comparison\.$#'
+			identifier: empty.notAllowed
+			count: 2
+			path: src/Inputs/DateInput.php
+
+		-
+			message: '#^Only booleans are allowed in a negated boolean, DateTime\|false given\.$#'
+			identifier: booleanNot.exprNotBoolean
+			count: 1
+			path: src/Inputs/DateInput.php
+
+		-
+			message: '#^Parameter \#1 \$value \(DateTimeInterface\|null\) of method Contributte\\FormsBootstrap\\Inputs\\DateInput\:\:setValue\(\) should be contravariant with parameter \$value \(mixed\) of method Nette\\Forms\\Control\:\:setValue\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/Inputs/DateInput.php
+
+		-
+			message: '#^Parameter \#1 \$value \(DateTimeInterface\|null\) of method Contributte\\FormsBootstrap\\Inputs\\DateInput\:\:setValue\(\) should be contravariant with parameter \$value \(mixed\) of method Nette\\Forms\\Controls\\TextBase\:\:setValue\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/Inputs/DateInput.php
+
+		-
+			message: '#^Call to function in_array\(\) requires parameter \#3 to be set\.$#'
+			identifier: function.strict
+			count: 1
+			path: src/Inputs/MultiselectInput.php
+
+		-
+			message: '#^Call to function is_bool\(\) with bool will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: src/Inputs/MultiselectInput.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between \*NEVER\* and mixed will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: src/Inputs/MultiselectInput.php
+
+		-
+			message: '#^Call to function in_array\(\) requires parameter \#3 to be set\.$#'
+			identifier: function.strict
+			count: 1
+			path: src/Inputs/RadioInput.php
+
+		-
+			message: '#^Call to function is_bool\(\) with bool will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: src/Inputs/RadioInput.php
+
+		-
+			message: '#^Parameter \#1 \$control of method Contributte\\FormsBootstrap\\Inputs\\RadioInput\:\:_rawShowValidation\(\) expects Nette\\Utils\\Html, Nette\\Utils\\Html\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Inputs/RadioInput.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between \*NEVER\* and mixed will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: src/Inputs/RadioInput.php
+
+		-
+			message: '#^Call to function in_array\(\) requires parameter \#3 to be set\.$#'
+			identifier: function.strict
+			count: 1
+			path: src/Inputs/SelectInput.php
+
+		-
+			message: '#^Call to function is_bool\(\) with bool will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: src/Inputs/SelectInput.php
+
+		-
+			message: '#^Construct empty\(\) is not allowed\. Use more strict comparison\.$#'
+			identifier: empty.notAllowed
+			count: 1
+			path: src/Inputs/SelectInput.php
+
+		-
+			message: '#^PHPDoc tag @var with type array\<int, int\|string\|null\> is not subtype of native type list\<\(int\|string\)\>\.$#'
+			identifier: varTag.nativeType
+			count: 1
+			path: src/Inputs/SelectInput.php
+
+		-
+			message: '#^Property Nette\\Forms\\Controls\\ChoiceControl\:\:\$items \(array\) in isset\(\) is not nullable\.$#'
+			identifier: isset.property
+			count: 1
+			path: src/Inputs/SelectInput.php
+
+		-
+			message: '#^Strict comparison using \=\=\= between \*NEVER\* and mixed will always evaluate to false\.$#'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: src/Inputs/SelectInput.php
+
+		-
+			message: '#^Parameter \#1 \$caption \(string\|null\) of method Contributte\\FormsBootstrap\\Inputs\\SubmitButtonInput\:\:getControl\(\) should be contravariant with parameter \$caption \(mixed\) of method Nette\\Forms\\Controls\\SubmitButton\:\:getControl\(\)$#'
+			identifier: method.childParameterType
+			count: 1
+			path: src/Inputs/SubmitButtonInput.php
+
+		-
+			message: '#^Construct empty\(\) is not allowed\. Use more strict comparison\.$#'
+			identifier: empty.notAllowed
+			count: 2
+			path: src/Inputs/TextInput.php
+
+		-
+			message: '#^Parameter \#2 \$el of method Contributte\\FormsBootstrap\\BootstrapRenderer\:\:configElem\(\) expects Nette\\Utils\\Html\|null, Nette\\Utils\\Html\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Inputs/UploadInput.php
+
+		-
+			message: '#^Trait Contributte\\FormsBootstrap\\Traits\\ChoiceInputTrait has PHPDoc tag @method for method getValue\(\) return type with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Traits/ChoiceInputTrait.php
+
+		-
+			message: '#^Trait Contributte\\FormsBootstrap\\Traits\\ChoiceInputTrait has PHPDoc tag @property for property \$disabled with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Traits/ChoiceInputTrait.php
