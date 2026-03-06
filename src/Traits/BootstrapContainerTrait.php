@@ -188,7 +188,8 @@ trait BootstrapContainerTrait
 		string $name,
 		string|\Stringable|null $label = null,
 		int $maxLength = 255
-	): NetteTextInput {
+	): NetteTextInput
+	{
 		return $this->addText($name, $label)
 			->setNullable(BootstrapForm::$allwaysUseNullable)
 			->addRule(Form::Email);
