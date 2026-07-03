@@ -328,7 +328,9 @@ class BootstrapRenderer implements FormRenderer
 	public function renderBegin(): string
 	{
 		foreach ($this->form->getControls() as $control) {
-			$control->setOption(RendererOptions::_RENDERED, false);
+			if ($control instanceof BaseControl || $control instanceof BootstrapRow) {
+				$control->setOption(RendererOptions::_RENDERED, false);
+			}
 		}
 
 		/** @var Html $el */
@@ -462,6 +464,10 @@ class BootstrapRenderer implements FormRenderer
 
 		// note that these are NOT form groups, these are groups specified to group
 		foreach ($parent->getControls() as $control) {
+			if (!$control instanceof BaseControl && !$control instanceof BootstrapRow) {
+				continue;
+			}
+
 			if ($control->getOption(RendererOptions::_RENDERED)) {
 				continue;
 			}
