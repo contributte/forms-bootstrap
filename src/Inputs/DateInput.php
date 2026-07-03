@@ -5,6 +5,7 @@ namespace Contributte\FormsBootstrap\Inputs;
 use Contributte\FormsBootstrap\Enums\DateTimeFormat;
 use DateTime;
 use DateTimeInterface;
+use Nette\Forms\Control;
 use Nette\NotSupportedException;
 use Nette\Utils\Html;
 
@@ -54,7 +55,7 @@ class DateInput extends TextInput
 
 		parent::__construct($label, null);
 
-		$this->addRule(fn ($input) => DateTimeFormat::validate($this->format, $input->value), $this->invalidFormatMessage);
+		$this->addRule(fn (Control $input) => DateTimeFormat::validate($this->format, $input->getValue()), $this->invalidFormatMessage);
 
 		$this->setFormat(static::$defaultFormat);
 	}
