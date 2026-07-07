@@ -34,22 +34,6 @@ Nette extension for Bootstrap forms.
 | stable      | `^0.2`        | `master` | 3.0+  | `^7.2`  | `4.x`       |
 | stable      | `^0.1`        | `master` | 3.0+  | `^7.2`  | `4.x`       |
 
-## Examples
-[See example here](https://codepen.io/czubehead/pen/ZryJQd?editors=1000)
-
-## Features
-- [Bootstrap 5 forms](https://getbootstrap.com/docs/5.1/forms/overview/) HTML generation
-- [Bootstrap 4 forms](http://getbootstrap.com/docs/4.0/components/forms/) HTML generation
-- All layout modes: vertical, side-by-side and inline
-- TextInput placeholders
-- Highly configurable renderer
-- [Custom Bootstrap controls](http://getbootstrap.com/docs/4.0/components/forms/#custom-forms)
-- Date(Time) picker, variety of human readable date/time formats, placeholder example generation
-- [Validation styles](http://getbootstrap.com/docs/4.0/components/forms/#server-side)
-- Programmatically generated [Bootstrap grid](https://getbootstrap.com/docs/4.1/layout/grid/)
-- Assisted manual rendering
-- BootstrapForm::$allwaysUseNullable to set all fields as nullable (calls $component->setNullable() for all fields automatically)
-
 ## Installation
 
 The best way is via composer:
@@ -65,13 +49,29 @@ composer require contributte/forms-bootstrap
 - Works with `Nette\Application\UI\Form`, not `Nette\Forms\Form`, so you need the
   whole Nette framework.
 - PHP version according to the supported package version, see [Versions](#versions).
-- Client-side bootstrap 4 stylesheets and JS (obviously)
+- Client-side Bootstrap 4 or 5 stylesheets and JavaScript.
 
 ### Compatibility
 
-This package is compatible with any version of Bootstrap 4 and 5
+This package is compatible with Bootstrap 4 and 5.
 
-## How to use
+## Examples
+[See example on CodePen](https://codepen.io/czubehead/pen/ZryJQd?editors=1000)
+
+## Features
+- [Bootstrap 5 forms](https://getbootstrap.com/docs/5.3/forms/overview/) HTML generation
+- [Bootstrap 4 forms](https://getbootstrap.com/docs/4.6/components/forms/) HTML generation
+- All layout modes: vertical, side-by-side and inline
+- TextInput placeholders
+- Highly configurable renderer
+- [Bootstrap custom forms](https://getbootstrap.com/docs/4.6/components/forms/#custom-forms)
+- Date(Time) picker, variety of human readable date/time formats, placeholder example generation
+- [Validation styles](https://getbootstrap.com/docs/4.6/components/forms/#server-side)
+- Programmatically generated [Bootstrap grid](https://getbootstrap.com/docs/5.3/layout/grid/)
+- Assisted manual rendering
+- `BootstrapForm::$allwaysUseNullable` (legacy spelling) to set all fields as nullable (calls `$component->setNullable()` for all fields automatically)
+
+## Usage
 
 ### Form
 
@@ -95,7 +95,7 @@ That feature would only add unnecessary and deceiving overhead to this library,
 #### Render modes
  1. **Vertical** (`Enums\RenderMode::VERTICAL_MODE`) all controls are below their labels
  2. **Side-by-side** (`Enums\RenderMode::SIDE_BY_SIDE_MODE`) controls have their labels
- on the left. It is made up using [Bootstrap grid](http://v4-alpha.getbootstrap.com/layout/grid/).
+ on the left. It is made up using [Bootstrap grid](https://getbootstrap.com/docs/4.6/layout/grid/).
  The default layout is 3 columns for labels and 9 for controls. This can be altered
  using `BootstrapRenderer::setColumns($label, $input)`.
  3. **Inline** `Enums\RenderMode::INLINE` all controls and labels will be in one
@@ -112,7 +112,7 @@ $form = new BootstrapForm;
 
 ### Controls / inputs
 
-Each default control has has been extended bootstrap-enabled controls and
+Each default control has been extended by bootstrap-enabled controls and
 will render itself correctly even without the renderer. You can distinguish
 them easily - they all have `Input` suffix.
 
@@ -140,7 +140,7 @@ DateInput::$defaultFormat = DateTimeFormat::D_DMY_DOTS_NO_LEAD;
 DateTimeInput::$defaultFormat = DateTimeFormat::D_DMY_DOTS_NO_LEAD . ' ' . DateTimeFormat::T_24_NO_LEAD;
 ```
 
-if U want to add html classes for those element so it's easy to connect it with any javascript date(time) picker use
+If you want to add HTML classes for those elements so they can be connected with a JavaScript date(time) picker, use:
 ```php
 DateInput::$additionalHtmlClasses = 'datepicker';
 DateTimeInput:$additionalHtmlClasses = 'datetimepicker';
@@ -150,10 +150,10 @@ See PhpDoc for further explanation.
 
 #### UploadInput
 
-Nothing out of ordinary, but it **Needs `<html lang="xx">` attribute** to work.
+Nothing out of the ordinary, but it **needs the `<html lang="xx">` attribute** to work.
 
 Has property `buttonCaption`, which sets the text on the button on the left.
-The right button is set by [Bootstrap CSS](http://getbootstrap.com/docs/4.0/components/forms/#file-browser), which depends `<html lang="xx">`.
+The right button is set by [Bootstrap CSS](https://getbootstrap.com/docs/4.6/components/forms/#file-browser), which depends on `<html lang="xx">`.
 
 ### Renderer
 
@@ -197,7 +197,7 @@ But there is a hefty price for using manual rendering - we have to do almost eve
 ourselves, even the things the renderer could do for us. Only if there were a way to
 let the renderer do most of the work...
 
-## What can it do
+## Assisted rendering capabilities
 
 Assisted manual rendering will render label-input pairs for you using a filter.
 This means that it will take care of wrapping things into `div.form-group` and validation
