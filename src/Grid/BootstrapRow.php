@@ -11,6 +11,7 @@ use Nette\ComponentModel\IContainer;
 use Nette\Forms\Container;
 use Nette\Forms\Control;
 use Nette\InvalidArgumentException;
+use Nette\InvalidStateException;
 use Nette\SmartObject;
 use Nette\Utils\Html;
 
@@ -56,9 +57,9 @@ class BootstrapRow implements IComponent, Control
 	private $columnsOccupied = 0;
 
 	/**
-	 * Form or container this belong to
+	 * Form or container this belong to. Null while the row is detached.
 	 *
-	 * @var Container
+	 * @var Container|null
 	 */
 	private $container;
 
@@ -119,8 +120,13 @@ class BootstrapRow implements IComponent, Control
 	 */
 	public function addComponent(IComponent $component, ?string $name = null, ?string $insertBefore = null): void
 	{
-		$this->container->addComponent($component, $name, $insertBefore);
-		$this->ownedNames[] = $name;
+		$this->getContainer()->addComponent($component, $name, $insertBefore);
+
+		// a successful add always leaves the component named, even when no name was passed here
+		$ownedName = $name ?? $component->getName();
+		if ($ownedName !== null) {
+			$this->ownedNames[] = $ownedName;
+		}
 	}
 
 	/**
@@ -172,23 +178,41 @@ class BootstrapRow implements IComponent, Control
 	}
 
 	/**
-	 * Returns the container
-	 *
-	 * @return Container
+	 * Returns the container, or null if the row is not attached to one
 	 */
-	public function getParent(): IContainer
+	public function getParent(): ?IContainer
 	{
+		return $this->container;
+	}
+
+	/**
+	 * Returns the container this row belongs to
+	 *
+	 * @throws InvalidStateException if the row is not attached to a container
+	 */
+	public function getContainer(): Container
+	{
+		if ($this->container === null) {
+			throw new InvalidStateException('The row is not attached to a container.');
+		}
+
 		return $this->container;
 	}
 
 	/**
 	 * Sets the container
 	 *
-	 * @param Container|NULL $parent
+	 * @param Container|null $parent
 	 * @param null $name ignored
 	 */
 	public function setParent(?IContainer $parent = null, ?string $name = null): static
 	{
+		if ($parent !== null && !$parent instanceof Container) {
+			throw new InvalidArgumentException(
+				sprintf('%s can only be attached to a %s, %s given.', self::class, Container::class, $parent::class)
+			);
+		}
+
 		$this->container = $parent;
 
 		return $this;
@@ -210,7 +234,7 @@ class BootstrapRow implements IComponent, Control
 	public function render(): Html
 	{
 		/** @var BootstrapRenderer $renderer */
-		$renderer = $this->container->getForm()->getRenderer();
+		$renderer = $this->getContainer()->getForm()->getRenderer();
 
 		$element = $renderer->configElem(RendererConfig::GRID_ROW, $this->elementPrototype);
 		foreach ($this->cells as $cell) {
