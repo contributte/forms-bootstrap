@@ -3,6 +3,7 @@
 namespace Tests\Inputs;
 
 use Contributte\FormsBootstrap\BootstrapForm;
+use Contributte\FormsBootstrap\Inputs\IValidationInput;
 use Tests\BaseTestCase;
 
 class ColorPickerTest extends BaseTestCase
@@ -14,6 +15,19 @@ class ColorPickerTest extends BaseTestCase
 		$input = $form->addColor('color', 'Choose color');
 		$this->assertEquals('<input type="color" name="color" id="frm-color" value="#000000" class="form-control">', $input->getControl()->render());
 		$this->assertEquals('<label for="frm-color">Choose color</label>', (string) $input->getLabel());
+	}
+
+	public function testShowsValidationState(): void
+	{
+		$form = new BootstrapForm();
+		$input = $form->addColor('color', 'Choose color');
+		$this->assertInstanceOf(IValidationInput::class, $input);
+
+		$input->addError('Foobar error message');
+
+		$html = (string) $form;
+		$this->assertStringContainsString('class="form-control is-invalid"', $html);
+		$this->assertStringContainsString('<div class="invalid-feedback">Foobar error message<br></div>', $html);
 	}
 
 }

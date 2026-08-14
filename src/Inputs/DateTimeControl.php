@@ -6,7 +6,7 @@ use Contributte\FormsBootstrap\BootstrapUtils;
 use Contributte\FormsBootstrap\Traits\StandardValidationTrait;
 use Nette\Utils\Html;
 
-class DateTimeControl extends \Nette\Forms\Controls\DateTimeControl
+class DateTimeControl extends \Nette\Forms\Controls\DateTimeControl implements IValidationInput
 {
 
 	use StandardValidationTrait;
