@@ -4,9 +4,9 @@ namespace Tests\Inputs;
 
 use Contributte\FormsBootstrap\BootstrapForm;
 use Nette\Utils\Html;
-use Tests\BaseTest;
+use Tests\BaseTestCase;
 
-class TextAreaInputTest extends BaseTest
+class TextAreaInputTest extends BaseTestCase
 {
 
 	public function testDefaultTextAreaInput(): void

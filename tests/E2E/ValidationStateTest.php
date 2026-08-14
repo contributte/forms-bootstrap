@@ -10,7 +10,7 @@ use Contributte\FormsBootstrap\Enums\RendererOptions;
  * Submits a form that fails validation and then re-renders it, the way a
  * presenter does when it falls through to the template after onError.
  */
-class ValidationStateTest extends BaseE2ETest
+class ValidationStateTest extends BaseE2ETestCase
 {
 
 	public function testInvalidControlIsMarkedAndCarriesItsMessage(): void

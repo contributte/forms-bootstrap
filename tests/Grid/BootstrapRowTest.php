@@ -7,13 +7,13 @@ use Contributte\FormsBootstrap\Grid\BootstrapCell;
 use Contributte\FormsBootstrap\Grid\BootstrapRow;
 use Nette\Application\UI\Presenter;
 use Nette\NotImplementedException;
-use Tests\BaseTest;
+use Tests\BaseTestCase;
 
 /**
  * The row/cell objects themselves, and the "fake control" surface that lets a
  * row sit in the component tree without being a real form value.
  */
-class BootstrapRowTest extends BaseTest
+class BootstrapRowTest extends BaseTestCase
 {
 
 	private BootstrapForm $form;

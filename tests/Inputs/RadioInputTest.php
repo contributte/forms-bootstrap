@@ -4,9 +4,9 @@ namespace Tests\Inputs;
 
 use Contributte\FormsBootstrap\BootstrapForm;
 use Contributte\FormsBootstrap\Enums\BootstrapVersion;
-use Tests\BaseTest;
+use Tests\BaseTestCase;
 
-class RadioInputTest extends BaseTest
+class RadioInputTest extends BaseTestCase
 {
 
 	public function testRadioInput(): void

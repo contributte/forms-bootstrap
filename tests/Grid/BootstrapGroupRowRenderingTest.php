@@ -6,9 +6,9 @@ use Contributte\FormsBootstrap\BootstrapForm;
 use Contributte\FormsBootstrap\BootstrapRenderer;
 use Contributte\FormsBootstrap\Enums\RenderMode;
 use Nette\Application\UI\Presenter;
-use Tests\BaseTest;
+use Tests\BaseTestCase;
 
-class BootstrapGroupRowRenderingTest extends BaseTest
+class BootstrapGroupRowRenderingTest extends BaseTestCase
 {
 
 	public function testGroupRowRendering(): void

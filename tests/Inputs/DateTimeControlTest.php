@@ -3,9 +3,9 @@
 namespace Tests\Inputs;
 
 use Contributte\FormsBootstrap\BootstrapForm;
-use Tests\BaseTest;
+use Tests\BaseTestCase;
 
-class DateTimeControlTest extends BaseTest
+class DateTimeControlTest extends BaseTestCase
 {
 
 	public function testDefaultDate(): void

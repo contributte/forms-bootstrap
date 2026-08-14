@@ -9,13 +9,13 @@ use Contributte\FormsBootstrap\Enums\RenderMode;
 use Nette\Application\UI\Presenter;
 use Nette\InvalidArgumentException;
 use Nette\Utils\Html;
-use Tests\BaseTest;
+use Tests\BaseTestCase;
 
 /**
  * Exercises configElem() — the one function every drawn element goes through —
  * and the renderer's own accessors.
  */
-class RendererConfigTest extends BaseTest
+class RendererConfigTest extends BaseTestCase
 {
 
 	private BootstrapRenderer $renderer;

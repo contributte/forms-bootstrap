@@ -8,7 +8,7 @@ use Contributte\FormsBootstrap\Enums\BootstrapVersion;
 use Contributte\FormsBootstrap\Enums\RenderMode;
 use Nette\Forms\Rendering\DefaultFormRenderer;
 
-class BootstrapFormTest extends BaseTest
+class BootstrapFormTest extends BaseTestCase
 {
 
 	public function testSetRendereWithWrongBootstrapRendererShouldThrowException(): void

@@ -3,9 +3,9 @@
 namespace Tests\Inputs;
 
 use Contributte\FormsBootstrap\BootstrapForm;
-use Tests\BaseTest;
+use Tests\BaseTestCase;
 
-class ButtonInputTest extends BaseTest
+class ButtonInputTest extends BaseTestCase
 {
 
 	public function testDefaultButton(): void

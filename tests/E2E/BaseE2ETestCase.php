@@ -6,14 +6,14 @@ use Contributte\FormsBootstrap\BootstrapForm;
 use Nette\Application\Request as AppRequest;
 use Nette\Http;
 use ReflectionMethod;
-use Tests\BaseTest;
+use Tests\BaseTestCase;
 
 /**
  * Base for end-to-end tests: builds a real HTTP request, runs a real presenter
  * through its whole lifecycle and lets the form receive the `submit` signal
  * exactly the way it does in production.
  */
-abstract class BaseE2ETest extends BaseTest
+abstract class BaseE2ETestCase extends BaseTestCase
 {
 
 	/**

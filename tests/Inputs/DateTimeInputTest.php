@@ -6,9 +6,9 @@ use Contributte\FormsBootstrap\BootstrapForm;
 use Contributte\FormsBootstrap\Inputs\DateInput;
 use Contributte\FormsBootstrap\Inputs\DateTimeInput;
 use DateTime;
-use Tests\BaseTest;
+use Tests\BaseTestCase;
 
-class DateTimeInputTest extends BaseTest
+class DateTimeInputTest extends BaseTestCase
 {
 
 	public function testDefaultDateTime(): void

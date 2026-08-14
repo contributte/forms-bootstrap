@@ -5,9 +5,9 @@ namespace Tests\Inputs;
 use Contributte\FormsBootstrap\BootstrapForm;
 use Contributte\FormsBootstrap\Enums\BootstrapVersion;
 use Nette\InvalidArgumentException;
-use Tests\BaseTest;
+use Tests\BaseTestCase;
 
-class SelectInputTest extends BaseTest
+class SelectInputTest extends BaseTestCase
 {
 
 	public function testSetItemsWithKeysFalse(): void

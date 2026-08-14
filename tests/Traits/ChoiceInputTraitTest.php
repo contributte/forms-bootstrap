@@ -4,13 +4,13 @@ namespace Tests\Traits;
 
 use Contributte\FormsBootstrap\BootstrapForm;
 use Nette\Utils\Html;
-use Tests\BaseTest;
+use Tests\BaseTestCase;
 
 /**
  * The disabled/selected logic shared by radio, checkbox-list and select,
  * observed through the HTML those controls render.
  */
-class ChoiceInputTraitTest extends BaseTest
+class ChoiceInputTraitTest extends BaseTestCase
 {
 
 	/**

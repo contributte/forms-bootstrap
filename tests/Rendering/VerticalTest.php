@@ -6,13 +6,14 @@ use Contributte\FormsBootstrap\BootstrapForm;
 use Contributte\FormsBootstrap\BootstrapRenderer;
 use Contributte\FormsBootstrap\Enums\RenderMode;
 use Nette\Application\UI\Presenter;
-use Tests\BaseTest;
+use PHPUnit\Framework\Attributes\DataProvider;
+use Tests\BaseTestCase;
 
 /**
  * Snapshot tests for the vertical render mode, the renderer's default.
  * Side-by-side is covered by SideBySideTest.
  */
-class VerticalTest extends BaseTest
+class VerticalTest extends BaseTestCase
 {
 
 	/** @var BootstrapForm */
@@ -92,9 +93,9 @@ class VerticalTest extends BaseTest
 	}
 
 	/**
-	 * @dataProvider provideForms
 	 * @param callable(BootstrapForm): void $build
 	 */
+	#[DataProvider('provideForms')]
 	public function testRendering(string $fixture, callable $build): void
 	{
 		$build($this->form);

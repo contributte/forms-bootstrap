@@ -3,9 +3,9 @@
 namespace Tests\Inputs;
 
 use Contributte\FormsBootstrap\BootstrapForm;
-use Tests\BaseTest;
+use Tests\BaseTestCase;
 
-class ColorPickerTest extends BaseTest
+class ColorPickerTest extends BaseTestCase
 {
 
 	public function testDefaultTextInput(): void
