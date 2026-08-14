@@ -11,11 +11,14 @@ use Tests\BaseTestCase;
 class DateTimeInputTest extends BaseTestCase
 {
 
+	// rule that DateInput adds in its constructor
+	private const FORMAT_RULE = '[{"op":"Contributte\\\\FormsBootstrap\\\\Inputs\\\\DateInput::validateFormat","msg":"invalid/incorrect format"}]';
+
 	public function testDefaultDateTime(): void
 	{
 		$form = new BootstrapForm();
 		$dt = $form->addBootstrapDateTime('datetime', 'Date and time');
-		$this->assertEquals('<input type="text" name="datetime" id="frm-datetime" class="form-control" placeholder="d.m.yyyy h:mm (31.12.1998 23:59)">', $dt->getControl()->render());
+		$this->assertEquals('<input type="text" name="datetime" id="frm-datetime" data-nette-rules=\'' . self::FORMAT_RULE . '\' class="form-control" placeholder="d.m.yyyy h:mm (31.12.1998 23:59)">', $dt->getControl()->render());
 	}
 
 	public function testDefaultAdditionalClasses(): void
@@ -24,7 +27,7 @@ class DateTimeInputTest extends BaseTestCase
 		DateTimeInput::$additionalHtmlClasses[] = 'datetimepicker';
 		DateTimeInput::$additionalHtmlClasses[] = 'cool';
 		$dt = $form->addBootstrapDateTime('datetime', 'Date and time');
-		$this->assertEquals('<input type="text" name="datetime" id="frm-datetime" class="form-control datetimepicker cool" placeholder="d.m.yyyy h:mm (31.12.1998 23:59)">', $dt->getControl()->render());
+		$this->assertEquals('<input type="text" name="datetime" id="frm-datetime" data-nette-rules=\'' . self::FORMAT_RULE . '\' class="form-control datetimepicker cool" placeholder="d.m.yyyy h:mm (31.12.1998 23:59)">', $dt->getControl()->render());
 	}
 
 	public function testNotMessingHtmlClassOfDateAndDateTime(): void
@@ -60,6 +63,29 @@ class DateTimeInputTest extends BaseTestCase
 		$form->setSubmittedBy($submit);
 		$form->validate();
 		$this->assertEquals(new DateTime('2020-05-01'), $dt->getValue());
+	}
+
+	public function testValidationWithIncorrectFormat(): void
+	{
+		$form = new BootstrapForm();
+		$dt = $form->addBootstrapDateTime('datetime', 'Date and time');
+		$dt->setValue('not a date at all');
+		$submit = $form->addSubmit('send');
+		$form->setSubmittedBy($submit);
+		$form->validate();
+		$this->assertFalse($form->isValid());
+		$this->assertSame([$dt->invalidFormatMessage], $dt->getErrors());
+	}
+
+	public function testEmptyOptionalValueDoesNotFailValidation(): void
+	{
+		$form = new BootstrapForm();
+		$dt = $form->addBootstrapDateTime('datetime', 'Date and time');
+		$submit = $form->addSubmit('send');
+		$form->setSubmittedBy($submit);
+		$form->validate();
+		$this->assertTrue($form->isValid());
+		$this->assertSame([], $dt->getErrors());
 	}
 
 }
