@@ -22,7 +22,7 @@ class ColorPickerTest extends BaseTestCase
 	{
 		$form = new BootstrapForm();
 		// Rendering a form requires a presenter with a non-empty action; see BaseTestCase users.
-		$form->setParent($this->createMock(Presenter::class));
+		$form->setParent($this->createStub(Presenter::class));
 		$form->setAction('/');
 
 		$input = $form->addColor('color', 'Choose color');

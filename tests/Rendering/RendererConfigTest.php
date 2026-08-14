@@ -149,7 +149,7 @@ class RendererConfigTest extends BaseTestCase
 	public function testHiddenFieldsStayInPlaceWhenGroupingIsOff(): void
 	{
 		$form = new BootstrapForm();
-		$form->setParent($this->createMock(Presenter::class));
+		$form->setParent($this->createStub(Presenter::class));
 		$form->setAction('/');
 		$form->getRenderer()->setGroupHidden(false);
 		$form->addHidden('secret', 'v');
@@ -189,7 +189,7 @@ class RendererConfigTest extends BaseTestCase
 	{
 		$form = new BootstrapForm();
 		$form->setRenderer(new BootstrapRenderer(RenderMode::SIDE_BY_SIDE_MODE));
-		$form->setParent($this->createMock(Presenter::class));
+		$form->setParent($this->createStub(Presenter::class));
 		$form->setAction('/');
 
 		return $form;

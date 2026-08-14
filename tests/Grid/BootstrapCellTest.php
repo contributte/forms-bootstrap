@@ -56,7 +56,7 @@ class BootstrapCellTest extends BaseTestCase
 		$this->form = new BootstrapForm();
 		$this->row = $this->form->addRow();
 		$this->cell = $this->row->addCell(12);
-		$this->form->setParent($this->createMock(Presenter::class));
+		$this->form->setParent($this->createStub(Presenter::class));
 		// A real (non-empty) action makes Nette inject the "_do" signal field,
 		// mirroring production where the form is attached to a routed presenter.
 		$this->form->setAction('/');
