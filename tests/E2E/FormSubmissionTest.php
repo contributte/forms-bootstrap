@@ -261,6 +261,25 @@ class FormSubmissionTest extends BaseE2ETestCase
 		$this->assertNull($form['country']->getValue());
 	}
 
+	public function testWhollyDisabledRadioListIsRenderedDisabledAndRejectsItsPost(): void
+	{
+		$form = $this->submit(
+			function (): BootstrapForm {
+				$form = new BootstrapForm();
+				$form->setAction('/');
+				$form->addRadioList('size', 'Size', ['s' => 'Small', 'l' => 'Large'])
+					->setDisabled(true);
+				$form->addSubmit('send');
+
+				return $form;
+			},
+			['size' => 's']
+		);
+
+		$this->assertNull($form['size']->getValue());
+		$this->assertStringContainsString('<fieldset disabled>', (string) $form['size']->getControl());
+	}
+
 	public function testCheckboxListCollectsEveryCheckedValue(): void
 	{
 		$form = $this->submit(

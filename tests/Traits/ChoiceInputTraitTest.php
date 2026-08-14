@@ -13,20 +13,39 @@ use Tests\BaseTestCase;
 class ChoiceInputTraitTest extends BaseTestCase
 {
 
-	/**
-	 * Known gap: RadioInput::getControl() only ever asks isValueDisabled() per
-	 * item and never calls isControlDisabled(), so a radio list disabled as a
-	 * whole still renders as interactive. CheckboxListInput and SelectInput both
-	 * put the attribute on their element. Pinned here so that fixing RadioInput
-	 * shows up as a failure of this test rather than going unnoticed.
-	 */
-	public function testDisablingTheWholeRadioListIsNotReflectedInTheHtml(): void
+	public function testWholeRadioListIsDisabledThroughItsFieldset(): void
 	{
 		$form = new BootstrapForm();
 		$radio = $form->addRadioList('a', 'b', ['x' => 'X', 'y' => 'Y']);
 		$radio->setDisabled(true);
 
+		$html = (string) $radio->getControl();
+
+		// one attribute on the fieldset disables every radio inside it
+		$this->assertStringStartsWith('<fieldset disabled>', $html);
+		$this->assertSame(1, substr_count($html, 'disabled'));
+	}
+
+	public function testReEnablingTheWholeRadioListDropsTheAttributeAgain(): void
+	{
+		$form = new BootstrapForm();
+		$radio = $form->addRadioList('a', 'b', ['x' => 'X', 'y' => 'Y']);
+		$radio->setDisabled(true);
+		$radio->setDisabled(false);
+
 		$this->assertStringNotContainsString('disabled', (string) $radio->getControl());
+	}
+
+	public function testDisabledRadioListKeepsItsFieldsetAttributeThroughValidationState(): void
+	{
+		$form = new BootstrapForm();
+		$radio = $form->addRadioList('a', 'b', ['x' => 'X', 'y' => 'Y']);
+		$radio->setDisabled(true);
+		$radio->addError('nope');
+
+		$html = (string) $radio->showValidation($radio->getControl());
+
+		$this->assertStringStartsWith('<fieldset disabled>', $html);
 	}
 
 	public function testDisablingRadioListClearsWhateverWasSelected(): void

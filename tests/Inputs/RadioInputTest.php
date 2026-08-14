@@ -16,6 +16,22 @@ class RadioInputTest extends BaseTestCase
 		$this->assertEquals('<fieldset><div class="custom-control custom-radio"><input class="custom-control-input" type="radio" value="1" name="txt" id="frm-txt0" data-nette-rules="[]"><label class="custom-control-label" for="frm-txt0">1</label></div><div class="custom-control custom-radio"><input class="custom-control-input" type="radio" value="2" name="txt" id="frm-txt1"><label class="custom-control-label" for="frm-txt1">2</label></div></fieldset>', (string) $input->getControl());
 	}
 
+	public function testDisabledRadioInput(): void
+	{
+		$form = new BootstrapForm();
+		$input = $form->addRadioList('txt', 'lbl', [1 => '1', 2 => '2']);
+		$input->setDisabled(true);
+		$this->assertEquals('<fieldset disabled><div class="custom-control custom-radio"><input class="custom-control-input" type="radio" value="1" name="txt" id="frm-txt0" data-nette-rules="[]"><label class="custom-control-label" for="frm-txt0">1</label></div><div class="custom-control custom-radio"><input class="custom-control-input" type="radio" value="2" name="txt" id="frm-txt1"><label class="custom-control-label" for="frm-txt1">2</label></div></fieldset>', (string) $input->getControl());
+	}
+
+	public function testRadioInputWithSingleDisabledItem(): void
+	{
+		$form = new BootstrapForm();
+		$input = $form->addRadioList('txt', 'lbl', [1 => '1', 2 => '2']);
+		$input->setDisabled([1]);
+		$this->assertEquals('<fieldset><div class="custom-control custom-radio"><input class="custom-control-input" type="radio" value="1" name="txt" disabled id="frm-txt0" data-nette-rules="[]"><label class="custom-control-label" for="frm-txt0">1</label></div><div class="custom-control custom-radio"><input class="custom-control-input" type="radio" value="2" name="txt" id="frm-txt1"><label class="custom-control-label" for="frm-txt1">2</label></div></fieldset>', (string) $input->getControl());
+	}
+
 	public function testRadioInputV5(): void
 	{
 		BootstrapForm::switchBootstrapVersion(BootstrapVersion::V5);
