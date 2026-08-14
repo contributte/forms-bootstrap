@@ -3,8 +3,11 @@
 namespace Tests\Rendering;
 
 use Contributte\FormsBootstrap\BootstrapForm;
+use Contributte\FormsBootstrap\BootstrapRenderer;
+use Contributte\FormsBootstrap\Enums\BootstrapVersion;
 use Contributte\FormsBootstrap\Enums\RenderMode;
 use Nette\Forms\Blueprint;
+use Nette\Forms\Form;
 use Tests\BaseTestCase;
 
 /**
@@ -96,6 +99,62 @@ class BlueprintTest extends BaseTestCase
 
 		$this->assertStringContainsString('{input first}', $latte);
 		$this->assertStringContainsString('{input last}', $latte);
+	}
+
+	public function testBootstrap5Blueprint(): void
+	{
+		BootstrapForm::switchBootstrapVersion(BootstrapVersion::V5);
+
+		try {
+			$form = new BootstrapForm();
+			$form->setRenderMode(RenderMode::SIDE_BY_SIDE_MODE);
+			$form->addText('name', 'Name');
+
+			$latte = (new Blueprint())->generateLatte($form);
+
+			$this->assertStringContainsString('{input name}', $latte);
+			// the v5 wrapper, not v4's form-group/form-row
+			$this->assertStringContainsString('class="mb-3 row"', $latte);
+			$this->assertStringNotContainsString('form-group', $latte);
+		} finally {
+			BootstrapForm::switchBootstrapVersion(BootstrapVersion::V4);
+		}
+	}
+
+	/**
+	 * Blueprint hands the renderer a plain form; this is that capability on its own.
+	 */
+	public function testRendererDrawsPlainNetteForm(): void
+	{
+		$form = new Form();
+		$form->addText('field', 'Field');
+
+		$html = (new BootstrapRenderer())->render($form);
+
+		$this->assertStringContainsString('name="field"', $html);
+		$this->assertStringContainsString('class="form-group"', $html);
+	}
+
+	public function testClonedRendererDrawsPlainNetteForm(): void
+	{
+		$bootstrapForm = new BootstrapForm();
+		$bootstrapForm->addText('field', 'Field');
+
+		$form = new Form();
+		$form->addText('field', 'Field');
+		$form->setRenderer(clone $bootstrapForm->getRenderer());
+
+		ob_start();
+
+		try {
+			$form->render();
+			$html = (string) ob_get_contents();
+		} finally {
+			ob_end_clean();
+		}
+
+		$this->assertStringContainsString('name="field"', $html);
+		$this->assertStringContainsString('class="form-group"', $html);
 	}
 
 	public function testGeneratesDataClass(): void

@@ -626,7 +626,7 @@ class BootstrapRenderer implements FormRenderer
 	 */
 	protected function shouldShowValidation(): bool
 	{
-		return $this->form instanceof BootstrapForm && $this->form->showValidation;
+		return $this->form instanceof BootstrapForm && $this->form->isShowValidation();
 	}
 
 	/**

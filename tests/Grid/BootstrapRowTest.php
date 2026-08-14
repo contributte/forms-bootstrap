@@ -2,10 +2,12 @@
 
 namespace Tests\Grid;
 
+use ArrayObject;
 use Contributte\FormsBootstrap\BootstrapForm;
 use Contributte\FormsBootstrap\Grid\BootstrapCell;
 use Contributte\FormsBootstrap\Grid\BootstrapRow;
 use Nette\Application\UI\Presenter;
+use Nette\Forms\Form;
 use Nette\NotImplementedException;
 use Tests\BaseTestCase;
 
@@ -111,6 +113,71 @@ class BootstrapRowTest extends BaseTestCase
 		$this->row->addCell(12)->addText('name', 'Name');
 
 		$this->assertSame('name', $this->form['name']->getName());
+	}
+
+	public function testRowHasNoLabelAndIsNeverRequired(): void
+	{
+		$this->assertNull($this->row->getLabel());
+		$this->assertNull($this->row->getLabel('caption'));
+		$this->assertFalse($this->row->isRequired());
+	}
+
+	public function testOptionsRoundTrip(): void
+	{
+		$this->row->setOption('description', 'Hello');
+
+		$this->assertSame('Hello', $this->row->getOption('description'));
+	}
+
+	public function testUnsetOptionIsNullAndDoesNotWarn(): void
+	{
+		$warnings = new ArrayObject();
+		set_error_handler(
+			static function (int $severity, string $message) use ($warnings): bool {
+				$warnings[] = $message;
+
+				return true;
+			},
+			E_WARNING,
+		);
+
+		try {
+			$value = $this->row->getOption('never-set');
+		} finally {
+			restore_error_handler();
+		}
+
+		$this->assertNull($value);
+		$this->assertSame([], $warnings->getArrayCopy());
+	}
+
+	public function testLookupPathOfRowDirectlyOnForm(): void
+	{
+		$this->assertSame($this->row->getName(), $this->row->lookupPath(Form::class));
+	}
+
+	public function testLookupPathOfRowInsideContainer(): void
+	{
+		$container = $this->form->addContainer('sub');
+		$nested = $container->addRow();
+
+		$this->assertSame('sub-' . $nested->getName(), $nested->lookupPath(Form::class));
+	}
+
+	/**
+	 * The fake control must report its path exactly like a real sibling would,
+	 * whatever the form happens to be attached to.
+	 */
+	public function testLookupPathMatchesRealControlInSamePlace(): void
+	{
+		$container = $this->form->addContainer('sub');
+		$nested = $container->addRow();
+		$real = $container->addText('x');
+
+		$expected = static fn (string $path): string => substr($path, 0, -strlen('x')) . $nested->getName();
+
+		$this->assertSame($expected($real->lookupPath(Form::class)), $nested->lookupPath(Form::class));
+		$this->assertSame($expected((string) $real->lookupPath()), $nested->lookupPath());
 	}
 
 	protected function setUp(): void
