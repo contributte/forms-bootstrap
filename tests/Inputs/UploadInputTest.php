@@ -27,4 +27,22 @@ class UploadInputTest extends BaseTest
 		BootstrapForm::switchBootstrapVersion(BootstrapVersion::V4);
 	}
 
+	public function testButtonCaptionAccessor(): void
+	{
+		$form = new BootstrapForm();
+		$upload = $form->addUpload('file', 'caption');
+
+		$upload->setButtonCaption('upload');
+
+		$this->assertSame('upload', $upload->getButtonCaption());
+	}
+
+	public function testMultiUploadRendersTheMultipleAttribute(): void
+	{
+		$form = new BootstrapForm();
+		$upload = $form->addMultiUpload('files', 'caption')->setButtonCaption('upload');
+
+		$this->assertStringContainsString('multiple', (string) $upload->getControl());
+	}
+
 }
