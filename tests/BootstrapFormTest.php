@@ -65,6 +65,16 @@ class BootstrapFormTest extends BaseTestCase
 		$this->assertNotContains('ajax', $form->getElementPrototype()->class);
 	}
 
+	public function testAjaxClassIsNotAddedTwice(): void
+	{
+		$form = new BootstrapForm();
+
+		$form->setAjax(true);
+		$form->setAjax(true);
+
+		$this->assertSame(['ajax'], $form->getElementPrototype()->class);
+	}
+
 	public function testGetRendererReturnsTheBootstrapRenderer(): void
 	{
 		$form = new BootstrapForm();

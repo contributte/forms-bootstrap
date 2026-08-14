@@ -35,6 +35,7 @@ use Nette\Forms\Controls\TextArea;
 use Nette\Forms\Controls\TextInput as NetteTextInput;
 use Nette\Forms\Controls\UploadControl;
 use Nette\Forms\Form;
+use Nette\InvalidArgumentException;
 use Nette\Utils\Html;
 
 /**
@@ -201,7 +202,15 @@ trait BootstrapContainerTrait
 	 */
 	public function addInputError(string $componentName, string $message): void
 	{
-		$this->getComponent($componentName)->addError($message);
+		$component = $this->getComponent($componentName);
+
+		if (!$component instanceof BaseControl) {
+			throw new InvalidArgumentException(
+				sprintf('Component "%s" is not a form control, so it cannot carry an error.', $componentName)
+			);
+		}
+
+		$component->addError($message);
 	}
 
 	/**

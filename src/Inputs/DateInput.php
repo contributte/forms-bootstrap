@@ -2,6 +2,7 @@
 
 namespace Contributte\FormsBootstrap\Inputs;
 
+use Contributte\FormsBootstrap\BootstrapUtils;
 use Contributte\FormsBootstrap\Enums\DateTimeFormat;
 use DateTime;
 use DateTimeInterface;
@@ -160,7 +161,7 @@ class DateInput extends TextInput
 	public function getControl(): Html
 	{
 		$control = parent::getControl();
-		$control->class[] = implode(' ', static::$additionalHtmlClasses);
+		BootstrapUtils::addClass($control, implode(' ', static::$additionalHtmlClasses));
 
 		return $control;
 	}
