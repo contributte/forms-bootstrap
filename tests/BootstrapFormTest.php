@@ -3,6 +3,7 @@
 namespace Tests;
 
 use Contributte\FormsBootstrap\BootstrapForm;
+use Contributte\FormsBootstrap\BootstrapRenderer;
 use Contributte\FormsBootstrap\Enums\BootstrapVersion;
 use Contributte\FormsBootstrap\Enums\RenderMode;
 use Nette\Forms\Rendering\DefaultFormRenderer;
@@ -34,6 +35,41 @@ class BootstrapFormTest extends BaseTest
 
 		BootstrapForm::switchBootstrapVersion(BootstrapVersion::V4);
 		$this->assertEquals(BootstrapVersion::V4, BootstrapForm::getBootstrapVersion());
+	}
+
+	public function testShowValidationAccessors(): void
+	{
+		$form = new BootstrapForm();
+		$this->assertFalse($form->isShowValidation());
+
+		$form->setShowValidation(true);
+
+		$this->assertTrue($form->isShowValidation());
+	}
+
+	public function testAnUnknownBootstrapVersionFallsBackToV4(): void
+	{
+		BootstrapForm::switchBootstrapVersion(99);
+
+		$this->assertEquals(BootstrapVersion::V4, BootstrapForm::getBootstrapVersion());
+	}
+
+	public function testAjaxClassIsAddedAndRemoved(): void
+	{
+		$form = new BootstrapForm();
+
+		$form->setAjax(true);
+		$this->assertContains('ajax', $form->getElementPrototype()->class);
+
+		$form->setAjax(false);
+		$this->assertNotContains('ajax', $form->getElementPrototype()->class);
+	}
+
+	public function testGetRendererReturnsTheBootstrapRenderer(): void
+	{
+		$form = new BootstrapForm();
+
+		$this->assertInstanceOf(BootstrapRenderer::class, $form->getRenderer());
 	}
 
 }
