@@ -46,6 +46,9 @@ class RadioInput extends RadioList implements IValidationInput
 
 		$items = $this->getItems();
 		$container = $this->container;
+		// one attribute on the fieldset disables every radio inside it, the same
+		// way CheckboxListInput handles a wholly disabled control
+		$container->setAttribute('disabled', $this->isControlDisabled());
 
 		$c = 0;
 		$htmlId = $this->getHtmlId();
