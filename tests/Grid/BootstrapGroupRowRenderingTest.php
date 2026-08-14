@@ -36,6 +36,9 @@ class BootstrapGroupRowRenderingTest extends BaseTest
 			->add([$row1]);
 		$form->setRenderer(new BootstrapRenderer(RenderMode::SIDE_BY_SIDE_MODE));
 		$form->setParent($this->createMock(Presenter::class));
+		// A real (non-empty) action makes Nette inject the "_do" signal field,
+		// mirroring production where the form is attached to a routed presenter.
+		$form->setAction('/');
 
 		$this->expectOutputString($this->loadTextData('bootstrap_group_row_rendering.html'));
 		$form->render();
