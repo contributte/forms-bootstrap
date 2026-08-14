@@ -22,7 +22,7 @@
     "nette/application": "^3.0"
   },
   "require-dev": {
-    "contributte/qa": "^v0.3",
+    "contributte/qa": "^v0.4",
     "phpunit/phpunit": "^11.5",
     "phpstan/phpstan": "^2.2",
     "phpstan/phpstan-deprecation-rules": "^2.0",
