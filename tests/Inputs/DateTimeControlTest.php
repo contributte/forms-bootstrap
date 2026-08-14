@@ -4,6 +4,7 @@ namespace Tests\Inputs;
 
 use Contributte\FormsBootstrap\BootstrapForm;
 use Contributte\FormsBootstrap\Inputs\IValidationInput;
+use Nette\Application\UI\Presenter;
 use Tests\BaseTestCase;
 
 class DateTimeControlTest extends BaseTestCase
@@ -19,6 +20,10 @@ class DateTimeControlTest extends BaseTestCase
 	public function testShowsValidationState(): void
 	{
 		$form = new BootstrapForm();
+		// Rendering a form requires a presenter with a non-empty action; see BaseTestCase users.
+		$form->setParent($this->createMock(Presenter::class));
+		$form->setAction('/');
+
 		$dt = $form->addDate('date', 'Date');
 		$this->assertInstanceOf(IValidationInput::class, $dt);
 
