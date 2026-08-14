@@ -6,6 +6,7 @@ use Contributte\FormsBootstrap\Traits\ChoiceInputTrait;
 use Contributte\FormsBootstrap\Traits\StandardValidationTrait;
 use Nette\Forms\Controls\CheckboxList;
 use Nette\Utils\Html;
+use Stringable;
 
 /**
  * Class CheckboxListInput.
@@ -36,7 +37,7 @@ class CheckboxListInput extends CheckboxList implements IValidationInput
 			$line = CheckboxInput::makeCheckbox(
 				$this->getHtmlName(),
 				$baseId . $c,
-				$caption === null ? null : (string) $caption,
+				is_scalar($caption) || $caption instanceof Stringable ? (string) $caption : null,
 				$this->isValueSelected($value),
 				$value,
 				false,

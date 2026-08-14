@@ -73,7 +73,15 @@ class DateInput extends TextInput
 	{
 		assert($input instanceof self);
 
-		return DateTimeFormat::validate($input->getFormat(), $input->getValue());
+		$value = $input->getValue();
+
+		// the rule checks the text the user typed; an already parsed (or empty)
+		// value has no textual format to check, so there is nothing to reject
+		if (!is_string($value)) {
+			return true;
+		}
+
+		return DateTimeFormat::validate($input->getFormat(), $value);
 	}
 
 	/**
@@ -91,7 +99,7 @@ class DateInput extends TextInput
 	{
 		$val = parent::getValue();
 
-		if (empty($val) || !$this->isValidated) {
+		if (empty($val) || !is_string($val) || !$this->isValidated) {
 			return $val;
 		}
 

@@ -2,6 +2,8 @@
 
 namespace Contributte\FormsBootstrap\Traits;
 
+use Stringable;
+
 /**
  * Trait ChoiceInputTrait.
  * Provides basic functionality for inputs where one of more than one predefined values are possible.
@@ -30,7 +32,8 @@ trait ChoiceInputTrait
 	protected function isValueDisabled($value): bool
 	{
 		$disabled = $this->disabled;
-		if (is_array($disabled)) {
+		// only something usable as an array key can be listed among the disabled values
+		if (is_array($disabled) && (is_int($value) || is_string($value))) {
 			return isset($disabled[$value]) && $disabled[$value];
 		}
 
@@ -51,7 +54,22 @@ trait ChoiceInputTrait
 			return in_array($value, $val);
 		}
 
-		return ((string) $value) === ((string) $val);
+		return $this->stringifyChoiceValue($value) === $this->stringifyChoiceValue($val);
+	}
+
+	/**
+	 * Choice values are compared the way they appear in the rendered markup — as strings
+	 *
+	 * @param mixed $value
+	 */
+	private function stringifyChoiceValue($value): string
+	{
+		if ($value === null || is_scalar($value) || $value instanceof Stringable) {
+			return (string) $value;
+		}
+
+		// nothing a choice key could ever be
+		return '';
 	}
 
 }

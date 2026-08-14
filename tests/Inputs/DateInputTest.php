@@ -5,6 +5,7 @@ namespace Tests\Inputs;
 use Contributte\FormsBootstrap\BootstrapForm;
 use Contributte\FormsBootstrap\Enums\DateTimeFormat;
 use Contributte\FormsBootstrap\Inputs\DateInput;
+use DateTime;
 use Nette\Forms\Form;
 use Tests\BaseTestCase;
 
@@ -46,6 +47,40 @@ class DateInputTest extends BaseTestCase
 		$this->assertStringContainsString(':equal', $rules);
 		$this->assertStringContainsString(':filled', $rules);
 		$this->assertStringContainsString(':minLength', $rules);
+	}
+
+	/**
+	 * The format rule reads the control's value, which is a DateTime once the input
+	 * has been validated. It used to hand that straight to a string parameter.
+	 */
+	public function testFormatRuleAcceptsAnAlreadyParsedValue(): void
+	{
+		$form = new BootstrapForm();
+		$date = $form->addBootstrapDate('date', 'Date');
+		$date->setValue(new DateTime());
+
+		$this->assertInstanceOf(DateTime::class, $date->getValue());
+		$this->assertTrue(DateInput::validateFormat($date));
+	}
+
+	public function testFormatRuleStillRejectsUnparseableText(): void
+	{
+		$form = new BootstrapForm();
+		$date = $form->addBootstrapDate('date', 'Date');
+		$date->setValue('not a date');
+
+		$this->assertFalse(DateInput::validateFormat($date));
+	}
+
+	public function testNullValueHasNoFormatToReject(): void
+	{
+		$form = new BootstrapForm();
+		$date = $form->addBootstrapDate('date', 'Date');
+		$date->setNullable();
+		$date->setValue(null);
+
+		$this->assertNull($date->getValue());
+		$this->assertTrue(DateInput::validateFormat($date));
 	}
 
 }
