@@ -10,7 +10,9 @@ use Contributte\FormsBootstrap\Traits\StandardValidationTrait;
 use Nette\Forms\Controls\ChoiceControl;
 use Nette\Forms\Controls\RadioList;
 use Nette\Forms\Helpers;
+use Nette\HtmlStringable;
 use Nette\Utils\Html;
+use Stringable;
 
 /**
  * Class RadioInput. Lets user choose one out of multiple options.
@@ -76,12 +78,20 @@ class RadioInput extends RadioList implements IValidationInput
 
 			$wrapper->addHtml($input);
 
-			$wrapper->addHtml(
-				Html::el('label', [
-					'class' => [BootstrapForm::getBootstrapVersion() === BootstrapVersion::V5 ? 'form-check-label' : 'custom-control-label'],
-					'for' => $itemHtmlId,
-				])->addHtml($this->translate($caption))
-			);
+			$label = Html::el('label', [
+				'class' => [BootstrapForm::getBootstrapVersion() === BootstrapVersion::V5 ? 'form-check-label' : 'custom-control-label'],
+				'for' => $itemHtmlId,
+			]);
+
+			$translatedCaption = $this->translate($caption);
+			if ($translatedCaption instanceof HtmlStringable || is_string($translatedCaption)) {
+				$label->addHtml($translatedCaption);
+			} elseif ($translatedCaption instanceof Stringable || is_int($translatedCaption)) {
+				// not markup, so it has to be escaped
+				$label->addText($translatedCaption);
+			}
+
+			$wrapper->addHtml($label);
 
 			$container->addHtml($wrapper);
 			$c++;

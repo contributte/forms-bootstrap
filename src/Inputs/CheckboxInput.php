@@ -8,6 +8,7 @@ use Contributte\FormsBootstrap\Traits\StandardValidationTrait;
 use Nette;
 use Nette\Forms\Controls\Checkbox;
 use Nette\Utils\Html;
+use Stringable;
 
 /**
  * Class CheckboxInput. Single checkbox.
@@ -32,7 +33,7 @@ class CheckboxInput extends Checkbox implements IValidationInput
 	 */
 	public bool $allignWithInputControls;
 
-	public function __construct(string|\Stringable|null $label = null)
+	public function __construct(string|Stringable|null $label = null)
 	{
 		$this->allignWithInputControls = static::$defaultAllignWithInputControls;
 
@@ -42,7 +43,7 @@ class CheckboxInput extends Checkbox implements IValidationInput
 	/**
 	 * Makes a Bootstrap checkbox HTML
 	 *
-	 * @param string|Html|null $caption
+	 * @param string|Stringable|null $caption
 	 * @param bool|mixed             $value pass false to omit
 	 */
 	public static function makeCheckbox(
@@ -92,11 +93,14 @@ class CheckboxInput extends Checkbox implements IValidationInput
 	 */
 	public function getControl(): Html
 	{
+		$caption = $this->translate($this->getCaption());
+
 		return self::makeCheckbox(
 			$this->getHtmlName(),
 			$this->getHtmlId(),
-			$this->translate($this->getCaption()),
-			$this->value,
+			is_string($caption) || $caption instanceof Stringable ? $caption : null,
+			// Checkbox::setValue() only ever stores a bool
+			(bool) $this->value,
 			false,
 			$this->required,
 			$this->disabled,

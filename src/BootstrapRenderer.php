@@ -13,7 +13,9 @@ use Nette\Forms\Control;
 use Nette\Forms\Controls\BaseControl;
 use Nette\Forms\Form;
 use Nette\Forms\FormRenderer;
+use Nette\HtmlStringable;
 use Nette\Utils\Html;
+use Stringable;
 
 /**
  * Converts a Form into Bootstrap 4 HTML output.
@@ -21,8 +23,8 @@ use Nette\Utils\Html;
  * @property int        $mode
  * @property string     $gridBreakPoint    Bootstrap grid breakpoint for side-by-side view. Default is 'sm'.
  *           NULL means not to use a breakpoint
- * @property-read mixed[] $config
- * @property-read mixed[] $configOverride
+ * @property-read array<string, mixed[]> $config
+ * @property-read array<int, array<string, mixed[]>> $configOverride
  * @property bool       $groupHidden       if true, hidden fields will be grouped at the end. If false,
  *           hidden fields are placed where they were added. Default is true.
  */
@@ -73,19 +75,19 @@ class BootstrapRenderer implements FormRenderer
 	/**
 	 * Turns configuration or and existing element and configures it appropriately
 	 *
-	 * @param string[]|string $config top-level config key
+	 * @param mixed[]|string $config top-level config key, or the config itself
 	 * @param Html|null $el elem to config.
 	 * @return ($el is null ? Html|null : Html)
 	 */
 	public function configElem($config, ?Html $el = null): ?Html
 	{
-		if (is_scalar($config)) {
+		if (is_string($config)) {
 			$config = $this->fetchConfig($config);
 		}
 
 		// first define which element we want to work with
-		if (isset($config[Cnf::ELEMENT_NAME])) {
-			$name = $config[Cnf::ELEMENT_NAME];
+		$name = $config[Cnf::ELEMENT_NAME] ?? null;
+		if (is_string($name)) {
 			if (!$el) {
 				// element does not exist, so create it
 				$el = Html::el($name);
@@ -96,53 +98,35 @@ class BootstrapRenderer implements FormRenderer
 		}
 
 		if ($el instanceof Html) {
-			$origClass = null;
 			// go through all config and configure element accordingly
 			foreach ($config as $key => $value) {
-				if (in_array($key, [Cnf::CLASS_SET, Cnf::CLASS_ADD, Cnf::CLASS_ADD, Cnf::CLASS_REMOVE])) {
-					// we'll be working with classes, we must standardize everything to arrays, not strings for the sake of sanity
-					if (!is_array($value)) {
-						// configuration may contain classes as strings, but we always work with arrays
-						$value = [$value];
+				if (in_array($key, [Cnf::CLASS_SET, Cnf::CLASS_ADD, Cnf::CLASS_REMOVE], true)) {
+					// configuration may contain classes as strings, but we always work with arrays
+					$classes = is_array($value) ? $value : [$value];
+					$origClass = $this->fetchClasses($el);
+
+					if ($key === Cnf::CLASS_SET) {
+						$el->setAttribute('class', $classes);
+					} elseif ($key === Cnf::CLASS_ADD) {
+						$el->setAttribute('class', array_merge($origClass, $classes));
+					} else {
+						$el->setAttribute('class', array_filter(
+							$origClass,
+							static fn ($origClassName): bool => !in_array($origClassName, $classes, true)
+						));
 					}
-
-					$origClass = $el->getAttribute('class');
-					$newClass = $origClass;
-					if ($origClass === null) {
-						// class is not set
-						$newClass = [];
-					} elseif (!is_array($origClass)) {
-						// class is set, but not a array
-						$newClass = explode(' ', $el->getAttribute('class'));
-					}
-
-					$el->setAttribute('class', $newClass);
-					$origClass = $newClass;
-				}
-
-				if ($key === Cnf::CLASS_SET) {
-					$el->setAttribute('class', $value);
-				} elseif ($key === Cnf::CLASS_ADD) {
-					$el->setAttribute(
-						'class',
-						array_merge($origClass, $value)
-					);
-				} elseif ($key === Cnf::CLASS_REMOVE) {
-					$el->setAttribute(
-						'class',
-						array_diff($origClass, $value)
-					);
-				} elseif ($key === Cnf::ATTRIBUTES) {
+				} elseif ($key === Cnf::ATTRIBUTES && is_array($value)) {
 					foreach ($value as $attr => $attrVal) {
-						$el->setAttribute($attr, $attrVal);
+						$el->setAttribute((string) $attr, $attrVal);
 					}
 				}
 			}
 		}
 
 		// el may be null, but maybe it has a container defined
-		if (isset($config[Cnf::CONTAINER])) {
-			$container = $this->configElem($config[Cnf::CONTAINER], null);
+		$containerConfig = $config[Cnf::CONTAINER] ?? null;
+		if (is_array($containerConfig) || is_string($containerConfig)) {
+			$container = $this->configElem($containerConfig, null);
 			// a container config which yields no element of its own must not swallow the element it wraps
 			if ($container !== null) {
 				if ($el !== null) {
@@ -158,7 +142,7 @@ class BootstrapRenderer implements FormRenderer
 	}
 
 	/**
-	 * @return mixed[]
+	 * @return array<string, mixed[]> element config, keyed by first-level config key
 	 */
 	public function getConfig(): array
 	{
@@ -226,7 +210,7 @@ class BootstrapRenderer implements FormRenderer
 	}
 
 	/**
-	 * @return mixed[]
+	 * @return array<int, array<string, mixed[]>> element config per render mode
 	 */
 	public function getConfigOverride(): array
 	{
@@ -410,7 +394,8 @@ class BootstrapRenderer implements FormRenderer
 
 			//endregion
 
-			if (!empty($label)) {
+			// anything else the option may hold is not something we can draw
+			if ($label instanceof HtmlStringable) {
 				$container->addHtml($label);
 			}
 
@@ -614,14 +599,36 @@ class BootstrapRenderer implements FormRenderer
 	 */
 	protected function fetchConfig(string $key): array
 	{
-		$config = $this->config[$key];
+		$config = $this->getConfig()[$key];
+		$override = $this->getConfigOverride()[$this->renderMode][$key] ?? null;
 
-		if (isset($this->configOverride[$this->renderMode][$key])) {
-			$override = $this->configOverride[$this->renderMode][$key];
+		if ($override !== null) {
 			$config = array_merge($config, $override);
 		}
 
 		return $config;
+	}
+
+	/**
+	 * Reads the element's class attribute as a list of classes, whichever way it was set
+	 *
+	 * @return mixed[]
+	 */
+	protected function fetchClasses(Html $el): array
+	{
+		$class = $el->getAttribute('class');
+
+		if (is_array($class)) {
+			return $class;
+		}
+
+		// class is set, but not as an array
+		if (is_string($class)) {
+			return explode(' ', $class);
+		}
+
+		// class is not set
+		return [];
 	}
 
 	/**
@@ -702,7 +709,7 @@ class BootstrapRenderer implements FormRenderer
 				foreach ($messages as $message) {
 					if ($message instanceof Html) {
 						$el->addHtml($message);
-					} else {
+					} elseif (is_string($message) || is_int($message) || $message instanceof Stringable) {
 						$el->addText($message);
 					}
 

@@ -47,6 +47,15 @@ class RendererConfigTest extends BaseTestCase
 		$this->assertSame('<div class="keep"></div>', (string) $el);
 	}
 
+	public function testClassConfigMayBePlainString(): void
+	{
+		$el = Html::el('div', ['class' => 'original']);
+
+		$this->renderer->configElem([Cnf::CLASS_ADD => 'extra'], $el);
+
+		$this->assertSame('<div class="original extra"></div>', (string) $el);
+	}
+
 	public function testAttributesAreApplied(): void
 	{
 		$el = Html::el('input');
