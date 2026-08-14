@@ -12,11 +12,11 @@ class RendererOptions
 	/**
 	 * Internal. If control has already been rendered.
 	 *
-	 * Deliberately the same key Nette itself uses (BaseControl::getControl() sets it, and
-	 * Nette\Forms\Blueprint special-cases it), so that {formPrint} does not render every
-	 * grouped control twice.
+	 * Deliberately NOT Nette's own 'rendered' key, which BaseControl::getControl() sets on
+	 * every fetch: the renderer must be able to tell "I drew this" apart from "somebody
+	 * asked for the html", or assisted manual rendering silently skips controls.
 	 */
-	public const _RENDERED = 'rendered';
+	public const _RENDERED = '_rendered';
 
 	/**
 	 * Boolean. Can se set on groups, if false, group will not be rendered separately.

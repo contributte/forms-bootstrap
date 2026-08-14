@@ -8,8 +8,9 @@ use Nette\Application\UI\Presenter;
 use Tests\BaseTestCase;
 
 /**
- * The renderer marks controls it has drawn with RendererOptions::_RENDERED, which is the
- * same option key Nette itself sets from BaseControl::getControl(). These guard the overlap.
+ * The renderer tracks what it has already drawn, so that a control belonging to a group is
+ * not drawn again by the trailing pass. It must not confuse that with Nette's own 'rendered'
+ * option, which BaseControl::getControl() sets on every fetch.
  */
 class RenderedOptionTest extends BaseTestCase
 {
@@ -28,10 +29,48 @@ class RenderedOptionTest extends BaseTestCase
 	{
 		$this->form->addText('a', 'b');
 
-		// Nette sets the 'rendered' option as a side effect of this
+		// Nette sets its own 'rendered' option as a side effect of this
 		$this->form->getComponent('a')->getControl();
 
 		$this->assertStringContainsString('name="a"', $this->form->__toString(true));
+	}
+
+	/**
+	 * Assisted manual rendering: renderControls() called on its own, with no render() ahead
+	 * of it to reset anything. Fetching a control's html must not make it disappear.
+	 */
+	public function testAssistedRenderingIsNotDisturbedByFetchingControlHtml(): void
+	{
+		$this->form->addText('a', 'b');
+		$this->form->addText('c', 'd');
+
+		$renderer = $this->form->getRenderer();
+		$renderer->attachForm($this->form);
+
+		$this->form->getComponent('a')->getControl();
+
+		$html = $renderer->renderControls($this->form);
+
+		$this->assertStringContainsString('name="a"', $html);
+		$this->assertStringContainsString('name="c"', $html);
+	}
+
+	/**
+	 * The escape hatch of marking a control rendered by hand still works.
+	 */
+	public function testControlMarkedRenderedByHandIsSkipped(): void
+	{
+		$this->form->addText('a', 'b');
+		$this->form->addText('c', 'd');
+
+		$renderer = $this->form->getRenderer();
+		$renderer->attachForm($this->form);
+		$this->form->getComponent('a')->setOption(RendererOptions::_RENDERED, true);
+
+		$html = $renderer->renderControls($this->form);
+
+		$this->assertStringNotContainsString('name="a"', $html);
+		$this->assertStringContainsString('name="c"', $html);
 	}
 
 	public function testRenderingTwiceProducesTheSameOutput(): void

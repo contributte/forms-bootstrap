@@ -14,6 +14,7 @@ use Nette\Forms\Controls\BaseControl;
 use Nette\Forms\Form;
 use Nette\Forms\FormRenderer;
 use Nette\Utils\Html;
+use SplObjectStorage;
 
 /**
  * Converts a Form into Bootstrap 4 HTML output.
@@ -61,9 +62,21 @@ class BootstrapRenderer implements FormRenderer
 	/** @var bool */
 	private $groupHidden = true;
 
+	/**
+	 * What this renderer has already drawn in the current render.
+	 *
+	 * Tracked by identity rather than only through RendererOptions::_RENDERED, because the
+	 * dummy controls Nette\Forms\Blueprint feeds us forward getOption() to the control they
+	 * wrap, so an option written here would be read back off a different object.
+	 *
+	 * @var SplObjectStorage<BaseControl|BootstrapRow, null>
+	 */
+	private $renderedControls;
+
 	public function __construct(int $mode = RenderMode::VERTICAL_MODE)
 	{
 		$this->setMode($mode);
+		$this->renderedControls = new SplObjectStorage();
 	}
 
 	/**
@@ -330,6 +343,8 @@ class BootstrapRenderer implements FormRenderer
 	 */
 	public function renderBegin(): string
 	{
+		$this->renderedControls = new SplObjectStorage();
+
 		foreach ($this->form->getControls() as $control) {
 			if ($control instanceof BaseControl || $control instanceof BootstrapRow) {
 				$control->setOption(RendererOptions::_RENDERED, false);
@@ -440,7 +455,7 @@ class BootstrapRenderer implements FormRenderer
 	public function renderControl(BaseControl $control): string
 	{
 		$controlHtml = $control->getControl();
-		$control->setOption(RendererOptions::_RENDERED, true);
+		$this->markRendered($control);
 
 		// Blueprint's dummy controls return a bare '{input ...}' placeholder, which has
 		// no attributes to configure — pass it through untouched
@@ -477,7 +492,7 @@ class BootstrapRenderer implements FormRenderer
 				continue;
 			}
 
-			if ($control->getOption(RendererOptions::_RENDERED)) {
+			if ($this->isRendered($control)) {
 				continue;
 			}
 
@@ -617,6 +632,30 @@ class BootstrapRenderer implements FormRenderer
 	public function setMode(int $renderMode): void
 	{
 		$this->renderMode = $renderMode;
+	}
+
+	/**
+	 * Records that this renderer has drawn the control, both for itself and, as before,
+	 * as an option other code may read.
+	 *
+	 * @param BaseControl|BootstrapRow $control
+	 */
+	protected function markRendered($control): void
+	{
+		$this->renderedControls->attach($control);
+		$control->setOption(RendererOptions::_RENDERED, true);
+	}
+
+	/**
+	 * Whether the control should be skipped: either this renderer has already drawn it,
+	 * or somebody marked it as rendered by hand.
+	 *
+	 * @param BaseControl|BootstrapRow $control
+	 */
+	protected function isRendered($control): bool
+	{
+		return $this->renderedControls->contains($control)
+			|| (bool) $control->getOption(RendererOptions::_RENDERED);
 	}
 
 	/**
@@ -770,6 +809,15 @@ class BootstrapRenderer implements FormRenderer
 		} else {
 			throw new Nette\NotImplementedException('renderer is unable to render feedback for ' . gettype($control));
 		}
+	}
+
+	/**
+	 * Blueprint renders through a clone of the form's renderer; it must not inherit
+	 * bookkeeping from the render the original may be in the middle of.
+	 */
+	public function __clone()
+	{
+		$this->renderedControls = new SplObjectStorage();
 	}
 
 }
