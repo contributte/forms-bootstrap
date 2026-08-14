@@ -3,6 +3,7 @@
 namespace Contributte\FormsBootstrap\Grid;
 
 use Contributte\FormsBootstrap\BootstrapRenderer;
+use Contributte\FormsBootstrap\BootstrapUtils;
 use Contributte\FormsBootstrap\Enums\RendererConfig;
 use Contributte\FormsBootstrap\Traits\BootstrapContainerTrait;
 use Nette\ComponentModel\IComponent;
@@ -94,7 +95,7 @@ class BootstrapCell
 		$renderer = $this->row->getContainer()->getForm()->getRenderer();
 
 		$element = $renderer->configElem(RendererConfig::GRID_CELL, $element);
-		$element->class[] = $this->createClass();
+		BootstrapUtils::addClass($element, $this->createClass());
 
 		foreach ($this->childControls as $childControl) {
 			$pairHtml = $renderer->renderPair($childControl);
@@ -133,7 +134,7 @@ class BootstrapCell
 	 */
 	public function addHtmlClass(string $class)
 	{
-		$this->elementPrototype->class[] = $class;
+		BootstrapUtils::addClass($this->elementPrototype, $class);
 
 		return $this;
 	}

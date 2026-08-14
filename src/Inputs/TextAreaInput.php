@@ -52,9 +52,7 @@ class TextAreaInput extends TextArea implements IValidationInput, IAutocompleteI
 	public function getControl(): Html
 	{
 		$control = parent::getControl();
-		BootstrapUtils::standardizeClass($control);
-
-		$control->class[] = 'form-control';
+		BootstrapUtils::addClass($control, 'form-control');
 		if ($this->autocomplete !== null) {
 			$control->setAttribute('autocomplete', $this->autocomplete ? 'on' : 'off');
 		}

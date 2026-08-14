@@ -14,9 +14,7 @@ class ColorPicker extends \Nette\Forms\Controls\ColorPicker implements IValidati
 	public function getControl(): Html
 	{
 		$control = parent::getControl();
-		BootstrapUtils::standardizeClass($control);
-
-		$control->class[] = 'form-control';
+		BootstrapUtils::addClass($control, 'form-control');
 
 		return $control;
 	}

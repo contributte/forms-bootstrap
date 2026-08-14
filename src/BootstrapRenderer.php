@@ -325,11 +325,12 @@ class BootstrapRenderer implements FormRenderer
 		$el = $this->configElem('form', $this->form->getElementPrototype());
 
 		if ($this->form->isMethod('get')) {
-			$el->action = (string) $el->action;
-			/** @noinspection PhpUndefinedFieldInspection */
-			$query = parse_url($el->action, PHP_URL_QUERY);
-			/** @noinspection PhpUndefinedFieldInspection */
-			$el->action = str_replace('?' . $query, '', $el->action);
+			// the action may be set as anything printable, a Nette\Application\UI\Link among others
+			$action = $el->getAttribute('action');
+			$action = is_scalar($action) || $action instanceof Stringable ? (string) $action : '';
+
+			$query = parse_url($action, PHP_URL_QUERY);
+			$el->action = str_replace('?' . $query, '', $action);
 
 			$s = '';
 			$params = ($query === null || $query === false)
@@ -616,19 +617,7 @@ class BootstrapRenderer implements FormRenderer
 	 */
 	protected function fetchClasses(Html $el): array
 	{
-		$class = $el->getAttribute('class');
-
-		if (is_array($class)) {
-			return $class;
-		}
-
-		// class is set, but not as an array
-		if (is_string($class)) {
-			return explode(' ', $class);
-		}
-
-		// class is not set
-		return [];
+		return BootstrapUtils::fetchClasses($el);
 	}
 
 	/**

@@ -14,9 +14,7 @@ class DateTimeControl extends \Nette\Forms\Controls\DateTimeControl implements I
 	public function getControl(): Html
 	{
 		$control = parent::getControl();
-		BootstrapUtils::standardizeClass($control);
-
-		$control->class[] = 'form-control';
+		BootstrapUtils::addClass($control, 'form-control');
 
 		return $control;
 	}

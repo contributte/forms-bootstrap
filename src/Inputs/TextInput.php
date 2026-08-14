@@ -64,9 +64,7 @@ class TextInput extends \Nette\Forms\Controls\TextInput implements IValidationIn
 	public function getControl(): Html
 	{
 		$control = parent::getControl();
-		BootstrapUtils::standardizeClass($control);
-
-		$control->class[] = 'form-control';
+		BootstrapUtils::addClass($control, 'form-control');
 		if (!empty($this->placeholder)) {
 			$control->setAttribute('placeholder', $this->placeholder);
 		}

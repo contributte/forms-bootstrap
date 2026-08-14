@@ -73,8 +73,7 @@ trait BootstrapButtonTrait
 
 	protected function addBtnClass(Html $element): void
 	{
-		BootstrapUtils::standardizeClass($element);
-		$element->class[] = 'btn ' . $this->getBtnClass();
+		BootstrapUtils::addClass($element, 'btn ' . $this->getBtnClass());
 	}
 
 }

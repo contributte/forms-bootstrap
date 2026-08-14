@@ -6,6 +6,7 @@ use Contributte\FormsBootstrap\BootstrapForm;
 use Contributte\FormsBootstrap\Inputs\DateTimeControl;
 use Contributte\FormsBootstrap\Inputs\TextInput;
 use Contributte\FormsBootstrap\Inputs\UploadInput;
+use Nette\InvalidArgumentException;
 use Tests\BaseTestCase;
 
 /**
@@ -150,6 +151,16 @@ class BootstrapContainerTraitTest extends BaseTestCase
 
 		$this->assertSame(['that name is taken'], $form['name']->getErrors());
 		$this->assertTrue($form->hasErrors());
+	}
+
+	public function testAddInputErrorRejectsComponentThatIsNotControl(): void
+	{
+		$form = new BootstrapForm();
+		$form->addContainer('sub');
+
+		$this->expectException(InvalidArgumentException::class);
+
+		$form->addInputError('sub', 'nowhere to put this');
 	}
 
 	public function testAddColorProducesColorInput(): void

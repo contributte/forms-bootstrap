@@ -62,10 +62,7 @@ class BootstrapForm extends Form
 		]);
 		$this->elementPrototype = $prototype;
 
-		/**
-		 * @param BootstrapForm $form
-		 */
-		$this->onError[] = function ($form): void {
+		$this->onError[] = function (self $form): void {
 			$form->showValidation = $this->autoShowValidation;
 		};
 	}
@@ -161,19 +158,14 @@ class BootstrapForm extends Form
 	{
 		$this->isAjax = $isAjax;
 
-		BootstrapUtils::standardizeClass($this->getElementPrototype());
-		$prototypeClass = $this->getElementPrototype()->class;
+		$prototype = $this->getElementPrototype();
+		$present = BootstrapUtils::hasClass($prototype, $this->ajaxClass);
 
-		$present = in_array($this->ajaxClass, $prototypeClass);
 		if ($present && !$isAjax) {
-			// remove the class
-			$prototypeClass = array_diff($prototypeClass, [$this->ajaxClass]);
+			BootstrapUtils::removeClass($prototype, $this->ajaxClass);
 		} elseif (!$present && $isAjax) {
-			// add class
-			$prototypeClass[] = $this->ajaxClass;
+			BootstrapUtils::addClass($prototype, $this->ajaxClass);
 		}
-
-		$this->getElementPrototype()->class = $prototypeClass;
 
 		return $this;
 	}

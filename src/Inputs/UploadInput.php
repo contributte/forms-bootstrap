@@ -4,6 +4,7 @@ namespace Contributte\FormsBootstrap\Inputs;
 
 use Contributte\FormsBootstrap\BootstrapForm;
 use Contributte\FormsBootstrap\BootstrapRenderer;
+use Contributte\FormsBootstrap\BootstrapUtils;
 use Contributte\FormsBootstrap\Enums\BootstrapVersion;
 use Contributte\FormsBootstrap\Enums\RendererConfig;
 use Nette\Application\UI\Form;
@@ -49,7 +50,10 @@ class UploadInput extends UploadControl implements IValidationInput
 	{
 		/** @var Html $control */
 		$control = parent::getControl();
-		$control->class = trim($control->class .= BootstrapForm::getBootstrapVersion() === BootstrapVersion::V5 ? ' form-control' : ' custom-file-input');
+		BootstrapUtils::addClass(
+			$control,
+			BootstrapForm::getBootstrapVersion() === BootstrapVersion::V5 ? 'form-control' : 'custom-file-input'
+		);
 
 		$el = Html::el('div', ['class' => [BootstrapForm::getBootstrapVersion() === BootstrapVersion::V5 ? null : 'custom-file']]);
 		$el->addHtml($control);
