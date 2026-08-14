@@ -5,6 +5,7 @@ namespace Tests\E2E;
 use Contributte\FormsBootstrap\BootstrapForm;
 use Nette\Application\Request as AppRequest;
 use Nette\Http;
+use ReflectionMethod;
 use Tests\BaseTest;
 
 /**
@@ -55,7 +56,7 @@ abstract class BaseE2ETest extends BaseTest
 
 		$this->presenter = new TestPresenter();
 		$this->presenter->formFactory = $formFactory;
-		$this->presenter->injectPrimary($httpRequest, new Http\Response());
+		$this->injectHttp($this->presenter, $httpRequest, new Http\Response());
 		// canonicalization would need a router, and it is not what these tests are about
 		$this->presenter->autoCanonicalize = false;
 
@@ -87,6 +88,30 @@ abstract class BaseE2ETest extends BaseTest
 		} finally {
 			ob_end_clean();
 		}
+	}
+
+	/**
+	 * Hands the presenter its HTTP request and response.
+	 *
+	 * Presenter::injectPrimary() takes every collaborator a presenter can have and
+	 * its parameter order differs across the nette/application versions this library
+	 * supports, so the arguments are matched up by name and everything we do not
+	 * need (DI container, presenter factory, router, session, user, template
+	 * factory) is left null.
+	 */
+	private function injectHttp(TestPresenter $presenter, Http\IRequest $request, Http\IResponse $response): void
+	{
+		$args = [];
+
+		foreach ((new ReflectionMethod($presenter, 'injectPrimary'))->getParameters() as $parameter) {
+			$args[] = match ($parameter->getName()) {
+				'httpRequest' => $request,
+				'httpResponse' => $response,
+				default => null,
+			};
+		}
+
+		$presenter->injectPrimary(...$args);
 	}
 
 }
