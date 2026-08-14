@@ -21,8 +21,8 @@ use Nette\Utils\Html;
  * @property int        $mode
  * @property string     $gridBreakPoint    Bootstrap grid breakpoint for side-by-side view. Default is 'sm'.
  *           NULL means not to use a breakpoint
- * @property-read array $config
- * @property-read array $configOverride
+ * @property-read mixed[] $config
+ * @property-read mixed[] $configOverride
  * @property bool       $groupHidden       if true, hidden fields will be grouped at the end. If false,
  *           hidden fields are placed where they were added. Default is true.
  */
@@ -94,7 +94,7 @@ class BootstrapRenderer implements FormRenderer
 			}
 		}
 
-		if ($el instanceof Html && $el !== null) {
+		if ($el instanceof Html) {
 			$origClass = null;
 			// go through all config and configure element accordingly
 			foreach ($config as $key => $value) {
@@ -646,9 +646,7 @@ class BootstrapRenderer implements FormRenderer
 	{
 		$description = $control->getOption(RendererOptions::DESCRIPTION);
 		if (is_string($description)) {
-			if ($control instanceof BaseControl) {
-				$description = $control->translate($description);
-			}
+			$description = $control->translate($description);
 		} elseif (!$description instanceof Html) {
 			$description = '';
 		}

@@ -5,9 +5,6 @@ namespace Contributte\FormsBootstrap\Traits;
 /**
  * Trait ChoiceInputTrait.
  * Provides basic functionality for inputs where one of more than one predefined values are possible.
- *
- * @property bool|array|null $disabled
- * @method int|string|array getValue()
  */
 trait ChoiceInputTrait
 {
@@ -35,8 +32,6 @@ trait ChoiceInputTrait
 		$disabled = $this->disabled;
 		if (is_array($disabled)) {
 			return isset($disabled[$value]) && $disabled[$value];
-		} elseif (!is_bool($disabled)) {
-			return $disabled === $value;
 		}
 
 		return false;
