@@ -5,9 +5,9 @@ namespace Tests\Inputs;
 use Contributte\FormsBootstrap\BootstrapForm;
 use Contributte\FormsBootstrap\Enums\BootstrapVersion;
 use Nette\Utils\Html;
-use Tests\BaseTest;
+use Tests\BaseTestCase;
 
-class CheckboxInputTest extends BaseTest
+class CheckboxInputTest extends BaseTestCase
 {
 
 	public function testHtmlCaption(): void

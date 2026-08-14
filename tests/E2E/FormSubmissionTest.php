@@ -9,7 +9,7 @@ use Nette\Http\FileUpload;
  * Drives whole requests through a real presenter: a form is rendered, a browser
  * posts it back and the resulting values, errors and events are checked.
  */
-class FormSubmissionTest extends BaseE2ETest
+class FormSubmissionTest extends BaseE2ETestCase
 {
 
 	public function testValidSubmitIsSuccessfulAndYieldsValues(): void

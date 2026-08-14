@@ -5,7 +5,7 @@ namespace Tests;
 use Contributte\FormsBootstrap\BootstrapUtils;
 use Nette\Utils\Html;
 
-class BootstrapUtilsTest extends BaseTest
+class BootstrapUtilsTest extends BaseTestCase
 {
 
 	public function testStandardizeClass(): void

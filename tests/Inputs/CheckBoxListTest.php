@@ -4,9 +4,9 @@ namespace Tests\Inputs;
 
 use Contributte\FormsBootstrap\BootstrapForm;
 use Contributte\FormsBootstrap\Enums\BootstrapVersion;
-use Tests\BaseTest;
+use Tests\BaseTestCase;
 
-class CheckBoxListTest extends BaseTest
+class CheckBoxListTest extends BaseTestCase
 {
 
 	public function testSetItemsWithKeysAndValueIntegers(): void

@@ -6,13 +6,13 @@ use Contributte\FormsBootstrap\BootstrapForm;
 use Contributte\FormsBootstrap\Enums\RendererOptions;
 use Nette\Application\UI\Presenter;
 use Nette\Utils\Html;
-use Tests\BaseTest;
+use Tests\BaseTestCase;
 
 /**
  * Form groups: the renderer draws them before any loose controls and honours
  * the label, id and container options set on them.
  */
-class GroupRenderingTest extends BaseTest
+class GroupRenderingTest extends BaseTestCase
 {
 
 	private BootstrapForm $form;

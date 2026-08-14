@@ -7,9 +7,9 @@ use Contributte\FormsBootstrap\Grid\BootstrapCell;
 use Contributte\FormsBootstrap\Grid\BootstrapRow;
 use Nette\Application\UI\Presenter;
 use Nette\InvalidArgumentException;
-use Tests\BaseTest;
+use Tests\BaseTestCase;
 
-class BootstrapCellTest extends BaseTest
+class BootstrapCellTest extends BaseTestCase
 {
 
 	/** @var BootstrapCell */

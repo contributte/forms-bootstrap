@@ -5,9 +5,9 @@ namespace Tests\Inputs;
 use Contributte\FormsBootstrap\BootstrapForm;
 use Contributte\FormsBootstrap\Enums\DateTimeFormat;
 use Contributte\FormsBootstrap\Inputs\DateInput;
-use Tests\BaseTest;
+use Tests\BaseTestCase;
 
-class DateInputTest extends BaseTest
+class DateInputTest extends BaseTestCase
 {
 
 	public function testDefaultDate(): void

@@ -4,9 +4,9 @@ namespace Tests\Inputs;
 
 use Contributte\FormsBootstrap\BootstrapForm;
 use Contributte\FormsBootstrap\Enums\BootstrapVersion;
-use Tests\BaseTest;
+use Tests\BaseTestCase;
 
-class MultiSelectInputTest extends BaseTest
+class MultiSelectInputTest extends BaseTestCase
 {
 
 	public function testMultiSelect(): void

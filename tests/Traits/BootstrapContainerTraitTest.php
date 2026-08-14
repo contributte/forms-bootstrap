@@ -6,12 +6,12 @@ use Contributte\FormsBootstrap\BootstrapForm;
 use Contributte\FormsBootstrap\Inputs\DateTimeControl;
 use Contributte\FormsBootstrap\Inputs\TextInput;
 use Contributte\FormsBootstrap\Inputs\UploadInput;
-use Tests\BaseTest;
+use Tests\BaseTestCase;
 
 /**
  * The add*() factories that BootstrapForm and BootstrapContainer share.
  */
-class BootstrapContainerTraitTest extends BaseTest
+class BootstrapContainerTraitTest extends BaseTestCase
 {
 
 	public function testAddDateTimeProducesDateTimeLocalInput(): void
