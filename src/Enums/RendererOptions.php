@@ -11,6 +11,10 @@ class RendererOptions
 
 	/**
 	 * Internal. If control has already been rendered.
+	 *
+	 * Deliberately NOT Nette's own 'rendered' key, which BaseControl::getControl() sets on
+	 * every fetch: the renderer must be able to tell "I drew this" apart from "somebody
+	 * asked for the html", or assisted manual rendering silently skips controls.
 	 */
 	public const _RENDERED = '_rendered';
 
