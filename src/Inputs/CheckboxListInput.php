@@ -63,7 +63,7 @@ class CheckboxListInput extends CheckboxList implements IValidationInput
 		foreach ($control->getChildren() as $label) {
 			/** @var Html $input */
 			$input = $label->getChildren()[0];
-			$label->getChildren()[0] = $this->_rawShowValidation($input);
+			$label->insert(0, $this->_rawShowValidation($input), replace: true);
 			$fieldset->addHtml($label);
 		}
 

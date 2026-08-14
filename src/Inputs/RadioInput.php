@@ -98,7 +98,7 @@ class RadioInput extends RadioList implements IValidationInput
 		foreach ($control->getChildren() as $rowDiv) {
 			/** @var Html $input */
 			$input = $rowDiv->getChildren()[0];
-			$rowDiv->getChildren()[0] = $this->_rawShowValidation($input);
+			$rowDiv->insert(0, $this->_rawShowValidation($input), replace: true);
 			$fieldset->addHtml($rowDiv);
 		}
 
