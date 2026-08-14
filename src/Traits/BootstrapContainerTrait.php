@@ -191,7 +191,7 @@ trait BootstrapContainerTrait
 		int $maxLength = 255
 	): NetteTextInput
 	{
-		return $this->addText($name, $label)
+		return $this->addText($name, $label, null, $maxLength)
 			->setNullable(BootstrapForm::$allwaysUseNullable)
 			->addRule(Form::Email);
 	}
@@ -313,21 +313,17 @@ trait BootstrapContainerTrait
 
 	/**
 	 * @param string|Html|null $label
-	 * @param int|null $cols ignored
-	 * @param int|null $maxLength ignored
+	 * @param int|null $cols width of the input, rendered as the cols attribute
+	 * @param int|null $maxLength maximum length of the value, rendered as the maxlength attribute
 	 * @return TextInput
 	 */
 	public function addText(string $name, $label = null, ?int $cols = null, ?int $maxLength = null): NetteTextInput
 	{
-		$comp = new TextInput($label);
+		$comp = new TextInput($label, $maxLength);
 		$comp->setNullable(BootstrapForm::$allwaysUseNullable);
 
 		if ($cols !== null) {
 			$comp->setHtmlAttribute('cols', $cols);
-		}
-
-		if ($maxLength !== null) {
-			$comp->setHtmlAttribute('maxlength', $cols);
 		}
 
 		$this->addComponent($comp, $name);
@@ -337,8 +333,8 @@ trait BootstrapContainerTrait
 
 	/**
 	 * @param string|Html|null $label
-	 * @param int|null $cols ignored
-	 * @param int|null $rows ignored
+	 * @param int|null $cols width of the textarea, rendered as the cols attribute
+	 * @param int|null $rows height of the textarea, rendered as the rows attribute
 	 * @return TextAreaInput
 	 */
 	public function addTextArea(string $name, $label = null, ?int $cols = null, ?int $rows = null): TextArea

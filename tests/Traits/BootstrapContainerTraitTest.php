@@ -80,6 +80,54 @@ class BootstrapContainerTraitTest extends BaseTestCase
 		$this->assertStringContainsString('form-control', (string) $input->getControl());
 	}
 
+	/**
+	 * The maxlength attribute has to come from $maxLength, not from the
+	 * visual width in $cols. See issue #104.
+	 */
+	public function testAddTextTakesMaxLengthFromItsOwnArgument(): void
+	{
+		$form = new BootstrapForm();
+		$input = $form->addText('name', 'Name', 10, 50);
+
+		$html = (string) $input->getControl();
+		$this->assertStringContainsString('maxlength="50"', $html);
+		$this->assertStringContainsString('cols="10"', $html);
+	}
+
+	public function testAddTextRendersMaxLengthWithoutCols(): void
+	{
+		$form = new BootstrapForm();
+		$input = $form->addText('name', 'Name', null, 50);
+
+		$html = (string) $input->getControl();
+		$this->assertStringContainsString('maxlength="50"', $html);
+		$this->assertStringNotContainsString('cols=', $html);
+	}
+
+	public function testAddTextWithoutMaxLengthRendersNoMaxLength(): void
+	{
+		$form = new BootstrapForm();
+		$input = $form->addText('name', 'Name', 10);
+
+		$this->assertStringNotContainsString('maxlength', (string) $input->getControl());
+	}
+
+	public function testAddPasswordPassesMaxLengthOn(): void
+	{
+		$form = new BootstrapForm();
+		$input = $form->addPassword('secret', 'Secret', 10, 20);
+
+		$this->assertStringContainsString('maxlength="20"', (string) $input->getControl());
+	}
+
+	public function testAddEmailAppliesItsMaxLength(): void
+	{
+		$form = new BootstrapForm();
+
+		$this->assertStringContainsString('maxlength="255"', (string) $form->addEmail('a', 'A')->getControl());
+		$this->assertStringContainsString('maxlength="30"', (string) $form->addEmail('b', 'B', 30)->getControl());
+	}
+
 	public function testAddMultiUploadTakesSeveralFiles(): void
 	{
 		$form = new BootstrapForm();
