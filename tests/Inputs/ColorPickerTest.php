@@ -4,6 +4,7 @@ namespace Tests\Inputs;
 
 use Contributte\FormsBootstrap\BootstrapForm;
 use Contributte\FormsBootstrap\Inputs\IValidationInput;
+use Nette\Application\UI\Presenter;
 use Tests\BaseTestCase;
 
 class ColorPickerTest extends BaseTestCase
@@ -20,6 +21,10 @@ class ColorPickerTest extends BaseTestCase
 	public function testShowsValidationState(): void
 	{
 		$form = new BootstrapForm();
+		// Rendering a form requires a presenter with a non-empty action; see BaseTestCase users.
+		$form->setParent($this->createMock(Presenter::class));
+		$form->setAction('/');
+
 		$input = $form->addColor('color', 'Choose color');
 		$this->assertInstanceOf(IValidationInput::class, $input);
 
