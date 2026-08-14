@@ -6,7 +6,7 @@ use Contributte\FormsBootstrap\BootstrapUtils;
 use Contributte\FormsBootstrap\Traits\StandardValidationTrait;
 use Nette\Utils\Html;
 
-class ColorPicker extends \Nette\Forms\Controls\ColorPicker
+class ColorPicker extends \Nette\Forms\Controls\ColorPicker implements IValidationInput
 {
 
 	use StandardValidationTrait;
