@@ -5,16 +5,20 @@ namespace Tests\Inputs;
 use Contributte\FormsBootstrap\BootstrapForm;
 use Contributte\FormsBootstrap\Enums\DateTimeFormat;
 use Contributte\FormsBootstrap\Inputs\DateInput;
+use Nette\Forms\Form;
 use Tests\BaseTestCase;
 
 class DateInputTest extends BaseTestCase
 {
 
+	// rule that DateInput adds in its constructor
+	private const FORMAT_RULE = '[{"op":"Contributte\\\\FormsBootstrap\\\\Inputs\\\\DateInput::validateFormat","msg":"invalid/incorrect format"}]';
+
 	public function testDefaultDate(): void
 	{
 		$form = new BootstrapForm();
 		$dt = $form->addBootstrapDate('date', 'Date');
-		$this->assertEquals('<input type="text" name="date" id="frm-date" class="form-control" placeholder="d.m.yyyy (31.12.1998)">', $dt->getControl()->render());
+		$this->assertEquals('<input type="text" name="date" id="frm-date" data-nette-rules=\'' . self::FORMAT_RULE . '\' class="form-control" placeholder="d.m.yyyy (31.12.1998)">', $dt->getControl()->render());
 	}
 
 	public function testWithCustomStaticFormat(): void
@@ -22,7 +26,26 @@ class DateInputTest extends BaseTestCase
 		$form = new BootstrapForm();
 		DateInput::$defaultFormat = DateTimeFormat::D_YMD_DASHES;
 		$dt = $form->addBootstrapDate('date', 'Date');
-		$this->assertEquals('<input type="text" name="date" id="frm-date" class="form-control" placeholder="yyyy-mm-dd (1998-12-31)">', $dt->getControl()->render());
+		$this->assertEquals('<input type="text" name="date" id="frm-date" data-nette-rules=\'' . self::FORMAT_RULE . '\' class="form-control" placeholder="yyyy-mm-dd (1998-12-31)">', $dt->getControl()->render());
+	}
+
+	/**
+	 * @see https://github.com/contributte/forms-bootstrap/issues/61
+	 */
+	public function testConditionsAreExported(): void
+	{
+		$form = new BootstrapForm();
+		$checkbox = $form->addCheckbox('agree', 'Agree');
+		$date = $form->addBootstrapDate('date', 'Date');
+		$date->addConditionOn($checkbox, Form::Equal, true)
+			->setRequired('Date is required');
+		$date->addCondition(Form::Filled)
+			->addRule(Form::MinLength, 'Too short', 3);
+
+		$rules = $date->getControl()->render();
+		$this->assertStringContainsString(':equal', $rules);
+		$this->assertStringContainsString(':filled', $rules);
+		$this->assertStringContainsString(':minLength', $rules);
 	}
 
 }

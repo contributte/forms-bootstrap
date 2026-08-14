@@ -55,9 +55,25 @@ class DateInput extends TextInput
 
 		parent::__construct($label, null);
 
-		$this->addRule(fn (Control $input) => DateTimeFormat::validate($this->format, $input->getValue()), $this->invalidFormatMessage);
+		// must be a static callable, otherwise Nette::exportRules() stops at this rule
+		// and every rule/condition added later is missing in data-nette-rules
+		$this->addRule([self::class, 'validateFormat'], $this->invalidFormatMessage);
 
 		$this->setFormat(static::$defaultFormat);
+	}
+
+	/**
+	 * Checks that the value matches the control's format.
+	 *
+	 * Kept as a public static method (instead of a closure) so that the rule is exportable
+	 * and does not cut off the rules that follow it. The client side has no validator of
+	 * this name and simply skips it.
+	 */
+	public static function validateFormat(Control $input): bool
+	{
+		assert($input instanceof self);
+
+		return DateTimeFormat::validate($input->getFormat(), $input->getValue());
 	}
 
 	/**
