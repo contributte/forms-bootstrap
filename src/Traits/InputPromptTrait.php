@@ -3,7 +3,6 @@
 namespace Contributte\FormsBootstrap\Traits;
 
 use Nette\InvalidArgumentException;
-use Nette\NotSupportedException;
 
 /**
  * Trait InputPromptTrait.
@@ -21,15 +20,10 @@ trait InputPromptTrait
 			return $this;
 		}
 
-		if (!isset($this->items)) {
-			throw new NotSupportedException('This must be a ChoiceControl');
-		}
-
-		/** @var array<int, int|string|null> $keys */
 		$keys = array_keys($this->items);
-		if (in_array('', $keys, true) || in_array(null, $keys, true)) {
+		if (in_array('', $keys, true)) {
 			throw new InvalidArgumentException(
-				'There is an item whose value === "" or null .' .
+				'There is an item whose value === "" .' .
 				'Setting prompt would interfere with this value.'
 			);
 		}
