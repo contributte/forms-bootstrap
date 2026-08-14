@@ -95,7 +95,7 @@ class CheckboxInput extends Checkbox implements IValidationInput
 		return self::makeCheckbox(
 			$this->getHtmlName(),
 			$this->getHtmlId(),
-			$this->translate($this->caption),
+			$this->translate($this->getCaption()),
 			$this->value,
 			false,
 			$this->required,

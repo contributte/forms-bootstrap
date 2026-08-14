@@ -122,6 +122,29 @@ class BootstrapContainerTraitTest extends BaseTestCase
 		$this->assertStringNotContainsString('type="submit"', $html);
 	}
 
+	public function testAddSubmitWithoutHandlerRegistersNoClickListener(): void
+	{
+		$form = new BootstrapForm();
+		$button = $form->addSubmit('send', 'Send');
+
+		$this->assertStringContainsString('type="submit"', (string) $button->getControl());
+		$this->assertSame([], $button->onClick);
+	}
+
+	/**
+	 * nette/forms 3.3 grew a third addSubmit() argument that wires a handler
+	 * straight onto the button's onClick.
+	 */
+	public function testAddSubmitTakesAnOnSubmitHandler(): void
+	{
+		$form = new BootstrapForm();
+		$handler = function (): void {
+		};
+		$button = $form->addSubmit('send', 'Send', $handler);
+
+		$this->assertSame([$handler], $button->onClick);
+	}
+
 	public function testFactoriesAlsoWorkInsideContainer(): void
 	{
 		$form = new BootstrapForm();

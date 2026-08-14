@@ -2,7 +2,9 @@
 
 namespace Tests\E2E;
 
+use ArrayObject;
 use Contributte\FormsBootstrap\BootstrapForm;
+use Nette\Forms\Controls\SubmitButton;
 use Nette\Http\FileUpload;
 
 /**
@@ -39,6 +41,28 @@ class FormSubmissionTest extends BaseE2ETestCase
 			$this->presenter->succeededWith
 		);
 		$this->assertFalse($this->presenter->errored);
+	}
+
+	public function testAddSubmitHandlerIsCalledWhenThatButtonSubmitsTheForm(): void
+	{
+		// an object, so the closures below can share it without capturing by reference
+		$seen = new ArrayObject();
+
+		$this->submit(
+			function () use ($seen): BootstrapForm {
+				$form = new BootstrapForm();
+				$form->setAction('/');
+				$form->addText('name', 'Name');
+				$form->addSubmit('send', 'Send', function (SubmitButton $button) use ($seen): void {
+					$seen['values'] = $button->getForm()->getValues('array');
+				});
+
+				return $form;
+			},
+			['name' => 'Dalibor', 'send' => 'Send']
+		);
+
+		$this->assertSame(['name' => 'Dalibor'], $seen['values'] ?? null);
 	}
 
 	public function testMissingRequiredValueFailsValidation(): void
