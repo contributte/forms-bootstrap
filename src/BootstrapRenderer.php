@@ -509,7 +509,7 @@ class BootstrapRenderer implements FormRenderer
 	 */
 	public function renderLabel(BaseControl $control): Html
 	{
-		if ($control->caption === null) {
+		if ($control->getCaption() === null) {
 			return Html::el();
 		}
 

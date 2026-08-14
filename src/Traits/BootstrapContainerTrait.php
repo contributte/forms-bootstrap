@@ -2,6 +2,7 @@
 
 namespace Contributte\FormsBootstrap\Traits;
 
+use Closure;
 use Contributte\FormsBootstrap\BootstrapContainer;
 use Contributte\FormsBootstrap\BootstrapForm;
 use Contributte\FormsBootstrap\Inputs\ButtonInput;
@@ -294,13 +295,18 @@ trait BootstrapContainerTrait
 
 	/**
 	 * @param string|Html|null $caption
+	 * @param Closure|null $onSubmit handler bound to the button's onClick, added in nette/forms 3.3
 	 * @return SubmitButtonInput
 	 */
-	public function addSubmit(string $name, $caption = null): SubmitButton
+	public function addSubmit(string $name, $caption = null, ?Closure $onSubmit = null): SubmitButton
 	{
 		$comp = new SubmitButtonInput($caption);
 		$comp->setBtnClass('btn-primary');
 		$this->addComponent($comp, $name);
+
+		if ($onSubmit !== null) {
+			$comp->onClick[] = $onSubmit;
+		}
 
 		return $comp;
 	}

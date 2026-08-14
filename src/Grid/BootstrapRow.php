@@ -210,7 +210,7 @@ class BootstrapRow implements IComponent, Control
 	public function render(): Html
 	{
 		/** @var BootstrapRenderer $renderer */
-		$renderer = $this->container->form->renderer;
+		$renderer = $this->container->getForm()->getRenderer();
 
 		$element = $renderer->configElem(RendererConfig::GRID_ROW, $this->elementPrototype);
 		foreach ($this->cells as $cell) {
