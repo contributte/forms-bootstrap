@@ -6,6 +6,8 @@ use Contributte\FormsBootstrap\BootstrapForm;
 use Contributte\FormsBootstrap\Grid\BootstrapCell;
 use Contributte\FormsBootstrap\Grid\BootstrapRow;
 use Nette\Application\UI\Presenter;
+use Nette\InvalidArgumentException;
+use Nette\InvalidStateException;
 use Nette\NotImplementedException;
 use Tests\BaseTestCase;
 
@@ -111,6 +113,29 @@ class BootstrapRowTest extends BaseTestCase
 		$this->row->addCell(12)->addText('name', 'Name');
 
 		$this->assertSame('name', $this->form['name']->getName());
+	}
+
+	public function testDetachedRowReportsNoParent(): void
+	{
+		$this->row->setParent(null);
+
+		$this->assertNull($this->row->getParent());
+	}
+
+	public function testDetachedRowCannotBeRendered(): void
+	{
+		$this->row->setParent(null);
+
+		$this->expectException(InvalidStateException::class);
+
+		$this->row->getContainer();
+	}
+
+	public function testRowRefusesParentThatIsNotFormContainer(): void
+	{
+		$this->expectException(InvalidArgumentException::class);
+
+		$this->row->setParent($this->createStub(Presenter::class));
 	}
 
 	protected function setUp(): void

@@ -91,7 +91,7 @@ class BootstrapCell
 		$element = $this->elementPrototype;
 
 		/** @var BootstrapRenderer $renderer */
-		$renderer = $this->row->getParent()->getForm()->getRenderer();
+		$renderer = $this->row->getContainer()->getForm()->getRenderer();
 
 		$element = $renderer->configElem(RendererConfig::GRID_CELL, $element);
 		$element->class[] = $this->createClass();

@@ -75,6 +75,7 @@ class BootstrapRenderer implements FormRenderer
 	 *
 	 * @param string[]|string $config top-level config key
 	 * @param Html|null $el elem to config.
+	 * @return ($el is null ? Html|null : Html)
 	 */
 	public function configElem($config, ?Html $el = null): ?Html
 	{
@@ -142,12 +143,15 @@ class BootstrapRenderer implements FormRenderer
 		// el may be null, but maybe it has a container defined
 		if (isset($config[Cnf::CONTAINER])) {
 			$container = $this->configElem($config[Cnf::CONTAINER], null);
-			if ($container !== null && $el !== null) {
-				$elClone = clone $el;
-				$container->setHtml($elClone);
-			}
+			// a container config which yields no element of its own must not swallow the element it wraps
+			if ($container !== null) {
+				if ($el !== null) {
+					$elClone = clone $el;
+					$container->setHtml($elClone);
+				}
 
-			$el = $container;
+				$el = $container;
+			}
 		}
 
 		return $el;
@@ -525,7 +529,7 @@ class BootstrapRenderer implements FormRenderer
 
 		if ($controlLabel === null) {
 			if (method_exists($control, 'allignWithInputControls') && $control->allignWithInputControls()) {
-				return $this->configElem(Cnf::LABEL, null);
+				return $this->getElem(Cnf::LABEL);
 			}
 
 			return Html::el();
@@ -545,7 +549,7 @@ class BootstrapRenderer implements FormRenderer
 	 */
 	public function renderPair(BaseControl $control): string
 	{
-		$pairHtml = $this->configElem(Cnf::PAIR);
+		$pairHtml = $this->getElem(Cnf::PAIR);
 
 		$pairHtml->id = $control->getOption(RendererOptions::ID);
 
@@ -573,9 +577,7 @@ class BootstrapRenderer implements FormRenderer
 
 		//endregion
 
-		if (!empty($nonLabel)) {
-			$pairHtml->addHtml($nonLabel);
-		}
+		$pairHtml->addHtml($nonLabel);
 
 		return $pairHtml->render(0);
 	}
@@ -627,7 +629,7 @@ class BootstrapRenderer implements FormRenderer
 	 *
 	 * @param string $additionalKeys config will be overridden in this order
 	 */
-	protected function getElem(string $key, ...$additionalKeys): ?Html
+	protected function getElem(string $key, ...$additionalKeys): Html
 	{
 		$el = $this->configElem($key, Html::el());
 
