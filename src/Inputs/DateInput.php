@@ -54,7 +54,9 @@ class DateInput extends TextInput
 
 		parent::__construct($label, null);
 
-		$this->addRule(fn ($input) => DateTimeFormat::validate($this->format, $input->value), $this->invalidFormatMessage);
+		// the rule's control is $this, so read the raw value directly — the Control instance
+		// passed to the callback is not typed as a BaseControl
+		$this->addRule(fn () => DateTimeFormat::validate($this->format, $this->value), $this->invalidFormatMessage);
 
 		$this->setFormat(static::$defaultFormat);
 	}

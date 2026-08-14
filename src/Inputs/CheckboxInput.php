@@ -111,7 +111,9 @@ class CheckboxInput extends Checkbox implements IValidationInput
 	public function showValidation(Html $control): Html
 	{
 		// add validation classes to the first child, which is <input>
-		$control->getChildren()[0] = $this->_rawShowValidation($control->getChildren()[0]);
+		/** @var Html $input */
+		$input = $control->getChildren()[0];
+		$control->getChildren()[0] = $this->_rawShowValidation($input);
 
 		return $control;
 	}

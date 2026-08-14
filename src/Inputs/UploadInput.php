@@ -69,6 +69,7 @@ class UploadInput extends UploadControl implements IValidationInput
 	 */
 	public function showValidation(Html $control): Html
 	{
+		/** @var Html $input */
 		$input = $control->getChildren()[0];
 
 		/** @var Form $form */

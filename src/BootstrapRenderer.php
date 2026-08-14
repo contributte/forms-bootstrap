@@ -328,6 +328,9 @@ class BootstrapRenderer implements FormRenderer
 	public function renderBegin(): string
 	{
 		foreach ($this->form->getControls() as $control) {
+			// every control returned here (BaseControl or BootstrapRow) defines setOption(),
+			// but the Nette\Forms\Control interface does not declare it
+			/** @phpstan-ignore-next-line */
 			$control->setOption(RendererOptions::_RENDERED, false);
 		}
 
@@ -462,6 +465,8 @@ class BootstrapRenderer implements FormRenderer
 
 		// note that these are NOT form groups, these are groups specified to group
 		foreach ($parent->getControls() as $control) {
+			// both BaseControl and BootstrapRow define getOption(); the Control interface does not
+			/** @phpstan-ignore-next-line */
 			if ($control->getOption(RendererOptions::_RENDERED)) {
 				continue;
 			}
@@ -469,6 +474,7 @@ class BootstrapRenderer implements FormRenderer
 			if ($control instanceof BootstrapRow) {
 				$html->addHtml($control->render());
 			} else {
+				assert($control instanceof BaseControl);
 				if ($control->getOption(RendererOptions::TYPE) === 'hidden') {
 					$isHidden = true;
 					$pairHtml = $this->renderControl($control);
