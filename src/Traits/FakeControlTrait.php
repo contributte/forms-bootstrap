@@ -2,8 +2,11 @@
 
 namespace Contributte\FormsBootstrap\Traits;
 
+use Nette\ComponentModel\Component;
+use Nette\ComponentModel\IComponent;
 use Nette\Forms\Control;
 use Nette\NotImplementedException;
+use Stringable;
 
 /**
  * Trait FakeControlTrait.
@@ -43,6 +46,45 @@ trait FakeControlTrait
 	public function isOmitted(): bool
 	{
 		return true;
+	}
+
+	/**
+	 * Hierarchical name of the component, the way a real Nette component would report it.
+	 *
+	 * Needed because tools that walk $form->getControls() -- Nette\Forms\Blueprint, i.e. the
+	 * {formPrint} macro -- call this on everything they find, and a fake control is found too.
+	 *
+	 * @param class-string<IComponent>|null $type
+	 */
+	public function lookupPath(?string $type = null, bool $throw = true): ?string
+	{
+		$parent = $this->getParent();
+
+		// the searched-for ancestor is our direct parent, so the path is just our own name
+		if ($type !== null && $parent instanceof $type) {
+			return $this->getName();
+		}
+
+		$parentPath = $parent instanceof Component ? $parent->lookupPath($type, $throw) : null;
+
+		return ($parentPath === null || $parentPath === '' ? '' : $parentPath . IComponent::NameSeparator)
+			. $this->getName();
+	}
+
+	/**
+	 * A fake control has no label.
+	 *
+	 * @param string|Stringable|null $caption
+	 * @return null
+	 */
+	public function getLabel($caption = null)
+	{
+		return null;
+	}
+
+	public function isRequired(): bool
+	{
+		return false;
 	}
 
 	/**

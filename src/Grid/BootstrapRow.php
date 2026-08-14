@@ -201,7 +201,7 @@ class BootstrapRow implements IComponent, Control
 	 */
 	public function getOption(string $option)
 	{
-		return $this->options[$option];
+		return $this->options[$option] ?? null;
 	}
 
 	/**
