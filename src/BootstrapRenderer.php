@@ -383,7 +383,7 @@ class BootstrapRenderer implements FormRenderer
 			$label = $group->getOption(RendererOptions::LABEL);
 			if ($label instanceof Html) {
 				$label = $this->configElem(Cnf::GROUP_LABEL, $label);
-			} elseif (is_string($label)) {
+			} elseif (is_string($label) || ($label instanceof Stringable && !$label instanceof HtmlStringable)) {
 				if ($translator !== null) {
 					$label = $translator->translate($label);
 				}
@@ -643,17 +643,22 @@ class BootstrapRenderer implements FormRenderer
 	protected function renderDescription(BaseControl $control): ?Html
 	{
 		$description = $control->getOption(RendererOptions::DESCRIPTION);
-		if (is_string($description)) {
-			$description = $control->translate($description);
-		} elseif (!$description instanceof Html) {
-			$description = '';
+		if ($description instanceof HtmlStringable) {
+			return $this->getElem(Cnf::DESCRIPTION)->setHtml($description);
 		}
 
-		if (!empty($description)) {
-			$el = $this->getElem(Cnf::DESCRIPTION);
-			$el->setHtml($description);
+		if (is_string($description)) {
+			$description = $control->translate($description);
 
-			return $el;
+			return empty($description) ? null : $this->getElem(Cnf::DESCRIPTION)->setHtml($description);
+		}
+
+		if ($description instanceof Stringable) {
+			// objects like translation messages may carry user input, so escape them
+			// (setText keeps HtmlStringable returned by a translator as it is)
+			$el = $this->getElem(Cnf::DESCRIPTION)->setText($control->translate($description));
+
+			return $el->getHtml() === '' ? null : $el;
 		}
 
 		return null;

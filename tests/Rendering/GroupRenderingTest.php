@@ -5,7 +5,9 @@ namespace Tests\Rendering;
 use Contributte\FormsBootstrap\BootstrapForm;
 use Contributte\FormsBootstrap\Enums\RendererOptions;
 use Nette\Application\UI\Presenter;
+use Nette\Localization\Translator;
 use Nette\Utils\Html;
+use Stringable;
 use Tests\BaseTestCase;
 
 /**
@@ -39,6 +41,49 @@ class GroupRenderingTest extends BaseTestCase
 
 		$this->assertStringContainsString('<legend class="fancy">Personal</legend>', $html);
 		$this->assertStringNotContainsString('<h3', $html);
+	}
+
+	public function testStringableGroupLabelIsRenderedEscaped(): void
+	{
+		$group = $this->form->addGroup(null);
+		$group->setOption(RendererOptions::LABEL, new class implements Stringable {
+
+			public function __toString(): string
+			{
+				return '<b>Personal</b>';
+			}
+
+		});
+		$group->add($this->form->addText('name', 'Name'));
+
+		$this->assertStringContainsString('<legend>&lt;b&gt;Personal&lt;/b&gt;</legend>', $this->render());
+	}
+
+	/**
+	 * Objects like translation messages are translated and drawn like strings
+	 */
+	public function testStringableGroupLabelIsTranslated(): void
+	{
+		$this->form->setTranslator(new class implements Translator {
+
+			public function translate(string|Stringable $message, mixed ...$parameters): string
+			{
+				return 'translated ' . $message;
+			}
+
+		});
+		$group = $this->form->addGroup(null);
+		$group->setOption(RendererOptions::LABEL, new class implements Stringable {
+
+			public function __toString(): string
+			{
+				return 'Personal';
+			}
+
+		});
+		$group->add($this->form->addText('name', 'Name'));
+
+		$this->assertStringContainsString('<legend>translated Personal</legend>', $this->render());
 	}
 
 	public function testGroupIdEndsUpOnTheContainer(): void
