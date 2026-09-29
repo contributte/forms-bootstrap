@@ -6,7 +6,9 @@ use Contributte\FormsBootstrap\BootstrapForm;
 use Contributte\FormsBootstrap\BootstrapRenderer;
 use Contributte\FormsBootstrap\Enums\RenderMode;
 use Nette\Application\UI\Presenter;
+use Nette\Localization\Translator;
 use PHPUnit\Framework\Attributes\DataProvider;
+use Stringable;
 use Tests\BaseTestCase;
 
 /**
@@ -34,6 +36,17 @@ class VerticalTest extends BaseTestCase
 			'vertical/text_description.html',
 			function (BootstrapForm $form): void {
 				$form->addText('a', 'b')->setOption('description', 'Helpful hint');
+			}],
+			'text with stringable description' => [
+			'vertical/text_description.html',
+			function (BootstrapForm $form): void {
+				$form->addText('a', 'b')->setOption('description', self::createMessage('Helpful hint'));
+			}],
+			'text with translated stringable description' => [
+			'vertical/text_description_translated.html',
+			function (BootstrapForm $form): void {
+				$form->setTranslator(self::createTranslator());
+				$form->addText('a', 'b')->setOption('description', self::createMessage('Helpful hint'));
 			}],
 			'checkbox' => [
 			'vertical/checkbox.html',
@@ -118,6 +131,37 @@ class VerticalTest extends BaseTestCase
 		// A real (non-empty) action makes Nette inject the "_do" signal field,
 		// mirroring production where the form is attached to a routed presenter.
 		$this->form->setAction('/');
+	}
+
+	/**
+	 * Stand-in for translation wrappers such as Contributte\Translation\Wrappers\Message
+	 */
+	private static function createMessage(string $message): Stringable
+	{
+		return new class ($message) implements Stringable {
+
+			public function __construct(private string $message)
+			{
+			}
+
+			public function __toString(): string
+			{
+				return $this->message;
+			}
+
+		};
+	}
+
+	private static function createTranslator(): Translator
+	{
+		return new class implements Translator {
+
+			public function translate(string|Stringable $message, mixed ...$parameters): string
+			{
+				return '[' . $message . ']';
+			}
+
+		};
 	}
 
 }

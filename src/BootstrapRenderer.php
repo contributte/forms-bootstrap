@@ -383,7 +383,7 @@ class BootstrapRenderer implements FormRenderer
 			$label = $group->getOption(RendererOptions::LABEL);
 			if ($label instanceof Html) {
 				$label = $this->configElem(Cnf::GROUP_LABEL, $label);
-			} elseif (is_string($label)) {
+			} elseif (is_string($label) || ($label instanceof Stringable && !$label instanceof HtmlStringable)) {
 				if ($translator !== null) {
 					$label = $translator->translate($label);
 				}
@@ -643,10 +643,11 @@ class BootstrapRenderer implements FormRenderer
 	protected function renderDescription(BaseControl $control): ?Html
 	{
 		$description = $control->getOption(RendererOptions::DESCRIPTION);
-		if (is_string($description)) {
-			$description = $control->translate($description);
-		} elseif (!$description instanceof Html) {
-			$description = '';
+		if (!$description instanceof HtmlStringable) {
+			// strings and objects like translation messages go through the translator
+			$description = is_string($description) || $description instanceof Stringable
+				? $control->translate($description)
+				: '';
 		}
 
 		if (!empty($description)) {
