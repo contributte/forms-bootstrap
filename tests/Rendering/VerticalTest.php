@@ -6,6 +6,7 @@ use Contributte\FormsBootstrap\BootstrapForm;
 use Contributte\FormsBootstrap\BootstrapRenderer;
 use Contributte\FormsBootstrap\Enums\RenderMode;
 use Nette\Application\UI\Presenter;
+use Nette\HtmlStringable;
 use Nette\Localization\Translator;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Stringable;
@@ -123,6 +124,51 @@ class VerticalTest extends BaseTestCase
 		$this->assertSame(RenderMode::VERTICAL_MODE, $form->getRenderMode());
 	}
 
+	public function testStringableDescriptionIsEscaped(): void
+	{
+		$this->form->addText('a', 'b')->setOption('description', self::createMessage('<b>x</b>'));
+
+		$html = $this->render();
+
+		$this->assertStringContainsString('&lt;b&gt;x&lt;/b&gt;', $html);
+		$this->assertStringNotContainsString('<b>x</b>', $html);
+	}
+
+	/**
+	 * Translation message parameters are often user input
+	 */
+	public function testTranslatedStringableDescriptionIsEscaped(): void
+	{
+		$this->form->setTranslator(self::createTranslator());
+		$this->form->addText('a', 'b')->setOption('description', self::createMessage('Hello %name%', ['%name%' => '<img src=x onerror=alert(1)>']));
+
+		$html = $this->render();
+
+		$this->assertStringContainsString('[Hello &lt;img src=x onerror=alert(1)&gt;]', $html);
+		$this->assertStringNotContainsString('<img', $html);
+	}
+
+	public function testEmptyStringableDescriptionIsNotRendered(): void
+	{
+		$this->form->addText('a', 'b')->setOption('description', self::createMessage(''));
+
+		$this->assertStringNotContainsString('<small', $this->render());
+	}
+
+	public function testHtmlStringableDescriptionIsRenderedRaw(): void
+	{
+		$this->form->addText('a', 'b')->setOption('description', new class implements HtmlStringable {
+
+			public function __toString(): string
+			{
+				return '<b>x</b>';
+			}
+
+		});
+
+		$this->assertStringContainsString('<small class="form-text text-muted"><b>x</b></small>', $this->render());
+	}
+
 	protected function setUp(): void
 	{
 		$this->form = new BootstrapForm();
@@ -135,12 +181,17 @@ class VerticalTest extends BaseTestCase
 
 	/**
 	 * Stand-in for translation wrappers such as Contributte\Translation\Wrappers\Message
+	 *
+	 * @param array<string, string> $parameters
 	 */
-	private static function createMessage(string $message): Stringable
+	private static function createMessage(string $message, array $parameters = []): Stringable
 	{
-		return new class ($message) implements Stringable {
+		return new class ($message, $parameters) implements Stringable {
 
-			public function __construct(private string $message)
+			/**
+			 * @param array<string, string> $parameters
+			 */
+			public function __construct(public string $message, public array $parameters)
 			{
 			}
 
@@ -152,16 +203,34 @@ class VerticalTest extends BaseTestCase
 		};
 	}
 
+	/**
+	 * Wraps the result in [] and fills in the parameters of messages from createMessage()
+	 */
 	private static function createTranslator(): Translator
 	{
 		return new class implements Translator {
 
 			public function translate(string|Stringable $message, mixed ...$parameters): string
 			{
-				return '[' . $message . ']';
+				$params = $message instanceof Stringable && property_exists($message, 'parameters') ? $message->parameters : [];
+
+				return '[' . strtr((string) $message, $params) . ']';
 			}
 
 		};
+	}
+
+	private function render(): string
+	{
+		ob_start();
+
+		try {
+			$this->form->render();
+
+			return (string) ob_get_contents();
+		} finally {
+			ob_end_clean();
+		}
 	}
 
 }

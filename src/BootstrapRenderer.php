@@ -643,18 +643,22 @@ class BootstrapRenderer implements FormRenderer
 	protected function renderDescription(BaseControl $control): ?Html
 	{
 		$description = $control->getOption(RendererOptions::DESCRIPTION);
-		if (!$description instanceof HtmlStringable) {
-			// strings and objects like translation messages go through the translator
-			$description = is_string($description) || $description instanceof Stringable
-				? $control->translate($description)
-				: '';
+		if ($description instanceof HtmlStringable) {
+			return $this->getElem(Cnf::DESCRIPTION)->setHtml($description);
 		}
 
-		if (!empty($description)) {
-			$el = $this->getElem(Cnf::DESCRIPTION);
-			$el->setHtml($description);
+		if (is_string($description)) {
+			$description = $control->translate($description);
 
-			return $el;
+			return empty($description) ? null : $this->getElem(Cnf::DESCRIPTION)->setHtml($description);
+		}
+
+		if ($description instanceof Stringable) {
+			// objects like translation messages may carry user input, so escape them
+			// (setText keeps HtmlStringable returned by a translator as it is)
+			$el = $this->getElem(Cnf::DESCRIPTION)->setText($control->translate($description));
+
+			return $el->getHtml() === '' ? null : $el;
 		}
 
 		return null;

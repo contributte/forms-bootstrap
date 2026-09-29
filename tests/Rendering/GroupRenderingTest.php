@@ -43,6 +43,22 @@ class GroupRenderingTest extends BaseTestCase
 		$this->assertStringNotContainsString('<h3', $html);
 	}
 
+	public function testStringableGroupLabelIsRenderedEscaped(): void
+	{
+		$group = $this->form->addGroup(null);
+		$group->setOption(RendererOptions::LABEL, new class implements Stringable {
+
+			public function __toString(): string
+			{
+				return '<b>Personal</b>';
+			}
+
+		});
+		$group->add($this->form->addText('name', 'Name'));
+
+		$this->assertStringContainsString('<legend>&lt;b&gt;Personal&lt;/b&gt;</legend>', $this->render());
+	}
+
 	/**
 	 * Objects like translation messages are translated and drawn like strings
 	 */
